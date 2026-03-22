@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cortex — Backlog & Roadmap</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --void:#090E1A;--ink:#0C1220;--dusk:#1B2845;--steel:#1E2533;--ash:#4A5568;
+  --mist:#94A3B8;--white:#F7F9FC;--signal:#4D71FA;--signal-dark:#3558D4;
+  --success:#22C55E;--warning:#F59E0B;--error:#F43F5E;
+  --font-display:'Space Grotesk',sans-serif;
+  --font-body:'Inter',sans-serif;
+  --font-mono:'JetBrains Mono',monospace;
+}
+html{scroll-behavior:smooth}
+body{background:var(--void);color:var(--white);font-family:var(--font-body);-webkit-font-smoothing:antialiased;min-height:100vh}
+
+/* NAV */
+.topnav{padding:16px 48px;display:flex;align-items:center;gap:16px;border-bottom:1px solid var(--steel)}
+.topnav a{font-family:var(--font-body);font-size:13px;color:var(--mist);text-decoration:none}
+.topnav a:hover{color:var(--white)}
+.topnav .sep{color:var(--steel)}
+
+/* HEADER */
+.page-header{padding:48px 48px 32px}
+.page-header h1{font-family:var(--font-display);font-weight:700;font-size:36px;line-height:1.15}
+.page-header h1 span{color:var(--signal)}
+.page-header p{font-family:var(--font-body);font-size:16px;color:var(--mist);margin-top:12px;line-height:1.6}
+.updated{font-family:var(--font-mono);font-size:12px;color:var(--ash);margin-top:8px}
+
+/* SUMMARY CARDS */
+.summary{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;padding:0 48px 32px}
+.summary-card{background:var(--ink);border:1px solid var(--steel);border-radius:10px;padding:20px;text-align:center}
+.summary-card .val{font-family:var(--font-mono);font-weight:700;font-size:28px}
+.summary-card .lbl{font-family:var(--font-body);font-size:12px;color:var(--mist);margin-top:4px}
+.val-done{color:var(--success)}
+.val-pending{color:var(--warning)}
+.val-total{color:var(--signal)}
+.val-pct{color:var(--white)}
+.val-pts{color:var(--error)}
+
+/* PROGRESS BAR */
+.progress-wrap{padding:0 48px 40px}
+.progress-bar{height:8px;background:var(--steel);border-radius:100px;overflow:hidden}
+.progress-fill{height:100%;border-radius:100px;background:linear-gradient(90deg,var(--signal),var(--success));transition:width .5s}
+.progress-label{font-family:var(--font-mono);font-size:12px;color:var(--mist);margin-top:8px;text-align:center}
+
+/* NEXT STEPS */
+.next-steps{padding:0 48px 40px}
+.next-title{font-family:var(--font-display);font-weight:600;font-size:14px;color:var(--signal);text-transform:uppercase;letter-spacing:2px;margin-bottom:16px;display:flex;align-items:center;gap:12px}
+.next-title::after{content:'';flex:1;height:1px;background:var(--steel)}
+.step-list{display:flex;flex-direction:column;gap:8px}
+.step{background:var(--ink);border:1px solid var(--steel);border-radius:8px;padding:14px 20px;display:flex;align-items:center;gap:16px}
+.step-num{font-family:var(--font-mono);font-weight:700;font-size:14px;color:var(--signal);background:rgba(77,113,250,.12);width:28px;height:28px;border-radius:6px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.step-id{font-family:var(--font-mono);font-size:12px;color:var(--ash);min-width:100px}
+.step-text{font-family:var(--font-body);font-size:14px;color:var(--white);flex:1}
+.step-unlock{font-family:var(--font-mono);font-size:11px;color:var(--success);white-space:nowrap}
+
+/* SECTION */
+.section{padding:0 48px 40px}
+.section-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;flex-wrap:wrap;gap:12px}
+.section-name{font-family:var(--font-display);font-weight:600;font-size:20px;color:var(--white)}
+.section-badge{font-family:var(--font-mono);font-size:12px;padding:4px 10px;border-radius:100px}
+.badge-alta{background:rgba(244,63,94,.12);color:var(--error)}
+.badge-media{background:rgba(245,158,11,.12);color:var(--warning)}
+.badge-baixa{background:rgba(148,163,184,.12);color:var(--mist)}
+.section-progress{font-family:var(--font-mono);font-size:13px;color:var(--mist)}
+.section-desc{font-family:var(--font-body);font-size:14px;color:var(--ash);margin-bottom:16px;line-height:1.5}
+
+/* TABLE */
+.tbl{width:100%;border-collapse:collapse;font-size:14px}
+.tbl th{font-family:var(--font-body);font-weight:500;font-size:12px;color:var(--mist);text-align:left;padding:10px 12px;border-bottom:1px solid var(--steel);text-transform:uppercase;letter-spacing:1px}
+.tbl td{padding:10px 12px;border-bottom:1px solid rgba(30,37,51,.5);vertical-align:top}
+.tbl tr:hover{background:rgba(255,255,255,.02)}
+.tbl .id{font-family:var(--font-mono);font-size:12px;color:var(--ash);white-space:nowrap}
+.tbl .story{font-family:var(--font-body);color:var(--white)}
+.tbl .pts{font-family:var(--font-mono);font-size:13px;color:var(--mist);text-align:center}
+.tbl .notes{font-family:var(--font-body);font-size:13px;color:var(--ash);max-width:320px;line-height:1.4}
+.status{font-family:var(--font-mono);font-size:11px;padding:3px 8px;border-radius:4px;white-space:nowrap;display:inline-block}
+.s-done{background:rgba(34,197,94,.12);color:var(--success)}
+.s-pending{background:rgba(245,158,11,.12);color:var(--warning)}
+.s-partial{background:rgba(77,113,250,.12);color:var(--signal)}
+.s-blocked{background:rgba(244,63,94,.12);color:var(--error)}
+
+/* DEPENDENCY GRAPH */
+.dep-graph{background:var(--ink);border:1px solid var(--steel);border-radius:10px;padding:24px;margin-bottom:24px;overflow-x:auto}
+.dep-graph pre{font-family:var(--font-mono);font-size:13px;color:var(--mist);line-height:1.7;white-space:pre}
+.dep-graph pre span.sig{color:var(--signal)}
+.dep-graph pre span.warn{color:var(--warning)}
+
+/* FOOTER */
+.footer{padding:32px 48px;border-top:1px solid var(--steel);text-align:center;margin-top:24px}
+.footer p{font-family:var(--font-body);font-size:13px;color:var(--ash)}
+.footer a{color:var(--signal);text-decoration:none}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+  .topnav,.page-header,.summary,.progress-wrap,.next-steps,.section,.footer{padding-left:20px;padding-right:20px}
+  .page-header h1{font-size:28px}
+  .summary{grid-template-columns:repeat(2,1fr)}
+  .tbl{display:block;overflow-x:auto}
+  .step{flex-wrap:wrap}
+  .step-id{min-width:auto}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="topnav">
+  <a href="../index.html">Portal</a>
+  <span class="sep">/</span>
+  <a href="#" style="color:var(--white)">Backlog & Roadmap</a>
+</nav>
+
+<!-- HEADER -->
+<div class="page-header">
+  <h1>Backlog & <span>Roadmap</span></h1>
+  <p>67 stories organizadas em 5 epicos — status real do projeto Cortex.</p>
+  <div class="updated">Atualizado em 2026-03-22 · Fonte: stories.yaml + cortex-visual-backlog.yaml</div>
+</div>
+
+<!-- SUMMARY -->
+<div class="summary">
+  <div class="summary-card"><div class="val val-total">67</div><div class="lbl">Stories Total</div></div>
+  <div class="summary-card"><div class="val val-done">39</div><div class="lbl">Concluidas</div></div>
+  <div class="summary-card"><div class="val val-pending">28</div><div class="lbl">Pendentes</div></div>
+  <div class="summary-card"><div class="val val-pct">58%</div><div class="lbl">Progresso</div></div>
+  <div class="summary-card"><div class="val val-pts">157</div><div class="lbl">Story Points Restantes</div></div>
+</div>
+
+<!-- PROGRESS BAR -->
+<div class="progress-wrap">
+  <div class="progress-bar"><div class="progress-fill" style="width:58%"></div></div>
+  <div class="progress-label">39 de 67 stories concluidas (58%)</div>
+</div>
+
+<!-- NEXT STEPS -->
+<div class="next-steps">
+  <div class="next-title">Proximos Passos Recomendados</div>
+  <div class="step-list">
+    <div class="step"><div class="step-num">1</div><div class="step-id">CORTEX-S001</div><div class="step-text">Decidir tagline final</div><div class="step-unlock">desbloqueia copies + site</div></div>
+    <div class="step"><div class="step-num">2</div><div class="step-id">CORTEX-S002</div><div class="step-text">Iniciar execucao do logo com designer</div><div class="step-unlock">leva 5-10 dias</div></div>
+    <div class="step"><div class="step-num">3</div><div class="step-id">CORTEX-001</div><div class="step-text">Light Mode Theme no Design System</div><div class="step-unlock">13 story points</div></div>
+    <div class="step"><div class="step-num">4</div><div class="step-id">CORTEX-025</div><div class="step-text">Sync Component Registry (27 → 59)</div><div class="step-unlock">desbloqueia testes</div></div>
+    <div class="step"><div class="step-num">5</div><div class="step-id">CORTEX-S004</div><div class="step-text">Produzir copies reais para todos os canais</div><div class="step-unlock">desbloqueia site + canais</div></div>
+    <div class="step"><div class="step-num">6</div><div class="step-id">CORTEX-S003</div><div class="step-text">Reconstruir landing page em Next.js com DS</div><div class="step-unlock">ativo central</div></div>
+    <div class="step"><div class="step-num">7</div><div class="step-id">CORTEX-S005</div><div class="step-text">Configurar dominio + Instagram + WhatsApp</div><div class="step-unlock">go-live</div></div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════════════════════ -->
+<!-- BACKLOG A — LANCAMENTO -->
+<!-- ════════════════════════════════════════════════════════════════ -->
+
+<div class="section" id="lancamento">
+  <div class="section-head">
+    <div class="section-name">Lancamento da Marca</div>
+    <span class="section-badge badge-alta">CRITICO</span>
+    <span class="section-progress">0 / 5 done</span>
+  </div>
+  <div class="section-desc">5 stories Must para o lancamento minimo viavel. Todas sao pre-requisito para a Cortex existir digitalmente.</div>
+
+  <div class="dep-graph">
+    <pre><span class="sig">CORTEX-S001</span> (Tagline) ─────┬──→ CORTEX-S003 (Site)
+                            ├──→ <span class="warn">CORTEX-S004</span> (Copies)
+                            └──→ CORTEX-S005 (Canais)
+
+<span class="sig">CORTEX-S002</span> (Logo) ────────┬──→ CORTEX-S003 (Site)
+                            └──→ CORTEX-S005 (Canais)
+
+<span class="warn">CORTEX-S004</span> (Copies) ──────┬──→ CORTEX-S003 (Site)
+                            └──→ CORTEX-S005 (Canais)</pre>
+  </div>
+
+  <table class="tbl">
+    <thead><tr><th>Sprint</th><th>ID</th><th>Story</th><th>Esforco</th><th>Status</th><th>Notas</th></tr></thead>
+    <tbody>
+      <tr><td rowspan="2" style="font-family:var(--font-mono);color:var(--signal)">1</td><td class="id">CORTEX-S001</td><td class="story">Definir e publicar tagline final</td><td class="pts">P</td><td><span class="status s-pending">PENDING</span></td><td class="notes">Sessao de decisao com owner. Candidata: "4 fornecedores viram 1."</td></tr>
+      <tr><td class="id">CORTEX-S002</td><td class="story">Executar identidade visual (logo) com designer</td><td class="pts">G</td><td><span class="status s-partial">PARTIAL</span></td><td class="notes">19 logos SVG gerados por IA existem, mas precisam execucao por designer profissional.</td></tr>
+      <tr><td rowspan="2" style="font-family:var(--font-mono);color:var(--signal)">2</td><td class="id">CORTEX-S003</td><td class="story">Construir landing page Next.js de producao</td><td class="pts">G</td><td><span class="status s-partial">PARTIAL</span></td><td class="notes">Landing HTML existe. Precisa Next.js + DS components + Core Web Vitals + analytics.</td></tr>
+      <tr><td class="id">CORTEX-S004</td><td class="story">Produzir copies reais para todos os canais</td><td class="pts">M</td><td><span class="status s-pending">PENDING</span></td><td class="notes">Skeletons existem. Precisa: bio IG, hero site, features, about, CTA, ad A/B.</td></tr>
+      <tr><td style="font-family:var(--font-mono);color:var(--signal)">3</td><td class="id">CORTEX-S005</td><td class="story">Configurar dominio + IG Business + WhatsApp Business</td><td class="pts">M</td><td><span class="status s-pending">PENDING</span></td><td class="notes">Nenhum canal configurado. Registro dominio, contas, Pixel Meta.</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ════════════════════════════════════════════════════════════════ -->
+<!-- DS-PROD -->
+<!-- ════════════════════════════════════════════════════════════════ -->
+
+<div class="section" id="ds-prod">
+  <div class="section-head">
+    <div class="section-name">DS-PROD: Design System Production Ready</div>
+    <span class="section-badge badge-alta">ALTA</span>
+    <span class="section-progress">23 / 25 done (92%)</span>
+  </div>
+  <div class="section-desc">Componentes e infraestrutura para o DS atingir maturidade de producao. A maioria foi entregue na fase 7 (expansao).</div>
+
+  <table class="tbl">
+    <thead><tr><th>ID</th><th>Story</th><th>Pts</th><th>Status</th><th>Notas</th></tr></thead>
+    <tbody>
+      <tr><td class="id">CORTEX-001</td><td class="story">Light Mode Theme</td><td class="pts">13</td><td><span class="status s-pending">PENDING</span></td><td class="notes">Unico item critico. Todos os 59 componentes precisam de variante light.</td></tr>
+      <tr><td class="id">CORTEX-002</td><td class="story">DatePicker</td><td class="pts">8</td><td><span class="status s-done">DONE</span></td><td class="notes">design-system/components/atoms/DatePicker/</td></tr>
+      <tr><td class="id">CORTEX-003</td><td class="story">Combobox/Autocomplete</td><td class="pts">8</td><td><span class="status s-done">DONE</span></td><td class="notes">design-system/components/atoms/Combobox/</td></tr>
+      <tr><td class="id">CORTEX-004</td><td class="story">FileUpload</td><td class="pts">8</td><td><span class="status s-done">DONE</span></td><td class="notes">design-system/components/molecules/FileUpload/</td></tr>
+      <tr><td class="id">CORTEX-005</td><td class="story">Slider</td><td class="pts">5</td><td><span class="status s-done">DONE</span></td><td class="notes">design-system/components/atoms/Slider/</td></tr>
+      <tr><td class="id">CORTEX-006</td><td class="story">TimePicker</td><td class="pts">5</td><td><span class="status s-done">DONE</span></td><td class="notes">design-system/components/atoms/TimePicker/</td></tr>
+      <tr><td class="id">CORTEX-007</td><td class="story">OTP Input</td><td class="pts">5</td><td><span class="status s-done">DONE</span></td><td class="notes">design-system/components/atoms/OTPInput/</td></tr>
+      <tr><td class="id">CORTEX-008</td><td class="story">Drawer/Sheet</td><td class="pts">5</td><td><span class="status s-done">DONE</span></td><td class="notes">design-system/components/molecules/Drawer/</td></tr>
+      <tr><td class="id">CORTEX-009</td><td class="story">Command Palette</td><td class="pts">8</td><td><span class="status s-done">DONE</span></td><td class="notes">design-system/components/organisms/CommandPalette/</td></tr>
+      <tr><td class="id">CORTEX-010</td><td class="story">Notification Center</td><td class="pts">8</td><td><span class="status s-done">DONE</span></td><td class="notes">design-system/components/organisms/NotificationCenter/</td></tr>
+      <tr><td class="id">CORTEX-011</td><td class="story">Stepper/Wizard</td><td class="pts">5</td><td><span class="status s-done">DONE</span></td><td class="notes">design-system/components/molecules/Stepper/</td></tr>
+      <tr><td class="id">CORTEX-012</td><td class="story">BarChart</td><td class="pts">8</td><td><span class="status s-done">DONE</span></td><td class="notes">design-system/components/organisms/Charts/BarChart/</td></tr>
+      <tr><td class="id">CORTEX-013</td><td class="story">LineChart</td><td class="pts">5</td><td><span class="status s-done">DONE</span></td><td class="notes">design-system/components/organisms/Charts/LineChart/</td></tr>
+      <tr><td class="id">CORTEX-014</td><td class="story">PieChart/Donut</td><td class="pts">5</td><td><span class="status s-done">DONE</span></td><td class="notes">design-system/components/organisms/Charts/PieChart/</td></tr>
+      <tr><td class="id">CORTEX-015</td><td class="story">FunnelChart</td><td class="pts">8</td><td><span class="status s-done">DONE</span></td><td class="notes">design-system/components/organisms/Charts/FunnelChart/</td></tr>
+      <tr><td class="id">CORTEX-016</td><td class="story">Accordion</td><td class="pts">3</td><td><span class="status s-done">DONE</span></td><td class="notes">design-system/components/atoms/Accordion/</td></tr>
+      <tr><td class="id">CORTEX-017</td><td class="story">Resizable Panels</td><td class="pts">5</td><td><span class="status s-done">DONE</span></td><td class="notes">design-system/components/molecules/ResizablePanels/</td></tr>
+      <tr><td class="id">CORTEX-018</td><td class="story">Calendar</td><td class="pts">13</td><td><span class="status s-done">DONE</span></td><td class="notes">design-system/components/organisms/Calendar/</td></tr>
+      <tr><td class="id">CORTEX-019</td><td class="story">Timeline</td><td class="pts">5</td><td><span class="status s-done">DONE</span></td><td class="notes">design-system/components/organisms/Timeline/</td></tr>
+      <tr><td class="id">CORTEX-020</td><td class="story">Kanban Board</td><td class="pts">13</td><td><span class="status s-done">DONE</span></td><td class="notes">design-system/components/organisms/KanbanBoard/</td></tr>
+      <tr><td class="id">CORTEX-021</td><td class="story">Avatar Upload</td><td class="pts">8</td><td><span class="status s-done">DONE</span></td><td class="notes">design-system/components/molecules/AvatarUpload/</td></tr>
+      <tr><td class="id">CORTEX-022</td><td class="story">KPI Card</td><td class="pts">8</td><td><span class="status s-done">DONE</span></td><td class="notes">design-system/components/molecules/KPICard/</td></tr>
+      <tr><td class="id">CORTEX-023</td><td class="story">NavigationMenu</td><td class="pts">8</td><td><span class="status s-done">DONE</span></td><td class="notes">design-system/components/molecules/NavigationMenu/</td></tr>
+      <tr><td class="id">CORTEX-024</td><td class="story">ConfirmDialog</td><td class="pts">3</td><td><span class="status s-done">DONE</span></td><td class="notes">design-system/components/molecules/ConfirmDialog/</td></tr>
+      <tr><td class="id">CORTEX-025</td><td class="story">Component Registry Sync</td><td class="pts">3</td><td><span class="status s-pending">PENDING</span></td><td class="notes">Registry declara 27 componentes mas existem 59. Precisa sync.</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ════════════════════════════════════════════════════════════════ -->
+<!-- DS-QUALITY -->
+<!-- ════════════════════════════════════════════════════════════════ -->
+
+<div class="section" id="ds-quality">
+  <div class="section-head">
+    <div class="section-name">DS-QUALITY: Quality & Developer Experience</div>
+    <span class="section-badge badge-media">MEDIA</span>
+    <span class="section-progress">1 / 10 done (10%)</span>
+  </div>
+  <div class="section-desc">Testes, automacao visual, pipeline npm e deploy do Storybook.</div>
+
+  <table class="tbl">
+    <thead><tr><th>ID</th><th>Story</th><th>Pts</th><th>Status</th><th>Notas</th></tr></thead>
+    <tbody>
+      <tr><td class="id">CORTEX-026</td><td class="story">Unit Tests — Atoms (23)</td><td class="pts">13</td><td><span class="status s-pending">PENDING</span></td><td class="notes">Zero cobertura hoje. Vitest + Testing Library. Cobertura 80%.</td></tr>
+      <tr><td class="id">CORTEX-027</td><td class="story">Unit Tests — Molecules (17)</td><td class="pts">8</td><td><span class="status s-pending">PENDING</span></td><td class="notes">Depende de CORTEX-026.</td></tr>
+      <tr><td class="id">CORTEX-028</td><td class="story">Unit Tests — Organisms (15)</td><td class="pts">8</td><td><span class="status s-pending">PENDING</span></td><td class="notes">Depende de CORTEX-027.</td></tr>
+      <tr><td class="id">CORTEX-029</td><td class="story">Unit Tests — Templates (4)</td><td class="pts">5</td><td><span class="status s-pending">PENDING</span></td><td class="notes">Depende de CORTEX-028.</td></tr>
+      <tr><td class="id">CORTEX-030</td><td class="story">Visual Regression Testing</td><td class="pts">5</td><td><span class="status s-pending">PENDING</span></td><td class="notes">Chromatic ou Percy + CI pipeline.</td></tr>
+      <tr><td class="id">CORTEX-031</td><td class="story">Motion Presets Library</td><td class="pts">5</td><td><span class="status s-pending">PENDING</span></td><td class="notes">fadeIn, slideUp, stagger, spring — presets reutilizaveis.</td></tr>
+      <tr><td class="id">CORTEX-032</td><td class="story">npm Package Build Pipeline</td><td class="pts">8</td><td><span class="status s-pending">PENDING</span></td><td class="notes">tsup/Rollup. ESM + CJS. Tree-shakeable. TypeScript types.</td></tr>
+      <tr><td class="id">CORTEX-033</td><td class="story">Storybook Public Deploy</td><td class="pts">3</td><td><span class="status s-done">DONE</span></td><td class="notes">GitHub Pages: eumatheusb.github.io/cortex.ai/storybook/</td></tr>
+      <tr><td class="id">CORTEX-034</td><td class="story">Storybook Interaction Testing</td><td class="pts">8</td><td><span class="status s-pending">PENDING</span></td><td class="notes">Play functions com @storybook/test + userEvent.</td></tr>
+      <tr><td class="id">CORTEX-035</td><td class="story">A11y Audit Automation</td><td class="pts">5</td><td><span class="status s-pending">PENDING</span></td><td class="notes">addon-a11y ja instalado. Precisa configurar CI blocking.</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ════════════════════════════════════════════════════════════════ -->
+<!-- DS-MATURITY -->
+<!-- ════════════════════════════════════════════════════════════════ -->
+
+<div class="section" id="ds-maturity">
+  <div class="section-head">
+    <div class="section-name">DS-MATURITY: Design System Maturity</div>
+    <span class="section-badge badge-baixa">BAIXA</span>
+    <span class="section-progress">0 / 7 done (0%)</span>
+  </div>
+  <div class="section-desc">Figma Code Connect, email templates, tokens avancados, changelog, analytics e documentacao.</div>
+
+  <table class="tbl">
+    <thead><tr><th>ID</th><th>Story</th><th>Pts</th><th>Status</th><th>Notas</th></tr></thead>
+    <tbody>
+      <tr><td class="id">CORTEX-036</td><td class="story">Figma Code Connect</td><td class="pts">13</td><td><span class="status s-pending">PENDING</span></td><td class="notes">Mapeamento Figma ↔ codigo para 59 componentes.</td></tr>
+      <tr><td class="id">CORTEX-037</td><td class="story">Email Templates (React Email)</td><td class="pts">8</td><td><span class="status s-pending">PENDING</span></td><td class="notes">Onboarding, relatorio mensal, alerta, newsletter.</td></tr>
+      <tr><td class="id">CORTEX-038</td><td class="story">Animation Tokens Expansion</td><td class="pts">5</td><td><span class="status s-pending">PENDING</span></td><td class="notes">duration, easing, stagger, spring no DTCG.</td></tr>
+      <tr><td class="id">CORTEX-039</td><td class="story">Responsive/Container Tokens</td><td class="pts">3</td><td><span class="status s-pending">PENDING</span></td><td class="notes">Breakpoint + container query tokens.</td></tr>
+      <tr><td class="id">CORTEX-040</td><td class="story">Changelog & Semantic Versioning</td><td class="pts">5</td><td><span class="status s-pending">PENDING</span></td><td class="notes">changesets ou conventional-changelog.</td></tr>
+      <tr><td class="id">CORTEX-041</td><td class="story">Token Usage Analytics</td><td class="pts">5</td><td><span class="status s-pending">PENDING</span></td><td class="notes">Script de analise de tokens usados vs definidos.</td></tr>
+      <tr><td class="id">CORTEX-042</td><td class="story">Documentation Site</td><td class="pts">13</td><td><span class="status s-pending">PENDING</span></td><td class="notes">Nextra ou Docusaurus. Getting started, token ref, component API.</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ════════════════════════════════════════════════════════════════ -->
+<!-- BRAND-APP -->
+<!-- ════════════════════════════════════════════════════════════════ -->
+
+<div class="section" id="brand-app">
+  <div class="section-head">
+    <div class="section-name">BRAND-APP: Brand Application</div>
+    <span class="section-badge badge-alta">ALTA</span>
+    <span class="section-progress">15 / 20 done (75%)</span>
+  </div>
+  <div class="section-desc">Aplicacao da marca em todos os pontos de contato: digital, fisico e ambiental.</div>
+
+  <table class="tbl">
+    <thead><tr><th>ID</th><th>Story</th><th>Pts</th><th>Status</th><th>Notas</th></tr></thead>
+    <tbody>
+      <tr><td colspan="5" style="font-family:var(--font-display);font-weight:600;font-size:13px;color:var(--signal);padding:16px 12px 8px;border:none">Digital — Mockups de Produto</td></tr>
+      <tr><td class="id">CORTEX-043</td><td class="story">Landing Page Mockup</td><td class="pts">8</td><td><span class="status s-done">DONE</span></td><td class="notes">materials/landing-page/ — 7 secoes, responsivo.</td></tr>
+      <tr><td class="id">CORTEX-044</td><td class="story">Dashboard Mockup</td><td class="pts">8</td><td><span class="status s-done">DONE</span></td><td class="notes">materials/dashboard/ — sidebar, KPIs, tabela, graficos.</td></tr>
+      <tr><td class="id">CORTEX-045</td><td class="story">App Mobile Mockup</td><td class="pts">5</td><td><span class="status s-pending">PENDING</span></td><td class="notes">Frames iPhone com telas CRM mobile.</td></tr>
+      <tr><td class="id">CORTEX-046</td><td class="story">OG Image / Social Card</td><td class="pts">3</td><td><span class="status s-done">DONE</span></td><td class="notes">materials/og-image.html</td></tr>
+      <tr><td class="id">CORTEX-047</td><td class="story">Favicon Pack</td><td class="pts">3</td><td><span class="status s-done">DONE</span></td><td class="notes">materials/favicon/ — 7 arquivos.</td></tr>
+
+      <tr><td colspan="5" style="font-family:var(--font-display);font-weight:600;font-size:13px;color:var(--signal);padding:16px 12px 8px;border:none">Digital — Ads & Social Media</td></tr>
+      <tr><td class="id">CORTEX-048</td><td class="story">Meta Feed Ads</td><td class="pts">5</td><td><span class="status s-done">DONE</span></td><td class="notes">3 variantes: awareness, consideration, conversion.</td></tr>
+      <tr><td class="id">CORTEX-049</td><td class="story">Meta Stories Ads</td><td class="pts">5</td><td><span class="status s-done">DONE</span></td><td class="notes">3 variantes: hero, data, system.</td></tr>
+      <tr><td class="id">CORTEX-050</td><td class="story">Carrossel Meta (5 slides)</td><td class="pts">8</td><td><span class="status s-done">DONE</span></td><td class="notes">materials/ads/carousel/ — narrativa sequencial.</td></tr>
+      <tr><td class="id">CORTEX-051</td><td class="story">Google Display Ads</td><td class="pts">8</td><td><span class="status s-done">DONE</span></td><td class="notes">728x90, 300x250, 160x600.</td></tr>
+      <tr><td class="id">CORTEX-052</td><td class="story">YouTube Thumbnail</td><td class="pts">3</td><td><span class="status s-done">DONE</span></td><td class="notes">materials/youtube/thumbnail.html</td></tr>
+      <tr><td class="id">CORTEX-053</td><td class="story">Social Media Kit</td><td class="pts">8</td><td><span class="status s-done">DONE</span></td><td class="notes">12 pecas: posts, stories, highlights, banners.</td></tr>
+      <tr><td class="id">CORTEX-054</td><td class="story">Email Header/Footer</td><td class="pts">5</td><td><span class="status s-done">DONE</span></td><td class="notes">materials/email/ — header + footer.</td></tr>
+
+      <tr><td colspan="5" style="font-family:var(--font-display);font-weight:600;font-size:13px;color:var(--signal);padding:16px 12px 8px;border:none">Digital — Apresentacao</td></tr>
+      <tr><td class="id">CORTEX-055</td><td class="story">Deck de Apresentacao</td><td class="pts">8</td><td><span class="status s-done">DONE</span></td><td class="notes">12 slides completos (cover ate CTA).</td></tr>
+      <tr><td class="id">CORTEX-056</td><td class="story">Business Card</td><td class="pts">3</td><td><span class="status s-done">DONE</span></td><td class="notes">Frente + verso.</td></tr>
+      <tr><td class="id">CORTEX-057</td><td class="story">Certificate Template</td><td class="pts">3</td><td><span class="status s-done">DONE</span></td><td class="notes">materials/certificate/template.html</td></tr>
+      <tr><td class="id">CORTEX-058</td><td class="story">Mockups Gallery</td><td class="pts">5</td><td><span class="status s-done">DONE</span></td><td class="notes">24 mockups premium.</td></tr>
+
+      <tr><td colspan="5" style="font-family:var(--font-display);font-weight:600;font-size:13px;color:var(--warning);padding:16px 12px 8px;border:none">Fisico & Ambiental — Pendente</td></tr>
+      <tr><td class="id">CORTEX-059</td><td class="story">Vestuario (camiseta, polo, jaqueta)</td><td class="pts">5</td><td><span class="status s-pending">PENDING</span></td><td class="notes">Templates de aplicacao em vestuario.</td></tr>
+      <tr><td class="id">CORTEX-060</td><td class="story">Brindes (caneca, caderno, adesivo)</td><td class="pts">5</td><td><span class="status s-pending">PENDING</span></td><td class="notes">Templates de brindes corporativos.</td></tr>
+      <tr><td class="id">CORTEX-061</td><td class="story">Banner de Evento / Backdrop</td><td class="pts">3</td><td><span class="status s-pending">PENDING</span></td><td class="notes">Template para eventos presenciais.</td></tr>
+      <tr><td class="id">CORTEX-062</td><td class="story">Material de Onboarding</td><td class="pts">3</td><td><span class="status s-pending">PENDING</span></td><td class="notes">Kit fisico boas-vindas novos clientes.</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <p><a href="../index.html">← Voltar ao Portal</a> · <a href="https://github.com/eumatheusb/cortex.ai" target="_blank">GitHub</a></p>
+  <p style="margin-top:8px"><strong>Cortex</strong> — Inteligencia que opera.</p>
+</footer>
+
+</body>
+</html>
