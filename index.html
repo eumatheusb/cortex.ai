@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cortex — Portal do Projeto</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --void:#090E1A;--ink:#0C1220;--dusk:#1B2845;--steel:#1E2533;--ash:#4A5568;
+  --mist:#94A3B8;--white:#F7F9FC;--signal:#4D71FA;--signal-dark:#3558D4;
+  --success:#22C55E;--warning:#F59E0B;--error:#F43F5E;
+  --font-display:'Space Grotesk',sans-serif;
+  --font-body:'Inter',sans-serif;
+  --font-mono:'JetBrains Mono',monospace;
+}
+html{scroll-behavior:smooth}
+body{background:var(--void);color:var(--white);font-family:var(--font-body);-webkit-font-smoothing:antialiased;min-height:100vh}
+
+/* HEADER */
+.header{padding:32px 48px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--steel)}
+.header-logo{display:flex;align-items:center;gap:12px}
+.header-logo svg{height:32px;width:auto}
+.header-label{font-family:var(--font-mono);font-size:12px;color:var(--ash);background:var(--dusk);padding:4px 10px;border-radius:100px}
+
+/* HERO */
+.hero{padding:80px 48px 48px;text-align:center}
+.hero h1{font-family:var(--font-display);font-weight:700;font-size:48px;line-height:1.15;letter-spacing:-.02em}
+.hero h1 span{color:var(--signal)}
+.hero p{font-family:var(--font-body);font-size:18px;color:var(--mist);margin-top:16px;max-width:600px;margin-left:auto;margin-right:auto;line-height:1.6}
+.stats{display:flex;justify-content:center;gap:48px;margin-top:40px}
+.stat{text-align:center}
+.stat-value{font-family:var(--font-mono);font-weight:700;font-size:32px;color:var(--signal)}
+.stat-label{font-family:var(--font-body);font-size:13px;color:var(--mist);margin-top:4px}
+
+/* SECTIONS */
+.section{padding:48px 48px 0}
+.section-title{font-family:var(--font-display);font-weight:600;font-size:14px;color:var(--signal);text-transform:uppercase;letter-spacing:2px;margin-bottom:24px;display:flex;align-items:center;gap:12px}
+.section-title::after{content:'';flex:1;height:1px;background:var(--steel)}
+
+/* CARDS GRID */
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:16px}
+.card{background:var(--ink);border:1px solid var(--steel);border-radius:12px;padding:24px;display:flex;flex-direction:column;gap:12px;transition:all .2s;text-decoration:none;color:inherit;position:relative;overflow:hidden}
+.card:hover{border-color:var(--signal);box-shadow:0 0 24px rgba(77,113,250,.1);transform:translateY(-2px)}
+.card-badge{font-family:var(--font-mono);font-size:11px;padding:3px 8px;border-radius:4px;display:inline-flex;align-self:flex-start}
+.badge-storybook{background:rgba(255,71,133,.15);color:#FF4785}
+.badge-page{background:rgba(77,113,250,.15);color:var(--signal)}
+.badge-material{background:rgba(34,197,94,.15);color:var(--success)}
+.badge-deck{background:rgba(245,158,11,.15);color:var(--warning)}
+.badge-social{background:rgba(168,85,247,.15);color:#A855F7}
+.badge-ads{background:rgba(244,63,94,.15);color:var(--error)}
+.card h3{font-family:var(--font-display);font-weight:600;font-size:18px;color:var(--white)}
+.card p{font-family:var(--font-body);font-size:14px;color:var(--mist);line-height:1.5}
+.card-arrow{position:absolute;top:24px;right:24px;color:var(--ash);transition:color .2s}
+.card:hover .card-arrow{color:var(--signal)}
+.card-meta{font-family:var(--font-mono);font-size:11px;color:var(--ash);margin-top:auto}
+
+/* FEATURED */
+.featured{background:var(--ink);border:1px solid var(--steel);border-radius:16px;padding:32px;display:flex;gap:32px;align-items:center;margin-bottom:24px;text-decoration:none;color:inherit;transition:all .2s}
+.featured:hover{border-color:var(--signal);box-shadow:0 0 32px rgba(77,113,250,.12)}
+.featured-icon{width:64px;height:64px;background:rgba(77,113,250,.1);border-radius:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.featured-icon svg{width:28px;height:28px;stroke:var(--signal);stroke-width:1.5;fill:none}
+.featured-text h3{font-family:var(--font-display);font-weight:600;font-size:22px;color:var(--white)}
+.featured-text p{font-family:var(--font-body);font-size:15px;color:var(--mist);margin-top:8px;line-height:1.5}
+.featured-stats{display:flex;gap:24px;margin-top:12px}
+.featured-stat{font-family:var(--font-mono);font-size:12px;color:var(--ash)}
+.featured-stat strong{color:var(--signal)}
+
+/* FOOTER */
+.footer{padding:48px;margin-top:64px;border-top:1px solid var(--steel);text-align:center}
+.footer p{font-family:var(--font-body);font-size:13px;color:var(--ash)}
+.footer a{color:var(--signal);text-decoration:none}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+  .header{padding:24px;flex-direction:column;gap:12px}
+  .hero{padding:48px 24px 32px}
+  .hero h1{font-size:32px}
+  .stats{gap:24px}
+  .stat-value{font-size:24px}
+  .section{padding:32px 24px 0}
+  .cards{grid-template-columns:1fr}
+  .featured{flex-direction:column;text-align:center}
+  .footer{padding:32px 24px}
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="header">
+  <div class="header-logo">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 264 64" fill="none">
+      <defs><radialGradient id="bg" cx="40%" cy="40%" r="65%"><stop offset="0%" stop-color="#1B2845"/><stop offset="100%" stop-color="#090E1A"/></radialGradient></defs>
+      <rect width="64" height="64" rx="14" fill="url(#bg)"/>
+      <path d="M 42.6,42.6 A 15,15 0 1,1 42.6,21.4" stroke="#4D71FA" stroke-width="5" stroke-linecap="round"/>
+      <circle cx="55" cy="32" r="2.5" fill="#4D71FA"/>
+      <text x="80" y="44" font-family="'Space Grotesk',sans-serif" font-weight="700" font-size="36" letter-spacing="0.8" fill="#F7F9FC">Cortex</text>
+    </svg>
+  </div>
+  <span class="header-label">Project Portal v1.0</span>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <h1>Tudo da <span>Cortex</span>.<br>Em um lugar.</h1>
+  <p>Brand, Design System, materials e landing pages — tudo visivel e navegavel.</p>
+  <div class="stats">
+    <div class="stat"><div class="stat-value">59</div><div class="stat-label">Componentes</div></div>
+    <div class="stat"><div class="stat-value">67</div><div class="stat-label">Tokens</div></div>
+    <div class="stat"><div class="stat-value">55</div><div class="stat-label">Materials</div></div>
+    <div class="stat"><div class="stat-value">19</div><div class="stat-label">Logos</div></div>
+  </div>
+</section>
+
+<!-- DESIGN SYSTEM -->
+<section class="section">
+  <div class="section-title">Design System</div>
+  <a href="storybook/index.html" class="featured">
+    <div class="featured-icon">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+    </div>
+    <div class="featured-text">
+      <h3>Storybook — Design System Interativo</h3>
+      <p>59 componentes React documentados com variantes, estados, temas dark/light e tokens visuais. Navegue, teste e copie codigo.</p>
+      <div class="featured-stats">
+        <span class="featured-stat"><strong>23</strong> Atoms</span>
+        <span class="featured-stat"><strong>17</strong> Molecules</span>
+        <span class="featured-stat"><strong>15</strong> Organisms</span>
+        <span class="featured-stat"><strong>4</strong> Templates</span>
+      </div>
+    </div>
+  </a>
+</section>
+
+<!-- PAGINAS -->
+<section class="section">
+  <div class="section-title">Paginas</div>
+  <div class="cards">
+    <a href="materials/landing-page/index.html" class="card">
+      <span class="card-badge badge-page">LANDING PAGE</span>
+      <h3>Landing Page Principal</h3>
+      <p>Pagina completa da Cortex: hero, features (CRM, Ads, Analytics, Flow), social proof, pricing com 2 planos e CTA. Responsiva.</p>
+      <span class="card-meta">7 secoes · HTML standalone</span>
+      <svg class="card-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+    </a>
+    <a href="materials/dashboard/index.html" class="card">
+      <span class="card-badge badge-page">DASHBOARD</span>
+      <h3>Dashboard Preview</h3>
+      <p>Preview interativo do Cortex CRM — sidebar, metricas, pipeline visual, graficos e tabela de leads recentes.</p>
+      <span class="card-meta">Simulacao do produto</span>
+      <svg class="card-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+    </a>
+    <a href="materials/mockups-gallery/index.html" class="card">
+      <span class="card-badge badge-page">GALERIA</span>
+      <h3>Mockups Gallery</h3>
+      <p>Galeria premium com 24 mockups da marca Cortex — aplicacoes digitais, fisicas e ambientais.</p>
+      <span class="card-meta">24 mockups · Showcase</span>
+      <svg class="card-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+    </a>
+  </div>
+</section>
+
+<!-- DECK -->
+<section class="section">
+  <div class="section-title">Deck de Apresentacao — 12 Slides</div>
+  <div class="cards">
+    <a href="materials/deck/01-cover.html" class="card">
+      <span class="card-badge badge-deck">SLIDE 01</span>
+      <h3>Capa</h3>
+      <p>Abertura da apresentacao com logo e tagline.</p>
+      <svg class="card-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+    </a>
+    <a href="materials/deck/02-problem.html" class="card">
+      <span class="card-badge badge-deck">SLIDE 02</span>
+      <h3>Problema</h3>
+      <p>O problema que a Cortex resolve — fragmentacao.</p>
+      <svg class="card-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+    </a>
+    <a href="materials/deck/03-solution.html" class="card">
+      <span class="card-badge badge-deck">SLIDE 03</span>
+      <h3>Solucao</h3>
+      <p>Como a Cortex resolve — sistema unico do lead ao lucro.</p>
+      <svg class="card-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+    </a>
+    <a href="materials/deck/04-features.html" class="card">
+      <span class="card-badge badge-deck">SLIDE 04</span>
+      <h3>Features</h3>
+      <p>CRM, Ads, Analytics, Flow — a stack completa.</p>
+      <svg class="card-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+    </a>
+    <a href="materials/deck/05-how-it-works.html" class="card">
+      <span class="card-badge badge-deck">SLIDE 05</span>
+      <h3>Como Funciona</h3>
+      <p>Fluxo de operacao do sistema.</p>
+      <svg class="card-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+    </a>
+    <a href="materials/deck/06-metrics.html" class="card">
+      <span class="card-badge badge-deck">SLIDE 06</span>
+      <h3>Metricas</h3>
+      <p>Resultados comprovados com dados.</p>
+      <svg class="card-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+    </a>
+    <a href="materials/deck/07-comparison.html" class="card">
+      <span class="card-badge badge-deck">SLIDE 07</span>
+      <h3>Comparativo</h3>
+      <p>Cortex vs mercado fragmentado.</p>
+      <svg class="card-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+    </a>
+    <a href="materials/deck/08-testimonial.html" class="card">
+      <span class="card-badge badge-deck">SLIDE 08</span>
+      <h3>Depoimento</h3>
+      <p>Prova social de cliente real.</p>
+      <svg class="card-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+    </a>
+    <a href="materials/deck/09-pricing.html" class="card">
+      <span class="card-badge badge-deck">SLIDE 09</span>
+      <h3>Precos</h3>
+      <p>Planos e investimento.</p>
+      <svg class="card-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+    </a>
+    <a href="materials/deck/10-team.html" class="card">
+      <span class="card-badge badge-deck">SLIDE 10</span>
+      <h3>Time</h3>
+      <p>Quem esta por tras da Cortex.</p>
+      <svg class="card-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+    </a>
+    <a href="materials/deck/11-roadmap.html" class="card">
+      <span class="card-badge badge-deck">SLIDE 11</span>
+      <h3>Roadmap</h3>
+      <p>Proximos passos e evolucao.</p>
+      <svg class="card-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+    </a>
+    <a href="materials/deck/12-cta.html" class="card">
+      <span class="card-badge badge-deck">SLIDE 12</span>
+      <h3>CTA Final</h3>
+      <p>Chamada para acao — proximo passo.</p>
+      <svg class="card-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+    </a>
+  </div>
+</section>
+
+<!-- ADS -->
+<section class="section">
+  <div class="section-title">Ads — 14 Pecas</div>
+  <div class="cards">
+    <a href="materials/ads/carousel/slide-1.html" class="card">
+      <span class="card-badge badge-ads">CAROUSEL</span>
+      <h3>Meta Carousel — 5 Slides</h3>
+      <p>Carrossel completo para Meta Ads com 5 slides.</p>
+      <span class="card-meta">slide-1 a slide-5</span>
+      <svg class="card-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+    </a>
+    <a href="materials/ads/meta-feed/awareness.html" class="card">
+      <span class="card-badge badge-ads">META FEED</span>
+      <h3>Feed Ads — 3 Funis</h3>
+      <p>Awareness, Consideration e Conversion para feed do Meta.</p>
+      <span class="card-meta">3 pecas por funil</span>
+      <svg class="card-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+    </a>
+    <a href="materials/ads/meta-stories/hero.html" class="card">
+      <span class="card-badge badge-ads">META STORIES</span>
+      <h3>Stories Ads — 3 Temas</h3>
+      <p>Hero, Data e System — stories verticais para Meta.</p>
+      <span class="card-meta">3 variantes</span>
+      <svg class="card-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+    </a>
+    <a href="materials/ads/google-display/300x250.html" class="card">
+      <span class="card-badge badge-ads">GOOGLE DISPLAY</span>
+      <h3>Display Ads — 3 Tamanhos</h3>
+      <p>300x250, 728x90 e 160x600 para Google Display Network.</p>
+      <span class="card-meta">3 formatos</span>
+      <svg class="card-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+    </a>
+  </div>
+</section>
+
+<!-- SOCIAL -->
+<section class="section">
+  <div class="section-title">Social Media — 12 Pecas</div>
+  <div class="cards">
+    <a href="materials/social/post-statement.html" class="card">
+      <span class="card-badge badge-social">FEED POST</span>
+      <h3>Posts — 3 Formatos</h3>
+      <p>Statement, Metrica e Dica — posts para feed do Instagram/LinkedIn.</p>
+      <span class="card-meta">post-statement · post-metric · post-tip</span>
+      <svg class="card-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+    </a>
+    <a href="materials/social/story-announcement.html" class="card">
+      <span class="card-badge badge-social">STORIES</span>
+      <h3>Stories — 2 Formatos</h3>
+      <p>Anuncio e Enquete — stories interativos.</p>
+      <span class="card-meta">story-announcement · story-poll</span>
+      <svg class="card-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+    </a>
+    <a href="materials/social/highlight-cover-1.html" class="card">
+      <span class="card-badge badge-social">HIGHLIGHTS</span>
+      <h3>Highlight Covers — 5 Capas</h3>
+      <p>Capas de destaques do Instagram.</p>
+      <span class="card-meta">5 variantes</span>
+      <svg class="card-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+    </a>
+    <a href="materials/social/linkedin-banner.html" class="card">
+      <span class="card-badge badge-social">BANNERS</span>
+      <h3>Banners — LinkedIn + Twitter</h3>
+      <p>Headers de perfil para LinkedIn e Twitter/X.</p>
+      <span class="card-meta">2 plataformas</span>
+      <svg class="card-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+    </a>
+  </div>
+</section>
+
+<!-- OUTROS MATERIALS -->
+<section class="section">
+  <div class="section-title">Outros Materials</div>
+  <div class="cards">
+    <a href="materials/business-card/front.html" class="card">
+      <span class="card-badge badge-material">PRINT</span>
+      <h3>Cartao de Visita</h3>
+      <p>Frente e verso do cartao de visita Cortex.</p>
+      <span class="card-meta">front · back</span>
+      <svg class="card-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+    </a>
+    <a href="materials/email/header.html" class="card">
+      <span class="card-badge badge-material">EMAIL</span>
+      <h3>Email Templates</h3>
+      <p>Header e footer para emails transacionais e marketing.</p>
+      <span class="card-meta">header · footer</span>
+      <svg class="card-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+    </a>
+    <a href="materials/certificate/template.html" class="card">
+      <span class="card-badge badge-material">PRINT</span>
+      <h3>Certificado</h3>
+      <p>Template de certificado com marca Cortex.</p>
+      <svg class="card-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+    </a>
+    <a href="materials/og-image.html" class="card">
+      <span class="card-badge badge-material">META</span>
+      <h3>OG Image + Favicons</h3>
+      <p>Open Graph image para compartilhamento + kit completo de favicons.</p>
+      <span class="card-meta">og-image · 7 favicons</span>
+      <svg class="card-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+    </a>
+    <a href="materials/youtube/thumbnail.html" class="card">
+      <span class="card-badge badge-material">VIDEO</span>
+      <h3>YouTube Thumbnail</h3>
+      <p>Template de thumbnail para videos do YouTube.</p>
+      <svg class="card-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+    </a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <p><strong>Cortex</strong> — Grupo Fabio Avelar · <a href="https://github.com/eumatheusb/cortex.ai" target="_blank">GitHub</a></p>
+  <p style="margin-top:8px">Inteligencia que opera.</p>
+</footer>
+
+</body>
+</html>
