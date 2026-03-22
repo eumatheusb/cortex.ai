@@ -1,0 +1,1805 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Guia Completo AIOX — Ecossistema de Agentes</title>
+  <style>
+    :root {
+      --bg: #0a0a0f;
+      --bg-card: #12121a;
+      --bg-card-hover: #1a1a26;
+      --border: #2a2a3a;
+      --text: #e4e4ef;
+      --text-muted: #8888a0;
+      --accent: #6c5ce7;
+      --accent-glow: rgba(108, 92, 231, 0.3);
+      --green: #00b894;
+      --green-glow: rgba(0, 184, 148, 0.2);
+      --red: #e17055;
+      --red-glow: rgba(225, 112, 85, 0.2);
+      --yellow: #fdcb6e;
+      --yellow-glow: rgba(253, 203, 110, 0.2);
+      --blue: #74b9ff;
+      --blue-glow: rgba(116, 185, 255, 0.2);
+      --cyan: #81ecec;
+      --pink: #fd79a8;
+      --orange: #e17055;
+      --radius: 12px;
+      --radius-sm: 8px;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      scroll-behavior: smooth;
+    }
+
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: var(--accent); }
+
+    /* Hero */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 2rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(ellipse at center, var(--accent-glow) 0%, transparent 50%);
+      animation: pulse 8s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 0.3; transform: scale(1); }
+      50% { opacity: 0.6; transform: scale(1.1); }
+    }
+
+    .hero-content { position: relative; z-index: 1; }
+
+    .hero h1 {
+      font-size: clamp(2.5rem, 6vw, 4.5rem);
+      font-weight: 800;
+      background: linear-gradient(135deg, var(--accent), var(--cyan), var(--blue));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 1rem;
+      letter-spacing: -0.03em;
+    }
+
+    .hero .subtitle {
+      font-size: 1.3rem;
+      color: var(--text-muted);
+      max-width: 600px;
+      margin: 0 auto 2rem;
+    }
+
+    .hero-quotes {
+      display: flex;
+      gap: 2rem;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-top: 2rem;
+    }
+
+    .hero-quote {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.2rem 1.5rem;
+      max-width: 340px;
+      text-align: left;
+    }
+
+    .hero-quote .icon { font-size: 1.5rem; margin-bottom: 0.5rem; }
+    .hero-quote .text { font-style: italic; color: var(--text-muted); font-size: 0.95rem; }
+    .hero-quote .author { margin-top: 0.5rem; font-weight: 600; font-size: 0.85rem; }
+
+    /* Navigation */
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(10, 10, 15, 0.9);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+      padding: 0.8rem 2rem;
+      overflow-x: auto;
+    }
+
+    .nav-inner {
+      display: flex;
+      gap: 0.5rem;
+      max-width: 1200px;
+      margin: 0 auto;
+      white-space: nowrap;
+    }
+
+    .nav a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.8rem;
+      font-weight: 500;
+      padding: 0.4rem 0.8rem;
+      border-radius: 6px;
+      transition: all 0.2s;
+    }
+
+    .nav a:hover { color: var(--text); background: var(--bg-card); }
+
+    main { max-width: 1100px; margin: 0 auto; padding: 2rem; }
+
+    section { margin-bottom: 5rem; scroll-margin-top: 4rem; }
+
+    section > h2 {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    section > h2 .num {
+      font-size: 0.85rem;
+      color: var(--accent);
+      background: rgba(108, 92, 231, 0.15);
+      padding: 0.3rem 0.6rem;
+      border-radius: 6px;
+      font-weight: 600;
+    }
+
+    section > .section-desc {
+      color: var(--text-muted);
+      margin-bottom: 2rem;
+      font-size: 1.05rem;
+    }
+
+    h3 {
+      font-size: 1.25rem;
+      margin: 2rem 0 1rem;
+      color: var(--cyan);
+    }
+
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      margin-bottom: 1rem;
+      transition: all 0.3s;
+    }
+
+    .card:hover { border-color: var(--accent); box-shadow: 0 0 20px var(--accent-glow); }
+
+    .card-header { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.75rem; }
+
+    .card-icon {
+      font-size: 1.8rem;
+      width: 48px;
+      height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 10px;
+      background: rgba(108, 92, 231, 0.15);
+    }
+
+    .card-title { font-weight: 700; font-size: 1.1rem; }
+    .card-subtitle { font-size: 0.85rem; color: var(--text-muted); }
+
+    .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1rem; }
+    .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; }
+    .grid-7 { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; }
+
+    .table-wrap {
+      overflow-x: auto;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      margin: 1rem 0;
+    }
+
+    table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+
+    th {
+      background: rgba(108, 92, 231, 0.1);
+      text-align: left;
+      padding: 0.8rem 1rem;
+      font-weight: 600;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--accent);
+      border-bottom: 1px solid var(--border);
+    }
+
+    td { padding: 0.7rem 1rem; border-bottom: 1px solid rgba(42, 42, 58, 0.5); }
+    tr:last-child td { border-bottom: none; }
+    tr:hover td { background: rgba(108, 92, 231, 0.05); }
+
+    .code-block {
+      background: #0d0d14;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 1.2rem 1.5rem;
+      font-family: 'JetBrains Mono', 'Fira Code', monospace;
+      font-size: 0.85rem;
+      overflow-x: auto;
+      line-height: 1.8;
+      margin: 1rem 0;
+    }
+
+    code {
+      font-family: 'JetBrains Mono', 'Fira Code', monospace;
+      background: rgba(108, 92, 231, 0.15);
+      padding: 0.15rem 0.4rem;
+      border-radius: 4px;
+      font-size: 0.85em;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 0.2rem 0.6rem;
+      border-radius: 4px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .badge-green { background: var(--green-glow); color: var(--green); border: 1px solid var(--green); }
+    .badge-red { background: var(--red-glow); color: var(--red); border: 1px solid var(--red); }
+    .badge-yellow { background: var(--yellow-glow); color: var(--yellow); border: 1px solid var(--yellow); }
+    .badge-blue { background: var(--blue-glow); color: var(--blue); border: 1px solid var(--blue); }
+
+    .compare { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1rem 0; }
+
+    .compare-wrong {
+      border-left: 3px solid var(--red);
+      background: var(--bg-card);
+      border-radius: var(--radius-sm);
+      padding: 1rem 1.2rem;
+    }
+
+    .compare-right {
+      border-left: 3px solid var(--green);
+      background: var(--bg-card);
+      border-radius: var(--radius-sm);
+      padding: 1rem 1.2rem;
+    }
+
+    .compare-label { font-weight: 700; font-size: 0.85rem; margin-bottom: 0.5rem; }
+    .compare-wrong .compare-label { color: var(--red); }
+    .compare-right .compare-label { color: var(--green); }
+
+    .flow {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      margin: 1.5rem 0;
+      justify-content: center;
+    }
+
+    .flow-step {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 0.8rem 1.2rem;
+      text-align: center;
+      min-width: 100px;
+      transition: all 0.3s;
+    }
+
+    .flow-step:hover { border-color: var(--accent); transform: translateY(-2px); }
+    .flow-step .icon { font-size: 1.5rem; margin-bottom: 0.3rem; }
+    .flow-step .label { font-size: 0.8rem; font-weight: 600; }
+    .flow-step .sub { font-size: 0.7rem; color: var(--text-muted); }
+    .flow-arrow { color: var(--accent); font-size: 1.2rem; font-weight: bold; }
+
+    .callout {
+      border-radius: var(--radius);
+      padding: 1.2rem 1.5rem;
+      margin: 1.5rem 0;
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+    }
+
+    .callout-pedro { background: rgba(225, 112, 85, 0.08); border: 1px solid rgba(225, 112, 85, 0.3); }
+    .callout-alan { background: rgba(116, 185, 255, 0.08); border: 1px solid rgba(116, 185, 255, 0.3); }
+    .callout-tip { background: rgba(0, 184, 148, 0.08); border: 1px solid rgba(0, 184, 148, 0.3); }
+    .callout-warn { background: rgba(253, 203, 110, 0.08); border: 1px solid rgba(253, 203, 110, 0.3); }
+
+    .callout-icon { font-size: 1.5rem; flex-shrink: 0; }
+    .callout-text { font-size: 0.95rem; }
+    .callout-author { font-weight: 700; display: block; margin-bottom: 0.3rem; }
+
+    .tree {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.85rem;
+      line-height: 2;
+      padding: 1.5rem;
+      background: #0d0d14;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      margin: 1rem 0;
+    }
+
+    .tree .folder { color: var(--yellow); }
+    .tree .file { color: var(--text-muted); }
+    .tree .desc { color: var(--accent); font-style: italic; }
+
+    .prefix-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin: 1.5rem 0; }
+
+    .prefix-card {
+      background: var(--bg-card);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      text-align: center;
+      border: 2px solid var(--border);
+      transition: all 0.3s;
+    }
+
+    .prefix-card:hover { transform: translateY(-4px); }
+    .prefix-card.slash { border-color: var(--accent); }
+    .prefix-card.star { border-color: var(--yellow); }
+    .prefix-card.at { border-color: var(--cyan); }
+
+    .prefix-symbol { font-size: 3rem; font-weight: 800; font-family: monospace; margin-bottom: 0.5rem; }
+    .prefix-card.slash .prefix-symbol { color: var(--accent); }
+    .prefix-card.star .prefix-symbol { color: var(--yellow); }
+    .prefix-card.at .prefix-symbol { color: var(--cyan); }
+
+    .prefix-name { font-weight: 700; margin-bottom: 0.3rem; }
+    .prefix-desc { font-size: 0.85rem; color: var(--text-muted); }
+    .prefix-when { font-size: 0.8rem; margin-top: 0.5rem; color: var(--green); }
+
+    .timeline { position: relative; padding-left: 3rem; margin: 2rem 0; }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 1rem;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: linear-gradient(to bottom, var(--accent), var(--cyan), var(--green));
+    }
+
+    .timeline-item {
+      position: relative;
+      margin-bottom: 2rem;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.2rem 1.5rem;
+    }
+
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -2.35rem;
+      top: 1.5rem;
+      width: 12px;
+      height: 12px;
+      background: var(--accent);
+      border-radius: 50%;
+      border: 2px solid var(--bg);
+    }
+
+    .timeline-phase { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); font-weight: 600; margin-bottom: 0.3rem; }
+    .timeline-title { font-weight: 700; margin-bottom: 0.5rem; }
+    .timeline-desc { font-size: 0.9rem; color: var(--text-muted); }
+    .timeline-agent { font-size: 0.85rem; color: var(--cyan); margin-top: 0.5rem; }
+    .timeline-commands { font-family: monospace; font-size: 0.8rem; color: var(--yellow); margin-top: 0.3rem; }
+
+    .bp-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; margin: 1rem 0; }
+
+    .bp-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.2rem;
+      transition: all 0.3s;
+    }
+
+    .bp-card:hover { border-color: var(--green); box-shadow: 0 0 15px var(--green-glow); }
+
+    .bp-num { font-size: 2rem; font-weight: 800; color: var(--accent); opacity: 0.5; float: right; line-height: 1; }
+    .bp-title { font-weight: 700; margin-bottom: 0.5rem; font-size: 0.95rem; }
+    .bp-desc { font-size: 0.85rem; color: var(--text-muted); }
+
+    .glossary-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 0.8rem; margin: 1rem 0; }
+
+    .glossary-item {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 0.8rem 1rem;
+    }
+
+    .glossary-term { font-weight: 700; color: var(--cyan); font-size: 0.9rem; }
+    .glossary-def { font-size: 0.85rem; color: var(--text-muted); margin-top: 0.2rem; }
+
+    .cmd-section { margin: 1.5rem 0; }
+
+    .cmd-category {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--accent);
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      padding-bottom: 0.3rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .cmd-list { list-style: none; margin: 0.5rem 0 1.5rem; }
+
+    .cmd-list li {
+      display: flex;
+      justify-content: space-between;
+      padding: 0.4rem 0;
+      border-bottom: 1px solid rgba(42, 42, 58, 0.3);
+      font-size: 0.85rem;
+    }
+
+    .cmd-list li:last-child { border-bottom: none; }
+    .cmd-name { font-family: monospace; color: var(--yellow); }
+    .cmd-desc { color: var(--text-muted); text-align: right; }
+
+    details {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      margin: 0.5rem 0;
+      overflow: hidden;
+    }
+
+    summary {
+      padding: 1rem 1.2rem;
+      cursor: pointer;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      user-select: none;
+      transition: background 0.2s;
+    }
+
+    summary:hover { background: var(--bg-card-hover); }
+    summary::marker { color: var(--accent); }
+    details > div { padding: 0 1.2rem 1.2rem; }
+
+    .greeting-demo {
+      background: #0d0d14;
+      border: 1px solid var(--green);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      margin: 1rem 0;
+      position: relative;
+    }
+
+    .greeting-demo::before {
+      content: 'AGENTE ATIVO';
+      position: absolute;
+      top: -10px;
+      right: 12px;
+      background: var(--green);
+      color: #000;
+      font-size: 0.65rem;
+      font-weight: 700;
+      padding: 0.2rem 0.5rem;
+      border-radius: 4px;
+    }
+
+    .greeting-demo .g-icon { font-size: 1.5rem; }
+    .greeting-demo .g-name { font-weight: 700; font-size: 1.1rem; }
+    .greeting-demo .g-title { color: var(--text-muted); font-size: 0.85rem; }
+    .greeting-demo .g-quote { font-style: italic; color: var(--text-muted); margin: 0.8rem 0; padding-left: 1rem; border-left: 2px solid var(--accent); }
+    .greeting-demo .g-cmds { font-family: monospace; font-size: 0.8rem; color: var(--yellow); }
+
+    /* Story card */
+    .story-demo {
+      background: #0d0d14;
+      border: 1px solid var(--accent);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      margin: 1rem 0;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.85rem;
+      line-height: 2;
+    }
+
+    .story-demo .s-title { color: var(--cyan); font-weight: 700; font-size: 1rem; font-family: 'Inter', sans-serif; }
+    .story-demo .s-status { color: var(--yellow); }
+    .story-demo .s-done { color: var(--green); }
+    .story-demo .s-pending { color: var(--text-muted); }
+    .story-demo .s-label { color: var(--accent); font-weight: 600; }
+
+    /* Evolution steps */
+    .evolution {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin: 1.5rem 0;
+    }
+
+    .evo-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      text-align: center;
+      position: relative;
+    }
+
+    .evo-card .evo-level {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+
+    .evo-card .evo-icon { font-size: 2.5rem; margin-bottom: 0.5rem; }
+    .evo-card .evo-title { font-weight: 700; margin-bottom: 0.5rem; }
+    .evo-card .evo-desc { font-size: 0.8rem; color: var(--text-muted); text-align: left; }
+
+    /* Conversation demo */
+    .conv-demo {
+      background: #0d0d14;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      margin: 1rem 0;
+    }
+
+    .conv-demo .conv-label {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 0.8rem;
+      padding-bottom: 0.3rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .conv-msg {
+      display: flex;
+      gap: 0.8rem;
+      margin-bottom: 0.8rem;
+      font-size: 0.85rem;
+    }
+
+    .conv-msg .conv-who {
+      min-width: 60px;
+      font-weight: 700;
+      font-size: 0.8rem;
+      flex-shrink: 0;
+    }
+
+    .conv-msg .conv-who.user { color: var(--green); }
+    .conv-msg .conv-who.agent { color: var(--cyan); }
+    .conv-msg .conv-who.system { color: var(--yellow); }
+
+    .conv-msg .conv-text { color: var(--text-muted); }
+    .conv-msg .conv-text code { font-size: 0.8em; }
+
+    @media (max-width: 768px) {
+      .prefix-grid, .evolution { grid-template-columns: 1fr; }
+      .compare { grid-template-columns: 1fr; }
+      .hero-quotes { flex-direction: column; align-items: center; }
+      main { padding: 1rem; }
+      .flow { flex-direction: column; }
+      .flow-arrow { transform: rotate(90deg); }
+    }
+
+    @media print {
+      body { background: #fff; color: #000; }
+      .nav { display: none; }
+      .hero { min-height: auto; padding: 2rem 0; }
+      .hero::before { display: none; }
+      .card, .bp-card, details, .timeline-item, .glossary-item, .greeting-demo {
+        background: #f5f5f5; border-color: #ddd;
+      }
+      .hero h1 { -webkit-text-fill-color: #333; color: #333; }
+    }
+
+    .scroll-top {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      width: 44px;
+      height: 44px;
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 1.2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.3s;
+      z-index: 99;
+    }
+
+    .scroll-top.visible { opacity: 1; }
+    .scroll-top:hover { background: #5a4bd1; }
+  </style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content">
+    <h1>Guia AIOX</h1>
+    <p class="subtitle">Tudo o que voce precisa saber sobre o ecossistema de agentes, squads, skills, workflows e mais.</p>
+    <div class="hero-quotes">
+      <div class="hero-quote">
+        <div class="icon">&#9881;&#65039;</div>
+        <div class="text">"Processo que permite erro e processo quebrado."</div>
+        <div class="author">Pedro Valerio</div>
+      </div>
+      <div class="hero-quote">
+        <div class="icon">&#129504;</div>
+        <div class="text">"Se entrar coco, sai coco do outro lado."</div>
+        <div class="author">Alan Nicolas</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="#what">O que e</a>
+    <a href="#pieces">7 Pecas</a>
+    <a href="#commands">Comandos</a>
+    <a href="#agents">Agentes</a>
+    <a href="#squads">Squads</a>
+    <a href="#squad-vs-agent">Squad vs Agente</a>
+    <a href="#lifecycle">Ciclo de Vida</a>
+    <a href="#how-agents-work">Como Funcionam</a>
+    <a href="#reality">A Verdade Nua</a>
+    <a href="#stories">Stories</a>
+    <a href="#conversations">Conversas</a>
+    <a href="#best-practices">Boas Praticas</a>
+    <a href="#mistakes">Erros Comuns</a>
+    <a href="#evolution">Evolucao</a>
+    <a href="#case-study">Caso Pratico</a>
+    <a href="#glossary">Glossario</a>
+    <a href="#reference">Referencia</a>
+  </div>
+</nav>
+
+<main>
+
+<!-- 1. O QUE E O AIOX -->
+<section id="what">
+  <h2><span class="num">01</span> O que e o AIOX</h2>
+  <p class="section-desc">O AIOX (AI-Orchestrated System) e um meta-framework que orquestra agentes de IA para desenvolvimento full-stack.</p>
+
+  <div class="card">
+    <p>Em vez de voce fazer tudo sozinho com o Claude Code, voce ativa <strong>agentes especializados</strong> que tem personalidade, regras, heuristicas e processos proprios.</p>
+    <br>
+    <div style="display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center;">
+      <div style="text-align: center; padding: 1rem;">
+        <div style="font-size: 2rem;">&#128187;</div>
+        <div style="font-weight: 700;">Claude Code</div>
+        <div style="font-size: 0.8rem; color: var(--text-muted);">Motor de execucao</div>
+      </div>
+      <div style="font-size: 2rem; display: flex; align-items: center; color: var(--accent);">+</div>
+      <div style="text-align: center; padding: 1rem;">
+        <div style="font-size: 2rem;">&#129302;</div>
+        <div style="font-weight: 700;">Agentes</div>
+        <div style="font-size: 0.8rem; color: var(--text-muted);">Motoristas especializados</div>
+      </div>
+      <div style="font-size: 2rem; display: flex; align-items: center; color: var(--accent);">+</div>
+      <div style="text-align: center; padding: 1rem;">
+        <div style="font-size: 2rem;">&#128101;</div>
+        <div style="font-weight: 700;">Squads</div>
+        <div style="font-size: 0.8rem; color: var(--text-muted);">Equipes completas</div>
+      </div>
+      <div style="font-size: 2rem; display: flex; align-items: center; color: var(--accent);">=</div>
+      <div style="text-align: center; padding: 1rem;">
+        <div style="font-size: 2rem;">&#128640;</div>
+        <div style="font-weight: 700;">AIOX</div>
+        <div style="font-size: 0.8rem; color: var(--text-muted);">Orquestracao inteligente</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="callout callout-tip">
+    <span class="callout-icon">&#128161;</span>
+    <div class="callout-text">
+      <strong>Analogia:</strong> Claude Code e o motor do carro. Agentes sao motoristas especializados (piloto de F1, taxista, caminhoneiro). Squads sao equipes completas com varios motoristas.
+    </div>
+  </div>
+</section>
+
+<!-- 2. AS 7 PECAS -->
+<section id="pieces">
+  <h2><span class="num">02</span> As 7 Pecas do Ecossistema</h2>
+  <p class="section-desc">Cada peca tem um papel especifico. Entender o que cada uma faz evita confusao.</p>
+
+  <div class="grid-7">
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon">&#128193;</div>
+        <div><div class="card-title">Workspace</div><div class="card-subtitle">Escritorio central</div></div>
+      </div>
+      <p style="font-size: 0.85rem; color: var(--text-muted);">Dados da sua empresa: marca, produtos, credenciais, estrategia.</p>
+      <code style="font-size: 0.75rem;">workspace/businesses/</code>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon">&#127970;</div>
+        <div><div class="card-title">Squad</div><div class="card-subtitle">Departamento</div></div>
+      </div>
+      <p style="font-size: 0.85rem; color: var(--text-muted);">Time especializado com agentes, tasks e workflows proprios.</p>
+      <code style="font-size: 0.75rem;">squads/nome-do-squad/</code>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon">&#129302;</div>
+        <div><div class="card-title">Agent</div><div class="card-subtitle">Funcionario expert</div></div>
+      </div>
+      <p style="font-size: 0.85rem; color: var(--text-muted);">Especialista com persona, voz e heuristicas proprias.</p>
+      <code style="font-size: 0.75rem;">agents/nome.md</code>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon">&#128203;</div>
+        <div><div class="card-title">Task</div><div class="card-subtitle">Ordem de servico</div></div>
+      </div>
+      <p style="font-size: 0.85rem; color: var(--text-muted);">Instrucao estruturada que um agente executa. Para IAs.</p>
+      <code style="font-size: 0.75rem;">tasks/nome.md</code>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon">&#128260;</div>
+        <div><div class="card-title">Workflow</div><div class="card-subtitle">Linha de producao</div></div>
+      </div>
+      <p style="font-size: 0.85rem; color: var(--text-muted);">Sequencia de tasks conectadas com checkpoints.</p>
+      <code style="font-size: 0.75rem;">workflows/nome.yaml</code>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon">&#128214;</div>
+        <div><div class="card-title">SOP</div><div class="card-subtitle">Manual do funcionario</div></div>
+      </div>
+      <p style="font-size: 0.85rem; color: var(--text-muted);">Procedimento operacional para <strong>humanos</strong> seguirem.</p>
+      <code style="font-size: 0.75rem;">workspace/.../sops/</code>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon">&#9889;</div>
+        <div><div class="card-title">Skill</div><div class="card-subtitle">Botao de atalho</div></div>
+      </div>
+      <p style="font-size: 0.85rem; color: var(--text-muted);">Atalho para ativar um agente ou capacidade.</p>
+      <code style="font-size: 0.75rem;">/nome-do-skill</code>
+    </div>
+  </div>
+
+  <div class="callout callout-warn">
+    <span class="callout-icon">&#9888;&#65039;</span>
+    <div class="callout-text">
+      <strong>Task vs SOP:</strong> Task e para agentes IA executarem. SOP e para humanos seguirem. Nao confunda! Criar SOP para o @dev e um erro comum.
+    </div>
+  </div>
+</section>
+
+<!-- 3. COMANDOS -->
+<section id="commands">
+  <h2><span class="num">03</span> Comandos: <code>/</code> vs <code>*</code> vs <code>@</code></h2>
+  <p class="section-desc">Os 3 prefixos que controlam tudo no AIOX.</p>
+
+  <div class="prefix-grid">
+    <div class="prefix-card slash">
+      <div class="prefix-symbol">/</div>
+      <div class="prefix-name">Skill</div>
+      <div class="prefix-desc">Liga um agente ou capacidade</div>
+      <div class="prefix-when">&#128994; Usar no inicio, para ativar</div>
+    </div>
+    <div class="prefix-card star">
+      <div class="prefix-symbol">*</div>
+      <div class="prefix-name">Comando</div>
+      <div class="prefix-desc">Executa acao dentro do agente ativo</div>
+      <div class="prefix-when">&#128994; Depois que o agente esta ativo</div>
+    </div>
+    <div class="prefix-card at">
+      <div class="prefix-symbol">@</div>
+      <div class="prefix-name">Mencao</div>
+      <div class="prefix-desc">Chama/referencia outro agente</div>
+      <div class="prefix-when">&#128994; Para handoff ou referencia</div>
+    </div>
+  </div>
+
+  <h3>Fluxo na pratica</h3>
+
+  <div class="flow">
+    <div class="flow-step"><div class="icon">1&#65039;&#8419;</div><div class="label">Ativar</div><div class="sub"><code>/skill</code> ou <code>@agente</code></div></div>
+    <span class="flow-arrow">&#10132;</span>
+    <div class="flow-step"><div class="icon">2&#65039;&#8419;</div><div class="label">Greeting</div><div class="sub">Confirmacao visual</div></div>
+    <span class="flow-arrow">&#10132;</span>
+    <div class="flow-step"><div class="icon">3&#65039;&#8419;</div><div class="label">Comandos</div><div class="sub"><code>*help</code>, <code>*comando</code></div></div>
+    <span class="flow-arrow">&#10132;</span>
+    <div class="flow-step"><div class="icon">4&#65039;&#8419;</div><div class="label">Trocar</div><div class="sub"><code>@outro</code> ou <code>/skill</code></div></div>
+  </div>
+
+  <div class="compare">
+    <div class="compare-right">
+      <div class="compare-label">&#9989; CERTO</div>
+      <div class="code-block">/squad-creator-pro:pedro-valerio<br>*eng-map agendamento-whatsapp</div>
+      <p style="font-size: 0.85rem; color: var(--text-muted);">Ativa, depois usa comando. Pedro executa com heuristicas e veto.</p>
+    </div>
+    <div class="compare-wrong">
+      <div class="compare-label">&#10060; ERRADO</div>
+      <div class="code-block">"cria uma automacao de agendamento"</div>
+      <p style="font-size: 0.85rem; color: var(--text-muted);">Fala direto sem ativar. Claude Code executa generico.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 4. AGENTES -->
+<section id="agents">
+  <h2><span class="num">04</span> Todos os Agentes AIOX</h2>
+  <p class="section-desc">Agentes core para desenvolvimento + agentes de squad para dominios especificos.</p>
+
+  <h3>Agentes Core (Desenvolvimento)</h3>
+
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Agente</th><th>Persona</th><th>Escopo</th><th>Exclusividades</th></tr></thead>
+      <tbody>
+        <tr><td><code>@pm</code></td><td>Morgan</td><td>PRD, estrategia, epicos</td><td>Cria epicos, gerencia requisitos</td></tr>
+        <tr><td><code>@po</code></td><td>Pax</td><td>Backlog, stories, priorizacao</td><td>Valida stories (10 pontos)</td></tr>
+        <tr><td><code>@sm</code></td><td>River</td><td>Scrum, cerimonias, stories</td><td>Cria stories a partir do PRD</td></tr>
+        <tr><td><code>@architect</code></td><td>Aria</td><td>Arquitetura, tech stack</td><td>Decisoes de arquitetura</td></tr>
+        <tr><td><code>@dev</code></td><td>Dex</td><td>Implementacao, codigo</td><td><code>git add/commit</code> (NAO push)</td></tr>
+        <tr><td><code>@qa</code></td><td>Quinn</td><td>Testes, qualidade</td><td>Quality gate (PASS/FAIL)</td></tr>
+        <tr><td><code>@devops</code></td><td>Gage</td><td>CI/CD, deploy</td><td><span class="badge badge-red">UNICO</span> que faz <code>git push</code></td></tr>
+        <tr><td><code>@data-engineer</code></td><td>Dara</td><td>Banco de dados, Supabase</td><td>DDL, RLS, migracoes</td></tr>
+        <tr><td><code>@ux-design-expert</code></td><td>Uma</td><td>UX/UI, design system</td><td>Design de interface</td></tr>
+        <tr><td><code>@analyst</code></td><td>Alex</td><td>Pesquisa, analise</td><td>Feasibility studies</td></tr>
+        <tr><td><code>@aiox-master</code></td><td>Unity</td><td>Orquestracao geral</td><td><span class="badge badge-yellow">Pode tudo</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>Pedro e Alan — Agentes Especiais</h3>
+
+  <div class="grid-2">
+    <div class="card" style="border-color: var(--orange);">
+      <div class="card-header">
+        <div class="card-icon" style="background: var(--red-glow);">&#9881;&#65039;</div>
+        <div><div class="card-title">Pedro Valerio</div><div class="card-subtitle">Process Absolutist &amp; Automation Architect</div></div>
+      </div>
+      <ul style="font-size: 0.85rem; color: var(--text-muted); padding-left: 1.2rem; margin-top: 0.5rem;">
+        <li>Constroi processos e automacoes</li>
+        <li>Cria tasks, workflows, templates</li>
+        <li>Define veto conditions</li>
+        <li>Testa com "a filha" (leigo consegue?)</li>
+      </ul>
+      <div style="margin-top: 0.8rem; padding: 0.5rem; background: var(--red-glow); border-radius: 6px; font-size: 0.8rem; text-align: center;">
+        <strong>Regra:</strong> "Impossibilitar caminhos errados"
+      </div>
+    </div>
+    <div class="card" style="border-color: var(--blue);">
+      <div class="card-header">
+        <div class="card-icon" style="background: var(--blue-glow);">&#129504;</div>
+        <div><div class="card-title">Alan Nicolas</div><div class="card-subtitle">Knowledge Architect</div></div>
+      </div>
+      <ul style="font-size: 0.85rem; color: var(--text-muted); padding-left: 1.2rem; margin-top: 0.5rem;">
+        <li>Extrai conhecimento (Voice + Thinking DNA)</li>
+        <li>Classifica fontes (ouro vs bronze)</li>
+        <li>Pareto ao Cubo (0,8% genialidade)</li>
+        <li>Self-validation antes do handoff</li>
+      </ul>
+      <div style="margin-top: 0.8rem; padding: 0.5rem; background: var(--blue-glow); border-radius: 6px; font-size: 0.8rem; text-align: center;">
+        <strong>Regra:</strong> "Curadoria > Volume"
+      </div>
+    </div>
+  </div>
+
+  <div class="flow" style="margin: 1.5rem 0;">
+    <div class="flow-step" style="border-color: var(--blue);"><div class="icon">&#129504;</div><div class="label">Alan extrai</div><div class="sub">insumos</div></div>
+    <span class="flow-arrow">&#10132;</span>
+    <div class="flow-step" style="border-color: var(--orange);"><div class="icon">&#9881;&#65039;</div><div class="label">Pedro constroi</div><div class="sub">artefatos</div></div>
+  </div>
+
+  <h3>Agentes de Squad</h3>
+
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Squad</th><th>Agentes Principais</th><th>Foco</th></tr></thead>
+      <tbody>
+        <tr><td><code>squad-creator-pro</code></td><td>Pedro, Alan, squad-chief</td><td>Criar squads, processos, conhecimento</td></tr>
+        <tr><td><code>aiox-copy</code></td><td>Gary Halbert, Ogilvy + 18</td><td>Copywriting especializado</td></tr>
+        <tr><td><code>aiox-design</code></td><td>Brad Frost, Dan Mall</td><td>Design system, componentes</td></tr>
+        <tr><td><code>aiox-ads</code></td><td>Kasim Aslam, Ralph Burns</td><td>Trafego pago, ads</td></tr>
+        <tr><td><code>aiox-sop</code></td><td>SOP Chief, Creator, Analyst</td><td>Procedimentos operacionais</td></tr>
+        <tr><td><code>aiox-workspace</code></td><td>Vision Chief, CTO, CMO</td><td>Estrategia empresarial</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- 5. SQUADS -->
+<section id="squads">
+  <h2><span class="num">05</span> Squads — Times Especializados</h2>
+  <p class="section-desc">Um squad e um time autonomo com agentes, tasks, workflows e dados proprios.</p>
+
+  <div class="tree">
+    <span class="folder">squads/nome-do-squad/</span><br>
+    &#9500;&#9472;&#9472; <span class="folder">agents/</span> <span class="desc">&#8592; Personas dos agentes</span><br>
+    &#9500;&#9472;&#9472; <span class="folder">tasks/</span> <span class="desc">&#8592; Instrucoes executaveis</span><br>
+    &#9500;&#9472;&#9472; <span class="folder">workflows/</span> <span class="desc">&#8592; Sequencias de tasks</span><br>
+    &#9500;&#9472;&#9472; <span class="folder">data/</span> <span class="desc">&#8592; Conhecimento local</span><br>
+    &#9500;&#9472;&#9472; <span class="folder">config/</span> <span class="desc">&#8592; Configuracoes</span><br>
+    &#9500;&#9472;&#9472; <span class="folder">templates/</span> <span class="desc">&#8592; Modelos reutilizaveis</span><br>
+    &#9500;&#9472;&#9472; <span class="folder">checklists/</span> <span class="desc">&#8592; Listas de verificacao</span><br>
+    &#9492;&#9472;&#9472; <span class="file">squad.yaml</span> <span class="desc">&#8592; Definicao do squad</span>
+  </div>
+
+  <h3>O @dev e o mesmo em todo squad?</h3>
+
+  <div class="card">
+    <p><strong>Nucleo igual, contexto diferente.</strong></p><br>
+    <div class="grid-3">
+      <div style="padding: 1rem; background: rgba(108, 92, 231, 0.1); border-radius: 8px;">
+        <div style="font-weight: 700; margin-bottom: 0.5rem;">&#9889; Squad Automacao</div>
+        <div style="font-size: 0.8rem; color: var(--text-muted);">&#8226; Tasks de N8N, webhooks<br>&#8226; Dados de integracao<br>&#8226; Faz: APIs, triggers, flows</div>
+      </div>
+      <div style="padding: 1rem; background: rgba(253, 121, 168, 0.1); border-radius: 8px;">
+        <div style="font-weight: 700; margin-bottom: 0.5rem;">&#127912; Squad Design</div>
+        <div style="font-size: 0.8rem; color: var(--text-muted);">&#8226; Tasks de componentes React<br>&#8226; Dados do design system<br>&#8226; Faz: componentes, tokens</div>
+      </div>
+      <div style="padding: 1rem; background: rgba(0, 184, 148, 0.1); border-radius: 8px;">
+        <div style="font-weight: 700; margin-bottom: 0.5rem;">&#128451; Squad CRM</div>
+        <div style="font-size: 0.8rem; color: var(--text-muted);">&#8226; Tasks de CRUD, banco<br>&#8226; Dados do Supabase<br>&#8226; Faz: APIs REST, RLS</div>
+      </div>
+    </div>
+    <br>
+    <div class="callout callout-tip" style="margin: 0;">
+      <span class="callout-icon">&#129657;</span>
+      <div class="callout-text"><strong>Analogia:</strong> Um cirurgiao e cirurgiao em qualquer hospital. Mas no Hospital A opera coracao, no B opera joelho. Mesma formacao, contexto diferente.</div>
+    </div>
+  </div>
+</section>
+
+<!-- 6. SQUAD VS AGENTE -->
+<section id="squad-vs-agent">
+  <h2><span class="num">06</span> Squad vs Agente — Qual Chamar?</h2>
+  <p class="section-desc">Uma das duvidas mais comuns: qual a diferenca entre chamar o squad e chamar o agente direto?</p>
+
+  <div class="grid-2">
+    <div class="card" style="border-color: var(--cyan);">
+      <div style="font-size: 2rem; margin-bottom: 0.5rem;">&#129302;</div>
+      <div style="font-weight: 700; font-size: 1.1rem; margin-bottom: 0.5rem;">Chamar um AGENTE</div>
+      <p style="font-size: 0.9rem; color: var(--text-muted);">Ativa UM especialista com persona, comandos e DNA. Voce fala direto com ele.</p>
+      <div class="code-block" style="font-size: 0.8rem;">/squad-creator-pro:pedro-valerio<br>&#10132; Pedro ativa, greeting aparece<br>&#10132; Voce usa *comandos dele</div>
+    </div>
+    <div class="card" style="border-color: var(--accent);">
+      <div style="font-size: 2rem; margin-bottom: 0.5rem;">&#128101;</div>
+      <div style="font-weight: 700; font-size: 1.1rem; margin-bottom: 0.5rem;">Chamar o SQUAD</div>
+      <p style="font-size: 0.9rem; color: var(--text-muted);">Ativa o CHIEF do squad, que decide qual agente usar e orquestra o time.</p>
+      <div class="code-block" style="font-size: 0.8rem;">/squad-creator-pro:squad-chief<br>&#10132; Chief ativa, analisa seu pedido<br>&#10132; "Vou chamar o Alan pra isso"</div>
+    </div>
+  </div>
+
+  <h3>Quando usar cada um</h3>
+
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Situacao</th><th>Use</th><th>Exemplo</th></tr></thead>
+      <tbody>
+        <tr><td>Voce <strong>sabe</strong> qual especialista precisa</td><td><span class="badge badge-green">Agente direto</span></td><td><code>/squad-creator-pro:pedro-valerio</code></td></tr>
+        <tr><td>Voce <strong>nao sabe</strong> por onde comecar</td><td><span class="badge badge-blue">Squad chief</span></td><td><code>/squad-creator-pro:squad-chief</code></td></tr>
+        <tr><td>Precisa de <strong>varios agentes</strong> do squad</td><td><span class="badge badge-blue">Squad chief</span></td><td>Chief orquestra a sequencia</td></tr>
+        <tr><td>Quer fazer algo <strong>especifico</strong></td><td><span class="badge badge-green">Agente + *comando</span></td><td><code>*eng-map agendamento</code></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="callout callout-tip">
+    <span class="callout-icon">&#129657;</span>
+    <div class="callout-text">
+      <strong>Analogia:</strong> Chamar o <strong>agente</strong> = ligar direto pro cirurgiao. Chamar o <strong>squad</strong> = ligar pra recepcao do hospital e ser direcionado.
+    </div>
+  </div>
+
+  <div class="callout callout-warn">
+    <span class="callout-icon">&#9888;&#65039;</span>
+    <div class="callout-text">
+      <strong>Cuidado:</strong> O chief tambem pode diluir em conversas longas (e ate mais rapido que um agente direto, pois gerencia multiplos contextos). Use o chief para PLANEJAR, nao para EXECUTAR tudo numa conversa so.
+    </div>
+  </div>
+</section>
+
+<!-- 7. CICLO DE VIDA -->
+<section id="lifecycle">
+  <h2><span class="num">07</span> Ciclo de Vida de um Projeto</h2>
+  <p class="section-desc">Da ideia ao deploy — cada fase com o agente certo.</p>
+
+  <div class="timeline">
+    <div class="timeline-item">
+      <div class="timeline-phase">Fase 1 — Descoberta</div>
+      <div class="timeline-title">Extrair conhecimento e mapear processos</div>
+      <div class="timeline-desc">Entender como funciona hoje, quais as dores, onde estao os gaps.</div>
+      <div class="timeline-agent">&#129504; Alan Nicolas &#8594; &#9881;&#65039; Pedro Valerio</div>
+      <div class="timeline-commands">*assess-sources &bull; *extract-framework &bull; *eng-map &bull; *auto-rules</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-phase">Fase 2 — Planejamento</div>
+      <div class="timeline-title">PRD + Arquitetura + Banco de dados</div>
+      <div class="timeline-desc">Definir O QUE o produto faz, COMO sera construido e ONDE os dados ficam.</div>
+      <div class="timeline-agent">@pm (Morgan) &#8594; @architect (Aria) &#8594; @data-engineer (Dara)</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-phase">Fase 3 — Construcao</div>
+      <div class="timeline-title">Stories + Validacao + Implementacao</div>
+      <div class="timeline-desc">Quebrar o PRD em pedacos implementaveis, validar e codar.</div>
+      <div class="timeline-agent">@sm (River) &#8594; @po (Pax) &#8594; @dev (Dex)</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-phase">Fase 4 — Qualidade</div>
+      <div class="timeline-title">Testes e QA Loop</div>
+      <div class="timeline-desc">7 quality checks. Se FAIL, volta pro @dev (max 5 loops).</div>
+      <div class="timeline-agent">@qa (Quinn) &#8596; @dev (Dex)</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-phase">Fase 5 — Entrega</div>
+      <div class="timeline-title">Deploy em producao</div>
+      <div class="timeline-desc">Git push, PR, CI/CD. SOMENTE @devops pode fazer push.</div>
+      <div class="timeline-agent">@devops (Gage) — <span class="badge badge-red">EXCLUSIVO</span></div>
+    </div>
+  </div>
+
+  <div class="flow" style="margin: 2rem 0;">
+    <div class="flow-step" style="border-color: var(--blue);"><div class="icon">&#129504;</div><div class="label">Alan</div></div>
+    <span class="flow-arrow">&#10132;</span>
+    <div class="flow-step" style="border-color: var(--orange);"><div class="icon">&#9881;&#65039;</div><div class="label">Pedro</div></div>
+    <span class="flow-arrow">&#10132;</span>
+    <div class="flow-step"><div class="icon">&#128203;</div><div class="label">@pm</div></div>
+    <span class="flow-arrow">&#10132;</span>
+    <div class="flow-step"><div class="icon">&#127959;</div><div class="label">@architect</div></div>
+    <span class="flow-arrow">&#10132;</span>
+    <div class="flow-step"><div class="icon">&#128187;</div><div class="label">@dev</div></div>
+    <span class="flow-arrow">&#10132;</span>
+    <div class="flow-step"><div class="icon">&#128270;</div><div class="label">@qa</div></div>
+    <span class="flow-arrow">&#10132;</span>
+    <div class="flow-step" style="border-color: var(--green);"><div class="icon">&#128640;</div><div class="label">@devops</div></div>
+  </div>
+</section>
+
+<!-- 8. COMO FUNCIONAM -->
+<section id="how-agents-work">
+  <h2><span class="num">08</span> Como os Agentes Funcionam</h2>
+  <p class="section-desc">O que acontece por baixo dos panos quando voce ativa, usa e troca de agente.</p>
+
+  <h3>O Greeting — Sinal de Vida</h3>
+  <p style="color: var(--text-muted); margin-bottom: 1rem;">O greeting e a mensagem de apresentacao do agente. E sua confirmacao visual de que ele esta ativo.</p>
+
+  <div class="greeting-demo">
+    <div class="g-icon">&#9881;&#65039;</div>
+    <div class="g-name">Pedro Valerio</div>
+    <div class="g-title">AI Head de OPS</div>
+    <div class="g-quote">"Ta ligado que processo que permite erro e processo quebrado, ne?"</div>
+    <div class="g-cmds">&#128269; *eng- &bull; &#127959; *arq- &bull; &#9889; *auto- &bull; &#128203; *tmpl-<br>*help para todos os comandos</div>
+  </div>
+
+  <div class="grid-2" style="margin-top: 1rem;">
+    <div class="card" style="border-color: var(--green); text-align: center;">
+      <div style="font-size: 2rem;">&#9989;</div>
+      <div style="font-weight: 700; margin: 0.5rem 0;">Viu Greeting</div>
+      <div style="font-size: 0.85rem; color: var(--text-muted);">Agente ativo com DNA carregado</div>
+    </div>
+    <div class="card" style="border-color: var(--red); text-align: center;">
+      <div style="font-size: 2rem;">&#10060;</div>
+      <div style="font-weight: 700; margin: 0.5rem 0;">Nao Viu Greeting</div>
+      <div style="font-size: 0.85rem; color: var(--text-muted);">Claude Code generico, sem persona</div>
+    </div>
+  </div>
+
+  <h3>Quando o Agente "Sai"</h3>
+
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Situacao</th><th>Risco</th><th>O que fazer</th></tr></thead>
+      <tbody>
+        <tr><td>Conversa ficou muito longa</td><td><span class="badge badge-red">ALTO</span></td><td>Reativar com <code>/skill</code></td></tr>
+        <tr><td>Mudou de assunto radicalmente</td><td><span class="badge badge-yellow">MEDIO</span></td><td>Usar <code>*help</code> pra checar</td></tr>
+        <tr><td>Chamou outro agente com <code>@</code></td><td><span class="badge badge-green">ESPERADO</span></td><td>Handoff normal</td></tr>
+        <tr><td>Falou generico sem usar <code>*</code></td><td><span class="badge badge-yellow">MEDIO</span></td><td>Pode responder como ele mesmo</td></tr>
+        <tr><td>Contexto comprimido pelo sistema</td><td><span class="badge badge-red">ALTO</span></td><td>Reativar — e barato</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>Como Detectar que Diluiu</h3>
+
+  <div class="grid-2">
+    <div class="card" style="border-left: 3px solid var(--green);">
+      <div style="font-weight: 700; color: var(--green); margin-bottom: 0.5rem;">&#9989; Agente Ativo</div>
+      <ul style="font-size: 0.85rem; color: var(--text-muted); padding-left: 1.2rem;">
+        <li>Usa a voz/persona do agente</li>
+        <li>Tem heuristicas, veto, frameworks</li>
+        <li>Questiona suas decisoes</li>
+        <li>Usa termos do Voice DNA</li>
+      </ul>
+    </div>
+    <div class="card" style="border-left: 3px solid var(--red);">
+      <div style="font-weight: 700; color: var(--red); margin-bottom: 0.5rem;">&#10060; Agente Saiu</div>
+      <ul style="font-size: 0.85rem; color: var(--text-muted); padding-left: 1.2rem;">
+        <li>Resposta generica, sem personalidade</li>
+        <li>Nao questiona nada, so obedece</li>
+        <li>Nao usa termos do Voice DNA</li>
+        <li>Faz o que voce pediu sem validar</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 9. A VERDADE NUA -->
+<section id="reality">
+  <h2><span class="num">09</span> A Verdade Nua e Crua</h2>
+  <p class="section-desc">Como os agentes REALMENTE funcionam por baixo dos panos. Entender isso muda tudo.</p>
+
+  <div class="card" style="border-color: var(--yellow);">
+    <h3 style="margin-top: 0; color: var(--yellow);">Todos rodam no mesmo Claude Code</h3>
+    <p style="margin-bottom: 1rem;">Agentes NAO sao processos separados. NAO sao containers. E <strong>uma unica IA</strong> que carrega personas diferentes — como trocar de roupa.</p>
+
+    <div class="grid-2">
+      <div style="padding: 1rem; background: rgba(225, 112, 85, 0.1); border-radius: 8px; text-align: center;">
+        <div style="font-weight: 700; margin-bottom: 0.5rem; color: var(--red);">O que PARECE</div>
+        <div style="font-size: 0.85rem; color: var(--text-muted);">
+          Chief &#8594; Alan &#8594; Pedro<br>
+          3 IAs separadas trabalhando<br>
+          Cada uma com seu processo
+        </div>
+      </div>
+      <div style="padding: 1rem; background: rgba(0, 184, 148, 0.1); border-radius: 8px; text-align: center;">
+        <div style="font-weight: 700; margin-bottom: 0.5rem; color: var(--green);">O que REALMENTE E</div>
+        <div style="font-size: 0.85rem; color: var(--text-muted);">
+          1 Claude Code<br>
+          1 contexto compartilhado<br>
+          Trocando de "roupa" (persona)
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <h3>O que isso significa na pratica</h3>
+
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Consequencia</th><th>Impacto</th><th>Solucao</th></tr></thead>
+      <tbody>
+        <tr><td>Contexto e finito e compartilhado</td><td>Conversa longa = agente dilui</td><td>1 conversa por agente</td></tr>
+        <tr><td>Chief nao "chama" agente de verdade</td><td>Ele troca de roupa, nao inicia processo</td><td>Chief planeja, voce executa em conversas separadas</td></tr>
+        <tr><td>Troca de agente custa contexto</td><td>Cada troca carrega nova persona (~3-5K tokens)</td><td>Handoff protocol compacta (~379 tokens)</td></tr>
+        <tr><td>Nao tem barreira entre agentes</td><td>Claude Code pode responder "como ele mesmo"</td><td>Use <code>*help</code> para verificar</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="callout callout-pedro">
+    <span class="callout-icon">&#9881;&#65039;</span>
+    <div class="callout-text">
+      <span class="callout-author" style="color: var(--orange);">Pedro Valerio</span>
+      "E o caminho errado sendo possivel. O sistema nao bloqueia. Voce CONSEGUE continuar falando achando que tem alguem ali. Ate isso ser corrigido, a regra e: 1 conversa, 1 agente, 1 objetivo."
+    </div>
+  </div>
+
+  <div class="callout callout-alan">
+    <span class="callout-icon">&#129504;</span>
+    <div class="callout-text">
+      <span class="callout-author" style="color: var(--blue);">Alan Nicolas</span>
+      "E limitacao da tecnologia, nao do design. Quando tivermos multi-agente de verdade com processos separados, o chief vai orquestrar de fato. Hoje, ele planeja. A execucao e sua."
+    </div>
+  </div>
+</section>
+
+<!-- 10. STORIES -->
+<section id="stories">
+  <h2><span class="num">10</span> Stories — O Bastao Entre Conversas</h2>
+  <p class="section-desc">A story e o mecanismo que carrega contexto entre conversas. Sem ela, voce repete tudo a cada troca de agente.</p>
+
+  <div class="grid-2">
+    <div class="card" style="border-left: 3px solid var(--red);">
+      <div style="font-weight: 700; color: var(--red); margin-bottom: 0.5rem;">&#10060; Sem Story</div>
+      <div style="font-size: 0.85rem; color: var(--text-muted);">
+        Conversa 1: Chief planeja &#8594; voce lembra de cabeca<br>
+        Conversa 2: Alan extrai &#8594; voce explica tudo de novo<br>
+        Conversa 3: Pedro constroi &#8594; voce explica DE NOVO<br>
+        <strong>Retrabalho toda vez</strong>
+      </div>
+    </div>
+    <div class="card" style="border-left: 3px solid var(--green);">
+      <div style="font-weight: 700; color: var(--green); margin-bottom: 0.5rem;">&#9989; Com Story</div>
+      <div style="font-size: 0.85rem; color: var(--text-muted);">
+        Conversa 1: Chief planeja &#8594; cria story com tudo<br>
+        Conversa 2: Alan abre story &#8594; sabe o que fazer<br>
+        Conversa 3: Pedro abre story &#8594; ve o que Alan fez<br>
+        <strong>Zero retrabalho</strong>
+      </div>
+    </div>
+  </div>
+
+  <h3>Como uma story se parece</h3>
+
+  <div class="story-demo">
+    <div class="s-title"># Story 1.1 — IA de Agendamento WhatsApp</div>
+    <br>
+    <span class="s-label">## Status:</span> <span class="s-status">In Progress</span>
+    <br><br>
+    <span class="s-label">## Objetivo</span><br>
+    Criar IA que agenda consultas via WhatsApp integrada com CRM
+    <br><br>
+    <span class="s-label">## Acceptance Criteria</span><br>
+    <span class="s-done">[x] Conhecimento extraido (Alan)</span><br>
+    <span class="s-done">[x] Processo mapeado (Pedro)</span><br>
+    <span class="s-done">[x] PRD escrito (@pm)</span><br>
+    <span class="s-pending">[ ] Arquitetura definida (@architect)</span><br>
+    <span class="s-pending">[ ] API implementada (@dev)</span><br>
+    <span class="s-pending">[ ] Testes passando (@qa)</span><br>
+    <span class="s-pending">[ ] Deploy feito (@devops)</span>
+    <br><br>
+    <span class="s-label">## Notas</span><br>
+    - Gap de 4h entre pedido e confirmacao<br>
+    - Processo atual 100% manual por telefone
+    <br><br>
+    <span class="s-label">## File List</span><br>
+    - docs/prd/ia-agendamento.md<br>
+    - workspace/.../products/ia-agendamento/
+  </div>
+
+  <h3>Fluxo: story passando entre conversas</h3>
+
+  <div class="conv-demo">
+    <div class="conv-label">Conversa 1 — Criar a story</div>
+    <div class="conv-msg"><span class="conv-who user">Voce:</span><span class="conv-text"><code>/AIOX:agents:sm</code></span></div>
+    <div class="conv-msg"><span class="conv-who user">Voce:</span><span class="conv-text">"Cria story para IA de agendamento WhatsApp para clinicas odonto"</span></div>
+    <div class="conv-msg"><span class="conv-who agent">@sm:</span><span class="conv-text">Cria <code>docs/stories/1.1.story.md</code> com objetivo, ACs, tasks</span></div>
+    <div class="conv-msg"><span class="conv-who system">FIM</span><span class="conv-text">Fecha conversa &#8594; abre nova</span></div>
+  </div>
+
+  <div class="conv-demo">
+    <div class="conv-label">Conversa 2 — Alan extrai</div>
+    <div class="conv-msg"><span class="conv-who user">Voce:</span><span class="conv-text"><code>/squad-creator-pro:oalanicolas</code></span></div>
+    <div class="conv-msg"><span class="conv-who user">Voce:</span><span class="conv-text">"Le a story <code>docs/stories/1.1.story.md</code> e executa a extracao. <code>*assess-sources</code>"</span></div>
+    <div class="conv-msg"><span class="conv-who agent">Alan:</span><span class="conv-text">Le a story &#8594; sabe o contexto &#8594; executa &#8594; atualiza checkbox: [x] Conhecimento extraido</span></div>
+    <div class="conv-msg"><span class="conv-who system">FIM</span><span class="conv-text">Fecha conversa &#8594; abre nova</span></div>
+  </div>
+
+  <div class="conv-demo">
+    <div class="conv-label">Conversa 3 — Pedro constroi</div>
+    <div class="conv-msg"><span class="conv-who user">Voce:</span><span class="conv-text"><code>/squad-creator-pro:pedro-valerio</code></span></div>
+    <div class="conv-msg"><span class="conv-who user">Voce:</span><span class="conv-text">"Le a story <code>docs/stories/1.1.story.md</code> e mapeia o processo. <code>*eng-map agendamento-whatsapp</code>"</span></div>
+    <div class="conv-msg"><span class="conv-who agent">Pedro:</span><span class="conv-text">Le a story &#8594; ve que Alan ja extraiu &#8594; usa os insumos &#8594; mapeia &#8594; atualiza: [x] Processo mapeado</span></div>
+    <div class="conv-msg"><span class="conv-who system">FIM</span><span class="conv-text">E assim por diante...</span></div>
+  </div>
+
+  <div class="callout callout-pedro">
+    <span class="callout-icon">&#9881;&#65039;</span>
+    <div class="callout-text">
+      <span class="callout-author" style="color: var(--orange);">Pedro Valerio</span>
+      "TA VENDO? Isso sim e processo. A story e o ClickUp do AIOX. Se nao ta na story, nao aconteceu. Cada agente abre, le, executa, atualiza. Zero gap. Zero retrabalho. Fluxo unidirecional."
+    </div>
+  </div>
+
+  <h3>A formula para trocar de conversa</h3>
+
+  <div class="card" style="border-color: var(--green); text-align: center;">
+    <div style="font-size: 1.3rem; font-weight: 700; margin-bottom: 1rem;">Nova conversa = 3 coisas</div>
+    <div class="flow">
+      <div class="flow-step" style="border-color: var(--accent);">
+        <div class="icon">1&#65039;&#8419;</div>
+        <div class="label">Ativar agente</div>
+        <div class="sub"><code>/skill</code></div>
+      </div>
+      <span class="flow-arrow">+</span>
+      <div class="flow-step" style="border-color: var(--cyan);">
+        <div class="icon">2&#65039;&#8419;</div>
+        <div class="label">Apontar story</div>
+        <div class="sub">"Le a story X"</div>
+      </div>
+      <span class="flow-arrow">+</span>
+      <div class="flow-step" style="border-color: var(--yellow);">
+        <div class="icon">3&#65039;&#8419;</div>
+        <div class="label">Dar comando</div>
+        <div class="sub"><code>*comando</code></div>
+      </div>
+    </div>
+    <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 1rem;">Se precisar de mais que isso, o processo ta errado. Informacao critica vai na story ou na memoria.</p>
+  </div>
+</section>
+
+<!-- 11. CONVERSAS -->
+<section id="conversations">
+  <h2><span class="num">11</span> Gerenciando Conversas</h2>
+  <p class="section-desc">Como organizar suas sessoes no Claude Code para manter qualidade e foco.</p>
+
+  <h3>Regra de ouro: 1 conversa = 1 agente = 1 objetivo</h3>
+
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Conversa</th><th>Agente</th><th>Objetivo</th><th>Duracao</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>Squad Chief</td><td>Planejar roteiro do projeto</td><td>~10 min</td></tr>
+        <tr><td>2</td><td>@sm</td><td>Criar a story</td><td>~5 min</td></tr>
+        <tr><td>3</td><td>Alan</td><td>Extrair conhecimento</td><td>~20 min</td></tr>
+        <tr><td>4</td><td>Pedro</td><td>Mapear processos</td><td>~20 min</td></tr>
+        <tr><td>5</td><td>@pm</td><td>Escrever PRD</td><td>~15 min</td></tr>
+        <tr><td>6</td><td>@architect</td><td>Definir arquitetura</td><td>~15 min</td></tr>
+        <tr><td>7</td><td>@dev</td><td>Implementar</td><td>~30 min</td></tr>
+        <tr><td>8</td><td>@qa</td><td>Testar</td><td>~15 min</td></tr>
+        <tr><td>9</td><td>@devops</td><td>Deploy</td><td>~5 min</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>Como trocar de conversa</h3>
+
+  <div class="card">
+    <div class="code-block">
+# Fechar conversa atual<br>
+Ctrl+C ou /exit<br>
+<br>
+# Abrir nova conversa<br>
+claude<br>
+<br>
+# Na nova conversa:<br>
+/squad-creator-pro:pedro-valerio<br>
+"Le a story docs/stories/1.1.story.md e faz *eng-map agendamento"<br>
+<br>
+# Pronto. Pedro tem contexto completo via story.
+    </div>
+  </div>
+
+  <h3>O que conecta as conversas</h3>
+
+  <div class="grid-3">
+    <div class="card" style="text-align: center;">
+      <div style="font-size: 2rem;">&#128221;</div>
+      <div style="font-weight: 700; margin: 0.5rem 0;">Story</div>
+      <div style="font-size: 0.8rem; color: var(--text-muted);">Objetivo, ACs, checkboxes, notas, arquivos. O agente le e sabe tudo.</div>
+    </div>
+    <div class="card" style="text-align: center;">
+      <div style="font-size: 2rem;">&#129504;</div>
+      <div style="font-weight: 700; margin: 0.5rem 0;">Memoria</div>
+      <div style="font-size: 0.8rem; color: var(--text-muted);">Credenciais, preferencias, decisoes. Persiste entre conversas automaticamente.</div>
+    </div>
+    <div class="card" style="text-align: center;">
+      <div style="font-size: 2rem;">&#128193;</div>
+      <div style="font-weight: 700; margin: 0.5rem 0;">Arquivos</div>
+      <div style="font-size: 0.8rem; color: var(--text-muted);">PRDs, codigo, configs. O agente le do disco e ja tem contexto.</div>
+    </div>
+  </div>
+
+  <div class="callout callout-alan">
+    <span class="callout-icon">&#129504;</span>
+    <div class="callout-text">
+      <span class="callout-author" style="color: var(--blue);">Alan Nicolas</span>
+      "O chief e o mapa. Mas ninguem navega olhando o mapa o tempo inteiro. Olha o mapa, entende a rota, depois dirige. Volta pro mapa quando precisar."
+    </div>
+  </div>
+</section>
+
+<!-- 12. BOAS PRATICAS -->
+<section id="best-practices">
+  <h2><span class="num">12</span> 10 Boas Praticas Obrigatorias</h2>
+  <p class="section-desc">Siga essas regras e o ecossistema trabalha a seu favor.</p>
+
+  <div class="bp-grid">
+    <div class="bp-card"><div class="bp-num">01</div><div class="bp-title">Sempre ative antes de pedir</div><div class="bp-desc">Sem ativacao, e Claude Code generico. Use <code>/skill</code> ou <code>@agente</code> primeiro.</div></div>
+    <div class="bp-card"><div class="bp-num">02</div><div class="bp-title">Use *help como bussola</div><div class="bp-desc">Chegou num agente? <code>*help</code>. E o menu do restaurante.</div></div>
+    <div class="bp-card"><div class="bp-num">03</div><div class="bp-title">Um agente por conversa</div><div class="bp-desc">5 agentes na mesma conversa = contexto diluido. Uma conversa, um foco.</div></div>
+    <div class="bp-card"><div class="bp-num">04</div><div class="bp-title">Na duvida, reative</div><div class="bp-desc">Conversa longa? <code>*help</code>. Resposta generica? Reativa com <code>/skill</code>.</div></div>
+    <div class="bp-card"><div class="bp-num">05</div><div class="bp-title">Siga o fluxo dos agentes</div><div class="bp-desc">@pm &#10132; @architect &#10132; @dev &#10132; @qa &#10132; @devops. Nao pule etapas.</div></div>
+    <div class="bp-card"><div class="bp-num">06</div><div class="bp-title">*comandos > falar generico</div><div class="bp-desc"><code>*auto-rules crm</code> ativa heuristicas. "Faz automacao" ativa nada.</div></div>
+    <div class="bp-card"><div class="bp-num">07</div><div class="bp-title">Use stories como bastao</div><div class="bp-desc">A story carrega contexto entre conversas. Cada agente le, executa e atualiza.</div></div>
+    <div class="bp-card"><div class="bp-num">08</div><div class="bp-title">Chief planeja, voce executa</div><div class="bp-desc">Use o squad chief pra planejar. Depois chame agentes diretos em conversas separadas.</div></div>
+    <div class="bp-card"><div class="bp-num">09</div><div class="bp-title">Credenciais: cheque memoria</div><div class="bp-desc">O sistema ja pode ter suas API keys salvas. Nao digite de novo.</div></div>
+    <div class="bp-card"><div class="bp-num">10</div><div class="bp-title">Handoff explicito</div><div class="bp-desc">"Terminei com Alan, agora Pedro." O agente nao sabe que voce saiu.</div></div>
+  </div>
+</section>
+
+<!-- 13. ERROS COMUNS -->
+<section id="mistakes">
+  <h2><span class="num">13</span> Erros Comuns e Como Evitar</h2>
+  <p class="section-desc">Os 8 erros mais frequentes que todo usuario comete no inicio.</p>
+
+  <details>
+    <summary>&#10060; Erro 1: Falar direto sem ativar agente</summary>
+    <div>
+      <div class="compare">
+        <div class="compare-wrong"><div class="compare-label">&#10060; Errado</div><p style="font-size: 0.85rem;">"Cria uma API de agendamento"</p><p style="font-size: 0.8rem; color: var(--text-muted);">Claude Code faz sem persona, sem regras.</p></div>
+        <div class="compare-right"><div class="compare-label">&#9989; Certo</div><p style="font-size: 0.85rem;"><code>/AIOX:agents:dev</code> &#10132; <code>*develop story-agendamento</code></p><p style="font-size: 0.8rem; color: var(--text-muted);">Dev faz com quality gates e padroes.</p></div>
+      </div>
+    </div>
+  </details>
+
+  <details>
+    <summary>&#10060; Erro 2: Nao perceber que o agente "saiu"</summary>
+    <div>
+      <div class="compare">
+        <div class="compare-wrong"><div class="compare-label">&#10060; Errado</div><p style="font-size: 0.85rem;">Conversa longa &#10132; agente diluiu &#10132; continua achando que ta ativo</p></div>
+        <div class="compare-right"><div class="compare-label">&#9989; Certo</div><p style="font-size: 0.85rem;">Conversa longa &#10132; <code>*help</code> &#10132; ve se resposta tem persona</p></div>
+      </div>
+    </div>
+  </details>
+
+  <details>
+    <summary>&#10060; Erro 3: Pular etapas do fluxo</summary>
+    <div>
+      <div class="compare">
+        <div class="compare-wrong"><div class="compare-label">&#10060; Errado</div><p style="font-size: 0.85rem;">Ideia &#10132; @dev direto = codigo sem PRD, sem arquitetura</p></div>
+        <div class="compare-right"><div class="compare-label">&#9989; Certo</div><p style="font-size: 0.85rem;">Ideia &#10132; @pm &#10132; @architect &#10132; @sm &#10132; @po &#10132; @dev</p></div>
+      </div>
+    </div>
+  </details>
+
+  <details>
+    <summary>&#10060; Erro 4: Fazer tudo numa conversa so</summary>
+    <div>
+      <div class="compare">
+        <div class="compare-wrong"><div class="compare-label">&#10060; Errado</div><p style="font-size: 0.85rem;">Uma conversa: PRD + arquitetura + codigo + testes + deploy</p></div>
+        <div class="compare-right"><div class="compare-label">&#9989; Certo</div><p style="font-size: 0.85rem;">Conversa por fase: cada uma com 1 agente e 1 foco</p></div>
+      </div>
+    </div>
+  </details>
+
+  <details>
+    <summary>&#10060; Erro 5: Confundir SOP com Task</summary>
+    <div>
+      <div class="compare">
+        <div class="compare-wrong"><div class="compare-label">&#10060; Errado</div><p style="font-size: 0.85rem;">Criar SOP para o @dev. SOP e para HUMANOS.</p></div>
+        <div class="compare-right"><div class="compare-label">&#9989; Certo</div><p style="font-size: 0.85rem;">Criar TASK para o @dev (inputs, outputs, veto).</p></div>
+      </div>
+    </div>
+  </details>
+
+  <details>
+    <summary>&#10060; Erro 6: Dar comando generico ao agente</summary>
+    <div>
+      <div class="compare">
+        <div class="compare-wrong"><div class="compare-label">&#10060; Errado</div><p style="font-size: 0.85rem;">"Me ajuda com processos" — vago demais</p></div>
+        <div class="compare-right"><div class="compare-label">&#9989; Certo</div><p style="font-size: 0.85rem;"><code>*eng-map atendimento-clinica</code> — modo especifico</p></div>
+      </div>
+    </div>
+  </details>
+
+  <details>
+    <summary>&#10060; Erro 7: Achar que o chief executa tudo sozinho</summary>
+    <div>
+      <div class="compare">
+        <div class="compare-wrong"><div class="compare-label">&#10060; Errado</div><p style="font-size: 0.85rem;">Chief orquestrando 5 agentes numa conversa so. Contexto estoura.</p></div>
+        <div class="compare-right"><div class="compare-label">&#9989; Certo</div><p style="font-size: 0.85rem;">Chief planeja (1 conversa). Voce executa com agentes diretos (conversas separadas).</p></div>
+      </div>
+    </div>
+  </details>
+
+  <details>
+    <summary>&#10060; Erro 8: Trocar de conversa sem story</summary>
+    <div>
+      <div class="compare">
+        <div class="compare-wrong"><div class="compare-label">&#10060; Errado</div><p style="font-size: 0.85rem;">Abre nova conversa e explica tudo do zero pro novo agente.</p></div>
+        <div class="compare-right"><div class="compare-label">&#9989; Certo</div><p style="font-size: 0.85rem;">"Le a story <code>docs/stories/1.1.story.md</code>" — agente ja sabe tudo.</p></div>
+      </div>
+    </div>
+  </details>
+</section>
+
+<!-- 14. EVOLUCAO -->
+<section id="evolution">
+  <h2><span class="num">14</span> Sua Evolucao no AIOX</h2>
+  <p class="section-desc">Nao precisa dominar tudo no dia 1. O sistema tem entrada para cada nivel.</p>
+
+  <div class="evolution">
+    <div class="evo-card" style="border-color: var(--blue);">
+      <div class="evo-level" style="color: var(--blue);">Iniciante</div>
+      <div class="evo-icon">&#127793;</div>
+      <div class="evo-title">Squad Chief</div>
+      <div class="evo-desc">
+        &#8226; Chama o squad chief<br>
+        &#8226; Ele orquestra pra voce<br>
+        &#8226; Voce aprende vendo ele trabalhar<br>
+        &#8226; Usa stories pra trocar de conversa
+      </div>
+    </div>
+    <div class="evo-card" style="border-color: var(--yellow);">
+      <div class="evo-level" style="color: var(--yellow);">Intermediario</div>
+      <div class="evo-icon">&#127795;</div>
+      <div class="evo-title">Agentes Diretos</div>
+      <div class="evo-desc">
+        &#8226; Ja sabe qual agente usar<br>
+        &#8226; Chama direto com <code>/skill</code><br>
+        &#8226; Usa <code>*comandos</code> especificos<br>
+        &#8226; 1 conversa por agente
+      </div>
+    </div>
+    <div class="evo-card" style="border-color: var(--green);">
+      <div class="evo-level" style="color: var(--green);">Avancado</div>
+      <div class="evo-icon">&#127794;</div>
+      <div class="evo-title">Fluxo Completo</div>
+      <div class="evo-desc">
+        &#8226; Sabe o fluxo inteiro<br>
+        &#8226; Alan &#8594; Pedro &#8594; @pm &#8594; @dev<br>
+        &#8226; Cria squads novos<br>
+        &#8226; Automatiza workflows
+      </div>
+    </div>
+  </div>
+
+  <div class="callout callout-tip">
+    <span class="callout-icon">&#128161;</span>
+    <div class="callout-text">
+      <strong>Comece pelo chief.</strong> Ele e o GPS. Quando voce ja souber o caminho, dirige direto. O importante e: NUNCA falar com o Claude Code cru sem agente ativo.
+    </div>
+  </div>
+</section>
+
+<!-- 15. CASO PRATICO -->
+<section id="case-study">
+  <h2><span class="num">15</span> Caso Pratico: IA de Agendamento WhatsApp</h2>
+  <p class="section-desc">Passo a passo real usando stories e conversas separadas.</p>
+
+  <div class="card" style="border-color: var(--accent); margin-bottom: 2rem;">
+    <div style="font-weight: 700; font-size: 1.1rem; margin-bottom: 0.5rem;">&#127919; O Produto</div>
+    <p style="color: var(--text-muted);">IA que agenda consultas odontologicas via WhatsApp, integrada com CRM.</p>
+  </div>
+
+  <div class="timeline">
+    <div class="timeline-item">
+      <div class="timeline-phase">Conversa 0 — Planejar</div>
+      <div class="timeline-title">Squad Chief planeja o roteiro</div>
+      <div class="timeline-desc">"Quero criar IA de agendamento WhatsApp." Chief retorna plano completo com 9 etapas.</div>
+      <div class="timeline-commands">/squad-creator-pro:squad-chief</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-phase">Conversa 1 — Criar Story</div>
+      <div class="timeline-title">@sm cria a story</div>
+      <div class="timeline-desc">Cria <code>docs/stories/1.1.story.md</code> com objetivo, ACs, tasks. A partir daqui, todo agente le a story.</div>
+      <div class="timeline-commands">/AIOX:agents:sm &bull; "Cria story para IA agendamento WhatsApp"</div>
+    </div>
+    <div class="timeline-item" style="border-color: var(--blue);">
+      <div class="timeline-phase">Conversa 2 — Extrair</div>
+      <div class="timeline-title">&#129504; Alan extrai conhecimento</div>
+      <div class="timeline-desc">"Le a story 1.1 e executa extracao." Fontes ouro vs bronze, frameworks, Voice DNA.</div>
+      <div class="timeline-commands">/squad-creator-pro:oalanicolas &bull; "Le story 1.1" &bull; *assess-sources</div>
+    </div>
+    <div class="timeline-item" style="border-color: var(--orange);">
+      <div class="timeline-phase">Conversa 3 — Mapear</div>
+      <div class="timeline-title">&#9881;&#65039; Pedro mapeia processo</div>
+      <div class="timeline-desc">"Le a story 1.1 e mapeia o processo." Gaps, automacoes, veto conditions.</div>
+      <div class="timeline-commands">/squad-creator-pro:pedro-valerio &bull; "Le story 1.1" &bull; *eng-map agendamento</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-phase">Conversa 4 — PRD</div>
+      <div class="timeline-title">@pm escreve PRD</div>
+      <div class="timeline-desc">"Le a story 1.1 e escreve o PRD." Problema, solucao, personas, requisitos.</div>
+      <div class="timeline-commands">/AIOX:agents:pm &bull; "Le story 1.1"</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-phase">Conversa 5 — Arquitetura</div>
+      <div class="timeline-title">@architect define stack</div>
+      <div class="timeline-desc">WhatsApp Business API &#8594; N8N &#8594; Supabase &#8594; Next.js</div>
+      <div class="timeline-commands">/AIOX:agents:architect &bull; "Le story 1.1"</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-phase">Conversa 6 — Banco</div>
+      <div class="timeline-title">@data-engineer cria schema</div>
+      <div class="timeline-desc">Tabelas de agendamento, pacientes, horarios. RLS policies.</div>
+      <div class="timeline-commands">/AIOX:agents:data-engineer &bull; "Le story 1.1"</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-phase">Conversa 7 — Implementar</div>
+      <div class="timeline-title">@dev codifica</div>
+      <div class="timeline-desc">Implementa story por story. git add + commit (NAO push).</div>
+      <div class="timeline-commands">/AIOX:agents:dev &bull; "Le story 1.1" &bull; *develop</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-phase">Conversa 8 — Testar</div>
+      <div class="timeline-title">@qa valida qualidade</div>
+      <div class="timeline-desc">7 quality checks. PASS/FAIL. Se FAIL &#8594; volta pro @dev.</div>
+      <div class="timeline-commands">/AIOX:agents:qa &bull; "Le story 1.1"</div>
+    </div>
+    <div class="timeline-item" style="border-color: var(--green);">
+      <div class="timeline-phase">Conversa 9 — Deploy</div>
+      <div class="timeline-title">@devops publica</div>
+      <div class="timeline-desc">git push + gh pr create + CI/CD &#8594; Producao!</div>
+      <div class="timeline-commands">/AIOX:agents:devops &bull; "Le story 1.1"</div>
+    </div>
+  </div>
+</section>
+
+<!-- 16. GLOSSARIO -->
+<section id="glossary">
+  <h2><span class="num">16</span> Glossario</h2>
+  <p class="section-desc">Todos os termos tecnicos do ecossistema AIOX.</p>
+
+  <div class="glossary-grid">
+    <div class="glossary-item"><div class="glossary-term">Agent</div><div class="glossary-def">Especialista IA com persona, voz e heuristicas proprias</div></div>
+    <div class="glossary-item"><div class="glossary-term">Greeting</div><div class="glossary-def">Mensagem de apresentacao do agente (confirma que esta ativo)</div></div>
+    <div class="glossary-item"><div class="glossary-term">Handoff</div><div class="glossary-def">Transicao estruturada de um agente para outro</div></div>
+    <div class="glossary-item"><div class="glossary-term">Heuristica</div><div class="glossary-def">Regra de decisao do agente (SE X, ENTAO Y)</div></div>
+    <div class="glossary-item"><div class="glossary-term">Persona</div><div class="glossary-def">Identidade do agente (nome, estilo, crencas)</div></div>
+    <div class="glossary-item"><div class="glossary-term">PRD</div><div class="glossary-def">Product Requirements Document (o que o produto faz)</div></div>
+    <div class="glossary-item"><div class="glossary-term">Quality Gate</div><div class="glossary-def">Checkpoint de qualidade (PASS/FAIL)</div></div>
+    <div class="glossary-item"><div class="glossary-term">Skill</div><div class="glossary-def">Atalho <code>/</code> para ativar agente ou capacidade</div></div>
+    <div class="glossary-item"><div class="glossary-term">SOP</div><div class="glossary-def">Standard Operating Procedure (procedimento para humanos)</div></div>
+    <div class="glossary-item"><div class="glossary-term">Squad</div><div class="glossary-def">Time de agentes organizado por dominio</div></div>
+    <div class="glossary-item"><div class="glossary-term">Squad Chief</div><div class="glossary-def">Lider do squad que orquestra os agentes e planeja</div></div>
+    <div class="glossary-item"><div class="glossary-term">Story</div><div class="glossary-def">Unidade de trabalho com objetivo, ACs e checkboxes de progresso</div></div>
+    <div class="glossary-item"><div class="glossary-term">Task</div><div class="glossary-def">Instrucao estruturada que um agente IA executa</div></div>
+    <div class="glossary-item"><div class="glossary-term">Veto Condition</div><div class="glossary-def">Regra que BLOQUEIA aprovacao se nao for atendida</div></div>
+    <div class="glossary-item"><div class="glossary-term">Voice DNA</div><div class="glossary-def">Padrao de comunicacao extraido (como a pessoa fala)</div></div>
+    <div class="glossary-item"><div class="glossary-term">Thinking DNA</div><div class="glossary-def">Padrao de pensamento extraido (como a pessoa decide)</div></div>
+    <div class="glossary-item"><div class="glossary-term">Workflow</div><div class="glossary-def">Sequencia de tasks conectadas com checkpoints</div></div>
+    <div class="glossary-item"><div class="glossary-term">Workspace</div><div class="glossary-def">Dados da empresa (marca, produtos, credenciais)</div></div>
+    <div class="glossary-item"><div class="glossary-term">Pareto ao Cubo</div><div class="glossary-def">0,8% genialidade, 4% excelencia, 20% impacto, 80% eliminar</div></div>
+    <div class="glossary-item"><div class="glossary-term">Diluicao</div><div class="glossary-def">Quando o agente perde contexto e o Claude Code responde generico</div></div>
+    <div class="glossary-item"><div class="glossary-term">Memoria</div><div class="glossary-def">Sistema persistente que guarda credenciais, preferencias e decisoes entre conversas</div></div>
+  </div>
+</section>
+
+<!-- 17. REFERENCIA -->
+<section id="reference">
+  <h2><span class="num">17</span> Referencia Rapida de Comandos</h2>
+  <p class="section-desc">Copie e cole. Todos os skills e comandos num so lugar.</p>
+
+  <div class="grid-2">
+    <div class="cmd-section">
+      <div class="cmd-category">Agentes AIOX Core</div>
+      <ul class="cmd-list">
+        <li><span class="cmd-name">/AIOX:agents:pm</span><span class="cmd-desc">Product Manager</span></li>
+        <li><span class="cmd-name">/AIOX:agents:po</span><span class="cmd-desc">Product Owner</span></li>
+        <li><span class="cmd-name">/AIOX:agents:sm</span><span class="cmd-desc">Scrum Master</span></li>
+        <li><span class="cmd-name">/AIOX:agents:architect</span><span class="cmd-desc">Architect</span></li>
+        <li><span class="cmd-name">/AIOX:agents:dev</span><span class="cmd-desc">Developer</span></li>
+        <li><span class="cmd-name">/AIOX:agents:qa</span><span class="cmd-desc">QA / Testes</span></li>
+        <li><span class="cmd-name">/AIOX:agents:devops</span><span class="cmd-desc">DevOps (push)</span></li>
+        <li><span class="cmd-name">/AIOX:agents:data-engineer</span><span class="cmd-desc">Database</span></li>
+        <li><span class="cmd-name">/AIOX:agents:ux-design-expert</span><span class="cmd-desc">UX/UI</span></li>
+        <li><span class="cmd-name">/AIOX:agents:analyst</span><span class="cmd-desc">Pesquisa</span></li>
+        <li><span class="cmd-name">/AIOX:agents:master</span><span class="cmd-desc">Orquestrador</span></li>
+      </ul>
+
+      <div class="cmd-category">Squad Creator Pro</div>
+      <ul class="cmd-list">
+        <li><span class="cmd-name">/squad-creator-pro:pedro-valerio</span><span class="cmd-desc">Processos</span></li>
+        <li><span class="cmd-name">/squad-creator-pro:oalanicolas</span><span class="cmd-desc">Conhecimento</span></li>
+        <li><span class="cmd-name">/squad-creator-pro:squad-chief</span><span class="cmd-desc">Criar squads</span></li>
+      </ul>
+
+      <div class="cmd-category">Copywriting</div>
+      <ul class="cmd-list">
+        <li><span class="cmd-name">/aiox-copy:copy-chief</span><span class="cmd-desc">Orquestrador</span></li>
+        <li><span class="cmd-name">/aiox-copy:gary-halbert</span><span class="cmd-desc">Direct response</span></li>
+        <li><span class="cmd-name">/aiox-copy:david-ogilvy</span><span class="cmd-desc">Branding</span></li>
+        <li><span class="cmd-name">/aiox-copy:eugene-schwartz</span><span class="cmd-desc">Consciencia</span></li>
+        <li><span class="cmd-name">/aiox-copy:russell-brunson</span><span class="cmd-desc">Funnels</span></li>
+      </ul>
+
+      <div class="cmd-category">Design / SOPs / Workspace</div>
+      <ul class="cmd-list">
+        <li><span class="cmd-name">/aiox-design:design-chief</span><span class="cmd-desc">Design</span></li>
+        <li><span class="cmd-name">/aiox-sop:sop-chief</span><span class="cmd-desc">SOPs</span></li>
+        <li><span class="cmd-name">/aiox-workspace:vision-chief</span><span class="cmd-desc">Estrategia</span></li>
+      </ul>
+
+      <div class="cmd-category">Mentores</div>
+      <ul class="cmd-list">
+        <li><span class="cmd-name">/mentors:jeff-bezos</span><span class="cmd-desc">Estrategia</span></li>
+        <li><span class="cmd-name">/mentors:steve-jobs</span><span class="cmd-desc">Produto</span></li>
+        <li><span class="cmd-name">/mentors:ray-dalio</span><span class="cmd-desc">Principios</span></li>
+        <li><span class="cmd-name">/mentors:charlie-munger</span><span class="cmd-desc">Modelos mentais</span></li>
+        <li><span class="cmd-name">/mentors:board</span><span class="cmd-desc">Todos juntos</span></li>
+      </ul>
+    </div>
+
+    <div class="cmd-section">
+      <div class="cmd-category">&#9881;&#65039; Pedro Valerio — Comandos *</div>
+      <ul class="cmd-list">
+        <li><span class="cmd-name">*eng-map {proc}</span><span class="cmd-desc">Mapear processo</span></li>
+        <li><span class="cmd-name">*eng-gaps {wf}</span><span class="cmd-desc">Gaps de tempo</span></li>
+        <li><span class="cmd-name">*eng-owners {proc}</span><span class="cmd-desc">Quem faz o que</span></li>
+        <li><span class="cmd-name">*arq-structure {sys}</span><span class="cmd-desc">Criar estrutura</span></li>
+        <li><span class="cmd-name">*arq-statuses {wf}</span><span class="cmd-desc">Fluxo de status</span></li>
+        <li><span class="cmd-name">*arq-fields {ent}</span><span class="cmd-desc">Campos obrigatorios</span></li>
+        <li><span class="cmd-name">*auto-rules {sys}</span><span class="cmd-desc">Regras bloqueio</span></li>
+        <li><span class="cmd-name">*auto-connect {a} {b}</span><span class="cmd-desc">Integrar</span></li>
+        <li><span class="cmd-name">*auto-triggers {wf}</span><span class="cmd-desc">Gatilhos auto</span></li>
+        <li><span class="cmd-name">*tmpl-create {tipo}</span><span class="cmd-desc">Template</span></li>
+        <li><span class="cmd-name">*create-task {name}</span><span class="cmd-desc">Criar task</span></li>
+        <li><span class="cmd-name">*create-workflow {name}</span><span class="cmd-desc">Criar workflow</span></li>
+        <li><span class="cmd-name">*create-agent {name}</span><span class="cmd-desc">Criar agent</span></li>
+        <li><span class="cmd-name">*audit</span><span class="cmd-desc">Auditoria completa</span></li>
+        <li><span class="cmd-name">*veto-check</span><span class="cmd-desc">Checar vetos</span></li>
+        <li><span class="cmd-name">*gap-analysis</span><span class="cmd-desc">Analise de gaps</span></li>
+        <li><span class="cmd-name">*find-automation</span><span class="cmd-desc">Oportunidades</span></li>
+      </ul>
+
+      <div class="cmd-category">&#129504; Alan Nicolas — Comandos *</div>
+      <ul class="cmd-list">
+        <li><span class="cmd-name">*extract-dna</span><span class="cmd-desc">DNA completo</span></li>
+        <li><span class="cmd-name">*extract-framework</span><span class="cmd-desc">Framework + DNA</span></li>
+        <li><span class="cmd-name">*extract-implicit</span><span class="cmd-desc">Conhecimento tacito</span></li>
+        <li><span class="cmd-name">*find-0.8</span><span class="cmd-desc">Pareto ao Cubo</span></li>
+        <li><span class="cmd-name">*deconstruct {exp}</span><span class="cmd-desc">Desconstruir expert</span></li>
+        <li><span class="cmd-name">*assess-sources</span><span class="cmd-desc">Avaliar fontes</span></li>
+        <li><span class="cmd-name">*source-audit</span><span class="cmd-desc">Auditoria fontes</span></li>
+        <li><span class="cmd-name">*source-classify</span><span class="cmd-desc">Ouro vs bronze</span></li>
+        <li><span class="cmd-name">*design-clone</span><span class="cmd-desc">Arquitetura clone</span></li>
+        <li><span class="cmd-name">*validate-clone</span><span class="cmd-desc">Validar clone</span></li>
+        <li><span class="cmd-name">*diagnose-clone</span><span class="cmd-desc">Diagnosticar</span></li>
+        <li><span class="cmd-name">*fidelity-score</span><span class="cmd-desc">Score fidelidade</span></li>
+        <li><span class="cmd-name">*blind-test</span><span class="cmd-desc">Teste cego</span></li>
+        <li><span class="cmd-name">*validate-extraction</span><span class="cmd-desc">Self-validation</span></li>
+        <li><span class="cmd-name">*trinity-check</span><span class="cmd-desc">Trindade</span></li>
+        <li><span class="cmd-name">*voice-calibration</span><span class="cmd-desc">Calibrar voz</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<section style="text-align: center; padding: 4rem 0 2rem; border-top: 1px solid var(--border);">
+  <div class="callout callout-pedro" style="display: inline-block; text-align: left; max-width: 500px;">
+    <span class="callout-icon">&#9881;&#65039;</span>
+    <div class="callout-text">
+      <span class="callout-author" style="color: var(--orange);">Pedro Valerio</span>
+      "Se voce leu esse guia e ainda faz errado — a culpa nao e do sistema. Mas se o sistema permite fazer errado... ai a culpa e minha. Ta?"
+    </div>
+  </div>
+  <br><br>
+  <div class="callout callout-alan" style="display: inline-block; text-align: left; max-width: 500px;">
+    <span class="callout-icon">&#129504;</span>
+    <div class="callout-text">
+      <span class="callout-author" style="color: var(--blue);">Alan Nicolas</span>
+      "Conhecimento sem estrutura e ruido. Esse guia e o Framework. Agora falta o Playbook (praticar) e o Swipe File (exemplos reais). A Trindade."
+    </div>
+  </div>
+  <p style="color: var(--text-muted); margin-top: 3rem; font-size: 0.8rem;">
+    AIOX Ecosystem v2.0 &bull; Documento criado em 2026-03-22 &bull; 17 secoes
+  </p>
+</section>
+
+</main>
+
+<button class="scroll-top" id="scrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8593;</button>
+
+<script>
+  window.addEventListener('scroll', () => {
+    document.getElementById('scrollTop').classList.toggle('visible', window.scrollY > 500);
+  });
+</script>
+
+</body>
+</html>
