@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Cortex Deck — 06 Metrics</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700&family=Inter:wght@400&family=JetBrains+Mono:wght@700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{width:1920px;height:1080px;overflow:hidden;background:#090E1A;padding:80px 160px;display:flex;flex-direction:column;justify-content:center;position:relative}
+.bar{position:absolute;bottom:0;left:0;right:0;height:4px;background:#4D71FA}
+.label{font-family:'Inter',sans-serif;font-size:14px;color:#4D71FA;text-transform:uppercase;letter-spacing:2px;margin-bottom:16px}
+h2{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:44px;color:#F7F9FC;margin-bottom:80px}
+.metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:48px}
+.metric{text-align:center}
+.metric-value{font-family:'JetBrains Mono',monospace;font-weight:700;font-size:64px;color:#4D71FA}
+.metric-label{font-family:'Inter',sans-serif;font-size:16px;color:#94A3B8;margin-top:12px;line-height:1.5}
+.metric.green .metric-value{color:#22C55E}
+</style>
+</head>
+<body>
+<div class="label">Numeros reais</div>
+<h2>Impacto comprovado</h2>
+<div class="metrics">
+  <div class="metric green"><div class="metric-value">+230%</div><div class="metric-label">crescimento medio<br>de faturamento</div></div>
+  <div class="metric"><div class="metric-value">23,4%</div><div class="metric-label">taxa de conversao<br>media</div></div>
+  <div class="metric"><div class="metric-value">R$142</div><div class="metric-label">CAC medio por<br>paciente novo</div></div>
+  <div class="metric"><div class="metric-value">48h</div><div class="metric-label">tempo de<br>onboarding</div></div>
+</div>
+<div class="bar"></div>
+</body>
+</html>

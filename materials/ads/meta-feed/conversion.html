@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Cortex Ad — Conversion 1080x1080</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{width:1080px;height:1080px;overflow:hidden;background:#090E1A;position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.divider{position:absolute;left:50%;top:0;bottom:0;width:1px;background:#1E2533}
+.left,.right{position:absolute;top:0;bottom:0;display:flex;flex-direction:column;justify-content:center;padding:80px 60px}
+.left{left:0;width:50%}
+.right{right:0;width:50%}
+.side-header{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:24px;margin-bottom:32px}
+.left .side-header{color:#4A5568}
+.right .side-header{color:#4D71FA}
+.item{font-family:'Inter',sans-serif;font-weight:400;font-size:18px;margin-bottom:16px;display:flex;align-items:center;gap:10px}
+.left .item{color:#4A5568;text-decoration:line-through;opacity:.6}
+.right .item{color:#F7F9FC}
+.check{width:16px;height:16px;flex-shrink:0}
+.logo{position:absolute;bottom:80px;left:50%;transform:translateX(-50%)}
+.logo svg{height:18px;width:auto}
+</style>
+</head>
+<body>
+<div class="divider"></div>
+<div class="left">
+  <div class="side-header">Antes</div>
+  <div class="item">4 fornecedores</div>
+  <div class="item">Dados fragmentados</div>
+  <div class="item">Lead sem rastreio</div>
+  <div class="item">Zero visao de ROI</div>
+</div>
+<div class="right">
+  <div class="side-header">Cortex</div>
+  <div class="item">
+    <svg class="check" viewBox="0 0 16 16" fill="none" stroke="#4D71FA" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13.3 4L6 11.3 2.7 8"/></svg>
+    1 sistema completo
+  </div>
+  <div class="item">
+    <svg class="check" viewBox="0 0 16 16" fill="none" stroke="#4D71FA" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13.3 4L6 11.3 2.7 8"/></svg>
+    CRM proprietario
+  </div>
+  <div class="item">
+    <svg class="check" viewBox="0 0 16 16" fill="none" stroke="#4D71FA" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13.3 4L6 11.3 2.7 8"/></svg>
+    Lead ao faturamento
+  </div>
+  <div class="item">
+    <svg class="check" viewBox="0 0 16 16" fill="none" stroke="#4D71FA" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13.3 4L6 11.3 2.7 8"/></svg>
+    ROI em tempo real
+  </div>
+</div>
+<div class="logo">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 52" fill="none">
+    <text x="0" y="40" font-family="'Space Grotesk','Arial Black',sans-serif" font-weight="700" font-size="44" letter-spacing="1" fill="#F7F9FC">Cortex</text>
+    <circle cx="170" cy="12" r="4" fill="#4D71FA"/>
+  </svg>
+</div>
+</body>
+</html>

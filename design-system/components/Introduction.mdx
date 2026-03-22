@@ -1,0 +1,86 @@
+{/* @storybook/blocks is bundled with @storybook/addon-docs */}
+
+# Cortex Design System
+
+<p style={{ fontSize: 18, color: '#94A3B8', marginTop: 8 }}>
+  O sistema de componentes da plataforma <strong style={{ color: '#F7F9FC' }}>Cortex</strong> — sistema operacional de crescimento para dentistas.
+</p>
+
+---
+
+## O que é o Cortex DS
+
+O Cortex DS é uma biblioteca de componentes React construída com:
+
+- **Next.js 14+ App Router** — arquitetura de produção
+- **Tailwind CSS v4** + CSS Variables — tokens integrados
+- **Framer Motion** — animações premium e microinterações
+- **shadcn/ui** (owned code) — componentes sob controle total
+- **TanStack Table** — tabelas com sort, filter, seleção e paginação
+- **Radix UI** — primitivas acessíveis (Dialog, Label, Tooltip)
+- **Lucide React** — ícones consistentes
+
+Todos os componentes são **dark mode first**, **WCAG AA compliant** e construídos sobre os tokens da marca Cortex.
+
+---
+
+## Paleta de Tokens
+
+| Token | Hex | Uso |
+|-------|-----|-----|
+| `void` | `#090E1A` | Background principal |
+| `ink` | `#0C1220` | Background secundário |
+| `dusk` | `#1B2845` | Cards, painéis |
+| `steel` | `#1E2533` | Bordas, divisores |
+| `ash` | `#4A5568` | Texto desabilitado |
+| `mist` | `#94A3B8` | Labels, captions |
+| `white` | `#F7F9FC` | Texto principal |
+| `signal` | `#4D71FA` | Accent — CTAs, links |
+| `success` | `#22C55E` | Estado positivo |
+| `warning` | `#F59E0B` | Estado de atenção |
+| `error` | `#F43F5E` | Estado de erro |
+
+---
+
+## Tipografia
+
+| Família | Uso |
+|---------|-----|
+| Space Grotesk | Títulos, headings, display (`font-display`) |
+| Inter | Corpo, UI, labels (default) |
+| JetBrains Mono | Valores numéricos, código (`font-mono`) |
+
+---
+
+## Estrutura Atômica
+
+```
+components/
+├── atoms/          # Button, Input, Badge, Avatar, Spinner, Tag, Label, Tooltip
+├── molecules/      # Card, Alert, Stat, FormField, Breadcrumb, Pagination
+├── organisms/      # Modal, Sidebar, PageHeader, EmptyState, DataTable
+└── templates/      # DashboardTemplate, CRMListTemplate, DetailTemplate, AuthTemplate
+```
+
+---
+
+## Uso básico
+
+```tsx
+import { Button, Badge, Card, CardContent } from '@/components'
+
+export function Example() {
+  return (
+    <Card variant="interactive">
+      <CardContent>
+        <Badge variant="success" dot>Ativo</Badge>
+        <Button variant="primary">Novo lead</Button>
+      </CardContent>
+    </Card>
+  )
+}
+```
+
+---
+
+*Cortex DS v1.0 — Março 2026 · Grupo Fábio Avelar*

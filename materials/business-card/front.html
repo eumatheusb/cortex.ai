@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Cortex Business Card — Front (90x50mm / 1063x591px)</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{width:1063px;height:591px;overflow:hidden;background:#090E1A;display:flex;flex-direction:column;justify-content:space-between;padding:64px}
+.logo svg{height:28px;width:auto}
+.info{display:flex;flex-direction:column;gap:4px}
+.name{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:28px;color:#F7F9FC}
+.role{font-family:'Inter',sans-serif;font-weight:400;font-size:16px;color:#94A3B8}
+.accent{position:absolute;bottom:0;left:0;right:0;height:3px;background:#4D71FA}
+</style>
+</head>
+<body>
+<div class="logo">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 264 64" fill="none">
+    <defs><radialGradient id="bc1" cx="40%" cy="40%" r="65%"><stop offset="0%" stop-color="#1B2845"/><stop offset="100%" stop-color="#090E1A"/></radialGradient></defs>
+    <rect width="64" height="64" rx="14" fill="url(#bc1)"/>
+    <path d="M 42.6,42.6 A 15,15 0 1,1 42.6,21.4" stroke="#4D71FA" stroke-width="5" stroke-linecap="round"/>
+    <circle cx="55" cy="32" r="2.5" fill="#4D71FA"/>
+    <text x="80" y="44" font-family="'Space Grotesk','Arial Black',sans-serif" font-weight="700" font-size="36" letter-spacing="0.8" fill="#F7F9FC">Cortex</text>
+  </svg>
+</div>
+<div class="info">
+  <div class="name">Fabio Avelar</div>
+  <div class="role">CEO & Fundador</div>
+</div>
+<div class="accent"></div>
+</body>
+</html>

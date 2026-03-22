@@ -1,0 +1,93 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 264 64" fill="none" role="img" aria-label="Cortex">
+  <defs>
+    <radialGradient id="tw-bg" cx="40%" cy="40%" r="65%">
+      <stop offset="0%" stop-color="#1B2845"/>
+      <stop offset="100%" stop-color="#090E1A"/>
+    </radialGradient>
+
+    <!--
+      Expanding clip rect reveals the wordmark left→right
+      from x=80 width=0 to width=145 over 1.4s (starts after icon draws at 0.7s)
+    -->
+    <clipPath id="tw-text-clip">
+      <rect x="78" y="0" height="64" width="0">
+        <animate
+          attributeName="width"
+          from="0" to="148"
+          begin="0.7s" dur="1.4s"
+          fill="freeze"
+          calcMode="spline"
+          keyTimes="0;1"
+          keySplines="0.4 0 0.2 1"
+        />
+      </rect>
+    </clipPath>
+
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@700&amp;display=swap');
+
+      /* Icon arc draws */
+      .tw-arc {
+        stroke-dasharray: 71;
+        stroke-dashoffset: 71;
+        animation: tw-draw 0.85s cubic-bezier(0.4,0,0.2,1) 0.05s both;
+      }
+      /* Icon bg */
+      .tw-bg { animation: tw-fade 0.3s ease both; }
+      /* Dot pops after arc */
+      .tw-dot {
+        transform-box: fill-box;
+        transform-origin: center;
+        animation: tw-pop 0.4s cubic-bezier(0.34,1.56,0.64,1) 0.8s both;
+      }
+
+      /* Cursor blinks after typing is done (starts at ~2.2s) */
+      .tw-cursor {
+        animation: tw-cursor-blink 0.75s step-end 2.2s infinite;
+      }
+
+      @keyframes tw-fade  { from { opacity:0; } to { opacity:1; } }
+      @keyframes tw-draw  { to { stroke-dashoffset: 0; } }
+      @keyframes tw-pop   {
+        from { transform:scale(0); opacity:0; }
+        to   { transform:scale(1); opacity:1; }
+      }
+      @keyframes tw-cursor-blink {
+        0%,100% { opacity:1; }
+        50%     { opacity:0; }
+      }
+    </style>
+  </defs>
+
+  <!-- Background -->
+  <rect class="tw-bg" width="64" height="64" rx="14" fill="url(#tw-bg)"/>
+
+  <!-- Arc draws -->
+  <path class="tw-arc"
+    d="M 42.6,42.6 A 15,15 0 1,1 42.6,21.4"
+    stroke="#4D71FA" stroke-width="5" stroke-linecap="round"
+  />
+  <circle class="tw-dot" cx="55" cy="32" r="2.5" fill="#4D71FA"/>
+
+  <!-- Wordmark revealed by expanding clip -->
+  <text
+    clip-path="url(#tw-text-clip)"
+    x="80" y="44"
+    font-family="'Space Grotesk','Arial Black',sans-serif"
+    font-weight="700" font-size="36" letter-spacing="0.8"
+    fill="#F7F9FC"
+  >Cortex</text>
+
+  <!-- Blinking cursor — follows end of text, appears at ~0.7s, stays while typing -->
+  <rect class="tw-cursor" y="12" width="2.5" height="34" fill="#4D71FA" rx="1">
+    <animate
+      attributeName="x"
+      from="80" to="230"
+      begin="0.7s" dur="1.4s"
+      fill="freeze"
+      calcMode="spline"
+      keyTimes="0;1"
+      keySplines="0.4 0 0.2 1"
+    />
+  </rect>
+</svg>

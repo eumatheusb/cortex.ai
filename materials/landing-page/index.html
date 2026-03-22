@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cortex — Do lead ao lucro. Um sistema.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --void:#090E1A;--ink:#0C1220;--dusk:#1B2845;--steel:#1E2533;--ash:#4A5568;
+  --mist:#94A3B8;--white:#F7F9FC;--signal:#4D71FA;--signal-dark:#3558D4;
+  --success:#22C55E;--warning:#F59E0B;--error:#F43F5E;
+  --font-display:'Space Grotesk',sans-serif;
+  --font-body:'Inter',sans-serif;
+  --font-mono:'JetBrains Mono',monospace;
+}
+html{scroll-behavior:smooth}
+body{background:var(--void);color:var(--white);font-family:var(--font-body);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{text-decoration:none;color:inherit;transition:color .2s}
+
+/* HEADER */
+.header{position:fixed;top:0;left:0;right:0;height:72px;display:flex;align-items:center;justify-content:space-between;padding:0 80px;z-index:100;background:rgba(9,14,26,.85);backdrop-filter:blur(12px);border-bottom:1px solid rgba(30,37,51,.5)}
+.header-logo{height:28px;display:flex;align-items:center;gap:12px}
+.header-logo svg{height:28px;width:auto}
+.nav{display:flex;gap:32px;align-items:center}
+.nav a{font-family:var(--font-body);font-weight:500;font-size:14px;color:var(--mist)}
+.nav a:hover{color:var(--signal)}
+.nav-cta{background:var(--signal);color:var(--white)!important;padding:8px 20px;border-radius:6px;font-weight:600;font-size:14px}
+.nav-cta:hover{background:var(--signal-dark)}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:72px 24px 80px;position:relative;overflow:hidden}
+.hero-grid{position:absolute;inset:0;background-image:
+  linear-gradient(var(--steel) .5px,transparent .5px),
+  linear-gradient(90deg,var(--steel) .5px,transparent .5px);
+  background-size:64px 64px;opacity:.08;pointer-events:none}
+.hero h1{font-family:var(--font-display);font-weight:700;font-size:72px;line-height:1.15;letter-spacing:-.02em;max-width:800px;position:relative}
+.hero .subline{font-family:var(--font-body);font-weight:400;font-size:20px;color:var(--mist);line-height:1.6;max-width:580px;margin-top:24px}
+.btn-primary{display:inline-flex;align-items:center;gap:8px;font-family:var(--font-display);font-weight:600;font-size:16px;color:var(--white);background:var(--signal);padding:16px 32px;border-radius:8px;border:none;cursor:pointer;margin-top:40px;transition:all .25s;box-shadow:0 0 24px rgba(77,113,250,.3)}
+.btn-primary:hover{background:var(--signal-dark);box-shadow:0 0 32px rgba(77,113,250,.45);transform:translateY(-1px)}
+
+/* FEATURES */
+.features{background:var(--ink);padding:128px 24px}
+.section-inner{max-width:1200px;margin:0 auto}
+.section-title{font-family:var(--font-display);font-weight:600;font-size:36px;color:var(--white);text-align:center;margin-bottom:64px}
+.features-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
+.feature-card{background:var(--dusk);border:1px solid var(--steel);border-radius:12px;padding:32px}
+.feature-icon{width:24px;height:24px;stroke:var(--signal);stroke-width:1.5;fill:none}
+.feature-card h3{font-family:var(--font-display);font-weight:600;font-size:20px;color:var(--white);margin-top:20px}
+.feature-card p{font-family:var(--font-body);font-weight:400;font-size:16px;color:var(--mist);line-height:1.6;margin-top:12px}
+
+/* SOCIAL PROOF */
+.social-proof{background:var(--void);padding:96px 24px;text-align:center}
+.metric-big{font-family:var(--font-mono);font-weight:700;font-size:72px;color:var(--signal)}
+.metric-label{font-family:var(--font-body);font-weight:400;font-size:18px;color:var(--mist);margin-top:16px}
+.logos-row{display:flex;justify-content:center;align-items:center;gap:48px;margin-top:64px;opacity:.4}
+.logos-row span{font-family:var(--font-display);font-weight:600;font-size:16px;color:var(--mist);letter-spacing:.5px}
+
+/* PRICING */
+.pricing{background:var(--ink);padding:128px 24px}
+.pricing-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;max-width:800px;margin:0 auto}
+.price-card{background:var(--dusk);border:1px solid var(--steel);border-radius:12px;padding:40px;position:relative}
+.price-card.recommended{border-color:var(--signal);box-shadow:0 0 24px rgba(77,113,250,.15)}
+.price-badge{position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--signal);color:var(--white);font-family:var(--font-body);font-weight:500;font-size:12px;padding:4px 12px;border-radius:100px}
+.price-name{font-family:var(--font-display);font-weight:600;font-size:20px;color:var(--white)}
+.price-value{font-family:var(--font-display);font-weight:700;font-size:48px;color:var(--white);margin-top:16px}
+.price-period{font-family:var(--font-body);font-weight:400;font-size:14px;color:var(--mist)}
+.price-features{list-style:none;margin-top:24px;display:flex;flex-direction:column;gap:12px}
+.price-features li{font-family:var(--font-body);font-weight:400;font-size:16px;color:var(--mist);display:flex;align-items:center;gap:10px}
+.price-features li::before{content:'';display:inline-block;width:16px;height:16px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none' stroke='%234D71FA' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M13.3 4L6 11.3 2.7 8'/%3E%3C/svg%3E") center/contain no-repeat;flex-shrink:0}
+.btn-ghost{display:inline-flex;align-items:center;font-family:var(--font-display);font-weight:600;font-size:16px;color:var(--signal);background:transparent;border:1px solid var(--signal);padding:14px 28px;border-radius:8px;cursor:pointer;margin-top:32px;transition:all .2s;width:100%;justify-content:center}
+.btn-ghost:hover{background:rgba(77,113,250,.1)}
+.btn-solid{display:inline-flex;align-items:center;justify-content:center;font-family:var(--font-display);font-weight:600;font-size:16px;color:var(--white);background:var(--signal);border:none;padding:14px 28px;border-radius:8px;cursor:pointer;margin-top:32px;transition:all .2s;width:100%;box-shadow:0 0 24px rgba(77,113,250,.3)}
+.btn-solid:hover{background:var(--signal-dark)}
+
+/* CTA FINAL */
+.cta-final{background:var(--void);padding:128px 24px;text-align:center}
+.cta-final h2{font-family:var(--font-display);font-weight:700;font-size:48px;color:var(--white);max-width:700px;margin:0 auto;line-height:1.15}
+
+/* FOOTER */
+.footer{background:var(--ink);padding:64px 80px 32px}
+.footer-inner{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:flex-start;gap:48px}
+.footer-logo svg{height:20px;width:auto}
+.footer-columns{display:flex;gap:80px}
+.footer-col h4{font-family:var(--font-body);font-weight:500;font-size:14px;color:var(--white);margin-bottom:16px}
+.footer-col a{display:block;font-family:var(--font-body);font-weight:400;font-size:14px;color:var(--mist);margin-bottom:8px}
+.footer-col a:hover{color:var(--white)}
+.footer-divider{border:none;border-top:1px solid var(--steel);margin:32px 0}
+.footer-copy{font-family:var(--font-body);font-weight:400;font-size:12px;color:var(--ash);text-align:center}
+
+/* RESPONSIVE */
+@media(max-width:1024px){
+  .header{padding:0 32px}
+  .hero h1{font-size:48px}
+  .hero .subline{font-size:18px}
+  .features-grid{grid-template-columns:1fr 1fr;gap:16px}
+  .pricing-grid{grid-template-columns:1fr 1fr}
+  .footer{padding:48px 32px 24px}
+  .footer-inner{flex-direction:column}
+  .cta-final h2{font-size:36px}
+}
+@media(max-width:768px){
+  .header{padding:0 24px}
+  .nav{display:none}
+  .hero h1{font-size:36px}
+  .features-grid{grid-template-columns:1fr}
+  .pricing-grid{grid-template-columns:1fr}
+  .metric-big{font-size:48px}
+  .footer-columns{flex-direction:column;gap:32px}
+  .price-value{font-size:36px}
+  .cta-final h2{font-size:28px}
+  .section-title{font-size:28px}
+  .footer{padding:32px 24px 24px}
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="header">
+  <div class="header-logo">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 264 64" fill="none" role="img" aria-label="Cortex">
+      <defs><radialGradient id="icon-bg" cx="40%" cy="40%" r="65%"><stop offset="0%" stop-color="#1B2845"/><stop offset="100%" stop-color="#090E1A"/></radialGradient></defs>
+      <rect width="64" height="64" rx="14" fill="url(#icon-bg)"/>
+      <path d="M 42.6,42.6 A 15,15 0 1,1 42.6,21.4" stroke="#4D71FA" stroke-width="5" stroke-linecap="round"/>
+      <circle cx="55" cy="32" r="2.5" fill="#4D71FA"/>
+      <text x="80" y="44" font-family="'Space Grotesk','Arial Black',sans-serif" font-weight="700" font-size="36" letter-spacing="0.8" fill="#F7F9FC">Cortex</text>
+    </svg>
+  </div>
+  <nav class="nav">
+    <a href="#features">Produto</a>
+    <a href="#proof">Resultados</a>
+    <a href="#pricing">Planos</a>
+    <a href="#cta" class="nav-cta">Falar com especialista</a>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-grid"></div>
+  <h1>Do lead ao lucro.<br>Um sistema.</h1>
+  <p class="subline">Stack completa de crescimento para clinicas odontologicas. CRM proprio, IA proprietaria, resultado comprovavel.</p>
+  <button class="btn-primary" onclick="location.href='#cta'">Ver como funciona</button>
+</section>
+
+<!-- FEATURES -->
+<section class="features" id="features">
+  <div class="section-inner">
+    <h2 class="section-title">O que opera por voce</h2>
+    <div class="features-grid">
+      <div class="feature-card">
+        <svg class="feature-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+        <h3>Cortex CRM</h3>
+        <p>Pipeline visual do lead ao contrato. Automacoes que disparam no timing certo.</p>
+      </div>
+      <div class="feature-card">
+        <svg class="feature-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+        <h3>Cortex Ads</h3>
+        <p>Trafego pago integrado ao CRM. Lead qualificado, nao volume vazio.</p>
+      </div>
+      <div class="feature-card">
+        <svg class="feature-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+        <h3>Cortex Analytics</h3>
+        <p>Dashboard unico do investimento ao faturamento. Dado antes de opiniao.</p>
+      </div>
+      <div class="feature-card">
+        <svg class="feature-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        <h3>Cortex Flow</h3>
+        <p>Automacao ponta a ponta. WhatsApp, email, follow-up — sem intervencao manual.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SOCIAL PROOF -->
+<section class="social-proof" id="proof">
+  <div class="section-inner">
+    <div class="metric-big">+230%</div>
+    <div class="metric-label">crescimento medio de faturamento dos clientes Cortex</div>
+    <div class="logos-row">
+      <span>OralMax</span>
+      <span>DentalPrime</span>
+      <span>Clinica Sorriso+</span>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="pricing" id="pricing">
+  <div class="section-inner">
+    <h2 class="section-title">Planos</h2>
+    <div class="pricing-grid">
+      <div class="price-card">
+        <div class="price-name">Essencial</div>
+        <div class="price-value">R$ 497<span class="price-period">/mes</span></div>
+        <ul class="price-features">
+          <li>CRM completo com pipeline visual</li>
+          <li>Ate 500 contatos ativos</li>
+          <li>Automacoes basicas de follow-up</li>
+          <li>Dashboard de metricas</li>
+          <li>Suporte por chat</li>
+        </ul>
+        <button class="btn-ghost">Comecar</button>
+      </div>
+      <div class="price-card recommended">
+        <div class="price-badge">Recomendado</div>
+        <div class="price-name">Cortex Pro</div>
+        <div class="price-value">R$ 1.297<span class="price-period">/mes</span></div>
+        <ul class="price-features">
+          <li>Tudo do Essencial</li>
+          <li>Contatos ilimitados</li>
+          <li>Cortex Ads integrado</li>
+          <li>IA de qualificacao de leads</li>
+          <li>Analytics avancado com ROI</li>
+          <li>Cortex Flow completo</li>
+          <li>Gestor de conta dedicado</li>
+        </ul>
+        <button class="btn-solid">Falar com especialista</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA FINAL -->
+<section class="cta-final" id="cta">
+  <h2>Seu concorrente ainda gerencia 4 fornecedores. Voce nao precisa.</h2>
+  <button class="btn-primary">Agendar demonstracao</button>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-logo">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 52" fill="none" role="img" aria-label="Cortex">
+        <text x="0" y="40" font-family="'Space Grotesk','Arial Black',sans-serif" font-weight="700" font-size="44" letter-spacing="1" fill="#F7F9FC">Cortex</text>
+        <circle cx="170" cy="12" r="4" fill="#4D71FA"/>
+      </svg>
+    </div>
+    <div class="footer-columns">
+      <div class="footer-col">
+        <h4>Produto</h4>
+        <a href="#">CRM</a><a href="#">Ads</a><a href="#">Analytics</a><a href="#">Flow</a>
+      </div>
+      <div class="footer-col">
+        <h4>Empresa</h4>
+        <a href="#">Sobre</a><a href="#">Contato</a><a href="#">Carreiras</a>
+      </div>
+      <div class="footer-col">
+        <h4>Legal</h4>
+        <a href="#">Termos</a><a href="#">Privacidade</a>
+      </div>
+    </div>
+  </div>
+  <hr class="footer-divider">
+  <div class="footer-copy">2026 Cortex. Grupo Fabio Avelar.</div>
+</footer>
+
+</body>
+</html>

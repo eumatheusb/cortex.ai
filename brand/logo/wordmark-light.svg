@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 52" fill="none" role="img" aria-label="Cortex">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@700&amp;display=swap');
+  </style>
+
+  <!-- "Cortex" wordmark — Space Grotesk 700, dark on light bg -->
+  <text
+    x="0"
+    y="40"
+    font-family="'Space Grotesk', 'Arial Black', sans-serif"
+    font-weight="700"
+    font-size="44"
+    letter-spacing="1"
+    fill="#090E1A"
+  >Cortex</text>
+
+  <!-- Signal dot — brand accent -->
+  <circle cx="170" cy="12" r="4" fill="#4D71FA"/>
+</svg>

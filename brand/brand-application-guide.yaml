@@ -1,0 +1,2391 @@
+# ═══════════════════════════════════════════════════════════════════════════════
+# CORTEX — Brand Application Guide
+# ═══════════════════════════════════════════════════════════════════════════════
+# Source: brandbook.yaml + tokens.yaml
+# Generated: 2026-03-22
+# Squad: Brand (acionado via Design Chief)
+# Status: Production-ready specs
+# ═══════════════════════════════════════════════════════════════════════════════
+
+metadata:
+  schema: "cortex.brand-application-guide"
+  version: "1.0"
+  status: production
+  brand: "Cortex"
+  parent_group: "Grupo Fabio Avelar"
+  created: "2026-03-22"
+  squad: brand
+  design_direction: "Minimalismo agressivo — dark-first, Signal Blue accents, premium finishes"
+  archetype: "Governante 65% + Sabio 35%"
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# GLOBAL REFERENCES
+# ═══════════════════════════════════════════════════════════════════════════════
+
+global_refs:
+  colors:
+    void: "#090E1A"
+    ink: "#0C1220"
+    dusk: "#1B2845"
+    steel: "#1E2533"
+    ash: "#4A5568"
+    mist: "#94A3B8"
+    white: "#F7F9FC"
+    signal: "#4D71FA"
+    signal_dark: "#3558D4"
+    signal_light: "#7B96FB"
+    signal_ghost: "rgba(77, 113, 250, 0.12)"
+    success: "#22C55E"
+    warning: "#F59E0B"
+    error: "#F43F5E"
+
+  typography:
+    display: "Space Grotesk"
+    body: "Inter"
+    mono: "JetBrains Mono"
+
+  logo_assets:
+    primary_horizontal_dark: "outputs/brand/cortex/logo/logo-horizontal-dark.svg"
+    primary_horizontal_light: "outputs/brand/cortex/logo/logo-horizontal-light.svg"
+    vertical_dark: "outputs/brand/cortex/logo/logo-vertical-dark.svg"
+    wordmark_dark: "outputs/brand/cortex/logo/wordmark-dark.svg"
+    wordmark_light: "outputs/brand/cortex/logo/wordmark-light.svg"
+    icon_dark: "outputs/brand/cortex/logo/icon-dark.svg"
+    icon_light: "outputs/brand/cortex/logo/icon-light.svg"
+    icon_on_signal: "outputs/brand/cortex/logo/icon-on-signal.svg"
+    favicon: "outputs/brand/cortex/logo/favicon.svg"
+    animated_reveal: "outputs/brand/cortex/logo/logo-reveal.svg"
+    animated_loader: "outputs/brand/cortex/logo/logo-loader.svg"
+    animated_scan: "outputs/brand/cortex/logo/logo-scan.svg"
+    animated_beam: "outputs/brand/cortex/logo/logo-beam.svg"
+    animated_ripple: "outputs/brand/cortex/logo/logo-ripple.svg"
+    animated_glitch: "outputs/brand/cortex/logo/logo-glitch.svg"
+    animated_idle: "outputs/brand/cortex/logo/logo-idle.svg"
+    animated_stagger: "outputs/brand/cortex/logo/logo-stagger.svg"
+    animated_typewriter: "outputs/brand/cortex/logo/logo-typewriter.svg"
+    react_component: "outputs/brand/cortex/logo/CortexLogo.tsx"
+
+  production_notes:
+    color_profile_digital: "sRGB IEC61966-2.1"
+    color_profile_print: "FOGRA39 (ISO 12647-2:2004) ou US Web Coated (SWOP) v2"
+    pantone_void: "Pantone Black 6 C"
+    pantone_signal: "Pantone 2726 C"
+    pantone_mist: "Pantone Cool Gray 6 C"
+    pantone_white: "Pantone 11-0602 TCX (Snow White)"
+    cmyk_void: "C:85 M:75 K:100 Y:40"
+    cmyk_signal: "C:75 M:55 Y:0 K:0"
+    minimum_dpi_print: 300
+    minimum_dpi_large_format: 150
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# MATERIAIS DIGITAIS
+# ═══════════════════════════════════════════════════════════════════════════════
+
+digital:
+
+  # ───────────────────────────────────────────────────────────────────────────
+  # 01. LANDING PAGE
+  # ───────────────────────────────────────────────────────────────────────────
+  01_landing_page:
+    id: "DIG-001"
+    name: "Landing Page — Cortex"
+    description: >
+      Single-page dark-first landing com 5 secoes. Cada secao respira com
+      espaco negativo generoso. Nenhum elemento decorativo gratuito. Cada
+      pixel justifica sua existencia. Visual reference: Linear.app + Vercel.
+
+    specs:
+      viewport: "1440px design width, fluid responsive"
+      max_content_width: "1200px"
+      background: "#090E1A (Void)"
+      grid: "12 colunas, 24px gutter, 80px margin lateral"
+
+    sections:
+
+      hero:
+        description: >
+          Full-viewport hero. Background Void puro sem imagem. Headline
+          massiva centralizada. Abaixo, subline em Mist. CTA unico em
+          Signal Blue com glow sutil. Logo horizontal dark no topo-esquerda
+          do header fixo. Nav minimalista a direita: 4 links em Inter 500
+          cor Mist, hover Signal. Subtle grid pattern (linhas Steel, 0.5px,
+          opcidade 8%) preenche o background inteiro, simulando cockpit.
+        layout:
+          header_height: "72px"
+          logo_position: "top-left, 80px from edge"
+          logo_variant: "logo-horizontal-dark.svg"
+          logo_height: "28px"
+          nav_links: ["Produto", "Resultados", "Planos", "Falar com especialista"]
+          nav_font: "Inter 500, 14px, #94A3B8"
+          nav_hover: "#4D71FA"
+        headline:
+          text: "Do lead ao lucro. Um sistema."
+          font: "Space Grotesk 700"
+          size: "72px desktop / 48px tablet / 36px mobile"
+          color: "#F7F9FC"
+          line_height: "1.15"
+          letter_spacing: "-0.02em"
+          max_width: "800px"
+          alignment: "center"
+        subline:
+          text: "Stack completa de crescimento para clinicas odontologicas. CRM proprio, IA proprietaria, resultado comprovavel."
+          font: "Inter 400"
+          size: "20px desktop / 18px mobile"
+          color: "#94A3B8"
+          line_height: "1.6"
+          max_width: "580px"
+          margin_top: "24px"
+        cta:
+          text: "Ver como funciona"
+          font: "Space Grotesk 600, 16px"
+          color: "#F7F9FC"
+          background: "#4D71FA"
+          hover_background: "#3558D4"
+          padding: "16px 32px"
+          border_radius: "8px"
+          margin_top: "40px"
+          shadow: "0 0 24px rgba(77, 113, 250, 0.3)"
+          hover_shadow: "0 0 32px rgba(77, 113, 250, 0.45)"
+        background_pattern:
+          type: "grid"
+          stroke: "#1E2533"
+          stroke_width: "0.5px"
+          opacity: 0.08
+          cell_size: "64px"
+
+      features:
+        description: >
+          4 cards em grid 2x2 sobre fundo Ink. Cada card tem fundo Dusk,
+          border Steel 1px, radius 12px. Icone minimalista em Signal Blue
+          (24x24, stroke-only, 1.5px stroke). Titulo em Space Grotesk 600
+          branco. Descricao em Inter 400 Mist. Sem imagens, sem ilustracoes.
+        background: "#0C1220"
+        padding_section: "128px 0"
+        section_title:
+          text: "O que opera por voce"
+          font: "Space Grotesk 600, 36px"
+          color: "#F7F9FC"
+          alignment: "center"
+          margin_bottom: "64px"
+        cards:
+          layout: "2x2 grid, 24px gap"
+          card_background: "#1B2845"
+          card_border: "1px solid #1E2533"
+          card_radius: "12px"
+          card_padding: "32px"
+          icon_size: "24px"
+          icon_style: "stroke-only, 1.5px, #4D71FA"
+          title_font: "Space Grotesk 600, 20px, #F7F9FC"
+          title_margin_top: "20px"
+          description_font: "Inter 400, 16px, #94A3B8"
+          description_margin_top: "12px"
+          description_line_height: "1.6"
+          items:
+            - title: "Cortex CRM"
+              description: "Pipeline visual do lead ao contrato. Automacoes que disparam no timing certo."
+            - title: "Cortex Ads"
+              description: "Trafego pago integrado ao CRM. Lead qualificado, nao volume vazio."
+            - title: "Cortex Analytics"
+              description: "Dashboard unico do investimento ao faturamento. Dado antes de opiniao."
+            - title: "Cortex Flow"
+              description: "Automacao ponta a ponta. WhatsApp, email, follow-up — sem intervencao manual."
+
+      social_proof:
+        description: >
+          Fundo Void. Uma unica metrica grande central em JetBrains Mono
+          Bold Signal Blue, com label em Mist abaixo. Abaixo, 3 logos de
+          clinicas em branco/mist (opacidade 40%). Minimalismo extremo:
+          nenhum testimonial textual longo, apenas numeros.
+        background: "#090E1A"
+        padding_section: "96px 0"
+        metric:
+          value: "+230%"
+          value_font: "JetBrains Mono 700, 72px"
+          value_color: "#4D71FA"
+          label: "crescimento medio de faturamento dos clientes Cortex"
+          label_font: "Inter 400, 18px"
+          label_color: "#94A3B8"
+          label_margin_top: "16px"
+        logos_row:
+          count: 3
+          style: "Monocromatico #94A3B8, opacidade 40%"
+          height: "32px"
+          gap: "48px"
+          margin_top: "64px"
+
+      pricing:
+        description: >
+          Fundo Ink. 2 cards lado a lado (nao 3 — minimalismo). Card
+          recomendado tem border Signal Blue 1px com glow sutil. Preco em
+          Space Grotesk Bold branco. Features listadas com checkmarks em
+          Signal Blue. CTA primario no card principal, CTA ghost no secundario.
+        background: "#0C1220"
+        padding_section: "128px 0"
+        section_title:
+          text: "Planos"
+          font: "Space Grotesk 600, 36px, #F7F9FC"
+          alignment: "center"
+          margin_bottom: "64px"
+        cards:
+          layout: "2 columns, 24px gap, max-width 800px, centered"
+          standard:
+            name: "Essencial"
+            background: "#1B2845"
+            border: "1px solid #1E2533"
+            radius: "12px"
+            padding: "40px"
+            price_font: "Space Grotesk 700, 48px, #F7F9FC"
+            period_font: "Inter 400, 14px, #94A3B8"
+            features_font: "Inter 400, 16px, #94A3B8"
+            check_color: "#4D71FA"
+            cta_style: "ghost — border 1px #4D71FA, text #4D71FA, bg transparent"
+            cta_text: "Comecar"
+          recommended:
+            name: "Cortex Pro"
+            background: "#1B2845"
+            border: "1px solid #4D71FA"
+            radius: "12px"
+            padding: "40px"
+            glow: "0 0 24px rgba(77, 113, 250, 0.15)"
+            badge: "Recomendado"
+            badge_bg: "#4D71FA"
+            badge_font: "Inter 500, 12px, #F7F9FC"
+            badge_radius: "full"
+            badge_padding: "4px 12px"
+            price_font: "Space Grotesk 700, 48px, #F7F9FC"
+            cta_style: "solid — bg #4D71FA, text #F7F9FC"
+            cta_text: "Falar com especialista"
+
+      cta_final:
+        description: >
+          Secao curta. Fundo Void. Uma frase impactante centralizada em
+          Space Grotesk Bold. CTA abaixo. Nada mais. Nenhum elemento adicional.
+        background: "#090E1A"
+        padding_section: "128px 0"
+        headline:
+          text: "Seu concorrente ainda gerencia 4 fornecedores. Voce nao precisa."
+          font: "Space Grotesk 700, 48px"
+          color: "#F7F9FC"
+          max_width: "700px"
+          alignment: "center"
+          line_height: "1.15"
+        cta:
+          text: "Agendar demonstracao"
+          style: "Identico ao hero CTA"
+          margin_top: "40px"
+
+      footer:
+        description: >
+          Minimalista. Fundo Ink. Logo wordmark dark a esquerda. Links em
+          colunas a direita em Inter 400 Mist. Linha separadora Steel 1px.
+          Copyright em Inter 400 12px Ash.
+        background: "#0C1220"
+        padding: "64px 80px 32px"
+        logo: "wordmark-dark.svg"
+        logo_height: "20px"
+        columns:
+          - title: "Produto"
+            links: ["CRM", "Ads", "Analytics", "Flow"]
+          - title: "Empresa"
+            links: ["Sobre", "Contato", "Carreiras"]
+          - title: "Legal"
+            links: ["Termos", "Privacidade"]
+        link_font: "Inter 400, 14px, #94A3B8"
+        link_hover: "#F7F9FC"
+        column_title_font: "Inter 500, 14px, #F7F9FC"
+        divider: "1px solid #1E2533"
+        divider_margin: "32px 0"
+        copyright:
+          text: "2026 Cortex. Grupo Fabio Avelar."
+          font: "Inter 400, 12px, #4A5568"
+
+  # ───────────────────────────────────────────────────────────────────────────
+  # 02. DASHBOARD MOCKUP
+  # ───────────────────────────────────────────────────────────────────────────
+  02_dashboard_mockup:
+    id: "DIG-002"
+    name: "Dashboard CRM Mockup"
+    description: >
+      Mockup high-fidelity de um dashboard Cortex CRM. Dados ficticios
+      realistas. Visual de cockpit: denso em informacao mas limpo.
+      Dark mode exclusivo. Todas as metricas em JetBrains Mono.
+
+    specs:
+      dimensions: "1440x900px (desktop viewport)"
+      format: "PNG @2x (2880x1800px exportado), Figma source"
+      background: "#090E1A"
+
+    layout:
+      sidebar:
+        width: "240px"
+        background: "#0C1220"
+        border_right: "1px solid #1E2533"
+        logo: "icon-dark.svg at top, 32px padding, 24px icon"
+        nav_items:
+          - { label: "Dashboard", icon: "grid", active: true }
+          - { label: "Pipeline", icon: "kanban" }
+          - { label: "Contatos", icon: "users" }
+          - { label: "Campanhas", icon: "zap" }
+          - { label: "Analytics", icon: "bar-chart" }
+          - { label: "Configuracoes", icon: "settings" }
+        nav_font: "Inter 500, 14px"
+        nav_color_default: "#94A3B8"
+        nav_color_active: "#F7F9FC"
+        nav_active_bg: "rgba(77, 113, 250, 0.12)"
+        nav_active_indicator: "3px left border #4D71FA"
+        nav_icon_size: "18px"
+        nav_item_padding: "10px 16px"
+        nav_gap: "4px"
+
+      topbar:
+        height: "64px"
+        background: "#090E1A"
+        border_bottom: "1px solid #1E2533"
+        left_content: "Bom dia, Dr. Fabio — Space Grotesk 600, 18px, #F7F9FC"
+        right_content: "Search input (Steel bg, Mist placeholder) + notification bell + avatar circle"
+        search_width: "280px"
+        search_bg: "#1E2533"
+        search_radius: "8px"
+        search_placeholder: "Buscar contatos, campanhas..."
+        search_font: "Inter 400, 14px, #94A3B8"
+
+      kpi_row:
+        description: "4 KPI cards em linha, gap 16px"
+        card_bg: "#1B2845"
+        card_border: "1px solid #1E2533"
+        card_radius: "12px"
+        card_padding: "24px"
+        cards:
+          - label: "Leads este mes"
+            value: "1.247"
+            trend: "+18%"
+            trend_color: "#22C55E"
+          - label: "Taxa de conversao"
+            value: "23,4%"
+            trend: "+2.1pp"
+            trend_color: "#22C55E"
+          - label: "Faturamento"
+            value: "R$ 487.200"
+            trend: "+31%"
+            trend_color: "#22C55E"
+          - label: "CAC"
+            value: "R$ 142"
+            trend: "-12%"
+            trend_color: "#22C55E"
+        value_font: "JetBrains Mono 700, 30px, #F7F9FC"
+        label_font: "Inter 400, 14px, #94A3B8"
+        trend_font: "JetBrains Mono 500, 14px"
+
+      main_chart:
+        description: >
+          Area chart — receita mensal (ultimos 12 meses). Linha Signal Blue
+          2px com fill gradient (Signal 20% -> transparent). Grid lines
+          Steel 0.5px horizontal. Eixo Y em JetBrains Mono 12px Ash.
+          Eixo X em Inter 12px Ash. Tooltip com fundo Dusk, border Steel.
+        chart_bg: "#1B2845"
+        chart_border: "1px solid #1E2533"
+        chart_radius: "12px"
+        chart_padding: "24px"
+        line_color: "#4D71FA"
+        line_width: "2px"
+        fill_gradient: "linear-gradient(to bottom, rgba(77,113,250,0.2), transparent)"
+        grid_color: "#1E2533"
+        grid_width: "0.5px"
+        axis_font: "JetBrains Mono 400, 12px, #4A5568"
+
+      pipeline_mini:
+        description: >
+          Mini kanban com 4 colunas (Novo, Qualificado, Proposta, Fechado).
+          Cards pequenos com nome + valor em JetBrains Mono. Total por
+          coluna no header.
+        columns: ["Novo (23)", "Qualificado (15)", "Proposta (8)", "Fechado (12)"]
+        column_bg: "#0C1220"
+        column_radius: "8px"
+        card_bg: "#1B2845"
+        card_radius: "8px"
+        card_padding: "12px"
+        card_name_font: "Inter 500, 13px, #F7F9FC"
+        card_value_font: "JetBrains Mono 400, 12px, #94A3B8"
+
+  # ───────────────────────────────────────────────────────────────────────────
+  # 03. APP MOBILE MOCKUP
+  # ───────────────────────────────────────────────────────────────────────────
+  03_app_mobile_mockup:
+    id: "DIG-003"
+    name: "App Mobile Mockup — 3 telas"
+    description: >
+      3 telas de app mobile Cortex CRM. iPhone 15 Pro frame.
+      Dark mode exclusivo. Status bar branca. Navegacao bottom tab.
+
+    specs:
+      device_frame: "iPhone 15 Pro (393x852px logical)"
+      export: "PNG @3x para mockup, Figma source"
+      status_bar: "White text, system icons"
+      safe_area_top: "59px"
+      safe_area_bottom: "34px"
+      background: "#090E1A"
+
+    screens:
+
+      tela_01_home:
+        name: "Home / Dashboard resumo"
+        description: >
+          Saudacao no topo (Space Grotesk 600, 24px, White). Abaixo, 2 KPI
+          cards lado a lado (Dusk bg, radius 12px). Grafico sparkline de
+          faturamento semanal (Signal Blue line, sem eixos). Lista de
+          ultimos leads (avatar circle Dusk, nome Inter 500 White, fonte
+          Inter 400 Mist, timestamp Ash). Bottom tab bar: Home (ativo),
+          Pipeline, Contatos, Mais.
+        bottom_tab:
+          background: "#0C1220"
+          border_top: "1px solid #1E2533"
+          active_color: "#4D71FA"
+          inactive_color: "#4A5568"
+          icon_size: "22px"
+          label_font: "Inter 500, 10px"
+          items: ["Home", "Pipeline", "Contatos", "Mais"]
+        kpi_cards:
+          - { label: "Leads hoje", value: "47", font: "JetBrains Mono 700, 24px, #F7F9FC" }
+          - { label: "Receita mes", value: "R$ 487K", font: "JetBrains Mono 700, 24px, #F7F9FC" }
+
+      tela_02_pipeline:
+        name: "Pipeline — Kanban horizontal scroll"
+        description: >
+          Header com titulo "Pipeline" (Space Grotesk 600, 20px, White) e
+          filtro dropdown a direita (Dusk bg, Mist text). Kanban com scroll
+          horizontal. Cada coluna: header com label + count + cor indicator
+          (4px dot). Cards com nome do lead, valor em JetBrains Mono,
+          indicador de fonte (Meta/Google/Organico) como badge pequeno.
+        column_header_font: "Inter 600, 14px, #F7F9FC"
+        column_count_font: "JetBrains Mono 400, 14px, #94A3B8"
+        lead_card:
+          bg: "#1B2845"
+          radius: "10px"
+          padding: "16px"
+          name_font: "Inter 500, 15px, #F7F9FC"
+          value_font: "JetBrains Mono 400, 13px, #94A3B8"
+          badge_bg: "rgba(77, 113, 250, 0.12)"
+          badge_font: "Inter 500, 11px, #4D71FA"
+          badge_radius: "full"
+
+      tela_03_lead_detail:
+        name: "Lead Detail"
+        description: >
+          Header com back arrow + nome do lead (Space Grotesk 600, 20px).
+          Avatar grande (48px circle, Dusk bg, initials White). Secao de
+          dados: telefone, email, valor estimado, fonte, score (barra
+          horizontal Signal Blue fill sobre Steel bg). Timeline de
+          interacoes abaixo: icones de acao (ligacao, whatsapp, email) +
+          timestamp. CTA fixo no bottom: "Enviar proposta" btn Signal Blue.
+        data_labels: "Inter 400, 13px, #94A3B8"
+        data_values: "Inter 500, 15px, #F7F9FC"
+        score_bar:
+          height: "6px"
+          bg: "#1E2533"
+          fill: "#4D71FA"
+          radius: "full"
+        timeline_item:
+          icon_size: "16px"
+          icon_color: "#94A3B8"
+          text_font: "Inter 400, 14px, #94A3B8"
+          time_font: "Inter 400, 12px, #4A5568"
+        bottom_cta:
+          text: "Enviar proposta"
+          bg: "#4D71FA"
+          font: "Space Grotesk 600, 16px, #F7F9FC"
+          radius: "12px"
+          height: "52px"
+          margin: "16px horizontal"
+
+  # ───────────────────────────────────────────────────────────────────────────
+  # 04. OG IMAGE / SOCIAL CARD
+  # ───────────────────────────────────────────────────────────────────────────
+  04_og_image:
+    id: "DIG-004"
+    name: "OG Image / Social Card"
+    description: >
+      Imagem de compartilhamento para link previews (Twitter, LinkedIn,
+      WhatsApp, Slack). Fundo Void com grid pattern sutil. Logo horizontal
+      top-left. Headline centralizado. Sem fotos, sem ilustracoes.
+
+    specs:
+      dimensions: "1200x630px"
+      format: "PNG, <300KB otimizado"
+      safe_zone: "Manter conteudo critico 80px de cada borda (WhatsApp cropa laterais)"
+
+    layout:
+      background: "#090E1A"
+      grid_pattern:
+        type: "dot grid"
+        color: "#1E2533"
+        opacity: 0.15
+        dot_size: "2px"
+        gap: "32px"
+      logo:
+        asset: "logo-horizontal-dark.svg"
+        position: "top-left, 60px from edges"
+        height: "28px"
+      headline:
+        text: "Do lead ao lucro. Um sistema."
+        font: "Space Grotesk 700, 52px"
+        color: "#F7F9FC"
+        position: "center-center, vertically offset -20px"
+        max_width: "900px"
+        line_height: "1.15"
+      tagline:
+        text: "cortex.com.br"
+        font: "Inter 500, 18px"
+        color: "#4D71FA"
+        position: "below headline, margin-top 24px"
+      accent_line:
+        description: "Linha horizontal 120px x 2px em Signal Blue, centrada abaixo do headline"
+        width: "120px"
+        height: "2px"
+        color: "#4D71FA"
+        margin_top: "20px"
+
+  # ───────────────────────────────────────────────────────────────────────────
+  # 05. FAVICON PACK
+  # ───────────────────────────────────────────────────────────────────────────
+  05_favicon_pack:
+    id: "DIG-005"
+    name: "Favicon Pack Completo"
+    description: >
+      Pack completo de favicons para todas as plataformas. Icone Cx
+      geometrico sobre fundo Signal Blue (para contraste em abas de browser)
+      ou transparente para contextos escuros.
+
+    source: "outputs/brand/cortex/logo/favicon.svg"
+    source_icon: "outputs/brand/cortex/logo/icon-dark.svg"
+
+    deliverables:
+      - file: "favicon.ico"
+        sizes: "16x16, 32x32, 48x48 (multi-size ICO)"
+        background: "#4D71FA"
+        icon_color: "#F7F9FC"
+        notes: "ICO multi-resolution para browsers legados"
+
+      - file: "favicon-32.png"
+        size: "32x32px"
+        background: "#4D71FA"
+        icon_color: "#F7F9FC"
+
+      - file: "favicon-16.png"
+        size: "16x16px"
+        background: "#4D71FA"
+        icon_color: "#F7F9FC"
+        notes: "Simplificar icone ao maximo neste tamanho — apenas Cx"
+
+      - file: "favicon.svg"
+        notes: "SVG com media query para dark/light mode do browser"
+        light_mode: { bg: "#4D71FA", icon: "#F7F9FC" }
+        dark_mode: { bg: "transparent", icon: "#F7F9FC" }
+
+      - file: "apple-touch-icon.png"
+        size: "180x180px"
+        background: "#090E1A"
+        icon_color: "#F7F9FC"
+        padding: "20% inset"
+        radius: "Nao — iOS aplica mask automaticamente"
+
+      - file: "android-chrome-192.png"
+        size: "192x192px"
+        background: "#090E1A"
+        icon_color: "#F7F9FC"
+        maskable_safe_zone: "80% centered"
+
+      - file: "android-chrome-512.png"
+        size: "512x512px"
+        background: "#090E1A"
+        icon_color: "#F7F9FC"
+
+      - file: "mstile-150x150.png"
+        size: "150x150px"
+        background: "#090E1A"
+        icon_color: "#F7F9FC"
+
+      - file: "safari-pinned-tab.svg"
+        notes: "SVG monocromatico preto — Safari converte automaticamente"
+        color: "#000000"
+
+    manifest_snippet:
+      theme_color: "#090E1A"
+      background_color: "#090E1A"
+      display: "standalone"
+
+  # ───────────────────────────────────────────────────────────────────────────
+  # 06. AD TEMPLATE — META FEED (1080x1080)
+  # ───────────────────────────────────────────────────────────────────────────
+  06_ad_meta_feed:
+    id: "DIG-006"
+    name: "Ad Template Meta Feed — 1080x1080"
+    description: >
+      3 variacoes de anuncio para feed do Instagram/Facebook. Formato
+      quadrado. Cada variacao com abordagem diferente mantendo unidade visual.
+      Dark mode, tipografia impactante, zero ruido.
+
+    specs:
+      dimensions: "1080x1080px"
+      format: "PNG @1x, Figma source"
+      safe_zone: "60px de cada borda (safe zone para UI do Meta)"
+      text_limit: "Maximo 20% da area em texto (guideline Meta)"
+
+    variations:
+
+      v1_statement:
+        name: "Statement — Frase de impacto"
+        description: >
+          Fundo Void. Uma frase grande centralizada. Logo pequeno no
+          bottom-center. Sem mais nada. Poder na simplicidade.
+        background: "#090E1A"
+        grid_overlay: "dot grid, #1E2533, opacity 8%, gap 24px"
+        headline:
+          text: "Lead nao e resultado. Faturamento e."
+          font: "Space Grotesk 700, 64px"
+          color: "#F7F9FC"
+          alignment: "center"
+          max_width: "900px"
+          line_height: "1.15"
+        accent: "Palavra 'Faturamento' em #4D71FA"
+        logo:
+          asset: "wordmark-dark.svg"
+          position: "bottom-center, 80px from bottom"
+          height: "18px"
+
+      v2_metric:
+        name: "Metric — Numero de impacto"
+        description: >
+          Fundo Void. Numero massivo centralizado em JetBrains Mono Bold
+          Signal Blue. Label explicativo em Mist abaixo. Logo bottom-center.
+          O numero e o protagonista.
+        background: "#090E1A"
+        metric:
+          value: "+230%"
+          font: "JetBrains Mono 700, 120px"
+          color: "#4D71FA"
+          glow: "0 0 40px rgba(77, 113, 250, 0.25)"
+        label:
+          text: "de crescimento medio em faturamento"
+          font: "Inter 400, 22px"
+          color: "#94A3B8"
+          margin_top: "16px"
+        logo:
+          asset: "wordmark-dark.svg"
+          position: "bottom-center, 80px from bottom"
+          height: "18px"
+
+      v3_comparison:
+        name: "Comparison — Antes x Depois"
+        description: >
+          Dividido ao meio verticalmente. Lado esquerdo: "Antes" em Ash,
+          lista de problemas riscados (cor Error Rose, opacidade 60%).
+          Lado direito: "Cortex" em Signal Blue, lista de solucoes com
+          check Signal Blue. Linha divisoria Steel 1px vertical.
+        background: "#090E1A"
+        divider: "1px solid #1E2533, vertical center"
+        left_side:
+          header: "Antes"
+          header_font: "Space Grotesk 600, 24px, #4A5568"
+          items_font: "Inter 400, 18px, #4A5568"
+          items_style: "line-through, opacity 60%"
+          items:
+            - "4 fornecedores"
+            - "Dados fragmentados"
+            - "Lead sem rastreio"
+            - "Zero visao de ROI"
+        right_side:
+          header: "Cortex"
+          header_font: "Space Grotesk 600, 24px, #4D71FA"
+          items_font: "Inter 400, 18px, #F7F9FC"
+          items_icon: "check, 16px, #4D71FA"
+          items:
+            - "1 sistema completo"
+            - "CRM proprietario"
+            - "Lead ao faturamento"
+            - "ROI em tempo real"
+        logo:
+          asset: "wordmark-dark.svg"
+          position: "bottom-center, 80px from bottom"
+          height: "18px"
+
+  # ───────────────────────────────────────────────────────────────────────────
+  # 07. AD TEMPLATE — META STORIES (1080x1920)
+  # ───────────────────────────────────────────────────────────────────────────
+  07_ad_meta_stories:
+    id: "DIG-007"
+    name: "Ad Template Meta Stories — 1080x1920"
+    description: >
+      3 variacoes para Stories do Instagram/Facebook. Formato 9:16 vertical.
+      Aproveita a verticalidade para hierarquia de leitura top-to-bottom.
+
+    specs:
+      dimensions: "1080x1920px"
+      format: "PNG @1x, MP4 para versao animada"
+      safe_zone_top: "250px (status bar + story UI)"
+      safe_zone_bottom: "280px (CTA swipe up / link)"
+      effective_area: "1080x1390px centralizada"
+
+    variations:
+
+      v1_hero_statement:
+        name: "Hero Statement"
+        description: >
+          Logo icon no topo (icon-dark.svg, 40px). Grande espaco vazio.
+          Frase de impacto centralizada na zona efetiva. CTA text no bottom
+          da zona segura. Grid pattern sutil no fundo.
+        background: "#090E1A"
+        grid_pattern: "linhas verticais, #1E2533, opacity 6%, gap 40px"
+        logo:
+          asset: "icon-dark.svg"
+          position: "top-center, 280px from top"
+          size: "40px"
+        headline:
+          text: "Voce nao precisa de mais uma ferramenta."
+          font: "Space Grotesk 700, 48px"
+          color: "#F7F9FC"
+          alignment: "center"
+          max_width: "900px"
+          position: "center of effective area"
+        subline:
+          text: "Precisa de um sistema que funcione."
+          font: "Space Grotesk 700, 48px"
+          color: "#4D71FA"
+          margin_top: "8px"
+        cta_hint:
+          text: "Conhecer o Cortex"
+          font: "Inter 500, 16px, #94A3B8"
+          position: "bottom of effective area"
+
+      v2_data_cascade:
+        name: "Data Cascade"
+        description: >
+          3 metricas empilhadas verticalmente, cada uma maior que a anterior
+          (efeito cascata de crescimento). Espacamento generoso entre elas.
+          Todas em JetBrains Mono. Ultimo numero em Signal Blue como climax.
+        background: "#090E1A"
+        metrics:
+          - value: "1.247 leads"
+            font: "JetBrains Mono 500, 32px, #4A5568"
+            position: "top third"
+          - value: "23% conversao"
+            font: "JetBrains Mono 600, 44px, #94A3B8"
+            position: "center"
+          - value: "R$ 487K"
+            font: "JetBrains Mono 700, 64px, #4D71FA"
+            glow: "0 0 32px rgba(77, 113, 250, 0.2)"
+            position: "bottom third"
+        label:
+          text: "faturamento operado pelo Cortex"
+          font: "Inter 400, 16px, #94A3B8"
+          margin_top: "12px"
+        logo:
+          asset: "wordmark-dark.svg"
+          position: "bottom of effective area"
+          height: "16px"
+
+      v3_system_visual:
+        name: "System Visual"
+        description: >
+          Representacao visual minimalista do fluxo: 4 nodes verticais
+          conectados por linha Signal Blue 2px. Cada node e um circulo Dusk
+          border Steel com icone stroke-only branco. Labels ao lado.
+          Do "Lead" (topo) ao "Lucro" (bottom). Logo no bottom.
+        background: "#090E1A"
+        flow_line:
+          color: "#4D71FA"
+          width: "2px"
+          style: "solid"
+        nodes:
+          size: "48px circle"
+          bg: "#1B2845"
+          border: "1px solid #1E2533"
+          icon_color: "#F7F9FC"
+          icon_size: "20px"
+          items:
+            - { label: "Lead", icon: "user-plus" }
+            - { label: "Qualificacao", icon: "filter" }
+            - { label: "Conversao", icon: "check-circle" }
+            - { label: "Lucro", icon: "trending-up", highlight: true }
+        highlight_node:
+          border: "1px solid #4D71FA"
+          glow: "0 0 16px rgba(77, 113, 250, 0.25)"
+        label_font: "Inter 500, 16px, #F7F9FC"
+        label_position: "right of node, 16px gap"
+
+  # ───────────────────────────────────────────────────────────────────────────
+  # 08. AD TEMPLATE — CARROSSEL (5 SLIDES)
+  # ───────────────────────────────────────────────────────────────────────────
+  08_ad_carrossel:
+    id: "DIG-008"
+    name: "Ad Template Carrossel — 5 slides"
+    description: >
+      Carrossel Meta (Instagram/Facebook) com 5 slides. Cada slide 1080x1080.
+      Narrativa progressiva: problema -> insight -> solucao -> prova -> CTA.
+      Linha visual continua entre slides (barra Signal Blue 4px no bottom).
+
+    specs:
+      dimensions: "1080x1080px por slide (5 slides)"
+      format: "PNG @1x por slide, Figma source"
+      continuity_element: "Barra horizontal Signal Blue 4px no bottom de cada slide, posicao fixa"
+
+    slides:
+
+      slide_01_hook:
+        title: "Hook — Problema"
+        background: "#090E1A"
+        headline:
+          text: "Sua clinica ainda depende de 4 fornecedores que nao conversam?"
+          font: "Space Grotesk 700, 44px, #F7F9FC"
+          alignment: "left"
+          margin: "80px"
+          max_width: "900px"
+        accent: "4 fornecedores em #F43F5E (Error Rose)"
+        swipe_indicator:
+          text: "Deslize >"
+          font: "Inter 500, 14px, #4A5568"
+          position: "bottom-right, 80px from edges"
+
+      slide_02_insight:
+        title: "Insight — Dado"
+        background: "#090E1A"
+        metric:
+          value: "73%"
+          font: "JetBrains Mono 700, 96px, #4D71FA"
+          position: "center-left, 80px margin"
+        label:
+          text: "das clinicas perdem leads por falta de integracao entre ferramentas"
+          font: "Inter 400, 20px, #94A3B8"
+          max_width: "500px"
+          margin_top: "16px"
+
+      slide_03_solution:
+        title: "Solucao — O sistema"
+        background: "#090E1A"
+        headline:
+          text: "Um sistema. Do lead ao lucro."
+          font: "Space Grotesk 700, 48px, #F7F9FC"
+          margin: "80px"
+        features_list:
+          items: ["CRM proprietario", "Trafego integrado", "IA de qualificacao", "Analytics unificado"]
+          font: "Inter 500, 20px, #F7F9FC"
+          icon: "Dash Signal Blue 3px antes de cada item"
+          gap: "20px"
+          margin_top: "32px"
+
+      slide_04_proof:
+        title: "Prova — Resultado"
+        background: "#090E1A"
+        metric:
+          value: "+230%"
+          font: "JetBrains Mono 700, 80px, #22C55E"
+        label:
+          text: "crescimento medio de faturamento"
+          font: "Inter 400, 20px, #94A3B8"
+          margin_top: "12px"
+        sub_metric:
+          text: "Dados reais de clinicas operadas pelo Cortex"
+          font: "Inter 400, 16px, #4A5568"
+          margin_top: "24px"
+
+      slide_05_cta:
+        title: "CTA — Acao"
+        background: "#090E1A"
+        logo:
+          asset: "logo-horizontal-dark.svg"
+          position: "center, vertically offset -40px"
+          height: "40px"
+        cta_text:
+          text: "Agende uma demonstracao gratuita"
+          font: "Space Grotesk 600, 28px, #F7F9FC"
+          margin_top: "32px"
+        url_text:
+          text: "cortex.com.br"
+          font: "Inter 500, 18px, #4D71FA"
+          margin_top: "16px"
+        accent_glow: "Glow sutil atras do logo — 0 0 60px rgba(77,113,250,0.15)"
+
+  # ───────────────────────────────────────────────────────────────────────────
+  # 09. AD TEMPLATE — GOOGLE DISPLAY
+  # ───────────────────────────────────────────────────────────────────────────
+  09_ad_google_display:
+    id: "DIG-009"
+    name: "Ad Template Google Display — 3 tamanhos"
+    description: >
+      3 tamanhos de banner para Google Display Network. Mesma linguagem
+      visual adaptada a cada proporcao. Extremamente limpos — o espaco
+      e reduzido entao cada elemento deve ser essencial.
+
+    specs:
+      format: "PNG @1x e @2x, GIF animado opcional"
+      max_file_size: "150KB"
+
+    sizes:
+
+      leaderboard:
+        dimensions: "728x90px"
+        description: >
+          Horizontal extremo. Fundo Void. Logo icon-dark (20px) a esquerda.
+          Headline curto ao centro. CTA pill a direita. Tudo em uma linha.
+        background: "#090E1A"
+        border: "1px solid #1E2533"
+        padding: "0 24px"
+        logo:
+          asset: "icon-dark.svg"
+          size: "20px"
+          position: "center-left, 24px from edge"
+        headline:
+          text: "Do lead ao lucro. Sistema completo para clinicas."
+          font: "Space Grotesk 600, 14px, #F7F9FC"
+          position: "center"
+        cta:
+          text: "Saiba mais"
+          font: "Inter 600, 12px, #F7F9FC"
+          background: "#4D71FA"
+          radius: "4px"
+          padding: "6px 14px"
+          position: "center-right, 24px from edge"
+
+      medium_rectangle:
+        dimensions: "300x250px"
+        description: >
+          Formato mais flexivel. Fundo Void com grid pattern sutil.
+          Logo horizontal no topo. Headline centralizado. Metric abaixo
+          do headline. CTA button no bottom.
+        background: "#090E1A"
+        border: "1px solid #1E2533"
+        grid_pattern: "dot grid, #1E2533, opacity 10%, gap 16px"
+        logo:
+          asset: "wordmark-dark.svg"
+          height: "14px"
+          position: "top-center, 24px from top"
+        headline:
+          text: "Stack completa do lead ao lucro"
+          font: "Space Grotesk 600, 20px, #F7F9FC"
+          position: "center, vertically offset -16px"
+          alignment: "center"
+        metric:
+          text: "+230% faturamento medio"
+          font: "JetBrains Mono 500, 14px, #4D71FA"
+          margin_top: "12px"
+        cta:
+          text: "Conhecer o Cortex"
+          font: "Inter 600, 13px, #F7F9FC"
+          background: "#4D71FA"
+          radius: "6px"
+          padding: "10px 20px"
+          position: "bottom-center, 24px from bottom"
+
+      wide_skyscraper:
+        dimensions: "160x600px"
+        description: >
+          Vertical extremo. Fundo Void. Logo icon no topo. Headline
+          em 3-4 linhas curtas ocupando o terco central. Metric no terco
+          inferior. CTA pill no bottom. Leitura vertical natural.
+        background: "#090E1A"
+        border: "1px solid #1E2533"
+        padding: "24px 16px"
+        logo:
+          asset: "icon-dark.svg"
+          size: "24px"
+          position: "top-center, 24px from top"
+        headline:
+          text: "Do lead ao lucro. Um sistema."
+          font: "Space Grotesk 600, 18px, #F7F9FC"
+          alignment: "center"
+          position: "upper third"
+          line_height: "1.2"
+        metric:
+          value: "+230%"
+          font: "JetBrains Mono 700, 36px, #4D71FA"
+          position: "center"
+        metric_label:
+          text: "faturamento"
+          font: "Inter 400, 13px, #94A3B8"
+        cta:
+          text: "Saiba mais"
+          font: "Inter 600, 12px, #F7F9FC"
+          background: "#4D71FA"
+          radius: "4px"
+          padding: "8px 16px"
+          position: "bottom-center, 24px from bottom"
+
+  # ───────────────────────────────────────────────────────────────────────────
+  # 10. YOUTUBE THUMBNAIL
+  # ───────────────────────────────────────────────────────────────────────────
+  10_youtube_thumbnail:
+    id: "DIG-010"
+    name: "YouTube Thumbnail Template"
+    description: >
+      Template de thumbnail para canal YouTube Cortex. 1280x720px.
+      Contraste alto para legibilidade em tamanhos reduzidos. Headline
+      grande, face opcional do apresentador (recorte), metric de impacto.
+
+    specs:
+      dimensions: "1280x720px"
+      format: "PNG, <2MB"
+      safe_zone: "Evitar bottom-right 200x100px (duracao do video no YouTube)"
+
+    layout:
+      background: "#090E1A"
+      gradient_overlay: "radial-gradient from center — rgba(77,113,250,0.08) to transparent"
+      headline:
+        position: "Left side, 60% of width"
+        font: "Space Grotesk 700, 56px"
+        color: "#F7F9FC"
+        max_lines: 3
+        line_height: "1.15"
+        stroke_outline: "3px #090E1A (para legibilidade sobre qualquer fundo)"
+      metric_badge:
+        position: "Top-right area"
+        background: "#4D71FA"
+        radius: "8px"
+        padding: "8px 16px"
+        font: "JetBrains Mono 700, 28px, #F7F9FC"
+        example: "+230%"
+      presenter_photo:
+        position: "Right side, bottom-aligned"
+        style: "Recorte (cutout) sem fundo, escala parcial (60% da altura)"
+        notes: "Opcional — manter template funcional sem foto tambem"
+      logo:
+        asset: "icon-dark.svg"
+        position: "top-left, 40px from edges"
+        size: "40px"
+      brand_bar:
+        position: "Bottom full width"
+        height: "4px"
+        color: "#4D71FA"
+
+  # ───────────────────────────────────────────────────────────────────────────
+  # 11. SOCIAL MEDIA KIT
+  # ───────────────────────────────────────────────────────────────────────────
+  11_social_media_kit:
+    id: "DIG-011"
+    name: "Social Media Kit Completo"
+    description: >
+      Kit completo para presenca social Cortex. Inclui templates de posts,
+      stories, e capas de destaques. Todos dark-first, tipografia bold.
+
+    components:
+
+      instagram_post_square:
+        dimensions: "1080x1080px"
+        templates:
+          quote_post:
+            description: >
+              Frase de impacto centralizada sobre Void. Logo bottom-center.
+              Opcional: faixa Signal Blue 4px no topo.
+            background: "#090E1A"
+            font: "Space Grotesk 700, 48px, #F7F9FC"
+            accent_word_color: "#4D71FA"
+            logo_height: "16px"
+            logo_position: "bottom-center, 60px from bottom"
+
+          metric_post:
+            description: >
+              Numero grande em JetBrains Mono Signal Blue. Label em Mist.
+              Identico ao ad v2_metric mas com hashtag adicionada.
+            background: "#090E1A"
+
+          tip_post:
+            description: >
+              Titulo em Space Grotesk 600, 28px, White. Corpo em Inter 400,
+              18px, Mist. Card Dusk com radius 12px como container central
+              (inset 60px). Logo no bottom.
+            card_bg: "#1B2845"
+            card_border: "1px solid #1E2533"
+            card_radius: "12px"
+            card_padding: "40px"
+
+      instagram_story:
+        dimensions: "1080x1920px"
+        templates:
+          announcement:
+            description: >
+              Fundo Void. Headline top third. Corpo center. CTA bottom.
+              Grid pattern 6% opacity. Logo icon top-center.
+          poll_engagement:
+            description: >
+              Fundo Void. Pergunta em Space Grotesk Bold. Area inferior
+              livre para sticker de enquete nativo do Instagram.
+              Manter zona 1080x600px bottom livre.
+
+      instagram_highlight_covers:
+        dimensions: "1080x1920px (exibido como 110x110px circle)"
+        description: >
+          Icones stroke-only brancos sobre fundo Void. Centrados no safe
+          circle (diametro 720px centrado no canvas). Um icone por capa.
+          Stroke 2.5px, cor #F7F9FC. Sem texto.
+        icons:
+          - { name: "Produto", icon: "layers" }
+          - { name: "Resultados", icon: "trending-up" }
+          - { name: "Cases", icon: "briefcase" }
+          - { name: "Equipe", icon: "users" }
+          - { name: "FAQ", icon: "help-circle" }
+          - { name: "Contato", icon: "message-circle" }
+        icon_size: "48px"
+        icon_color: "#F7F9FC"
+        background: "#090E1A"
+        safe_circle_diameter: "720px"
+
+      linkedin_post:
+        dimensions: "1200x627px"
+        description: >
+          Mais horizontais que Instagram. Fundo Void. Headline a esquerda
+          (60% width). Metric ou visual a direita (40%). Logo horizontal
+          no bottom-left. Mais corporativo, menos provocativo.
+        font_headline: "Space Grotesk 600, 40px, #F7F9FC"
+        font_body: "Inter 400, 18px, #94A3B8"
+
+      twitter_header:
+        dimensions: "1500x500px"
+        description: >
+          Fundo Void. Wordmark dark centralizado. Tagline abaixo em Mist.
+          Grid pattern 5% opacity. Extremamente clean.
+        background: "#090E1A"
+        logo: "wordmark-dark.svg, height 32px, center"
+        tagline: "Do lead ao lucro. Um sistema. Zero fragmentacao."
+        tagline_font: "Inter 400, 16px, #94A3B8"
+
+      profile_photo:
+        dimensions: "400x400px (exibido circular)"
+        description: >
+          Icon Cortex (Cx) branco sobre fundo Void. Centrado no safe circle.
+          Sem wordmark — apenas o monograma Cx.
+        background: "#090E1A"
+        icon: "icon-dark.svg"
+        icon_size: "200px (50% do canvas)"
+
+  # ───────────────────────────────────────────────────────────────────────────
+  # 12. EMAIL HEADER / FOOTER
+  # ───────────────────────────────────────────────────────────────────────────
+  12_email_header_footer:
+    id: "DIG-012"
+    name: "Email Header / Footer Templates"
+    description: >
+      Header e footer padrao para todos os emails transacionais e marketing.
+      HTML email safe — sem webfonts (fallback para system fonts).
+      Max width 600px (email best practice).
+
+    specs:
+      max_width: "600px"
+      fallback_fonts:
+        display: "'Space Grotesk', 'Helvetica Neue', Helvetica, Arial, sans-serif"
+        body: "'Inter', 'Helvetica Neue', Helvetica, Arial, sans-serif"
+        mono: "'JetBrains Mono', 'Courier New', Courier, monospace"
+      notes: "Incluir @import Google Fonts no head para clientes que suportam"
+
+    header:
+      height: "72px"
+      background: "#090E1A"
+      padding: "24px 32px"
+      logo:
+        asset: "logo-horizontal-dark.svg (exportar como PNG 2x para email)"
+        height: "24px"
+        position: "center"
+        alt_text: "Cortex"
+      border_bottom: "2px solid #4D71FA"
+      notes: >
+        Manter header identico em todos os emails. Logo centralizado.
+        Sem nav links no header (email nao e site). Border Signal Blue
+        como unico elemento de acento.
+
+    footer:
+      background: "#0C1220"
+      padding: "32px"
+      border_top: "1px solid #1E2533"
+      layout:
+        logo:
+          asset: "wordmark-dark.svg (PNG 2x)"
+          height: "16px"
+          position: "center"
+          margin_bottom: "16px"
+        social_icons:
+          description: "Instagram + LinkedIn icons, 20x20px, cor #94A3B8, gap 16px, centered"
+          icon_color: "#94A3B8"
+          icon_size: "20px"
+          gap: "16px"
+        separator:
+          type: "horizontal line"
+          color: "#1E2533"
+          margin: "16px 0"
+        address:
+          text: "Cortex | Grupo Fabio Avelar | Sao Paulo, SP"
+          font: "Inter 400, 12px, #4A5568"
+          alignment: "center"
+        unsubscribe:
+          text: "Gerenciar preferencias | Cancelar inscricao"
+          font: "Inter 400, 12px, #94A3B8"
+          link_color: "#94A3B8"
+          link_hover: "#F7F9FC"
+          alignment: "center"
+          margin_top: "8px"
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# MATERIAIS FISICOS — VESTUARIO
+# ═══════════════════════════════════════════════════════════════════════════════
+
+apparel:
+
+  # ───────────────────────────────────────────────────────────────────────────
+  # 13. CAMISETA PRETA PREMIUM
+  # ───────────────────────────────────────────────────────────────────────────
+  13_camiseta_preta:
+    id: "PHY-001"
+    name: "Camiseta Preta Premium"
+    description: >
+      Camiseta unissex premium preta com aplicacao minimalista do logo.
+      Sensacao de produto de luxo tech — nao de brinde corporativo.
+      Quem veste deve sentir que faz parte de algo exclusivo.
+
+    specs:
+      material:
+        fabric: "100% algodao pima peruano penteado 30/1"
+        weight: "160g/m2 (premium lightweight)"
+        toque: "Macio, caimento justo sem ser slim"
+        alternativa: "Algodao egipcio ou Supima se Pima indisponivel"
+      color:
+        body: "Preto profundo (Pantone Black 6 C) — nao cinza escuro, preto real"
+        notes: "Tinto em fio, nao estampado — evita desbotamento"
+      sizes: ["P", "M", "G", "GG", "XG"]
+      fit: "Regular fit com leve afinamento na cintura"
+
+    front:
+      placement: "Centro do peito, 8cm abaixo da costura do colarinho"
+      design: "Monograma Cx (icon-dark.svg simplificado)"
+      technique: "Bordado em fio branco (#F7F9FC)"
+      dimensions: "3cm x 3cm"
+      thread: "Fio poliester branco, ponto acetinado (satin stitch), 0.4mm density"
+      notes: >
+        Bordado pequeno e preciso. NAO e serigrafia. O bordado da textura
+        e sensacao premium. Ponto limpo, sem fios soltos.
+
+    back:
+      option_a:
+        placement: "Nuca, 3cm abaixo do colarinho, centralizado"
+        design: "Wordmark 'Cortex' em linha unica"
+        technique: "Bordado em fio #94A3B8 (Mist)"
+        dimensions: "6cm largura"
+        notes: "Discreto — so visivel de perto"
+      option_b:
+        placement: "Centro das costas, posicao standard"
+        design: "Wordmark 'Cortex' em Space Grotesk Bold"
+        technique: "Serigrafia em tinta emborrachada branca fosca"
+        dimensions: "18cm largura"
+        notes: "Tinta fosca, NAO brilhante. Acabamento matte e essencial."
+
+    labels:
+      tag_interna: "Woven label preta com logo Cortex branco. Remover tag de marca do fornecedor."
+      tag_tamanho: "Estampa transfer preta sobre preta (tonal) com tamanho"
+
+    packaging:
+      description: >
+        Dobrada em papel de seda preto. Selada com adesivo circular
+        preto fosco com logo Cx debossed (sem tinta). Dentro de saco
+        zip-lock preto fosco.
+      adesivo_diametro: "4cm"
+      adesivo_acabamento: "Preto fosco com deboss do Cx (tonal, sem tinta)"
+
+    production_notes:
+      minimum_order: "50 unidades por tamanho"
+      lead_time: "15-20 dias uteis"
+      fornecedores_ref: "Hering Premium / Reserva / producao propria em malharia SP"
+      preco_estimado_unitario: "R$ 45-65 (sem embalagem)"
+
+  # ───────────────────────────────────────────────────────────────────────────
+  # 14. BABYLOOK FEMININA
+  # ───────────────────────────────────────────────────────────────────────────
+  14_babylook:
+    id: "PHY-002"
+    name: "Babylook Feminina Premium"
+    description: >
+      Versao feminina com modelagem babylook. Mesmo nivel de qualidade
+      e acabamento da camiseta unissex.
+
+    specs:
+      material:
+        fabric: "95% algodao pima + 5% elastano"
+        weight: "160g/m2"
+        toque: "Macio com stretch leve para caimento feminino"
+      color: "Preto profundo (Pantone Black 6 C)"
+      sizes: ["PP", "P", "M", "G", "GG"]
+      fit: "Babylook — acinturada, manga curta ajustada, comprimento standard"
+
+    front:
+      placement: "Centro do peito, 7cm abaixo da costura do colarinho"
+      design: "Monograma Cx bordado em fio branco"
+      dimensions: "2.5cm x 2.5cm"
+      technique: "Bordado satin stitch"
+
+    back:
+      placement: "Nuca, 3cm abaixo do colarinho"
+      design: "Wordmark 'Cortex' bordado em fio Mist (#94A3B8)"
+      dimensions: "5cm largura"
+
+    labels_and_packaging: "Identicos a camiseta premium (PHY-001)"
+
+  # ───────────────────────────────────────────────────────────────────────────
+  # 15. BOMBER JACKET
+  # ───────────────────────────────────────────────────────────────────────────
+  15_bomber_jacket:
+    id: "PHY-003"
+    name: "Bomber Jacket Cortex"
+    description: >
+      Bomber classica preta com detalhes Signal Blue minimalistas.
+      Peca statement — quem veste representa a marca. Acabamento impecavel.
+
+    specs:
+      material:
+        exterior: "Nylon premium matte (tipo MA-1 flight jacket)"
+        forro: "Poliester acetinado preto"
+        ribbing: "Punhos, colarinho e barra em rib 1x1 preto"
+      color_exterior: "Preto matte (Pantone Black 6 C)"
+      color_forro: "Preto (#0C1220 simulado)"
+      sizes: ["P", "M", "G", "GG", "XG"]
+      fit: "Regular bomber fit"
+      zipper: "Metal gunmetal matte (nao prateado brilhante)"
+
+    branding:
+      peito_esquerdo:
+        design: "Monograma Cx"
+        technique: "Bordado tom sobre tom (fio preto sobre preto)"
+        dimensions: "4cm x 4cm"
+        notes: "Visivel apenas de perto e sob luz. Luxury tonal branding."
+      manga_esquerda:
+        design: "Patch retangular 'CORTEX'"
+        technique: "Patch woven — fundo preto, texto #94A3B8 (Mist)"
+        dimensions: "8cm x 2cm"
+        position: "Braco esquerdo, 10cm acima do punho"
+        fixacao: "Costura perimetral, nao termocolante"
+      costas:
+        design: "NENHUM — costas limpas"
+        notes: "Resistir a tentacao de colocar logo grande nas costas. Minimalismo."
+      interior:
+        design: "Label woven grande na parte interna"
+        dimensions: "8cm x 8cm"
+        content: "Logo Cortex + 'Est. 2026' + 'Sao Paulo'"
+        colors: "Fundo Signal Blue (#4D71FA), texto branco (#F7F9FC)"
+
+    details:
+      bolsos: "2 bolsos laterais com ziper oculto, 1 bolso interno"
+      puller_zipper: "Custom — formato retangular com 'Cx' gravado"
+      hang_tag: "Tag de papel preto fosco 300g, furo com ilhos gunmetal, fio preto"
+
+    production_notes:
+      minimum_order: "30 unidades"
+      lead_time: "30-45 dias uteis"
+      preco_estimado: "R$ 180-250 unitario"
+
+  # ───────────────────────────────────────────────────────────────────────────
+  # 16. PUFFER / SAND JACKET
+  # ───────────────────────────────────────────────────────────────────────────
+  16_puffer_jacket:
+    id: "PHY-004"
+    name: "Puffer Jacket Cortex"
+    description: >
+      Jaqueta puffer leve (nao volumosa) estilo cropped ou standard.
+      Visual tech-premium. Acabamento matte obrigatorio.
+
+    specs:
+      material:
+        exterior: "Nylon ripstop matte, water-resistant (DWR coating)"
+        enchimento: "Fibra sintetica Primaloft ou equivalente (100g/m2)"
+        forro: "Nylon liso preto"
+      color: "Preto matte profundo"
+      sizes: ["P", "M", "G", "GG", "XG"]
+      fit: "Regular, ligeiramente cropped (nao oversized)"
+      zipper: "YKK Vislon matte preto, two-way"
+
+    branding:
+      peito_esquerdo:
+        design: "Wordmark 'Cortex' em Space Grotesk Bold"
+        technique: "Transfer de silicone matte branco"
+        dimensions: "8cm largura"
+        notes: "Silicone matte — texturizado ao toque, nao vinil brilhante"
+      manga_esquerda:
+        design: "Monograma Cx"
+        technique: "Bordado em fio branco"
+        dimensions: "3cm x 3cm"
+        position: "Braco esquerdo, terco superior"
+      tag_exterior:
+        design: "Loop tag tecido preto com 'Cx' branco"
+        position: "Lateral esquerda, costura da barra"
+        dimensions: "1.5cm x 4cm (dobrado)"
+
+    production_notes:
+      minimum_order: "30 unidades"
+      lead_time: "45-60 dias uteis"
+      preco_estimado: "R$ 200-320 unitario"
+
+  # ───────────────────────────────────────────────────────────────────────────
+  # 17. CORTA-VENTO
+  # ───────────────────────────────────────────────────────────────────────────
+  17_corta_vento:
+    id: "PHY-005"
+    name: "Corta-vento Cortex"
+    description: >
+      Jaqueta corta-vento leve, packable (dobravel no bolso). Visual
+      esportivo-tech. Material com toque nylon premium.
+
+    specs:
+      material:
+        exterior: "Nylon microfiber matte, wind-resistant, water-repellent"
+        forro: "Mesh respiravel preto"
+        weight: "Ultraleve — <200g total"
+      color: "Preto matte"
+      sizes: ["P", "M", "G", "GG", "XG"]
+      fit: "Regular esportivo"
+      zipper: "YKK nylon preto com puller emborrachado"
+      capuz: "Sim — com regulagem, embutivel no colarinho"
+
+    branding:
+      peito_esquerdo:
+        design: "Monograma Cx"
+        technique: "Transfer refletivo (reflective) prata — brilha quando luz incide"
+        dimensions: "4cm x 4cm"
+        notes: "Refletivo adiciona camada tech + funcional. Visivel a noite."
+      costas_nuca:
+        design: "Wordmark 'CORTEX'"
+        technique: "Transfer refletivo prata"
+        dimensions: "10cm largura"
+        position: "Centralizado na nuca, 5cm abaixo do colarinho"
+      detalhe:
+        description: "Tira fina Signal Blue (#4D71FA) no zipper track interior — visivel apenas quando aberto"
+        width: "3mm"
+        material: "Fita de gorgurao tingida"
+
+    production_notes:
+      minimum_order: "50 unidades"
+      preco_estimado: "R$ 120-180 unitario"
+
+  # ───────────────────────────────────────────────────────────────────────────
+  # 18. BONE / DAD HAT
+  # ───────────────────────────────────────────────────────────────────────────
+  18_bone_dad_hat:
+    id: "PHY-006"
+    name: "Bone Dad Hat Cortex"
+    description: >
+      Dad hat desestruturado preto com branding minimo. Nao e trucker,
+      nao e snapback. Dad hat clean, aba curva.
+
+    specs:
+      material:
+        tecido: "Algodao twill lavado (washed cotton)"
+        estrutura: "Desestruturado (unstructured) — sem entretela rigida"
+        aba: "Pre-curvada, 7cm comprimento"
+      color: "Preto lavado (ligeiramente softer que preto puro)"
+      fechamento: "Fivela metalica gunmetal com ilhos"
+      tamanho: "Unico ajustavel (56-62cm)"
+      paineis: "6 paineis"
+      ilhos_ventilacao: "Metal gunmetal matte"
+
+    branding:
+      frente:
+        design: "Monograma Cx"
+        technique: "Bordado em fio branco (#F7F9FC)"
+        dimensions: "3.5cm x 3.5cm"
+        position: "Centro frontal, 2cm acima da aba"
+        pontos: "Satin stitch, ~8000 pontos"
+      lateral:
+        design: "Nenhum — clean"
+      traseira:
+        design: "'cortex' em lowercase"
+        technique: "Bordado em fio Mist (#94A3B8)"
+        dimensions: "4cm largura"
+        position: "Acima da fivela, centralizado"
+        font_ref: "Inter Medium, letterspacing +2%"
+
+    production_notes:
+      minimum_order: "100 unidades"
+      lead_time: "15-20 dias"
+      preco_estimado: "R$ 25-40 unitario"
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# MATERIAIS FISICOS — OBJETOS
+# ═══════════════════════════════════════════════════════════════════════════════
+
+objects:
+
+  # ───────────────────────────────────────────────────────────────────────────
+  # 19. SQUEEZE MODERNA INOX
+  # ───────────────────────────────────────────────────────────────────────────
+  19_squeeze_inox:
+    id: "PHY-007"
+    name: "Squeeze Moderna Inox"
+    description: >
+      Garrafa termica de aco inoxidavel com acabamento premium.
+      Design clean, silhueta reta (nao bulbous). Referencia visual:
+      LARQ, Chilly's, Hydro Flask Trail Series.
+
+    specs:
+      material: "Aco inox 18/8 (304) dupla parede com vacuo"
+      capacidade: "500ml"
+      altura: "25cm"
+      diametro: "6.8cm"
+      peso: "~350g (vazia)"
+      isolamento: "Mantém frio 24h / quente 12h"
+      tampa: "Rosca em aco inox com vedacao silicone"
+      acabamento_exterior: "Powder coat matte preto (tipo Cerakote)"
+      cor: "Preto fosco profundo"
+
+    branding:
+      corpo:
+        design: "Wordmark 'Cortex' em Space Grotesk Bold"
+        technique: "Gravacao a laser (laser engraving)"
+        dimensions: "6cm largura"
+        position: "Centro do corpo, face frontal"
+        resultado: >
+          Laser revela o aco escovado sob o powder coat preto.
+          Contraste sutil metalico sobre preto fosco. Premium.
+        notes: "NAO usar adesivo ou serigrafia. Gravacao a laser e obrigatoria."
+      fundo:
+        design: "Monograma Cx"
+        technique: "Gravacao a laser"
+        dimensions: "1.5cm"
+        position: "Centro do fundo da garrafa"
+
+    packaging:
+      caixa: "Caixa kraft preto (papelao revestido preto), abertura magnetica"
+      interior: "Espuma EVA preta recortada no formato da garrafa"
+      adesivo_lacre: "Adesivo circular Cx, 3cm, preto fosco deboss"
+
+    production_notes:
+      minimum_order: "100 unidades"
+      lead_time: "30-45 dias"
+      preco_estimado: "R$ 60-90 unitario (com gravacao + caixa)"
+
+  # ───────────────────────────────────────────────────────────────────────────
+  # 20. CANECA PRETA FOSCA
+  # ───────────────────────────────────────────────────────────────────────────
+  20_caneca_preta:
+    id: "PHY-008"
+    name: "Caneca Preta Fosca"
+    description: >
+      Caneca ceramica com acabamento matte preto. Forma geometrica reta
+      (nao arredondada/bulbosa). Alca angular, nao circular.
+
+    specs:
+      material: "Ceramica (stoneware) com esmalte matte preto"
+      capacidade: "350ml"
+      altura: "9.5cm"
+      diametro_boca: "8.5cm"
+      cor_exterior: "Preto fosco matte (Pantone Black 6 C)"
+      cor_interior: "Preto fosco (mesma cor — interior e exterior uniforme)"
+      alca: "Angular/geometrica, nao arredondada"
+      base: "Base plana sem esmalte (ceramica crua exposta — contraste natural)"
+
+    branding:
+      exterior:
+        design: "Monograma Cx"
+        technique: "Gravacao no esmalte (debossed no ceramico) ou transfer ceramico matte branco"
+        dimensions: "4cm x 4cm"
+        position: "Centro frontal (face oposta a alca)"
+        option_premium: "Debossed sem cor — tonal, apenas textura. Ultra premium."
+        option_standard: "Transfer ceramico branco fosco. Resiste lava-loucas."
+      base:
+        design: "'cortex.com.br' gravado"
+        technique: "Laser na base de ceramica crua"
+        font: "Inter Regular, 8px visual equivalent"
+
+    packaging:
+      caixa: "Caixa kraft preto, interior com divisoria de papelao para protecao"
+      notes: "Caixa deve ter visual identico a caixa do squeeze (consistencia)"
+
+    production_notes:
+      minimum_order: "100 unidades"
+      lead_time: "30-45 dias"
+      preco_estimado: "R$ 35-55 unitario"
+
+  # ───────────────────────────────────────────────────────────────────────────
+  # 21. CADERNO / MOLESKINE
+  # ───────────────────────────────────────────────────────────────────────────
+  21_caderno_moleskine:
+    id: "PHY-009"
+    name: "Caderno / Moleskine Cortex"
+    description: >
+      Caderno estilo Moleskine preto com acabamento premium.
+      Capa dura com toque soft-touch. Detalhes minimalistas.
+
+    specs:
+      dimensoes: "A5 (14.8 x 21cm)"
+      paginas: "192 paginas (96 folhas)"
+      papel: "Offset 90g/m2 branco natural (nao alvejado)"
+      grid: "Pontilhado (dot grid) — 5mm espaco, cor cinza 20% opacity"
+      capa:
+        material: "Papelao rigido 2mm revestido em couro sintetico (PU) soft-touch"
+        cor: "Preto matte"
+        toque: "Soft-touch (emborrachado)"
+      encadernacao: "Costura + cola (lay flat quando aberto)"
+      elastico: "Elastico de fechamento preto (nao colorido)"
+      marcador: "Fita marcadora preta acetinada"
+      bolso_traseiro: "Sim — bolso de papel kraft preto na contracapa"
+
+    branding:
+      capa_frontal:
+        design: "Wordmark 'Cortex' em Space Grotesk Bold"
+        technique: "Hot stamping (baixo relevo) sem foil — blind deboss"
+        dimensions: "8cm largura"
+        position: "Centro inferior da capa, 3cm da borda inferior"
+        resultado: >
+          Texto rebaixado na capa, sem cor — apenas relevo negativo.
+          Visivel pelo contraste de luz e textura. Maximo de premium.
+      capa_traseira:
+        design: "Monograma Cx"
+        technique: "Blind deboss"
+        dimensions: "2cm x 2cm"
+        position: "Canto inferior direito, 2cm das bordas"
+      primeira_pagina:
+        design: >
+          Pagina de abertura com logo horizontal centralizado em preto.
+          Abaixo: 'Inteligencia que opera.' em Inter Regular, 12px visual.
+        impressao: "1 cor (preto) em offset ou digital"
+      ultima_pagina:
+        design: "QR code para cortex.com.br, 3cm, preto sobre branco"
+
+    packaging:
+      caixa: "Caixa sleeve (luva) em papel preto fosco 300g"
+      adesivo: "Adesivo Cx para selar"
+
+    production_notes:
+      minimum_order: "200 unidades"
+      lead_time: "30-45 dias"
+      preco_estimado: "R$ 28-45 unitario"
+
+  # ───────────────────────────────────────────────────────────────────────────
+  # 22. ADESIVO PACK (6 DESIGNS)
+  # ───────────────────────────────────────────────────────────────────────────
+  22_adesivo_pack:
+    id: "PHY-010"
+    name: "Adesivo Pack — 6 designs"
+    description: >
+      Pack de 6 adesivos de vinil premium para notebook, garrafa, etc.
+      Mix de formatos e mensagens. Todos coesos visualmente.
+
+    specs:
+      material: "Vinil branco matte premium (3M ou equivalente)"
+      acabamento: "Laminacao matte (anti-UV, water-resistant)"
+      adesivo: "Acrilico permanente (removivel sem residuo nos primeiros 6 meses)"
+      corte: "Kiss-cut com margem 2mm"
+      espessura_vinil: "0.1mm"
+
+    designs:
+
+      sticker_01_logo:
+        name: "Logo horizontal"
+        format: "Retangular, cantos arredondados 3mm"
+        dimensions: "8cm x 3cm"
+        background: "#090E1A (Void)"
+        design: "Logo horizontal dark — wordmark branco sobre Void"
+        border: "Sem borda"
+
+      sticker_02_icon:
+        name: "Monograma Cx"
+        format: "Circulo"
+        dimensions: "4cm diametro"
+        background: "#4D71FA (Signal)"
+        design: "Monograma Cx branco centralizado"
+
+      sticker_03_tagline:
+        name: "Tagline"
+        format: "Retangular, cantos arredondados 3mm"
+        dimensions: "10cm x 2.5cm"
+        background: "#090E1A"
+        design: "'Do lead ao lucro.' em Space Grotesk Bold branco"
+        accent: "Ponto final em Signal Blue"
+
+      sticker_04_metric:
+        name: "Metric"
+        format: "Quadrado, cantos arredondados 4mm"
+        dimensions: "5cm x 5cm"
+        background: "#090E1A"
+        design: "'+230%' em JetBrains Mono Bold Signal Blue, 'faturamento' em Inter Mist abaixo"
+
+      sticker_05_minimal:
+        name: "Minimal wordmark"
+        format: "Die-cut (recortado na forma do texto)"
+        dimensions: "7cm largura"
+        background: "Transparente (clear vinyl)"
+        design: "Wordmark 'Cortex' em branco — para superficies escuras"
+        notes: "Tambem produzir versao em preto para superficies claras"
+
+      sticker_06_system:
+        name: "System phrase"
+        format: "Retangular, cantos arredondados 3mm"
+        dimensions: "9cm x 2.5cm"
+        background: "#090E1A"
+        design: "'Inteligencia que opera.' em Inter Medium #F7F9FC"
+
+    packaging:
+      envelope: "Envelope kraft preto 12x18cm"
+      backing: "Cartao preto fosco 300g, adesivos pre-colados no cartao"
+      label: "Adesivo de lacre Cx no envelope"
+
+    production_notes:
+      minimum_order: "500 packs (3000 adesivos)"
+      lead_time: "10-15 dias"
+      preco_estimado: "R$ 8-12 por pack de 6"
+
+  # ───────────────────────────────────────────────────────────────────────────
+  # 23. MOUSEPAD DESK MAT
+  # ───────────────────────────────────────────────────────────────────────────
+  23_mousepad_desk_mat:
+    id: "PHY-011"
+    name: "Mousepad Desk Mat"
+    description: >
+      Desk mat grande estilo Grovemade / Oakywood. Superficie premium
+      para mouse e teclado. Branding minimalista na superficie.
+
+    specs:
+      dimensoes: "80cm x 40cm (desk mat full)"
+      espessura: "3mm"
+      material_superficie: "Microfibra preta matte (anti-slip para mouse optico)"
+      material_base: "Borracha natural anti-derrapante"
+      bordas: "Costuradas (stitched edge) em preto"
+
+    branding:
+      logo:
+        design: "Wordmark 'Cortex' em Space Grotesk Bold"
+        technique: "Serigrafia UV em tinta cinza escuro (#1E2533 Steel)"
+        dimensions: "10cm largura"
+        position: "Canto inferior direito, 3cm das bordas"
+        resultado: >
+          Logo quase invisivel — tonal cinza escuro sobre preto.
+          Aparece sutilmente sob luz direta. Elegancia maxima.
+      grid_pattern:
+        design: "Grid de linhas finas cobrindo toda a superficie"
+        technique: "Sublimacao"
+        color: "#0C1220 (Ink) — 5% mais claro que a base preta"
+        cell_size: "40mm"
+        line_width: "0.3mm"
+        notes: >
+          Grid quase imperceptivel — da textura visual sem interferir
+          no uso. Referencia: mousepad de engenheiro, grid de CAD.
+
+    packaging:
+      tubo: "Tubo de papelao preto, tampa com adesivo Cx"
+      interior: "Desk mat enrolado com fita preta"
+
+    production_notes:
+      minimum_order: "100 unidades"
+      lead_time: "20-30 dias"
+      preco_estimado: "R$ 45-70 unitario"
+
+  # ───────────────────────────────────────────────────────────────────────────
+  # 24. CRACHA / LANYARD
+  # ───────────────────────────────────────────────────────────────────────────
+  24_cracha_lanyard:
+    id: "PHY-012"
+    name: "Cracha + Lanyard"
+    description: >
+      Sistema de cracha + lanyard para eventos, escritorio e conferencias.
+      Design premium que nao parece cracha corporativo generico.
+
+    lanyard:
+      material: "Poliester acetinado preto, 20mm largura"
+      cor: "Preto"
+      comprimento: "90cm (total, formando loop de 45cm)"
+      hardware: "Mosquetao metal gunmetal matte"
+      branding:
+        design: "Wordmark 'CORTEX' repetido ao longo do lanyard"
+        technique: "Sublimacao em cinza escuro (#1E2533 Steel) — tonal"
+        espaco_entre_repeticoes: "15cm"
+        notes: "Texto quase invisivel — aparece sob luz. Nao e estampa gritante."
+      detalhe:
+        description: "Fio unico Signal Blue (#4D71FA) correndo paralelo a borda inferior"
+        largura: "1mm"
+        notes: "Unico elemento de cor. Sutil mas presente."
+
+    cracha:
+      formato: "Vertical, 86mm x 54mm (tamanho cartao de credito)"
+      material: "PVC 0.76mm ou metal fino escovado (versao premium)"
+      cantos: "Arredondados 3mm"
+      furo: "Slot retangular 13x3mm no topo"
+
+      frente:
+        background: "#090E1A"
+        layout:
+          foto: "Circulo 32mm, centralizado, terco superior"
+          foto_border: "2px solid #1E2533"
+          nome: "Space Grotesk 600, 14pt, #F7F9FC"
+          cargo: "Inter 400, 10pt, #94A3B8"
+          logo: "Icon Cx, 12mm, bottom-left"
+          qr_code: "QR para vCard digital, 18mm, bottom-right, #F7F9FC sobre #090E1A"
+        divisor: "Linha horizontal 0.5px #1E2533, abaixo da foto"
+
+      verso:
+        background: "#090E1A"
+        design: >
+          Logo horizontal dark centralizado. Abaixo: tagline em Inter
+          400, 8pt, Mist. Bottom: 'cortex.com.br' em Inter 400, 7pt, Ash.
+        notes: "Verso clean — apenas marca. Sem informacoes repetidas."
+
+      versao_evento:
+        adicional: "Badge de tipo de participante no topo — barra 8mm Signal Blue com texto branco"
+        tipos: ["Speaker", "VIP", "Equipe", "Participante"]
+        barra_font: "Inter 600, 8pt, #F7F9FC"
+        barra_bg: "#4D71FA"
+
+    production_notes:
+      minimum_order_lanyard: "200 unidades"
+      minimum_order_cracha: "100 unidades"
+      preco_lanyard: "R$ 8-15 unitario"
+      preco_cracha_pvc: "R$ 5-10 unitario"
+      preco_cracha_metal: "R$ 25-40 unitario"
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# MATERIAIS AMBIENTAIS
+# ═══════════════════════════════════════════════════════════════════════════════
+
+environmental:
+
+  # ───────────────────────────────────────────────────────────────────────────
+  # 25. BACKDROP EVENTO (3x2m)
+  # ───────────────────────────────────────────────────────────────────────────
+  25_backdrop_evento:
+    id: "ENV-001"
+    name: "Backdrop Evento 3x2m"
+    description: >
+      Backdrop para palcos, stands e photo ops em eventos. Imponente,
+      escuro, minimalista. Funciona para fotos com flash e video.
+
+    specs:
+      dimensoes: "3000mm x 2000mm (3x2m)"
+      material: "Tecido tensionado (stretch fabric) com impressao sublimada"
+      estrutura: "Frame de aluminio tubular com encaixe pop-up"
+      acabamento: "Matte (anti-reflexo para fotos e video)"
+      resolucao_arte: "150 DPI em tamanho real (minimo)"
+      arquivo: "TIFF ou PDF/X-4, CMYK, com 50mm de sangria"
+
+    design:
+      background: "#090E1A (Void)"
+      pattern:
+        type: "Grid de pontos"
+        color: "#1E2533 (Steel)"
+        opacity: "12%"
+        dot_size: "3mm"
+        gap: "40mm"
+        notes: "Grid da profundidade visual em fotos. Nao e fundo liso."
+      logo:
+        asset: "logo-horizontal-dark.svg (vetor)"
+        position: "Centro, ligeiramente acima do meio vertical (60% from bottom)"
+        largura: "1200mm (40% da largura do backdrop)"
+        cor: "#F7F9FC"
+      tagline:
+        text: "Do lead ao lucro. Um sistema. Zero fragmentacao."
+        font: "Inter 400"
+        size: "60pt (visual distance 3m)"
+        color: "#94A3B8"
+        position: "Abaixo do logo, 80mm gap"
+      accent:
+        description: "Linha horizontal Signal Blue abaixo do tagline"
+        width: "400mm"
+        height: "3mm"
+        color: "#4D71FA"
+        margin_top: "40mm"
+
+    production_notes:
+      fornecedor_tipo: "Grafica de grandes formatos / eventos"
+      lead_time: "7-10 dias uteis"
+      preco_estimado: "R$ 800-1500 (tecido + frame)"
+      transporte: "Bag acolchoada propria do frame"
+
+  # ───────────────────────────────────────────────────────────────────────────
+  # 26. ROLL-UP BANNER (80x200cm)
+  # ───────────────────────────────────────────────────────────────────────────
+  26_rollup_banner:
+    id: "ENV-002"
+    name: "Roll-up Banner 80x200cm"
+    description: >
+      Banner retratil para eventos, recepcao, stands. Leitura vertical
+      de cima para baixo. Hierarquia: logo > headline > features > CTA.
+
+    specs:
+      dimensoes: "800mm x 2000mm"
+      material: "Lona banner 440g/m2 matte ou tecido para roll-up"
+      estrutura: "Suporte retratil em aluminio (roll-up cassette)"
+      acabamento: "Laminacao matte anti-reflexo"
+      resolucao: "150 DPI tamanho real"
+      sangria: "10mm em todos os lados"
+      safe_zone: "Evitar conteudo nos 100mm inferiores (dobra da base)"
+
+    design:
+      background: "#090E1A"
+      grid_pattern: "Linhas verticais #1E2533, opacity 6%, gap 80mm"
+
+      zona_superior:
+        area: "800mm x 500mm (top quarter)"
+        logo:
+          asset: "logo-horizontal-dark.svg"
+          largura: "300mm"
+          position: "Centralizado, 120mm from top"
+        tagline:
+          text: "Inteligencia que opera."
+          font: "Inter 400, 36pt, #94A3B8"
+          position: "Below logo, 40mm gap"
+
+      zona_central:
+        area: "800mm x 900mm (middle)"
+        headline:
+          text: "Do lead ao lucro. Um sistema."
+          font: "Space Grotesk 700, 72pt, #F7F9FC"
+          alignment: "left"
+          margin_left: "80mm"
+          line_height: "1.15"
+        features:
+          margin_top: "60mm"
+          items:
+            - "CRM proprietario"
+            - "Trafego integrado"
+            - "IA de qualificacao"
+            - "Analytics unificado"
+          font: "Inter 400, 28pt, #94A3B8"
+          icon: "Dash horizontal 12mm, 2mm height, Signal Blue, antes de cada item"
+          gap: "30mm"
+          margin_left: "80mm"
+
+      zona_inferior:
+        area: "800mm x 500mm (bottom quarter)"
+        cta:
+          text: "cortex.com.br"
+          font: "Space Grotesk 600, 40pt, #4D71FA"
+          position: "Centralizado, 200mm from bottom"
+        accent_bar:
+          description: "Barra horizontal Signal Blue, full width"
+          height: "6mm"
+          color: "#4D71FA"
+          position: "120mm from bottom"
+
+    production_notes:
+      fornecedor: "Grafica de eventos / comunicacao visual"
+      lead_time: "5-7 dias uteis"
+      preco_estimado: "R$ 250-450 (banner + suporte)"
+
+  # ───────────────────────────────────────────────────────────────────────────
+  # 27. CARTAO DE VISITA
+  # ───────────────────────────────────────────────────────────────────────────
+  27_cartao_visita:
+    id: "ENV-003"
+    name: "Cartao de Visita"
+    description: >
+      Cartao de visita premium que impressiona pelo toque e minimalismo.
+      Poucas informacoes, acabamento impecavel. Deve sentir-se caro.
+
+    specs:
+      dimensoes: "90mm x 50mm (padrao brasileiro)"
+      material: "Papel Markatto Stile nero 400g (preto na massa) ou Curious Skin Black 380g"
+      alternativa: "Papel Colorplus Preto 300g com laminacao soft-touch"
+      cantos: "Retos (sem arredondar — mais premium e preciso)"
+      corte: "Corte reto com guilhotina de precisao"
+
+    frente:
+      background: "Preto na massa (papel preto, nao impresso)"
+      layout:
+        logo:
+          design: "Wordmark 'Cortex'"
+          technique: "Hot stamping prata matte (nao ouro, nao brilhante)"
+          position: "Centro-esquerda, verticalmente centrado"
+          largura: "35mm"
+        accent_dot:
+          design: "Circulo 3mm"
+          technique: "Hot stamping em foil azul metalico (simula Signal Blue)"
+          position: "A direita do wordmark, alinhado ao baseline"
+          notes: "Ponto azul como unico elemento de cor. Statement minimalista."
+      notes: >
+        NENHUMA outra informacao na frente. Apenas marca + ponto.
+        Deixar o verso fazer o trabalho de dados de contato.
+
+    verso:
+      background: "Preto na massa"
+      layout:
+        nome:
+          font_ref: "Space Grotesk 600"
+          technique: "Serigrafia UV branca matte"
+          size: "9pt"
+          position: "Top-left, 8mm margins"
+        cargo:
+          font_ref: "Inter 400"
+          technique: "Serigrafia UV cinza (#94A3B8)"
+          size: "7pt"
+          position: "Below name, 3mm gap"
+        dados:
+          items: ["telefone", "email", "site"]
+          font_ref: "Inter 400"
+          technique: "Serigrafia UV cinza (#94A3B8)"
+          size: "7pt"
+          position: "Bottom-left, 8mm margins"
+          gap: "4mm entre itens"
+        qr_code:
+          size: "18mm x 18mm"
+          technique: "Serigrafia UV branca matte"
+          position: "Bottom-right, 8mm margins"
+          content: "vCard com dados de contato"
+          notes: "QR branco sobre preto — alto contraste para leitura"
+
+    acabamentos:
+      soft_touch: "Laminacao soft-touch full coverage em ambos os lados"
+      deboss: "Blind deboss no logo da frente (alem do hot stamping) — profundidade dupla"
+      hot_stamping: "Cliche metalico para stamping prata matte, temperatura 110-130C"
+
+    production_notes:
+      minimum_order: "500 unidades por pessoa"
+      lead_time: "10-15 dias uteis (por causa do hot stamping)"
+      preco_estimado: "R$ 1.50-3.00 por cartao (hot stamping + soft-touch)"
+      fornecedores_ref: "Graficas especializadas em acabamentos premium — Versus, Mello, FuturaIM"
+
+  # ───────────────────────────────────────────────────────────────────────────
+  # 28. PRESENTATION DECK TEMPLATE
+  # ───────────────────────────────────────────────────────────────────────────
+  28_presentation_deck:
+    id: "ENV-004"
+    name: "Presentation Deck Template — 10+ layouts"
+    description: >
+      Template de apresentacao para sales, pitch, eventos e internos.
+      Dark mode. 16:9. Cada slide respira. Grid system rigoroso.
+      Feito para Keynote/Google Slides/PowerPoint + Figma source.
+
+    specs:
+      aspect_ratio: "16:9 (1920x1080px)"
+      format: "Keynote, Google Slides, PPTX, Figma"
+      background_default: "#090E1A"
+      grid: "12 colunas, 80px margem lateral, 40px gutter"
+      master_font_display: "Space Grotesk"
+      master_font_body: "Inter"
+      master_font_data: "JetBrains Mono"
+
+    layouts:
+
+      L01_cover:
+        name: "Cover / Capa"
+        description: >
+          Logo horizontal top-left. Titulo massivo centralizado.
+          Subtitulo em Mist. Grid pattern sutil. Sem mais nada.
+        background: "#090E1A"
+        grid_pattern: "dot grid, #1E2533, 10% opacity"
+        title_font: "Space Grotesk 700, 72px, #F7F9FC"
+        subtitle_font: "Inter 400, 24px, #94A3B8"
+        logo: "logo-horizontal-dark.svg, top-left, 28px height"
+
+      L02_section_divider:
+        name: "Section Divider"
+        description: >
+          Numero da secao em JetBrains Mono enorme (200px) e ghost
+          (#1B2845, opacity 30%) no canto. Titulo da secao em Space
+          Grotesk Bold centralizado.
+        section_number_font: "JetBrains Mono 700, 200px, rgba(27,40,69,0.3)"
+        section_number_position: "top-right corner, clipped"
+        title_font: "Space Grotesk 700, 60px, #F7F9FC"
+        title_position: "center"
+
+      L03_text_full:
+        name: "Full Text"
+        description: "Titulo a esquerda + corpo de texto a direita. 2 colunas 40/60."
+        title_font: "Space Grotesk 600, 36px, #F7F9FC"
+        body_font: "Inter 400, 18px, #94A3B8"
+        body_line_height: "1.6"
+
+      L04_statement:
+        name: "Statement / Big Quote"
+        description: "Uma frase grande centralizada. Nada mais. Slide de impacto."
+        quote_font: "Space Grotesk 700, 48px, #F7F9FC"
+        accent_word_color: "#4D71FA"
+        max_width: "900px"
+
+      L05_two_columns:
+        name: "Two Columns"
+        description: "Conteudo dividido 50/50. Divisor vertical Steel 1px."
+        divider: "1px solid #1E2533"
+        column_title: "Space Grotesk 600, 24px, #F7F9FC"
+        column_body: "Inter 400, 16px, #94A3B8"
+
+      L06_three_cards:
+        name: "Three Cards"
+        description: "3 cards horizontais, gap 24px. Dusk bg, Steel border, radius 12px."
+        card_bg: "#1B2845"
+        card_border: "1px solid #1E2533"
+        card_radius: "12px"
+        card_padding: "32px"
+        card_icon_color: "#4D71FA"
+        card_title: "Space Grotesk 600, 20px, #F7F9FC"
+        card_body: "Inter 400, 14px, #94A3B8"
+
+      L07_metric_hero:
+        name: "Metric Hero"
+        description: "Um numero gigante centralizado. Label abaixo. Slide de dados."
+        metric_font: "JetBrains Mono 700, 120px, #4D71FA"
+        metric_glow: "0 0 40px rgba(77,113,250,0.2)"
+        label_font: "Inter 400, 20px, #94A3B8"
+
+      L08_chart_area:
+        name: "Chart / Data Visualization"
+        description: >
+          Area para graficos. Titulo top-left. Area de chart 80% do slide.
+          Cores de dados: Signal Blue (primario), Signal Light (secundario),
+          Mist (terciario). Grid lines Steel.
+        chart_area_bg: "#0C1220"
+        chart_area_radius: "12px"
+        chart_area_border: "1px solid #1E2533"
+        title_font: "Space Grotesk 600, 24px, #F7F9FC"
+        axis_font: "JetBrains Mono 400, 12px, #4A5568"
+
+      L09_image_full:
+        name: "Full Bleed Image"
+        description: >
+          Imagem full-bleed com overlay gradient escuro (Void 80% -> Void 0%)
+          na parte inferior para texto sobreposto. Titulo sobre a imagem.
+        overlay: "linear-gradient(to top, rgba(9,14,26,0.9), transparent)"
+        title_font: "Space Grotesk 700, 48px, #F7F9FC"
+        title_position: "bottom-left, 80px margins"
+
+      L10_comparison:
+        name: "Before / After"
+        description: "Split vertical. Esquerda: 'antes' (Ash text, strikethrough). Direita: 'Cortex' (Signal Blue header, White text)."
+        left_header: "Space Grotesk 600, 28px, #4A5568"
+        right_header: "Space Grotesk 600, 28px, #4D71FA"
+        left_items: "Inter 400, 18px, #4A5568, strikethrough"
+        right_items: "Inter 400, 18px, #F7F9FC"
+        right_check_icon: "#4D71FA"
+
+      L11_team_grid:
+        name: "Team / People Grid"
+        description: "Grid de avatares circulares (Dusk bg) com nome e cargo. 3x2 ou 4x2."
+        avatar_size: "96px circle"
+        avatar_bg: "#1B2845"
+        avatar_border: "2px solid #1E2533"
+        name_font: "Inter 600, 16px, #F7F9FC"
+        role_font: "Inter 400, 14px, #94A3B8"
+
+      L12_closing:
+        name: "Closing / Thank You"
+        description: >
+          Logo grande centralizado (logo-horizontal-dark, 400px width).
+          URL em Signal Blue abaixo. Nenhum 'obrigado' — apenas marca.
+          Confidence over politeness.
+        logo_width: "400px"
+        url: "cortex.com.br"
+        url_font: "Inter 500, 20px, #4D71FA"
+        background: "#090E1A"
+
+    global_elements:
+      page_number:
+        font: "JetBrains Mono 400, 12px, #4A5568"
+        position: "bottom-right, 40px from edges"
+        format: "01 / 24"
+      progress_bar:
+        description: "Barra horizontal 2px no bottom absoluto do slide"
+        total_bar_color: "#1E2533"
+        progress_color: "#4D71FA"
+        height: "2px"
+
+  # ───────────────────────────────────────────────────────────────────────────
+  # 29. CERTIFICADO TEMPLATE
+  # ───────────────────────────────────────────────────────────────────────────
+  29_certificado:
+    id: "ENV-005"
+    name: "Certificado Template"
+    description: >
+      Certificado digital e impresso para cursos, eventos, e programas
+      Cortex. Formato paisagem A4. Premium e autoritario (Governante).
+
+    specs:
+      dimensoes: "297mm x 210mm (A4 paisagem)"
+      formato_digital: "PDF vetorial + PNG @2x"
+      formato_impresso: "Papel Markatto Stile Bianco 300g ou Conqueror Laid 300g"
+      orientacao: "Paisagem (horizontal)"
+
+    design:
+      background: "#090E1A"
+      border:
+        type: "Moldura interna com linha dupla"
+        outer_line: "1px solid #1E2533, 15mm da borda"
+        inner_line: "0.5px solid #1E2533, 18mm da borda"
+        corner_accent: "Quadrado 8mm Signal Blue preenchido nos 4 cantos da moldura interna"
+
+      header:
+        logo: "logo-horizontal-dark.svg"
+        logo_width: "120mm"
+        logo_position: "Top center, 30mm from top"
+
+      body:
+        certificado_label:
+          text: "CERTIFICADO"
+          font: "Space Grotesk 600, 14pt, #94A3B8"
+          letter_spacing: "+8%"
+          position: "Center, 70mm from top"
+        nome_participante:
+          placeholder: "[Nome Completo]"
+          font: "Space Grotesk 700, 28pt, #F7F9FC"
+          position: "Center, 90mm from top"
+          underline: "1px solid #1E2533, 180mm width"
+        descricao:
+          text: "concluiu com sucesso o programa"
+          font: "Inter 400, 12pt, #94A3B8"
+          position: "Center, 108mm from top"
+        programa_nome:
+          placeholder: "[Nome do Programa]"
+          font: "Space Grotesk 600, 18pt, #4D71FA"
+          position: "Center, 120mm from top"
+        data:
+          placeholder: "[Cidade], [DD] de [mes] de [YYYY]"
+          font: "Inter 400, 11pt, #94A3B8"
+          position: "Center, 140mm from top"
+
+      footer:
+        assinatura:
+          lines: 2
+          line_width: "60mm"
+          line_color: "#1E2533"
+          line_thickness: "0.5px"
+          gap_between_lines: "80mm (horizontal)"
+          position: "Center, 160mm from top"
+          name_font: "Inter 500, 10pt, #F7F9FC"
+          title_font: "Inter 400, 9pt, #94A3B8"
+        codigo_validacao:
+          text: "Codigo: [UUID]"
+          font: "JetBrains Mono 400, 8pt, #4A5568"
+          position: "Bottom-left, 15mm from edges"
+        qr_validacao:
+          size: "15mm"
+          position: "Bottom-right, 15mm from edges"
+          color: "#94A3B8 sobre #090E1A"
+
+    versao_impressa_acabamentos:
+      papel: "Markatto Stile Bianco 300g"
+      impressao: "Digital UV (alta definicao em papel especial)"
+      hot_stamping: "Foil prata matte no wordmark 'Cortex' do header"
+      notes: "Versao impressa inverte para fundo branco com textos escuros se necessario para legibilidade em papel fisico"
+
+  # ───────────────────────────────────────────────────────────────────────────
+  # 30. BRAND APPLICATION GUIDE — DO'S & DON'TS
+  # ───────────────────────────────────────────────────────────────────────────
+  30_brand_dos_donts:
+    id: "ENV-006"
+    name: "Brand Application Guide — Do's & Don'ts"
+    description: >
+      Pagina de referencia rapida com regras de uso correto e incorreto
+      da marca Cortex. Aplicavel a todos os materiais acima.
+
+    logo_usage:
+      dos:
+        - "Usar logo horizontal como aplicacao primaria em 90% dos casos"
+        - "Manter area de protecao minima de 1x a altura do icone Cx ao redor do logo"
+        - "Usar wordmark-dark.svg sobre fundos escuros (#090E1A, #0C1220)"
+        - "Usar wordmark-light.svg sobre fundos claros (#F7F9FC)"
+        - "Usar icon-on-signal.svg quando o fundo for Signal Blue"
+        - "Manter proporcoes originais — nunca distorcer"
+        - "Tamanho minimo digital: wordmark 80px largura / icon 16px"
+        - "Tamanho minimo impresso: wordmark 25mm largura / icon 5mm"
+
+      donts:
+        - "NUNCA rotacionar o logo"
+        - "NUNCA adicionar sombra, brilho, gradiente ou efeito ao logo"
+        - "NUNCA alterar as cores do logo (apenas variantes aprovadas)"
+        - "NUNCA colocar logo sobre fundo fotografico sem overlay escuro (min 70% opacity)"
+        - "NUNCA colocar logo sobre fundo colorido que nao seja Void, Ink, White ou Signal"
+        - "NUNCA usar outline/stroke no logo — ele e sempre preenchido"
+        - "NUNCA compactar o logo abaixo do tamanho minimo"
+        - "NUNCA adicionar texto, tagline ou elementos conectados ao logo"
+        - "NUNCA usar logo em orientacao vertical quando horizontal cabe no espaco"
+
+    color_usage:
+      dos:
+        - "Dark mode first — Void e Ink sao os backgrounds padroes"
+        - "Signal Blue apenas para CTAs, links, acentos e dados de destaque"
+        - "Mist para textos secundarios e metadata"
+        - "Semantic colors apenas em contexto correto (Success para positivo, Error para negativo)"
+        - "Manter contraste WCAG AA minimo (4.5:1 para texto, 3:1 para elementos grandes)"
+
+      donts:
+        - "NUNCA usar Signal Blue como background de areas grandes (apenas acentos)"
+        - "NUNCA usar cores fora da paleta definida"
+        - "NUNCA usar gradientes multicoloridos"
+        - "NUNCA usar opacidade abaixo de 60% para textos legais"
+        - "NUNCA misturar cores semanticas (ex: Success + Error no mesmo badge)"
+
+    typography_usage:
+      dos:
+        - "Space Grotesk para TODOS os titulos, headlines, CTAs e elementos de destaque"
+        - "Inter para corpo de texto, descricoes, UI text"
+        - "JetBrains Mono para numeros, metricas, dashboards, tabelas, codigos"
+        - "Manter hierarquia clara: no maximo 3 niveis de peso por pagina"
+        - "Respeitar a escala tipografica definida nos tokens"
+
+      donts:
+        - "NUNCA usar outra fonte alem das 3 definidas"
+        - "NUNCA usar Space Grotesk Regular (400) — minimo 500 para display"
+        - "NUNCA usar Inter Bold (700) — maximo 500 para body"
+        - "NUNCA usar texto todo em UPPERCASE exceto em labels curtos (ex: 'CERTIFICADO')"
+        - "NUNCA usar mais de 2 tamanhos de fonte diferentes em um unico card/componente"
+
+    photography_imagery:
+      dos:
+        - "Fotografias com tonalidade escura e fria"
+        - "Preferir ambientes com iluminacao low-key"
+        - "Pessoas em contexto profissional, sem poses forcadas"
+        - "Equipamentos e tecnologia — telas, dashboards, dados"
+        - "Sobre fundos escuros, usar overlay Void 60-80%"
+
+      donts:
+        - "NUNCA usar fotos stock genericas com pessoas sorrindo artificialmente"
+        - "NUNCA usar fotos com fundo branco/claro sem tratamento"
+        - "NUNCA usar fotos de dentes, bocas ou cadeiras odontologicas"
+        - "NUNCA usar ilustracoes cartoon ou flat illustration style"
+        - "NUNCA usar icones coloridos ou emoji-style"
+
+    tone_of_voice_in_materials:
+      dos:
+        - "Direto e confiante — nunca hesitante"
+        - "Dado antes de adjetivo"
+        - "Frases curtas, impactantes"
+        - "Usar palavras do vocabulario aprovado: resultado, sistema, stack, operar, escalar"
+        - "Provar antes de prometer"
+
+      donts:
+        - "NUNCA usar palavras proibidas: revolucionario, disruptivo, game-changer, jornada, incrivel"
+        - "NUNCA usar tom motivacional ou coach"
+        - "NUNCA usar emojis em materiais formais"
+        - "NUNCA usar mais de 2 pontos de exclamacao em uma peca inteira"
+        - "NUNCA fazer promessas sem dado comprovavel"
+
+    material_finishing:
+      dos:
+        - "Acabamentos foscos/matte em TODOS os materiais fisicos"
+        - "Gravacao a laser em metais — nunca adesivo"
+        - "Hot stamping ou deboss para papeis premium"
+        - "Bordado para vestuario — nunca serigrafia barata em pecas premium"
+        - "Cores Pantone especificas para consistencia em impressao"
+
+      donts:
+        - "NUNCA usar acabamento brilhante/glossy em materiais Cortex"
+        - "NUNCA usar adesivo vinil em produtos premium (squeeze, caneca)"
+        - "NUNCA usar sublimacao full-color em vestuario (exceto desk mat)"
+        - "NUNCA usar papeis finos (<250g) para materiais que vao para a mao do cliente"
+        - "NUNCA usar dourado ou rose gold — paleta e prata/gunmetal/azul"
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# HANDOFF
+# ═══════════════════════════════════════════════════════════════════════════════
+
+handoff:
+  to_design_squad:
+    action: "Implementar no Figma todos os templates digitais (01-12)"
+    priority: "Alta — landing page e social media kit primeiro"
+    figma_structure: >
+      Criar Figma file 'Cortex — Brand Application' com pages:
+      Digital Templates | Ad Templates | Social Media Kit | Presentation Deck |
+      Email Templates | Mobile App | Dashboard
+
+  to_production:
+    action: "Orcamentar e produzir materiais fisicos (13-24) e ambientais (25-30)"
+    priority: "Media — cartao de visita e adesivos primeiro"
+    notes: >
+      Solicitar amostras fisicas antes de aprovar lote.
+      Validar cores Pantone em prova de impressao.
+      Testar bordado em amostra de tecido real.
+
+  to_dev:
+    action: "Implementar landing page e email templates usando tokens do design system"
+    tokens_ref: "outputs/design-system/cortex/tokens/tokens.yaml"
+    component_ref: "outputs/brand/cortex/logo/CortexLogo.tsx"

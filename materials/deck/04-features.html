@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Cortex Deck — 04 Features</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{width:1920px;height:1080px;overflow:hidden;background:#090E1A;padding:80px 160px;position:relative}
+.bar{position:absolute;bottom:0;left:0;right:0;height:4px;background:#4D71FA}
+.label{font-family:'Inter',sans-serif;font-size:14px;color:#4D71FA;text-transform:uppercase;letter-spacing:2px;margin-bottom:16px}
+h2{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:44px;color:#F7F9FC;margin-bottom:64px}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+.card{background:#1B2845;border:1px solid #1E2533;border-radius:12px;padding:32px}
+.card-icon{width:40px;height:40px;border-radius:8px;background:rgba(77,113,250,.12);display:flex;align-items:center;justify-content:center;margin-bottom:20px}
+.card-icon svg{width:20px;height:20px;stroke:#4D71FA;stroke-width:1.5;fill:none}
+.card h3{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:22px;color:#F7F9FC;margin-bottom:12px}
+.card p{font-family:'Inter',sans-serif;font-size:16px;color:#94A3B8;line-height:1.6}
+</style>
+</head>
+<body>
+<div class="label">4 pilares</div>
+<h2>O que opera por voce</h2>
+<div class="grid">
+  <div class="card">
+    <div class="card-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></div>
+    <h3>Cortex CRM</h3>
+    <p>Pipeline visual do lead ao contrato. Automacoes que disparam no timing certo. Historico completo de cada paciente.</p>
+  </div>
+  <div class="card">
+    <div class="card-icon"><svg viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div>
+    <h3>Cortex Ads</h3>
+    <p>Trafego pago integrado ao CRM. Cada lead rastreado da origem ao faturamento. Otimizacao por ROI real, nao cliques.</p>
+  </div>
+  <div class="card">
+    <div class="card-icon"><svg viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg></div>
+    <h3>Cortex Analytics</h3>
+    <p>Dashboard unico do investimento ao faturamento. Metricas em tempo real. Dado antes de opiniao.</p>
+  </div>
+  <div class="card">
+    <div class="card-icon"><svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
+    <h3>Cortex Flow</h3>
+    <p>Automacao ponta a ponta. WhatsApp, email, follow-up automatico. Sem intervencao manual.</p>
+  </div>
+</div>
+<div class="bar"></div>
+</body>
+</html>

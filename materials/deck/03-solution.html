@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Cortex Deck — 03 Solution</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{width:1920px;height:1080px;overflow:hidden;background:#090E1A;display:flex;align-items:center;padding:0 160px;position:relative}
+.bar{position:absolute;bottom:0;left:0;right:0;height:4px;background:#4D71FA}
+.left{flex:1}
+.label{font-family:'Inter',sans-serif;font-size:14px;font-weight:400;color:#4D71FA;text-transform:uppercase;letter-spacing:2px;margin-bottom:24px}
+h1{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:56px;color:#F7F9FC;line-height:1.2;max-width:800px}
+.desc{font-family:'Inter',sans-serif;font-size:20px;color:#94A3B8;margin-top:24px;line-height:1.6;max-width:600px}
+.right{display:flex;flex-direction:column;gap:16px;margin-left:120px}
+.pill{display:flex;align-items:center;gap:16px;background:#1B2845;border:1px solid #1E2533;border-radius:12px;padding:20px 28px}
+.pill-icon{width:40px;height:40px;border-radius:8px;background:rgba(77,113,250,.12);display:flex;align-items:center;justify-content:center}
+.pill-icon svg{width:20px;height:20px;stroke:#4D71FA;stroke-width:1.5;fill:none}
+.pill-text{font-family:'Inter',sans-serif;font-weight:500;font-size:18px;color:#F7F9FC}
+</style>
+</head>
+<body>
+<div class="left">
+  <div class="label">A solucao</div>
+  <h1>Cortex: inteligencia que opera.</h1>
+  <div class="desc">Uma unica plataforma que conecta captacao, qualificacao, conversao e analise. Sem fragmentacao.</div>
+</div>
+<div class="right">
+  <div class="pill"><div class="pill-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></div><div class="pill-text">CRM Proprietario</div></div>
+  <div class="pill"><div class="pill-icon"><svg viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div><div class="pill-text">Trafego Integrado</div></div>
+  <div class="pill"><div class="pill-icon"><svg viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg></div><div class="pill-text">Analytics Unificado</div></div>
+  <div class="pill"><div class="pill-icon"><svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div><div class="pill-text">Automacao Completa</div></div>
+</div>
+<div class="bar"></div>
+</body>
+</html>

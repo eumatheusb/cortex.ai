@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 264 64" fill="none" role="img" aria-label="Cortex">
+  <defs>
+    <radialGradient id="id-bg" cx="40%" cy="40%" r="65%">
+      <stop offset="0%" stop-color="#1B2845"/>
+      <stop offset="100%" stop-color="#090E1A"/>
+    </radialGradient>
+
+    <!-- Glow filter for pulse -->
+    <filter id="id-glow" x="-80%" y="-80%" width="260%" height="260%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="3" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@700&amp;display=swap');
+
+      /* Arc breathes subtly */
+      .id-arc {
+        animation: id-breathe 4s ease-in-out infinite;
+      }
+
+      /* Dot pulses with glow */
+      .id-dot {
+        transform-box: fill-box;
+        transform-origin: center;
+        animation: id-dot-pulse 4s ease-in-out infinite;
+        filter: url(#id-glow);
+      }
+
+      /* Wordmark very subtle fade — almost static */
+      .id-text {
+        animation: id-text-shimmer 4s ease-in-out infinite;
+      }
+
+      @keyframes id-breathe {
+        0%, 100% { stroke-opacity: 1; }
+        50%      { stroke-opacity: 0.55; }
+      }
+
+      @keyframes id-dot-pulse {
+        0%, 100% { transform: scale(1);    opacity: 1;   }
+        25%      { transform: scale(1.6);  opacity: 0.9; }
+        50%      { transform: scale(0.5);  opacity: 0.35; }
+        75%      { transform: scale(1.3);  opacity: 0.8; }
+      }
+
+      @keyframes id-text-shimmer {
+        0%, 100% { fill-opacity: 1; }
+        50%      { fill-opacity: 0.75; }
+      }
+    </style>
+  </defs>
+
+  <!-- Icon mark — static bg -->
+  <rect width="64" height="64" rx="14" fill="url(#id-bg)"/>
+
+  <!-- C arc — breathing -->
+  <path
+    class="id-arc"
+    d="M 42.6,42.6 A 15,15 0 1,1 42.6,21.4"
+    stroke="#4D71FA"
+    stroke-width="5"
+    stroke-linecap="round"
+  />
+
+  <!-- Signal dot — pulsing -->
+  <circle class="id-dot" cx="55" cy="32" r="2.5" fill="#4D71FA"/>
+
+  <!-- Wordmark -->
+  <text
+    class="id-text"
+    x="80" y="44"
+    font-family="'Space Grotesk', 'Arial Black', sans-serif"
+    font-weight="700"
+    font-size="36"
+    letter-spacing="0.8"
+    fill="#F7F9FC"
+  >Cortex</text>
+</svg>

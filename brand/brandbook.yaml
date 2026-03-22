@@ -1,0 +1,372 @@
+metadata:
+  schema: "cortex.brandbook"
+  version: "1.0"
+  status: active
+  owner_role: founder
+  created: "2026-03-20"
+  squad: brand
+  completeness: 92
+  source: "Brand Squad — naming + positioning + voice + identity (sessão 2026-03-20)"
+
+# ─────────────────────────────────────────────────────────────────────────────
+# IDENTITY
+# ─────────────────────────────────────────────────────────────────────────────
+
+identity:
+  brand_name: "Cortex"
+  slug: "cortex"
+  tagline: "Do lead ao lucro. Um sistema. Zero fragmentação."
+  parent_group: "Grupo Fábio Avelar"
+  sub_brands:
+    - "Cortex CRM"
+    - "Cortex Ads"
+    - "Cortex Analytics"
+    - "Cortex Flow"
+  headquarters: "São Paulo, SP"
+
+# ─────────────────────────────────────────────────────────────────────────────
+# CORE
+# ─────────────────────────────────────────────────────────────────────────────
+
+core:
+  purpose: >
+    Operar o crescimento das clínicas odontológicas para que o dentista
+    foque no que é bom — operar pacientes.
+  essence: "Inteligência que opera."
+  category: "Sistema operacional de crescimento para dentistas"
+  owned_word: "sistema"
+  origin_story: >
+    Criada por dentista de formação que entendeu o problema de dentro:
+    o mercado vendia marketing em silos enquanto o dentista precisava
+    de um sistema completo. A Cortex nasceu para fechar esse gap —
+    com tecnologia proprietária e clínicas reais como laboratório.
+
+# ─────────────────────────────────────────────────────────────────────────────
+# POSITIONING
+# ─────────────────────────────────────────────────────────────────────────────
+
+positioning:
+  onlyness: >
+    "Somos os únicos que entregam a stack completa — do lead ao lucro —
+    com CRM próprio, IA proprietária e clínicas reais como laboratório,
+    liderados por dentista, para dentistas que querem crescer sem
+    precisar entender tecnologia."
+
+  primary_audience: >
+    Dentistas empreendedores com clínica estruturada que querem escalar
+    faturamento e têm dificuldade de integrar marketing, tecnologia e vendas.
+
+  audience_filter: >
+    NÃO é para dentista que quer aprender a fazer marketing.
+    NÃO é para clínica no início sem estrutura mínima.
+
+  enemy_core: >
+    A fragmentação. A ilusão de que lead é resultado.
+    A dependência de 4 fornecedores que não conversam entre si.
+
+  value_claim: >
+    Stack completa do lead ao faturamento, com tecnologia proprietária
+    e prova real em clínicas próprias.
+
+  proof:
+    - "CRM proprietário desenvolvido internamente"
+    - "Clínicas próprias como laboratório de validação em tempo real"
+    - "CEO com formação em odontologia + operação ativa"
+    - "Stack unificada: geração → conversão → CRM → faturamento"
+
+  message_hierarchy:
+    level_1_why: >
+      O dentista precisa crescer sem virar gestor de tecnologia.
+    level_2_how: >
+      Um sistema integrado que opera do lead ao lucro — com CRM próprio,
+      IA proprietária e clínicas reais como prova.
+    level_3_what: >
+      Stack completa de produtos e serviços: tráfego, CRM, automação,
+      analytics, educação — tudo conectado, tudo sob um teto.
+
+  zag_analysis:
+    market_zigs:
+      - "Todos vendem serviço de marketing fragmentado"
+      - "Todos entram pelo lead e saem antes do caixa"
+      - "Todos usam tecnologia de terceiros"
+    our_zag: >
+      Sistema operacional proprietário que opera o negócio completo —
+      do lead ao lucro — com prova real em clínicas próprias.
+    zag_relevance: >
+      O dentista quer resultado, não gestão de fornecedores.
+      A Cortex elimina a complexidade e entrega o sistema inteiro.
+
+  competitive_map:
+    - competitor: "ICOM Marketing"
+      their_position: "Maior agência nichada em odontologia — ecossistema, 30 anos"
+      our_differentiation: "CRM proprietário integrado; stack unificada (ICOM tem silos); CEO dentista ativo com clínicas hoje"
+    - competitor: "Matheus Marcondes"
+      their_position: "Formação em marketing e gestão para dentistas (Smile University)"
+      our_differentiation: "Executamos — não ensinamos o dentista a fazer. Produto real, não educação."
+    - competitor: "Renke Studio"
+      their_position: "Boutique end-to-end criatividade + performance"
+      our_differentiation: "Tecnologia proprietária; CEO dentista; stack que vai além do marketing até o CRM real"
+    - competitor: "Captare Brasil"
+      their_position: "Marketing digital feito por dentistas — foco em captação"
+      our_differentiation: "Stack completa (não só captação); CRM proprietário; clínicas como laboratório"
+
+# ─────────────────────────────────────────────────────────────────────────────
+# ARCHETYPE
+# ─────────────────────────────────────────────────────────────────────────────
+
+archetype_mix:
+  - name: "Governante"
+    weight: 65
+    expression: "Lidera, domina, cria ordem onde há caos, fala com autoridade"
+  - name: "Sábio"
+    weight: 35
+    expression: "Conhecimento comprovável, prova antes de promessa, dado antes de slogan"
+
+# ─────────────────────────────────────────────────────────────────────────────
+# VOICE
+# ─────────────────────────────────────────────────────────────────────────────
+
+voice:
+  personality:
+    is:
+      - "Direta"
+      - "Confiante"
+      - "Pragmática"
+      - "Séria"
+      - "Acessível"
+    never:
+      - "Histriônica"
+      - "Legalzona"
+      - "Acadêmica"
+      - "Motivacional"
+
+  tone_by_context:
+    site: "Autoridade + resultado em destaque — peso sem arrogância"
+    social_media: "Direto + provocativo — dado antes de opinião"
+    email: "Objetivo, primeira linha já entrega o valor"
+    support: "Pragmático + ação imediata — sem burocracia"
+    advertising: "Prova antes de promessa — número antes de adjetivo"
+
+  always_use:
+    - "resultado"
+    - "sistema"
+    - "stack completa"
+    - "escalar"
+    - "ponta a ponta"
+    - "operar"
+    - "inteligência"
+    - "faturamento"
+
+  never_use:
+    - "revolucionário"
+    - "disruptivo"
+    - "game-changer"
+    - "custo-benefício"
+    - "jornada"
+
+  forbidden_words:
+    - "incrível"
+    - "sua melhor versão"
+    - "transformação"
+    - "solução completa"
+
+  signature_phrases:
+    - "O dentista opera paciente. A Cortex opera o crescimento."
+    - "Lead não é resultado. Faturamento é."
+    - "Do lead ao lucro — sem precisar entender o meio."
+    - "Você não precisa de mais uma ferramenta. Precisa de um sistema que funcione."
+    - "A clínica que escala parou de gerenciar fornecedores."
+    - "Tecnologia proprietária. Clínicas reais. Resultado comprovável."
+    - "Quando o sistema opera, o dentista denteia."
+    - "Seu concorrente ainda gerencia 4 fornecedores. Você não precisa."
+
+# ─────────────────────────────────────────────────────────────────────────────
+# VISUAL IDENTITY
+# ─────────────────────────────────────────────────────────────────────────────
+
+visual_identity:
+  color_system:
+    primary:
+      name: "Cortex Void"
+      hex: "#090E1A"
+      rgb: "rgb(9, 14, 26)"
+      hsl: "hsl(225, 49%, 7%)"
+      rationale: >
+        Near-black com undertone azul fria — como um MacBook Pro em ambiente
+        escuro. Transmite poder, profundidade e inteligência sem ser fria ou
+        clínica. É o canvas onde tudo acontece.
+      use:
+        - "Backgrounds principais (dark mode first)"
+        - "Headers e hero sections"
+        - "Áreas de alto impacto"
+
+    brand_accent:
+      name: "Cortex Signal"
+      hex: "#4D71FA"
+      rgb: "rgb(77, 113, 250)"
+      hsl: "hsl(228, 94%, 64%)"
+      rationale: >
+        Índigo elétrico — não é o azul clínico dos concorrentes.
+        É o azul do processamento, da inteligência, de um cockpit.
+        Funciona perfeitamente sobre Cortex Void. Nenhum concorrente
+        está nesse espaço de cor no mercado dental.
+      use:
+        - "CTAs principais, botões primários"
+        - "Links, destaques, elementos interativos"
+        - "Logo sobre fundos claros"
+        - "Gráficos e métricas de performance"
+      accessibility: "Contraste vs branco: 4.8:1 — WCAG AA aprovado"
+
+    secondary:
+      - name: "Cortex Dusk"
+        hex: "#1B2845"
+        rgb: "rgb(27, 40, 69)"
+        hsl: "hsl(224, 44%, 19%)"
+        rationale: >
+          Dark navy para cards, painéis e layers — profundidade sem
+          contraste agressivo.
+        use:
+          - "Cards, sidebars, painéis secundários"
+          - "Hover states em dark mode"
+          - "Borders e divisores sutis"
+
+    neutrals:
+      - name: "Cortex Ink"
+        hex: "#0C1220"
+        use: "Background alternativo, levemente acima do Void"
+      - name: "Cortex Steel"
+        hex: "#1E2533"
+        use: "Borders, separadores, elementos estruturais"
+      - name: "Cortex Ash"
+        hex: "#4A5568"
+        use: "Textos secundários, placeholders, estados desabilitados"
+      - name: "Cortex Mist"
+        hex: "#94A3B8"
+        use: "Labels, captions, metadados"
+      - name: "Cortex White"
+        hex: "#F7F9FC"
+        use: "Textos principais sobre dark, backgrounds light mode"
+
+    semantic:
+      success:
+        hex: "#22C55E"
+        name: "Cortex Green"
+        use: "Resultado positivo, metas atingidas, aprovação"
+      warning:
+        hex: "#F59E0B"
+        name: "Cortex Amber"
+        use: "Alertas, atenção, pendências"
+      error:
+        hex: "#F43F5E"
+        name: "Cortex Rose"
+        use: "Erros, falhas — Rose ao invés de vermelho puro"
+      info:
+        hex: "#4D71FA"
+        name: "Cortex Signal"
+        use: "Informações neutras — reutiliza o acento de marca"
+
+  typography:
+    display:
+      family: "Space Grotesk"
+      weights: [500, 600, 700]
+      use: "H1, H2, headlines, hero text, CTAs grandes"
+      rationale: >
+        Geométrica com personalidade — formas do G e R têm irregularidades
+        sutis que dão caráter sem perder precisão. Premium, não genérica.
+        Transmite: inteligente, estruturado, com opinião.
+      license: "Google Fonts — open source, uso comercial livre"
+
+    body:
+      family: "Inter"
+      weights: [400, 500]
+      use: "Parágrafos, descrições, UI text, formulários"
+      rationale: >
+        Padrão de ouro para interfaces digitais. Legibilidade máxima.
+        Usada por Figma, Linear, Vercel, Notion — ecossistema tech-premium.
+      license: "Google Fonts — open source, uso comercial livre"
+
+    mono:
+      family: "JetBrains Mono"
+      weights: [400, 500]
+      use: "Métricas numéricas, tabelas CRM, dashboards, dados"
+      rationale: >
+        CRM e dashboards precisam de fonte mono para alinhamento de
+        colunas e legibilidade de números em tabelas.
+      license: "Apache 2.0 — open source, uso comercial livre"
+
+    scale:
+      base: "16px"
+      steps: [12, 14, 16, 18, 20, 24, 30, 36, 48, 60, 72]
+      line_height_body: "1.6"
+      line_height_display: "1.15"
+
+  logo_brief:
+    approved_name: "Cortex"
+    style: "wordmark ou combination mark"
+    visual_direction: >
+      O nome Cortex é forte o suficiente para carregar sozinho como wordmark
+      em Space Grotesk Bold. Opcionalmente: monograma 'Cx' como ícone
+      para app/favicon. Geometric, preciso, premium.
+    energy_references:
+      - "Linear.app — precisão, dark, confiante"
+      - "Vercel — wordmark clean, dark mode first"
+      - "Stripe — seriedade tech, nunca startup-casual"
+    what_NOT_to_do:
+      - "Qualquer referência visual a dente, boca, sorriso"
+      - "Cruz médica ou ícone de saúde"
+      - "Visual de startup barata (linhas finas, pastéis)"
+      - "Símbolo de cérebro literal (óbvio demais)"
+      - "Gradient arco-íris"
+    technical_requirements:
+      formats: [SVG, PNG, WebP]
+      variations:
+        - "Horizontal (logo + wordmark) — uso principal"
+        - "Vertical (stacked) — materiais formais"
+        - "Ícone isolado (Cx) — app, favicon, avatar"
+        - "Reversed (branco sobre escuro) — dark mode"
+      min_size: "16px (ícone) / 80px (wordmark completo)"
+      backgrounds:
+        - "dark (#090E1A)"
+        - "light (#F7F9FC)"
+        - "brand accent (#4D71FA)"
+    delivery_from_designer:
+      - "SVG master file (todos os paths outlined)"
+      - "PNG em 4 variações x 3 fundos = 12 arquivos"
+      - "Guia de uso correto e incorreto (1 página)"
+      - "Favicon .ico + SVG favicon"
+
+# ─────────────────────────────────────────────────────────────────────────────
+# BRAND PILLARS & VALUES
+# ─────────────────────────────────────────────────────────────────────────────
+
+brand_pillars:
+  - name: "Resultado comprovável"
+    description: "Nada de promessa sem prova. Número antes de adjetivo."
+  - name: "Sistema, não serviço"
+    description: "Não vendemos peças — entregamos o sistema completo operando."
+  - name: "Tecnologia proprietária"
+    description: "CRM, IA e stack são nossos. Não revendemos terceiros."
+  - name: "Pele no jogo"
+    description: "CEO dentista com clínicas próprias. Testamos tudo em laboratório real."
+
+values:
+  - "Resultado acima de processo"
+  - "Prova acima de promessa"
+  - "Simplicidade acima de features"
+  - "Sistema acima de serviço"
+  - "Autenticidade comprovável"
+
+# ─────────────────────────────────────────────────────────────────────────────
+# HANDOFF
+# ─────────────────────────────────────────────────────────────────────────────
+
+next_steps:
+  - squad: "@design-chief"
+    action: "Extrair tokens de cor e tipografia para Design System"
+    trigger: "Brandbook completo — brand: configured"
+  - squad: "@aiox-copy"
+    action: "Usar voice + positioning para copywriting (site, ads, email)"
+    trigger: "Voice + identity aprovados"
+  - squad: "@aiox-ads"
+    action: "Usar brandbook para criativos de tráfego"
+    trigger: "Brandbook completo"

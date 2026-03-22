@@ -1,0 +1,1660 @@
+schema_version: "1.0"
+generated: "2026-03-22"
+product: "CORTEX"
+description: >
+  Backlog visual completo do produto Cortex — CRM/sistema operacional para dentistas.
+  Design System com 35 componentes, 52 tokens DTCG, Storybook configurado, brandbook completo.
+  Organizado em 4 épicos: DS-PROD (prioridade alta), DS-QUALITY (média), DS-MATURITY (baixa), BRAND-APP (alta).
+
+epics:
+  - id: "DS-PROD"
+    name: "Design System Production Ready"
+    priority: alta
+    description: >
+      Novos componentes e infraestrutura necessários para o DS Cortex atingir
+      maturidade de produção como SaaS. Inclui light mode, componentes faltantes,
+      charts e sincronização do registry.
+
+  - id: "DS-QUALITY"
+    name: "Design System Quality & DX"
+    priority: media
+    description: >
+      Cobertura de testes, automação de qualidade visual, pipeline de build npm
+      e deploy público do Storybook.
+
+  - id: "DS-MATURITY"
+    name: "Design System Maturity"
+    priority: baixa
+    description: >
+      Figma Code Connect, email templates, tokens avançados, changelog,
+      analytics de uso de tokens e site de documentação.
+
+  - id: "BRAND-APP"
+    name: "Brand Application Cortex"
+    priority: alta
+    description: >
+      Aplicação da marca Cortex em todos os pontos de contato: digital (mockups,
+      ads, social media), físico (vestuário, brindes) e ambiental (eventos, materiais).
+
+stories:
+
+  # ═══════════════════════════════════════════════════════════════════
+  # ÉPICO 1 — DS-PROD: Design System Production Ready
+  # ═══════════════════════════════════════════════════════════════════
+
+  - id: "CORTEX-001"
+    title: "Light Mode Theme"
+    epic: "DS-PROD"
+    priority: alta
+    type: feature
+    description: >
+      Como desenvolvedor SaaS usando o Cortex DS, quero um tema light mode completo
+      para que o produto possa ser utilizado em contextos de alta luminosidade e
+      atender preferências de usuários que não preferem dark mode.
+    acceptance_criteria:
+      - "Todos os 35 componentes existentes renderizam corretamente em light mode sem quebras visuais"
+      - "Tokens de cor light mode definidos no DTCG (backgrounds, surfaces, borders, text, semantic)"
+      - "Toggle theme (dark/light) funcional via CSS custom properties sem flash"
+      - "Contraste WCAG AA verificado para todos os pares de cor do light mode"
+      - "Story no Storybook com switcher dark/light em cada componente"
+      - "Variável CSS --cortex-mode: light | dark aplicada no :root"
+      - "Documentação dos novos tokens light no DESIGN-SYSTEM.md"
+    story_points: 13
+    labels: ["design-system", "theming", "accessibility", "tokens"]
+    depends_on: []
+
+  - id: "CORTEX-002"
+    title: "DatePicker Component"
+    epic: "DS-PROD"
+    priority: alta
+    type: feature
+    description: >
+      Como dentista usando o Cortex CRM, quero um componente DatePicker acessível
+      para selecionar datas de consultas e agendamentos de forma intuitiva e
+      compatível com teclado e leitores de tela.
+    acceptance_criteria:
+      - "Suporta modo single date e range (data inicial + data final)"
+      - "Locale pt-BR configurado (dias da semana, meses, formato DD/MM/AAAA)"
+      - "Construído sobre Radix UI ou React-Day-Picker com tokens Cortex"
+      - "Navegação completa por teclado (Tab, Arrow keys, Enter, Escape)"
+      - "Conformidade WCAG AA: roles ARIA corretos, labels, live regions"
+      - "Integra com React Hook Form via Controller"
+      - "Story no Storybook: single, range, disabled dates, min/max date"
+      - "Variante read-only para exibição de datas sem edição"
+    story_points: 8
+    labels: ["design-system", "component", "accessibility", "forms"]
+    depends_on: []
+
+  - id: "CORTEX-003"
+    title: "Combobox/Autocomplete Component"
+    epic: "DS-PROD"
+    priority: alta
+    type: feature
+    description: >
+      Como recepcionista usando o CRM Cortex, quero um componente Combobox com
+      busca para encontrar pacientes rapidamente e associá-los a consultas sem
+      precisar digitar o nome completo.
+    acceptance_criteria:
+      - "Suporta busca síncrona (lista local) e assíncrona (API fetch com debounce)"
+      - "Multi-select: seleção de múltiplos itens com chips removíveis"
+      - "Navegação por teclado completa (Arrow, Enter, Escape, Tab)"
+      - "Conformidade ARIA: role=combobox, aria-expanded, aria-autocomplete"
+      - "Estado de loading enquanto dados assíncronos carregam"
+      - "Estado empty (nenhum resultado encontrado)"
+      - "Story com dados reais de CRM: busca de pacientes por nome"
+      - "Limpa seleção com botão X ou tecla Backspace"
+    story_points: 8
+    labels: ["design-system", "component", "accessibility", "forms", "crm"]
+    depends_on: []
+
+  - id: "CORTEX-004"
+    title: "FileUpload Component"
+    epic: "DS-PROD"
+    priority: media
+    type: feature
+    description: >
+      Como dentista, quero fazer upload de documentos e imagens de pacientes
+      (prontuários, radiografias, fotos) diretamente no CRM com interface
+      intuitiva de arrastar e soltar.
+    acceptance_criteria:
+      - "Drag-and-drop nativo com highlight visual na zona de drop"
+      - "Click-to-browse via input file oculto"
+      - "Preview de imagens (JPG, PNG, WebP) em thumbnail antes do upload"
+      - "Preview de PDFs com ícone + nome do arquivo"
+      - "Progress bar animada durante upload"
+      - "Validação de tipo de arquivo e tamanho máximo configurável"
+      - "Estado de erro para arquivos inválidos ou upload falho"
+      - "Múltiplos arquivos suportados com lista de uploads"
+      - "Conformidade WCAG AA: label, aria-label, keyboard-operable"
+      - "Story no Storybook com mock de upload assíncrono"
+    story_points: 8
+    labels: ["design-system", "component", "accessibility", "forms"]
+    depends_on: []
+
+  - id: "CORTEX-005"
+    title: "Slider Component"
+    epic: "DS-PROD"
+    priority: baixa
+    type: feature
+    description: >
+      Como desenvolvedor construindo features do Cortex, quero um componente
+      Slider acessível para configurações de valores numéricos como faixas de
+      preço de tratamentos ou filtros de relatório.
+    acceptance_criteria:
+      - "Modo single (um valor) e range (dois valores: min e max)"
+      - "Step configurável (ex: step=5, step=100)"
+      - "Labels opcionais acima do thumb mostrando valor atual"
+      - "Marcações (ticks) opcionais em intervalos configuráveis"
+      - "Construído sobre Radix UI Slider"
+      - "Navegação por teclado (Arrow keys, Home, End)"
+      - "Conformidade WCAG AA: role=slider, aria-valuemin/max/now"
+      - "Story no Storybook: single, range, com step, com labels"
+    story_points: 5
+    labels: ["design-system", "component", "accessibility"]
+    depends_on: []
+
+  - id: "CORTEX-006"
+    title: "TimePicker Component"
+    epic: "DS-PROD"
+    priority: alta
+    type: feature
+    description: >
+      Como recepcionista, quero um seletor de horário para agendar consultas
+      com precisão de 15 minutos, integrado ao DatePicker, para que o fluxo
+      de agendamento seja fluido e sem erros.
+    acceptance_criteria:
+      - "Suporta formato 24h e AM/PM configurável"
+      - "Step de 15 minutos padrão, configurável (5, 10, 15, 30, 60)"
+      - "Integração com DatePicker: compõe um DateTime completo"
+      - "Máscara de input com formatação automática HH:MM"
+      - "Navegação por teclado nos dropdowns de hora/minuto"
+      - "Conformidade WCAG AA"
+      - "Story no Storybook: 24h, AM/PM, integrado com DatePicker"
+      - "Bloqueia horários passados quando data é hoje (opcional)"
+    story_points: 5
+    labels: ["design-system", "component", "accessibility", "forms", "crm"]
+    depends_on: ["CORTEX-002"]
+
+  - id: "CORTEX-007"
+    title: "OTP Input Component"
+    epic: "DS-PROD"
+    priority: media
+    type: feature
+    description: >
+      Como usuário do Cortex, quero um campo de entrada de código OTP para
+      verificar minha identidade no login de dois fatores de forma rápida
+      e sem fricção.
+    acceptance_criteria:
+      - "Suporta 4 dígitos e 6 dígitos (configurável via prop length)"
+      - "Auto-foco no próximo campo ao digitar cada dígito"
+      - "Suporte a colar (paste) o código completo em qualquer campo"
+      - "Backspace move foco para campo anterior e limpa valor"
+      - "Estado de erro com mensagem e borda vermelha"
+      - "Estado de sucesso com borda verde"
+      - "Conformidade WCAG AA: aria-label por campo, role=group"
+      - "Story no Storybook: 4 dígitos, 6 dígitos, estado de erro"
+    story_points: 5
+    labels: ["design-system", "component", "accessibility", "auth"]
+    depends_on: []
+
+  - id: "CORTEX-008"
+    title: "Drawer/Sheet Component"
+    epic: "DS-PROD"
+    priority: alta
+    type: feature
+    description: >
+      Como usuário do Cortex em dispositivos móveis, quero um painel lateral
+      deslizante para acessar detalhes e ações contextuais sem perder o
+      contexto da tela principal.
+    acceptance_criteria:
+      - "Animação suave de slide com Framer Motion (ease-out 300ms)"
+      - "Overlay semi-transparente com fade"
+      - "Trap focus dentro do drawer enquanto aberto"
+      - "Fecha ao pressionar Escape ou clicar no overlay"
+      - "Três posições de abertura: left, right, bottom"
+      - "Largura/altura configurável por prop"
+      - "Construído sobre Radix UI Dialog para acessibilidade"
+      - "Mobile-first: bottom drawer no mobile, side no desktop"
+      - "Story no Storybook: left, right, bottom, com conteúdo longo"
+    story_points: 5
+    labels: ["design-system", "component", "accessibility", "mobile", "animation"]
+    depends_on: []
+
+  - id: "CORTEX-009"
+    title: "Command Palette (cmdk)"
+    epic: "DS-PROD"
+    priority: alta
+    type: feature
+    description: >
+      Como power user do Cortex, quero uma command palette ativada por atalho
+      de teclado para navegar rapidamente entre seções, buscar pacientes e
+      executar ações sem usar o mouse.
+    acceptance_criteria:
+      - "Ativado por Cmd+K (Mac) / Ctrl+K (Windows)"
+      - "Fuzzy search nos comandos e resultados"
+      - "Navegação por teclado: Arrow keys, Enter para executar, Escape para fechar"
+      - "Agrupamento por categoria (Navegação, Pacientes, Leads, Ações)"
+      - "Atalhos exibidos ao lado dos comandos"
+      - "Animação de entrada com scale + fade"
+      - "Construído sobre cmdk package"
+      - "Resultados de busca de pacientes via async (mock no Storybook)"
+      - "Story no Storybook com comandos de CRM reais"
+    story_points: 8
+    labels: ["design-system", "component", "accessibility", "ux", "crm"]
+    depends_on: []
+
+  - id: "CORTEX-010"
+    title: "Notification Center Component"
+    epic: "DS-PROD"
+    priority: media
+    type: feature
+    description: >
+      Como dentista, quero uma central de notificações no CRM para visualizar
+      alertas de consultas, follow-ups de leads e lembretes sem interromper
+      meu fluxo de trabalho.
+    acceptance_criteria:
+      - "Lista de notificações com ícone, título, descrição e timestamp relativo"
+      - "Estado não-lido com indicador visual (dot azul)"
+      - "Ação 'Marcar como lida' individual e 'Marcar todas como lidas'"
+      - "Badge counter no ícone de sino com número de não-lidas"
+      - "Empty state quando não há notificações"
+      - "Categorias de notificação: consulta, lead, financeiro, sistema"
+      - "Scroll virtualizado para listas longas"
+      - "Story no Storybook: com notificações, vazio, múltiplas não-lidas"
+    story_points: 8
+    labels: ["design-system", "component", "crm", "ux"]
+    depends_on: []
+
+  - id: "CORTEX-011"
+    title: "Stepper/Wizard Component"
+    epic: "DS-PROD"
+    priority: media
+    type: feature
+    description: >
+      Como recepcionista, quero um componente de steps para guiar o preenchimento
+      de formulários multi-etapa (cadastro de paciente, onboarding de lead)
+      sem perder o estado entre etapas.
+    acceptance_criteria:
+      - "Layout horizontal (para desktop) e vertical (para mobile)"
+      - "Estados visuais distintos: complete (check), active (número), pending (número), error (X)"
+      - "Steps clicáveis para navegar entre etapas já completadas"
+      - "Barra de progresso proporcional entre steps"
+      - "Suporte a descrição opcional por step"
+      - "Conformidade WCAG AA: aria-current, roles corretos"
+      - "Story no Storybook: horizontal, vertical, com erro, fluxo completo"
+    story_points: 5
+    labels: ["design-system", "component", "accessibility", "forms"]
+    depends_on: []
+
+  - id: "CORTEX-012"
+    title: "Charts — BarChart Component"
+    epic: "DS-PROD"
+    priority: alta
+    type: feature
+    description: >
+      Como gestor de clínica usando o dashboard do Cortex, quero gráficos de
+      barras para visualizar consultas por período, receita mensal e comparativos
+      de performance.
+    acceptance_criteria:
+      - "Responsivo: redimensiona com o container via ResizeObserver"
+      - "Tooltip interativo com dados formatados em pt-BR"
+      - "Legendas configuráveis (acima, abaixo, lateral)"
+      - "Cores do DS Cortex (signal, success, warning, error) como padrão"
+      - "Animação de entrada das barras"
+      - "Variante horizontal e vertical"
+      - "Construído sobre Recharts ou Tremor"
+      - "Story no Storybook: receita mensal, consultas por semana, comparativo"
+    story_points: 8
+    labels: ["design-system", "component", "charts", "dashboard"]
+    depends_on: []
+
+  - id: "CORTEX-013"
+    title: "Charts — LineChart Component"
+    epic: "DS-PROD"
+    priority: alta
+    type: feature
+    description: >
+      Como gestor, quero gráficos de linha para acompanhar tendências de leads,
+      consultas e receita ao longo do tempo com clareza visual.
+    acceptance_criteria:
+      - "Suporte a múltiplas séries (multi-line) com cores distintas do DS"
+      - "Área preenchida abaixo da linha (area mode) opcional"
+      - "Tooltip com todos os valores do ponto de hover"
+      - "Dots nos pontos de dados (opcionais)"
+      - "Responsivo via ResizeObserver"
+      - "Animação de desenho da linha na entrada"
+      - "Construído sobre Recharts"
+      - "Story no Storybook: single line, multi-line, com área preenchida"
+    story_points: 5
+    labels: ["design-system", "component", "charts", "dashboard"]
+    depends_on: ["CORTEX-012"]
+
+  - id: "CORTEX-014"
+    title: "Charts — PieChart/Donut Component"
+    epic: "DS-PROD"
+    priority: media
+    type: feature
+    description: >
+      Como gestor, quero gráficos de pizza e donut para visualizar distribuição
+      de leads por origem, procedimentos mais realizados e mix de receita.
+    acceptance_criteria:
+      - "Suporte a pie e donut (variante com innerRadius configurável)"
+      - "Legendas com valor e percentual"
+      - "Labels diretos nas fatias (configurável)"
+      - "Tooltip com dados formatados"
+      - "Animação de entrada rotacional"
+      - "Cores do DS Cortex como padrão, customizável por prop"
+      - "Story no Storybook: pie, donut, origem de leads, procedimentos"
+    story_points: 5
+    labels: ["design-system", "component", "charts", "dashboard"]
+    depends_on: ["CORTEX-012"]
+
+  - id: "CORTEX-015"
+    title: "Charts — FunnelChart Component"
+    epic: "DS-PROD"
+    priority: alta
+    type: feature
+    description: >
+      Como gestor de marketing odontológico, quero um gráfico de funil para
+      visualizar a taxa de conversão de leads em cada etapa do pipeline
+      (Lead → Agendamento → Comparecimento → Fechamento).
+    acceptance_criteria:
+      - "Etapas configuráveis via props (label, valor, cor)"
+      - "Labels com percentual de conversão entre etapas"
+      - "Etapas padrão do CRM Cortex: Lead, Agendado, Compareceu, Fechado"
+      - "Cores semânticas: verde para alta conversão, amarelo para média, vermelho para baixa"
+      - "Responsivo"
+      - "Tooltip com valor absoluto e percentual"
+      - "Story no Storybook com dados fictícios realistas de clínica odontológica"
+    story_points: 8
+    labels: ["design-system", "component", "charts", "dashboard", "crm"]
+    depends_on: ["CORTEX-012"]
+
+  - id: "CORTEX-016"
+    title: "Accordion Component"
+    epic: "DS-PROD"
+    priority: media
+    type: feature
+    description: >
+      Como desenvolvedor construindo o Cortex, quero um componente Accordion
+      para organizar conteúdo em seções colapsáveis em FAQs, configurações
+      e seções de detalhes do paciente.
+    acceptance_criteria:
+      - "Modo single (apenas um item aberto por vez) e multi (múltiplos abertos)"
+      - "Animação suave de expand/collapse com Framer Motion ou CSS transitions"
+      - "Construído sobre Radix UI Accordion"
+      - "Item desabilitado não abre"
+      - "Ícone chevron rotaciona na abertura"
+      - "Conformidade WCAG AA: aria-expanded, role=button, aria-controls"
+      - "Story no Storybook: single, multi, com item desabilitado"
+    story_points: 3
+    labels: ["design-system", "component", "accessibility"]
+    depends_on: []
+
+  - id: "CORTEX-017"
+    title: "Resizable Panels Component"
+    epic: "DS-PROD"
+    priority: media
+    type: feature
+    description: >
+      Como usuário do Cortex em tela grande, quero painéis redimensionáveis
+      para ajustar o layout do CRM conforme minha preferência e densidade
+      de informação desejada.
+    acceptance_criteria:
+      - "Drag-to-resize com handle visual entre painéis"
+      - "Suporte a layout horizontal e vertical"
+      - "Constraints de tamanho mínimo e máximo por painel (minSize, maxSize em %)"
+      - "Persistência do tamanho dos painéis via localStorage"
+      - "Cursor visual muda para resize ao hover no handle"
+      - "Construído sobre react-resizable-panels"
+      - "Story no Storybook: layout 2 painéis, 3 painéis, com persistência"
+    story_points: 5
+    labels: ["design-system", "component", "layout", "ux"]
+    depends_on: []
+
+  - id: "CORTEX-018"
+    title: "Calendar Component (Agenda Visual)"
+    epic: "DS-PROD"
+    priority: alta
+    type: feature
+    description: >
+      Como dentista, quero um componente de calendário visual para gerenciar
+      minha agenda de consultas com visualizações de mês, semana e dia,
+      facilitando o agendamento e a reorganização de horários.
+    acceptance_criteria:
+      - "Visualização de mês com todos os eventos do mês visíveis"
+      - "Visualização de semana (7 colunas, slots por hora)"
+      - "Visualização de dia (linha do tempo por hora)"
+      - "Eventos renderizados com cor configurável, título e horário"
+      - "Drag-to-reschedule (arrastar evento para novo horário)"
+      - "Click em slot vazio abre modal de novo agendamento"
+      - "Integra com TimePicker e DatePicker"
+      - "Responsivo: semana/dia colapsa para mobile"
+      - "Story no Storybook com dados fictícios de agenda odontológica"
+    story_points: 13
+    labels: ["design-system", "component", "crm", "scheduling"]
+    depends_on: ["CORTEX-002", "CORTEX-006"]
+
+  - id: "CORTEX-019"
+    title: "Timeline Component"
+    epic: "DS-PROD"
+    priority: media
+    type: feature
+    description: >
+      Como dentista, quero uma timeline vertical no perfil do paciente para
+      visualizar o histórico completo de consultas, procedimentos e interações
+      em ordem cronológica.
+    acceptance_criteria:
+      - "Items da timeline com ícone, data formatada em pt-BR, título e descrição"
+      - "Ícones por tipo de evento: consulta, procedimento, mensagem, pagamento"
+      - "Estado de loading com skeleton animation"
+      - "Suporte a infinite scroll ou botão 'Ver mais'"
+      - "Linha vertical conectando os items"
+      - "Highlight visual do item mais recente"
+      - "Story no Storybook com histórico de paciente fictício"
+    story_points: 5
+    labels: ["design-system", "component", "crm"]
+    depends_on: []
+
+  - id: "CORTEX-020"
+    title: "Kanban Board Component"
+    epic: "DS-PROD"
+    priority: alta
+    type: feature
+    description: >
+      Como gestor de marketing, quero um board kanban para visualizar e gerenciar
+      o pipeline de leads do Cortex, movendo cards entre colunas de status
+      e acompanhando o funil de conversão visualmente.
+    acceptance_criteria:
+      - "Drag-and-drop de cards entre colunas via @dnd-kit/core"
+      - "Colunas padrão: Novo Lead, Contato Feito, Agendado, Compareceu, Fechado, Perdido"
+      - "Contador de cards por coluna"
+      - "Cards com avatar, nome do lead, valor e data"
+      - "Filtros por origem, data e responsável"
+      - "Skeleton loading no carregamento inicial"
+      - "Adicionar card via botão '+' na coluna"
+      - "Story no Storybook com dados fictícios de pipeline odontológico"
+    story_points: 13
+    labels: ["design-system", "component", "crm", "drag-and-drop"]
+    depends_on: []
+
+  - id: "CORTEX-021"
+    title: "Avatar Upload Component"
+    epic: "DS-PROD"
+    priority: baixa
+    type: feature
+    description: >
+      Como usuário do Cortex, quero fazer upload e corte da minha foto de
+      perfil diretamente no CRM para personalizar minha conta e identificar
+      profissionais na equipe.
+    acceptance_criteria:
+      - "Click na área do avatar abre seletor de arquivo"
+      - "Modal de crop circular após seleção da imagem"
+      - "Controles de zoom no crop (slider)"
+      - "Preview em tempo real do crop"
+      - "Aceita JPG, PNG e WebP"
+      - "Tamanho máximo: 5MB"
+      - "Fallback para iniciais do nome caso sem foto"
+      - "Construído sobre react-easy-crop"
+      - "Story no Storybook com fluxo completo de upload"
+    story_points: 8
+    labels: ["design-system", "component", "profile", "upload"]
+    depends_on: ["CORTEX-004"]
+
+  - id: "CORTEX-022"
+    title: "KPI Card Component"
+    epic: "DS-PROD"
+    priority: alta
+    type: feature
+    description: >
+      Como gestor de clínica, quero cards de KPI enriquecidos no dashboard do
+      Cortex para acompanhar métricas-chave com contexto de tendência e
+      comparação com o período anterior.
+    acceptance_criteria:
+      - "Valor principal em destaque com formatação configurável (número, moeda, %)"
+      - "Indicador de trend: seta up (verde) ou down (vermelho) com percentual"
+      - "Sparkline mini-chart embutido (linha ou área, 7/30 pontos)"
+      - "Label de comparação: 'vs. mês anterior' ou período configurável"
+      - "Loading skeleton quando dados carregam"
+      - "Ícone customizável por tipo de KPI"
+      - "Integra com sistema de tokens do DS (cores semânticas para trend)"
+      - "Story no Storybook: receita, leads, consultas, taxa de conversão"
+    story_points: 8
+    labels: ["design-system", "component", "dashboard", "charts"]
+    depends_on: ["CORTEX-013"]
+
+  - id: "CORTEX-023"
+    title: "NavigationMenu Component"
+    epic: "DS-PROD"
+    priority: media
+    type: feature
+    description: >
+      Como desenvolvedor da landing page do Cortex, quero um componente de
+      menu de navegação com suporte a mega-menu para organizar features,
+      cases e links com hierarquia visual clara.
+    acceptance_criteria:
+      - "Suporte a dropdowns multi-coluna (mega-menu)"
+      - "Navegação completa por teclado (Tab, Arrow, Enter, Escape)"
+      - "Variante mobile com menu hamburger colapsável"
+      - "Indicador de item ativo"
+      - "Construído sobre Radix UI NavigationMenu"
+      - "Conformidade WCAG AA: roles, aria-expanded, aria-current"
+      - "Story no Storybook: desktop com mega-menu, mobile hamburger"
+    story_points: 8
+    labels: ["design-system", "component", "navigation", "accessibility"]
+    depends_on: []
+
+  - id: "CORTEX-024"
+    title: "ConfirmDialog Component"
+    epic: "DS-PROD"
+    priority: media
+    type: feature
+    description: >
+      Como desenvolvedor do Cortex, quero um componente de diálogo de
+      confirmação reutilizável para ações destrutivas ou irreversíveis (deletar
+      lead, cancelar consulta) com feedback visual claro sobre o risco da ação.
+    acceptance_criteria:
+      - "Variantes visuais: danger (vermelho), warning (amarelo), info (azul)"
+      - "Título e descrição customizáveis via props"
+      - "Estado de loading no botão de confirmação durante operação assíncrona"
+      - "Botão de cancelar sempre disponível"
+      - "Fecha ao pressionar Escape"
+      - "Trap focus dentro do dialog"
+      - "Construído sobre o Modal existente do DS Cortex"
+      - "Story no Storybook: danger, warning, info, com loading state"
+    story_points: 3
+    labels: ["design-system", "component", "accessibility", "ux"]
+    depends_on: []
+
+  - id: "CORTEX-025"
+    title: "Component Registry Sync"
+    epic: "DS-PROD"
+    priority: alta
+    type: chore
+    description: >
+      Como mantenedor do DS Cortex, quero o component-registry.yaml totalmente
+      sincronizado com os 35 componentes reais que existem no codebase para
+      que a documentação reflita a realidade e não induza desenvolvedores a erro.
+    acceptance_criteria:
+      - "Registry declara exatamente 35 componentes (atualmente declara 27)"
+      - "8 componentes faltantes identificados, documentados e adicionados ao registry"
+      - "Cada componente tem: path, variants, features, exports, stories, dependencies"
+      - "summary.total_components atualizado para 35"
+      - "summary.storybook_stories atualizado para refletir total real"
+      - "Campos de atoms, molecules, organisms, templates contagens corretas"
+      - "DESIGN-SYSTEM.md atualizado para refletir registry sincronizado"
+    story_points: 3
+    labels: ["design-system", "chore", "documentation", "registry"]
+    depends_on: []
+
+  # ═══════════════════════════════════════════════════════════════════
+  # ÉPICO 2 — DS-QUALITY: Design System Quality & DX
+  # ═══════════════════════════════════════════════════════════════════
+
+  - id: "CORTEX-026"
+    title: "Unit Tests — Atoms"
+    epic: "DS-QUALITY"
+    priority: alta
+    type: chore
+    description: >
+      Como desenvolvedor do Cortex, quero cobertura de testes unitários para
+      todos os 17 componentes atom do DS para garantir que regressões sejam
+      detectadas automaticamente antes de chegarem à produção.
+    acceptance_criteria:
+      - "Cobertura mínima de 80% em linhas para cada atom"
+      - "Testa render sem crash para cada variante declarada no registry"
+      - "Testa interações: click, focus, blur, change via userEvent"
+      - "Testa estados: disabled, loading, error, success"
+      - "Testa acessibilidade: role correto, aria-label, aria-disabled"
+      - "Framework: Vitest + Testing Library"
+      - "CI falha se cobertura cair abaixo de 80%"
+      - "Todos os 17 atoms com arquivo .test.tsx criado"
+    story_points: 13
+    labels: ["testing", "design-system", "ci", "quality"]
+    depends_on: ["CORTEX-025"]
+
+  - id: "CORTEX-027"
+    title: "Unit Tests — Molecules"
+    epic: "DS-QUALITY"
+    priority: alta
+    type: chore
+    description: >
+      Como desenvolvedor do Cortex, quero cobertura de testes unitários para
+      todos os 9 componentes molecule do DS para garantir que a composição
+      de atoms funciona corretamente em todos os edge cases.
+    acceptance_criteria:
+      - "Cobertura mínima de 80% em linhas para cada molecule"
+      - "Testa composição de atoms: estrutura do DOM resultante"
+      - "Testa callbacks: onDismiss no Alert, onChange no FormField, etc."
+      - "Testa edge cases: conteúdo vazio, strings longas, estados extremos"
+      - "Testa propagação de props para atoms filhos"
+      - "Framework: Vitest + Testing Library"
+      - "CI falha se cobertura cair abaixo de 80%"
+    story_points: 8
+    labels: ["testing", "design-system", "ci", "quality"]
+    depends_on: ["CORTEX-026"]
+
+  - id: "CORTEX-028"
+    title: "Unit Tests — Organisms"
+    epic: "DS-QUALITY"
+    priority: alta
+    type: chore
+    description: >
+      Como desenvolvedor do Cortex, quero cobertura de testes unitários para
+      todos os 5 componentes organism do DS, especialmente o DataTable, para
+      garantir que features complexas de sort, filter e seleção funcionam.
+    acceptance_criteria:
+      - "Cobertura mínima de 80% em linhas para cada organism"
+      - "DataTable: testa sort por coluna, filtro global, seleção de linha, paginação"
+      - "Modal: testa open, close, trap focus, Escape key"
+      - "Sidebar: testa collapse/expand, item ativo, subnav"
+      - "EmptyState: testa render com/sem ações"
+      - "PageHeader: testa slots (breadcrumb, actions, badge)"
+      - "Framework: Vitest + Testing Library"
+    story_points: 8
+    labels: ["testing", "design-system", "ci", "quality"]
+    depends_on: ["CORTEX-027"]
+
+  - id: "CORTEX-029"
+    title: "Unit Tests — Templates"
+    epic: "DS-QUALITY"
+    priority: media
+    type: chore
+    description: >
+      Como desenvolvedor do Cortex, quero cobertura de testes unitários para
+      os 4 templates do DS para garantir que os layouts se montam corretamente
+      e os slots de composição funcionam conforme esperado.
+    acceptance_criteria:
+      - "Cobertura mínima de 80% em linhas para cada template"
+      - "Testa montagem do layout: presença de regiões principais (sidebar, main, header)"
+      - "Testa responsividade: simula viewport mobile e verifica comportamento"
+      - "Testa slot composition: children renderizados na área correta"
+      - "DashboardTemplate: testa transição de página com Framer Motion mockado"
+      - "AuthTemplate: testa variantes centered e split"
+      - "Framework: Vitest + Testing Library"
+    story_points: 5
+    labels: ["testing", "design-system", "ci", "quality"]
+    depends_on: ["CORTEX-028"]
+
+  - id: "CORTEX-030"
+    title: "Visual Regression Testing Setup"
+    epic: "DS-QUALITY"
+    priority: media
+    type: chore
+    description: >
+      Como mantenedor do DS Cortex, quero visual regression testing configurado
+      com Chromatic para que mudanças visuais não intencionais em componentes
+      sejam bloqueadas antes do merge.
+    acceptance_criteria:
+      - "Chromatic (ou Percy) integrado ao repositório"
+      - "Baseline de screenshots criada para todos os stories do Storybook"
+      - "CI pipeline executa Chromatic em cada PR"
+      - "PR é bloqueado se visual diff exceder threshold configurado"
+      - "Fluxo de aprovação de visual changes documentado"
+      - "Token de API configurado nos secrets do CI"
+      - "Badge de status do Chromatic no README do DS"
+    story_points: 5
+    labels: ["testing", "ci", "design-system", "visual-regression"]
+    depends_on: []
+
+  - id: "CORTEX-031"
+    title: "Motion Presets Library"
+    epic: "DS-QUALITY"
+    priority: media
+    type: feature
+    description: >
+      Como desenvolvedor do Cortex, quero uma biblioteca de animation presets
+      reutilizáveis com Framer Motion para garantir consistência de movimento
+      em toda a interface sem duplicar código de animação.
+    acceptance_criteria:
+      - "Presets exportados: fadeIn, fadeOut, slideUp, slideDown, slideLeft, slideRight"
+      - "Presets de composição: staggerContainer, staggerItem"
+      - "Presets de escala: scaleIn, scaleOut"
+      - "Preset de spring: springBounce, springSmooth"
+      - "Preset de reduced-motion: retorna animação instantânea quando prefers-reduced-motion ativo"
+      - "Exportados como hooks useAnimation e como variantes de motion.div"
+      - "Story no Storybook demonstrando cada preset"
+      - "Documentação de uso no DESIGN-SYSTEM.md"
+    story_points: 5
+    labels: ["design-system", "animation", "dx", "framer-motion"]
+    depends_on: []
+
+  - id: "CORTEX-032"
+    title: "npm Package Build Pipeline"
+    epic: "DS-QUALITY"
+    priority: alta
+    type: chore
+    description: >
+      Como desenvolvedor usando o Cortex DS em outros projetos, quero um pacote
+      npm publicável com build otimizado para que os componentes possam ser
+      instalados e usados de forma independente.
+    acceptance_criteria:
+      - "Build configurado com tsup ou Rollup"
+      - "Output em ESM e CJS (dual format)"
+      - "Tree-shakeable: importar um componente não traz o DS inteiro"
+      - "TypeScript types (.d.ts) incluídos no bundle"
+      - "package.json com exports map correto (main, module, types)"
+      - "CSS/tokens exportados separadamente ou via CSS-in-JS"
+      - "Build executa sem erros em CI"
+      - "README com instruções de instalação e uso básico"
+    story_points: 8
+    labels: ["design-system", "npm", "build", "dx", "ci"]
+    depends_on: ["CORTEX-025"]
+
+  - id: "CORTEX-033"
+    title: "Storybook Public Deploy"
+    epic: "DS-QUALITY"
+    priority: alta
+    type: chore
+    description: >
+      Como stakeholder do produto Cortex, quero o Storybook do DS em URL
+      pública e acessível para que toda a equipe (design, produto, devs)
+      possa consultar componentes sem configurar ambiente local.
+    acceptance_criteria:
+      - "URL pública estável do Storybook (Chromatic, Vercel ou Netlify)"
+      - "Deploy automático disparado no merge para branch main"
+      - "Versão do DS exibida no Storybook (ex: v0.5.0)"
+      - "URL documentada no README do DS e no DESIGN-SYSTEM.md"
+      - "Build de produção sem warnings críticos"
+      - "Tempo de build inferior a 5 minutos"
+    story_points: 3
+    labels: ["design-system", "storybook", "deploy", "ci"]
+    depends_on: ["CORTEX-032"]
+
+  - id: "CORTEX-034"
+    title: "Storybook Interaction Testing"
+    epic: "DS-QUALITY"
+    priority: media
+    type: chore
+    description: >
+      Como QA do Cortex, quero play functions nos Storybook stories para que
+      testes de interação automatizados validem comportamentos reais de
+      formulários, modais e tabelas sem precisar de testes E2E separados.
+    acceptance_criteria:
+      - "Play functions implementadas nos stories críticos: Form submit, Modal open/close, DataTable sort/filter"
+      - "Usa @storybook/test + userEvent para simular interações reais"
+      - "Stories com play function exibem status pass/fail no Storybook"
+      - "CI executa storybook test em cada PR"
+      - "Mínimo 10 stories com play functions implementadas"
+      - "Errors de play function bloqueiam o CI"
+    story_points: 8
+    labels: ["testing", "storybook", "ci", "quality"]
+    depends_on: ["CORTEX-033"]
+
+  - id: "CORTEX-035"
+    title: "A11y Audit Automation"
+    epic: "DS-QUALITY"
+    priority: media
+    type: chore
+    description: >
+      Como responsável pela acessibilidade do Cortex, quero auditoria automática
+      de acessibilidade no Storybook para garantir zero violations WCAG AA em
+      todos os componentes do DS.
+    acceptance_criteria:
+      - "@storybook/addon-a11y configurado com regras WCAG AA"
+      - "Violações de acessibilidade geram failures no CI (blocking)"
+      - "Zero violations WCAG AA em todos os stories existentes"
+      - "Report automático de a11y gerado em cada PR"
+      - "Regras customizadas para padrões específicos do Cortex (ex: contraste mínimo do DS)"
+      - "Badge de status de a11y no README"
+    story_points: 5
+    labels: ["accessibility", "storybook", "ci", "quality", "wcag"]
+    depends_on: ["CORTEX-033"]
+
+  # ═══════════════════════════════════════════════════════════════════
+  # ÉPICO 3 — DS-MATURITY: Design System Maturity
+  # ═══════════════════════════════════════════════════════════════════
+
+  - id: "CORTEX-036"
+    title: "Figma Code Connect"
+    epic: "DS-MATURITY"
+    priority: baixa
+    type: feature
+    description: >
+      Como designer do Cortex, quero mapeamentos Code Connect entre componentes
+      Figma e componentes de código para que o handoff design-to-dev seja
+      automático e sem ambiguidade.
+    acceptance_criteria:
+      - "Cada um dos 35 componentes do DS tem mapping Figma ↔ código"
+      - "Link bidirecional: ao selecionar componente no Figma, mostra o código correto"
+      - "Propriedades do Figma mapeadas para props do componente (ex: variant=primary)"
+      - "Configurado via Figma Code Connect CLI"
+      - "Documentação do processo de criação de novos mappings"
+      - "Funciona com a versão atual do Figma Plugin"
+    story_points: 13
+    labels: ["design-system", "figma", "dx", "handoff"]
+    depends_on: ["CORTEX-025"]
+
+  - id: "CORTEX-037"
+    title: "Email Templates"
+    epic: "DS-MATURITY"
+    priority: baixa
+    type: feature
+    description: >
+      Como responsável pelo marketing do Cortex, quero templates de email
+      responsivos usando tokens da marca para comunicações profissionais
+      e consistentes com a identidade visual do produto.
+    acceptance_criteria:
+      - "Template: Onboarding (boas-vindas ao novo usuário Cortex)"
+      - "Template: Relatório mensal (KPIs da clínica em tabela + charts simples)"
+      - "Template: Alerta de atividade (lead novo, consulta próxima)"
+      - "Template: Newsletter (novidades do produto, dicas)"
+      - "Todos testados e renderizando corretamente em Gmail, Outlook e Apple Mail"
+      - "HTML com inline CSS (para compatibilidade de email clients)"
+      - "Responsivos: coluna única no mobile"
+      - "Usa cores e tipografia dos tokens Cortex"
+    story_points: 8
+    labels: ["brand", "email", "marketing", "templates"]
+    depends_on: []
+
+  - id: "CORTEX-038"
+    title: "Animation Tokens Expansion"
+    epic: "DS-MATURITY"
+    priority: baixa
+    type: improvement
+    description: >
+      Como desenvolvedor do Cortex, quero tokens de motion expandidos no DTCG
+      para padronizar animações em todo o produto com configurações de spring
+      e stagger contextuais.
+    acceptance_criteria:
+      - "Tokens de duration: duration-instant, fast, normal, slow, very-slow"
+      - "Tokens de easing: ease-in, ease-out, ease-in-out, spring-bounce, spring-smooth"
+      - "Tokens de stagger: stagger-xs (50ms), sm (100ms), md (150ms), lg (200ms)"
+      - "Configurações de spring por contexto: modal-spring, card-hover-spring, page-transition-spring"
+      - "Token prefers-reduced-motion: retorna values zerados quando ativo"
+      - "Todos os tokens no formato DTCG (.value, .type)"
+      - "CSS custom properties geradas dos tokens"
+      - "Documentação no DESIGN-SYSTEM.md"
+    story_points: 5
+    labels: ["design-system", "tokens", "animation", "dtcg"]
+    depends_on: []
+
+  - id: "CORTEX-039"
+    title: "Responsive/Container Tokens"
+    epic: "DS-MATURITY"
+    priority: baixa
+    type: improvement
+    description: >
+      Como desenvolvedor do Cortex, quero breakpoint tokens e container query
+      tokens no DTCG para que responsividade seja consistente e documentada
+      em todos os componentes.
+    acceptance_criteria:
+      - "Breakpoint tokens: sm (640px), md (768px), lg (1024px), xl (1280px), 2xl (1536px)"
+      - "Container query tokens: container-sm, container-md, container-lg"
+      - "Tokens no formato DTCG (.value, .type: dimension)"
+      - "CSS custom properties geradas"
+      - "Tailwind config atualizado para usar os tokens como breakpoints"
+      - "Documentação de uso com container queries no DESIGN-SYSTEM.md"
+    story_points: 3
+    labels: ["design-system", "tokens", "responsive", "dtcg"]
+    depends_on: []
+
+  - id: "CORTEX-040"
+    title: "Changelog & Semantic Versioning"
+    epic: "DS-MATURITY"
+    priority: baixa
+    type: chore
+    description: >
+      Como mantenedor do DS Cortex, quero um CHANGELOG.md gerado automaticamente
+      com semantic versioning para que usuários do pacote saibam exatamente o que
+      mudou em cada versão.
+    acceptance_criteria:
+      - "CHANGELOG.md gerado automaticamente por changesets ou conventional-changelog"
+      - "Semantic versioning (MAJOR.MINOR.PATCH) aplicado ao package.json"
+      - "Conventional commits enforçados via commitlint + husky"
+      - "Release notes geradas automaticamente no merge para main"
+      - "GitHub Release criada automaticamente com cada nova versão"
+      - "Processo documentado para contribuidores"
+    story_points: 5
+    labels: ["design-system", "dx", "ci", "versioning", "changelog"]
+    depends_on: ["CORTEX-032"]
+
+  - id: "CORTEX-041"
+    title: "Token Usage Analytics"
+    epic: "DS-MATURITY"
+    priority: baixa
+    type: chore
+    description: >
+      Como mantenedor do DS Cortex, quero um script de análise de tokens para
+      identificar tokens não utilizados, tokens duplicados e valores hardcoded
+      que deveriam ser tokens.
+    acceptance_criteria:
+      - "Script analisa todo o codebase e lista tokens importados vs definidos"
+      - "Relatório de tokens nunca usados (candidatos a remover)"
+      - "Relatório de valores hardcoded que existem como tokens (ex: #4D71FA encontrado mas --color-signal existe)"
+      - "Relatório de tokens mais usados por frequência"
+      - "Output em JSON e markdown"
+      - "Executável via npm script (npm run analyze:tokens)"
+      - "Integrado ao CI como check opcional (warning, não blocking)"
+    story_points: 5
+    labels: ["design-system", "tokens", "dx", "analytics", "chore"]
+    depends_on: ["CORTEX-025"]
+
+  - id: "CORTEX-042"
+    title: "Design System Documentation Site"
+    epic: "DS-MATURITY"
+    priority: baixa
+    type: feature
+    description: >
+      Como desenvolvedor adotando o Cortex DS, quero um site de documentação
+      dedicado além do Storybook para encontrar guias de uso, referência de
+      tokens e decisões de design de forma navegável.
+    acceptance_criteria:
+      - "Seção Getting Started: instalação, setup de temas, primeiros componentes"
+      - "Seção Token Reference: todos os 52+ tokens com valor, descrição e preview visual"
+      - "Seção Component API: cada componente com props table, exemplos de código"
+      - "Seção Guidelines: quando usar cada componente, padrões de composição"
+      - "Construído com Nextra (Next.js + MDX) ou Docusaurus"
+      - "Deploy automático junto com o Storybook"
+      - "Search funcional nos docs"
+    story_points: 13
+    labels: ["design-system", "documentation", "dx"]
+    depends_on: ["CORTEX-033"]
+
+  # ═══════════════════════════════════════════════════════════════════
+  # ÉPICO 4 — BRAND-APP: Brand Application Cortex
+  # Sub-épico 4.1 — Digital: Mockups de Produto
+  # ═══════════════════════════════════════════════════════════════════
+
+  - id: "CORTEX-043"
+    title: "Landing Page Mockup"
+    epic: "BRAND-APP"
+    priority: alta
+    type: feature
+    description: >
+      Como responsável pelo marketing do Cortex, quero um mockup HTML/CSS da
+      landing page usando tokens reais do DS para apresentações, screenshots
+      e validação de proposta de valor antes do desenvolvimento da página real.
+    acceptance_criteria:
+      - "Seções: Hero (headline + CTA), Features (3-6 cards), Social proof, Pricing, CTA final"
+      - "Usa tokens CSS reais do DS Cortex (cores, tipografia, espaçamentos)"
+      - "Totalmente responsivo: mobile, tablet e desktop"
+      - "Hero com tagline forte + CTA 'Começar grátis' em Signal Blue"
+      - "Pronto para screenshot e exportação para apresentações"
+      - "Animações sutis: fade-in nas seções ao scroll"
+      - "Arquivo HTML único self-contained (sem dependências externas)"
+    story_points: 8
+    labels: ["brand", "marketing", "landing-page", "mockup"]
+    depends_on: []
+
+  - id: "CORTEX-044"
+    title: "Dashboard Mockup"
+    epic: "BRAND-APP"
+    priority: alta
+    type: feature
+    description: >
+      Como responsável pelo marketing do Cortex, quero um mockup visual do CRM
+      rodando com dados fictícios realistas para demonstrações a clientes e
+      materiais de marketing do produto.
+    acceptance_criteria:
+      - "Layout com sidebar colapsável + área principal"
+      - "Stats com KPIs de clínica odontológica (leads, consultas, receita, taxa de comparecimento)"
+      - "Tabela de leads com avatar, nome, cidade, origem, status e valor"
+      - "Gráficos de barras e linha com dados de 6 meses"
+      - "Tema dark com cores do DS Cortex"
+      - "Dados fictícios mas realistas (nomes brasileiros, valores plausíveis)"
+      - "Pronto para screenshot em resolução 1440px"
+    story_points: 8
+    labels: ["brand", "marketing", "dashboard", "mockup", "crm"]
+    depends_on: []
+
+  - id: "CORTEX-045"
+    title: "App Mobile Mockup"
+    epic: "BRAND-APP"
+    priority: media
+    type: feature
+    description: >
+      Como responsável pelo marketing do Cortex, quero mockups de telas do CRM
+      em frames de dispositivos móveis para apresentar o produto em materiais
+      digitais e redes sociais.
+    acceptance_criteria:
+      - "Frame de iPhone 15 Pro (ou equivalente atual) para iOS mockup"
+      - "Tela de login com logo Cortex, campo email/senha, botão Signal Blue"
+      - "Tela de dashboard mobile com stats em grid 2x2 e lista de próximas consultas"
+      - "Tela de lista de pacientes com avatar, nome e badge de status"
+      - "Exportável como PNG em alta resolução (2x)"
+      - "Cores do DS Cortex aplicadas corretamente"
+    story_points: 5
+    labels: ["brand", "marketing", "mobile", "mockup"]
+    depends_on: []
+
+  - id: "CORTEX-046"
+    title: "OG Image / Social Card"
+    epic: "BRAND-APP"
+    priority: alta
+    type: feature
+    description: >
+      Como responsável pelo marketing digital do Cortex, quero uma imagem padrão
+      de compartilhamento para redes sociais que represente a marca com
+      profissionalismo ao compartilhar links do produto.
+    acceptance_criteria:
+      - "Dimensões: 1200x630px (padrão Open Graph)"
+      - "Logo Cortex em destaque"
+      - "Tagline legível mesmo em thumbnail (120px de altura)"
+      - "Cores do DS Cortex: fundo Void/Ink com texto branco e accent Signal Blue"
+      - "Gradiente ou pattern sutil de fundo alinhado ao brandbook"
+      - "Exportado como PNG com compressão otimizada (<200KB)"
+      - "Variante com captura de tela do dashboard ao fundo (desfocado)"
+    story_points: 3
+    labels: ["brand", "marketing", "social-media", "og-image"]
+    depends_on: []
+
+  - id: "CORTEX-047"
+    title: "Favicon Pack Completo"
+    epic: "BRAND-APP"
+    priority: alta
+    type: feature
+    description: >
+      Como desenvolvedor implementando o site do Cortex, quero um favicon pack
+      completo com todas as variações necessárias para que a aba do browser
+      e ícones de shortcut representem a marca corretamente.
+    acceptance_criteria:
+      - "favicon.ico (16x16 e 32x32 combinados)"
+      - "apple-touch-icon.png (180x180)"
+      - "android-chrome-192x192.png"
+      - "android-chrome-512x512.png"
+      - "favicon-16x16.png e favicon-32x32.png"
+      - "site.webmanifest com name, short_name, theme_color (#090E1A), background_color"
+      - "Ícone legível em fundo escuro e claro"
+      - "Arquivo de instruções de implementação no HTML"
+    story_points: 3
+    labels: ["brand", "favicon", "pwa", "web"]
+    depends_on: []
+
+  # ═══════════════════════════════════════════════════════════════════
+  # Sub-épico 4.2 — Digital: Ads & Social Media
+  # ═══════════════════════════════════════════════════════════════════
+
+  - id: "CORTEX-048"
+    title: "Ad Template — Meta Feed 1080x1080"
+    epic: "BRAND-APP"
+    priority: alta
+    type: feature
+    description: >
+      Como gestor de tráfego do Cortex, quero templates de anúncios para feed
+      do Meta (Facebook/Instagram) para campanhas de performance com visual
+      consistente e profissional da marca.
+    acceptance_criteria:
+      - "Dimensões: 1080x1080px"
+      - "3 variações com objetivos distintos: Awareness (brand), Consideration (features), Conversion (CTA direto)"
+      - "Logo Cortex posicionado conforme brand guide"
+      - "CTA claro e legível em cada variação"
+      - "Cores do DS Cortex aplicadas: fundo Void, texto branco, accent Signal Blue"
+      - "Arquivo editável (Figma ou PSD) + PNG exportado"
+      - "Safe zone respeitada para não cortar elementos em diferentes dispositivos"
+    story_points: 5
+    labels: ["brand", "ads", "meta", "social-media", "trafego"]
+    depends_on: []
+
+  - id: "CORTEX-049"
+    title: "Ad Template — Meta Stories 1080x1920"
+    epic: "BRAND-APP"
+    priority: alta
+    type: feature
+    description: >
+      Como gestor de tráfego do Cortex, quero templates para Stories do Meta
+      para atingir usuários no formato vertical com criativo adequado ao
+      comportamento de consumo mobile.
+    acceptance_criteria:
+      - "Dimensões: 1080x1920px"
+      - "3 variações: Awareness, Consideration, Conversion"
+      - "Design motion-friendly: elementos posicionados para serem animáveis"
+      - "Safe zones respeitadas: 250px no topo e base para elementos interativos do Stories"
+      - "Logo e CTA posicionados fora das safe zones"
+      - "Arquivo editável + PNG exportado"
+      - "Tipografia legível no formato vertical"
+    story_points: 5
+    labels: ["brand", "ads", "meta", "stories", "social-media", "trafego"]
+    depends_on: []
+
+  - id: "CORTEX-050"
+    title: "Ad Template — Carrossel Meta (5 slides)"
+    epic: "BRAND-APP"
+    priority: media
+    type: feature
+    description: >
+      Como gestor de tráfego do Cortex, quero um template de carrossel com
+      5 slides para apresentar features do produto de forma sequencial e
+      narrativa em anúncios Meta.
+    acceptance_criteria:
+      - "5 slides 1080x1080px com narrativa sequencial"
+      - "Slide 1: Hook (problema do dentista)"
+      - "Slide 2: Solução (Cortex)"
+      - "Slide 3-4: Features principais (CRM, agenda, relatórios)"
+      - "Slide 5: CTA + oferta"
+      - "Visual consistente entre slides (mesma paleta, tipografia, layout grid)"
+      - "Cada slide com CTA sutil (seta indicando próximo slide)"
+      - "Arquivo editável + PNGs exportados individualmente"
+    story_points: 8
+    labels: ["brand", "ads", "meta", "carrossel", "social-media", "trafego"]
+    depends_on: []
+
+  - id: "CORTEX-051"
+    title: "Ad Template — Google Display"
+    epic: "BRAND-APP"
+    priority: media
+    type: feature
+    description: >
+      Como gestor de tráfego do Cortex, quero banners para Google Display Network
+      para remarketing e awareness com os tamanhos mais utilizados pelas
+      plataformas de publicidade.
+    acceptance_criteria:
+      - "Banner leaderboard: 728x90px"
+      - "Banner medium rectangle: 300x250px"
+      - "Banner wide skyscraper: 160x600px"
+      - "Animação CSS sutil em cada banner (ex: fade do CTA, blink do badge)"
+      - "Logo, headline curta e CTA em todos os formatos"
+      - "Cores do DS Cortex aplicadas"
+      - "HTML/CSS exportável + PNG estático como fallback"
+    story_points: 8
+    labels: ["brand", "ads", "google", "display", "trafego"]
+    depends_on: []
+
+  - id: "CORTEX-052"
+    title: "YouTube Thumbnail Template"
+    epic: "BRAND-APP"
+    priority: baixa
+    type: feature
+    description: >
+      Como responsável pelo conteúdo do Cortex, quero templates de thumbnail
+      para YouTube para que vídeos de demonstração, tutoriais e depoimentos
+      tenham visual profissional e consistente com a marca.
+    acceptance_criteria:
+      - "Dimensões: 1280x720px (base), legível em 120x90px (thumbnail mínimo)"
+      - "3 variações: Demo do produto, Depoimento de cliente, Tutorial"
+      - "Logo Cortex em canto superior"
+      - "Título grande e legível mesmo em miniatura"
+      - "Contraste alto: garante leitura em thumbnail 120x90"
+      - "Fundo com mockup sutil do dashboard como elemento visual"
+      - "Arquivo editável + PNG exportado"
+    story_points: 3
+    labels: ["brand", "youtube", "content", "social-media"]
+    depends_on: []
+
+  - id: "CORTEX-053"
+    title: "Social Media Kit"
+    epic: "BRAND-APP"
+    priority: alta
+    type: feature
+    description: >
+      Como responsável pelo social media do Cortex, quero um kit completo de
+      templates para Instagram e LinkedIn para publicação consistente e
+      acelerada de conteúdo orgânico.
+    acceptance_criteria:
+      - "5 templates de post feed (1080x1080): dica, citação, estatística, feature, case"
+      - "3 templates de Stories (1080x1920): poll, dica rápida, oferta"
+      - "5 capas de destaque do Instagram (1080x1080, visual circular no perfil)"
+      - "Todos com sistema de substituição de texto fácil"
+      - "Consistent com identidade Cortex: void, signal blue, Space Grotesk"
+      - "Versão para LinkedIn: templates de post (1200x627)"
+      - "Guia de uso dos templates incluso"
+    story_points: 8
+    labels: ["brand", "social-media", "instagram", "linkedin", "content"]
+    depends_on: []
+
+  - id: "CORTEX-054"
+    title: "Email Header/Footer"
+    epic: "BRAND-APP"
+    priority: media
+    type: feature
+    description: >
+      Como responsável pelas comunicações do Cortex, quero componentes de
+      header e footer padrão para emails transacionais e marketing que
+      sejam reutilizáveis e consistentes com a marca.
+    acceptance_criteria:
+      - "Header: logo Cortex centralizado, fundo Void, borda inferior Signal Blue"
+      - "Footer: logo, links legais, redes sociais, endereço, link de descadastro"
+      - "HTML com inline CSS (compatível com Gmail, Outlook, Apple Mail)"
+      - "Responsivo: funciona em mobile (coluna única)"
+      - "Links de redes sociais com ícones (SVG inline ou imagem hosted)"
+      - "Testado nos 3 principais clients: Gmail, Outlook, Apple Mail"
+      - "Exportado como snippet HTML reutilizável"
+    story_points: 3
+    labels: ["brand", "email", "marketing", "html"]
+    depends_on: []
+
+  # ═══════════════════════════════════════════════════════════════════
+  # Sub-épico 4.3 — Físico: Vestuário
+  # ═══════════════════════════════════════════════════════════════════
+
+  - id: "CORTEX-055"
+    title: "Spec Camiseta"
+    epic: "BRAND-APP"
+    priority: media
+    type: feature
+    description: >
+      Como responsável pelo merchandising do Cortex, quero uma especificação
+      técnica completa da camiseta premium da marca para produção com
+      fornecedores e presentear parceiros e clientes.
+    acceptance_criteria:
+      - "Mockup frente: logo Cortex no peito esquerdo, tamanho 8cm"
+      - "Mockup costas: tagline 'Sistema Operacional do Crescimento' centralizada, letra menor"
+      - "Cor: preto 100% algodão penteado ou pima (especificado)"
+      - "Especificação técnica: tipo de estampa (silk screen ou DTG), dimensões, posicionamento em cm"
+      - "Tabela de tamanhos: PP, P, M, G, GG, XGG com medidas em cm"
+      - "Especificação da tinta: branca para logo e tagline"
+      - "Arquivo para fornecedor: vetor do logo em preto e branco"
+    story_points: 3
+    labels: ["brand", "merch", "vestuario", "especificacao"]
+    depends_on: []
+
+  - id: "CORTEX-056"
+    title: "Spec Babylook"
+    epic: "BRAND-APP"
+    priority: baixa
+    type: feature
+    description: >
+      Como responsável pelo merchandising do Cortex, quero a especificação
+      técnica da babylook feminina para incluir no kit de merch com
+      consistência visual à camiseta masculina.
+    acceptance_criteria:
+      - "Mockup frente: logo Cortex no peito esquerdo, dimensão proporcional ao fit feminino"
+      - "Cor: preto, algodão com toque de elastano (especificado)"
+      - "Especificação técnica: estampa silk ou DTG, posicionamento"
+      - "Tabela de tamanhos PP ao GG com medidas bust/cintura/comprimento"
+      - "Mesma linguagem visual da camiseta masculina (consistência de marca)"
+      - "Arquivo vetor para fornecedor"
+    story_points: 3
+    labels: ["brand", "merch", "vestuario", "especificacao"]
+    depends_on: ["CORTEX-055"]
+
+  - id: "CORTEX-057"
+    title: "Spec Bomber Jacket"
+    epic: "BRAND-APP"
+    priority: media
+    type: feature
+    description: >
+      Como responsável pelo merchandising premium do Cortex, quero a
+      especificação técnica de uma bomber jacket exclusiva para presentear
+      parceiros estratégicos e equipe de vendas.
+    acceptance_criteria:
+      - "Mockup frente: logo Cortex bordado no peito esquerdo (7cm)"
+      - "Mockup costas: logotipo grande bordado centralizado ou wordmark"
+      - "Material: nylon 100%, cor preta"
+      - "Detalhe diferencial: forro interno em Signal Blue (#4D71FA)"
+      - "Especificação de bordado: tipo de ponto, número de passadas, cor de linha (branca)"
+      - "Elástico de acabamento em Signal Blue nas cuffs e barra"
+      - "Tabela de tamanhos P ao GGG"
+      - "Arquivo de bordado .DST ou .PES para fornecedor"
+    story_points: 5
+    labels: ["brand", "merch", "vestuario", "premium", "especificacao"]
+    depends_on: []
+
+  - id: "CORTEX-058"
+    title: "Spec Puffer / Sand Jacket"
+    epic: "BRAND-APP"
+    priority: baixa
+    type: feature
+    description: >
+      Como responsável pelo merchandising premium do Cortex, quero a
+      especificação de uma puffer jacket para o kit de inverno da marca
+      com detalhe de identidade Cortex sem ser óbvio.
+    acceptance_criteria:
+      - "Mockup: logo Cortex pequeno na lateral esquerda do peito (posição lateral, 6cm)"
+      - "Cor principal: preto fosco ou grafite escuro"
+      - "Detalhe Signal Blue: zíper, inner lining ou vivo lateral"
+      - "Material: nylon resistente à água, enchimento de plumas sintéticas"
+      - "Especificação de aplicação do logo: bordado ou patch emborrachado"
+      - "Tabela de tamanhos P ao GGG"
+      - "Visual discreto e premium: logo sutil, não gritante"
+    story_points: 5
+    labels: ["brand", "merch", "vestuario", "premium", "especificacao"]
+    depends_on: []
+
+  - id: "CORTEX-059"
+    title: "Spec Corta-vento"
+    epic: "BRAND-APP"
+    priority: baixa
+    type: feature
+    description: >
+      Como responsável pelo merchandising do Cortex, quero a especificação
+      de um corta-vento leve para uso esportivo e casual, com detalhes
+      refletivos que reforcem a identidade tecnológica da marca.
+    acceptance_criteria:
+      - "Mockup: logo Cortex no peito esquerdo (bordado ou silk refletivo)"
+      - "Detalhes refletivos: vivos nos ombros e zíper em material 3M refletivo"
+      - "Signal Blue nos detalhes: zíper, elásticos, listra lateral"
+      - "Material: ripstop leve impermeável"
+      - "Logo: versão refletiva (prata ou branca)"
+      - "Tabela de tamanhos"
+      - "Especificação técnica completa para fornecedor"
+    story_points: 3
+    labels: ["brand", "merch", "vestuario", "especificacao"]
+    depends_on: []
+
+  - id: "CORTEX-060"
+    title: "Spec Boné/Dad Hat"
+    epic: "BRAND-APP"
+    priority: media
+    type: feature
+    description: >
+      Como responsável pelo merchandising do Cortex, quero a especificação de
+      um boné/dad hat para compor o kit da marca e presentear clientes e
+      colaboradores.
+    acceptance_criteria:
+      - "Mockup: Cortex icon (C ou logo mark) bordado na frente, centrado"
+      - "Cor: preto com alça traseira Signal Blue ou natural"
+      - "Tipo: dad hat (seis painéis, sem estrutura rígida) ou snapback (especificado)"
+      - "Especificação de bordado: dimensão 5cm, cor branca, tipo de ponto"
+      - "Buckram interno e abafeta"
+      - "Arquivo .DST para bordado"
+    story_points: 3
+    labels: ["brand", "merch", "vestuario", "acessorio", "especificacao"]
+    depends_on: []
+
+  # ═══════════════════════════════════════════════════════════════════
+  # Sub-épico 4.4 — Físico: Objetos & Brindes
+  # ═══════════════════════════════════════════════════════════════════
+
+  - id: "CORTEX-061"
+    title: "Spec Squeeze Moderna"
+    epic: "BRAND-APP"
+    priority: media
+    type: feature
+    description: >
+      Como responsável pelo merchandising do Cortex, quero a especificação
+      de uma squeeze inox premium para o kit de brindes executivos da marca.
+    acceptance_criteria:
+      - "Mockup: logo Cortex gravado a laser na lateral (7cm de altura)"
+      - "Material: inox 304 dupla parede, isolamento térmico"
+      - "Cor: preto fosco"
+      - "Tampa: Signal Blue (#4D71FA) ou detalhe em azul"
+      - "Capacidade: 500ml"
+      - "Especificação de gravação a laser: área, profundidade, dimensão logo"
+      - "Packaging: caixa preta com papel seda Signal Blue"
+    story_points: 3
+    labels: ["brand", "merch", "brinde", "especificacao"]
+    depends_on: []
+
+  - id: "CORTEX-062"
+    title: "Spec Caneca"
+    epic: "BRAND-APP"
+    priority: media
+    type: feature
+    description: >
+      Como responsável pelo merchandising do Cortex, quero a especificação
+      de uma caneca premium para brindes e uso interno da equipe.
+    acceptance_criteria:
+      - "Mockup: logo Cortex em Signal Blue na lateral da caneca"
+      - "Material: cerâmica ou porcelana fosca preta"
+      - "Capacidade: 350ml"
+      - "Interior: branco (contraste com exterior preto)"
+      - "Técnica de impressão: sublimação ou silk screen"
+      - "Especificação técnica: área de impressão, resolução mínima, CMYK do Signal Blue"
+      - "Mockup mostrando logo posicionado corretamente na caneca"
+    story_points: 3
+    labels: ["brand", "merch", "brinde", "especificacao"]
+    depends_on: []
+
+  - id: "CORTEX-063"
+    title: "Spec Caderno/Moleskine"
+    epic: "BRAND-APP"
+    priority: media
+    type: feature
+    description: >
+      Como responsável pelo merchandising do Cortex, quero a especificação
+      de um caderno premium para o kit executivo da marca.
+    acceptance_criteria:
+      - "Mockup: logo Cortex debossed (em relevo seco) na capa"
+      - "Capa: material soft-touch preto"
+      - "Tamanho: A5 (14,8 x 21 cm)"
+      - "Papel: 90g, pautado ou sem pauta (especificado)"
+      - "Encadernação: costurada ou espiral preta"
+      - "Elástico de fechamento em Signal Blue"
+      - "Fita marcadora preta"
+      - "Especificação de debossing: profundidade, área, molde"
+    story_points: 3
+    labels: ["brand", "merch", "brinde", "especificacao"]
+    depends_on: []
+
+  - id: "CORTEX-064"
+    title: "Adesivo Pack"
+    epic: "BRAND-APP"
+    priority: media
+    type: feature
+    description: >
+      Como responsável pelo marketing do Cortex, quero um pack de adesivos
+      premium para distribuição em eventos e como brinde viral para
+      clientes e parceiros.
+    acceptance_criteria:
+      - "6 designs distintos: logotipo, icon/marca, wordmark, tagline, pattern, variante especial"
+      - "Material: vinil premium com laminação fosca"
+      - "Resistente à água e UV"
+      - "Tamanhos variados: pequeno (5cm), médio (8cm), grande (10cm)"
+      - "Mockup de cada design em contexto (notebook, squeeze, capacete)"
+      - "Arquivo em vetor (AI/SVG) para cada design"
+      - "Pack de apresentação: saquinho ziplock preto com logo Cortex"
+    story_points: 5
+    labels: ["brand", "merch", "brinde", "adesivo"]
+    depends_on: []
+
+  - id: "CORTEX-065"
+    title: "Spec Mousepad Desk Mat"
+    epic: "BRAND-APP"
+    priority: baixa
+    type: feature
+    description: >
+      Como responsável pelo merchandising do Cortex, quero a especificação
+      de um desk mat premium para presentear clientes B2B e reforçar a
+      presença da marca no ambiente de trabalho do dentista.
+    acceptance_criteria:
+      - "Mockup: desk mat 80x30cm com pattern sutil Cortex + logo no canto direito inferior"
+      - "Pattern: variação geométrica ou grid tech alinhado ao brandbook"
+      - "Material: microfibra de alta qualidade, base de borracha antiderrapante"
+      - "Bordas costuradas pretas"
+      - "Logo Signal Blue sobre fundo preto"
+      - "Especificação de impressão: sublimação total, resolução 300dpi"
+      - "Packaging: tubo preto com etiqueta Cortex"
+    story_points: 3
+    labels: ["brand", "merch", "brinde", "desk", "especificacao"]
+    depends_on: []
+
+  - id: "CORTEX-066"
+    title: "Spec Crachá/Lanyard"
+    epic: "BRAND-APP"
+    priority: baixa
+    type: feature
+    description: >
+      Como responsável por eventos do Cortex, quero especificações de crachá
+      e lanyard para credenciamento profissional em feiras, eventos e visitas
+      a clínicas parceiras.
+    acceptance_criteria:
+      - "Crachá: 9,5x13,5cm, fundo preto, logo Cortex branco, campos: nome e cargo"
+      - "Material do crachá: PVC rígido ou papel couché 300g plastificado"
+      - "Lanyard: fita de 2cm, preto com logo Cortex impresso em Signal Blue"
+      - "Clip metálico prateado ou Signal Blue"
+      - "Mockup mostrando crachá no lanyard em contexto de evento"
+      - "Especificação técnica de impressão do crachá"
+      - "Template editável do crachá em formato A6"
+    story_points: 3
+    labels: ["brand", "merch", "evento", "especificacao"]
+    depends_on: []
+
+  # ═══════════════════════════════════════════════════════════════════
+  # Sub-épico 4.5 — Ambiental & Eventos
+  # ═══════════════════════════════════════════════════════════════════
+
+  - id: "CORTEX-067"
+    title: "Spec Backdrop Evento"
+    epic: "BRAND-APP"
+    priority: media
+    type: feature
+    description: >
+      Como responsável por eventos do Cortex, quero a especificação de um
+      painel/backdrop para fotos e vídeos em eventos, conferências e
+      estandes de feiras odontológicas.
+    acceptance_criteria:
+      - "Mockup do painel 3x2m com pattern Cortex + logotipo centralizado"
+      - "Pattern de fundo: repetição do logo icon ou pattern geométrico da marca"
+      - "Fundo: Void (#090E1A) com elements em Signal Blue e branco"
+      - "Especificação de impressão: lona 440g, frontlit ou backlit"
+      - "Especificação estrutural: perfil de alumínio ou bannerframe"
+      - "Arquivo em alta resolução para impressão (CMYK, 100dpi no tamanho final)"
+      - "Mockup em contexto de evento com pessoas"
+    story_points: 5
+    labels: ["brand", "evento", "ambiental", "especificacao"]
+    depends_on: []
+
+  - id: "CORTEX-068"
+    title: "Spec Roll-up Banner"
+    epic: "BRAND-APP"
+    priority: media
+    type: feature
+    description: >
+      Como responsável por eventos do Cortex, quero a especificação de um
+      banner vertical roll-up para feiras e eventos com layout que comunique
+      claramente o produto.
+    acceptance_criteria:
+      - "Dimensões: 80x200cm (padrão roll-up)"
+      - "Layout: logo Cortex no topo, tagline, 3 features principais, QR code para demo, rodapé com URL"
+      - "Fundo: Void com gradient sutil"
+      - "Hierarquia visual clara: logo > headline > features > CTA"
+      - "QR code funcional apontando para landing page/demo"
+      - "Especificação de impressão: lona 440g ou papel fotográfico, acabamento fosco"
+      - "Arquivo em alta resolução CMYK"
+      - "Mockup em contexto de evento"
+    story_points: 3
+    labels: ["brand", "evento", "ambiental", "especificacao"]
+    depends_on: []
+
+  - id: "CORTEX-069"
+    title: "Spec Cartão de Visita"
+    epic: "BRAND-APP"
+    priority: alta
+    type: feature
+    description: >
+      Como profissional do time Cortex, quero um cartão de visita premium
+      que represente a sofisticação da marca em networking e reuniões de venda.
+    acceptance_criteria:
+      - "Dimensões padrão: 9x5cm"
+      - "Frente: logo Cortex em Signal Blue sobre fundo preto fosco, tagline"
+      - "Verso: nome, cargo, email, telefone, URL, QR code do LinkedIn"
+      - "Acabamento: couchê 300g com laminação fosca + hot stamp Signal Blue no logo"
+      - "Especificação técnica de hot stamp: área, posição, temperatura"
+      - "Template editável com campos para personalização por colaborador"
+      - "Mockup frente e verso em perspectiva"
+    story_points: 3
+    labels: ["brand", "papelaria", "cartao", "especificacao"]
+    depends_on: []
+
+  - id: "CORTEX-070"
+    title: "Presentation Deck Template"
+    epic: "BRAND-APP"
+    priority: alta
+    type: feature
+    description: >
+      Como membro do time Cortex, quero um template de slides profissional
+      com identidade da marca para pitch de vendas, apresentações para
+      investidores e comunicações internas.
+    acceptance_criteria:
+      - "Compatível com Google Slides e/ou Keynote"
+      - "Mínimo 10 layouts de slide: capa, agenda, conteúdo (texto), conteúdo (dados), comparativo, citação/depoimento, timeline, gráfico, seção/transição, encerramento"
+      - "Identidade visual Cortex: cores, tipografia Space Grotesk/Inter, tokens"
+      - "Elementos reutilizáveis: ícones, imagens placeholder, gráficos editáveis"
+      - "Guia de uso incluso (slide de instruções sobre como editar)"
+      - "Versão dark (padrão) e light disponíveis"
+      - "Arquivo compartilhável via link (Google Slides) ou download (Keynote/PPTX)"
+    story_points: 8
+    labels: ["brand", "apresentacao", "slides", "template"]
+    depends_on: []
+
+  - id: "CORTEX-071"
+    title: "Certificado Template"
+    epic: "BRAND-APP"
+    priority: baixa
+    type: feature
+    description: >
+      Como responsável pelo programa de parceiros do Cortex, quero um template
+      de certificado premium para reconhecer clientes parceiros, clinicas de
+      destaque e formações realizadas com a plataforma.
+    acceptance_criteria:
+      - "Layout A4 landscape (297x210mm)"
+      - "Fundo: branco ou creme com pattern sutil Cortex nas bordas"
+      - "Logo Cortex no topo centralizado"
+      - "Campos editáveis: nome do destinatário, tipo de certificação, data, assinatura"
+      - "Linha de assinatura com nome do CEO/responsável"
+      - "QR code de validação no rodapé (aponta para URL de autenticidade)"
+      - "Mockup do certificado impresso e digital"
+      - "Arquivo editável em Google Docs ou Illustrator"
+    story_points: 3
+    labels: ["brand", "certificado", "parceiros", "template"]
+    depends_on: []
+
+  - id: "CORTEX-072"
+    title: "Brand Application Guide"
+    epic: "BRAND-APP"
+    priority: alta
+    type: feature
+    description: >
+      Como qualquer membro do time ou agência parceira do Cortex, quero um
+      guia completo de aplicação da marca com do's e don'ts para que todos
+      os materiais produzidos sejam consistentes com a identidade visual.
+    acceptance_criteria:
+      - "Seção Logo: regras de placement, espaçamento mínimo (área de proteção), variantes permitidas"
+      - "Seção Cores: paleta primária e secundária, usos permitidos e proibidos, combinações"
+      - "Seção Tipografia: hierarquia tipográfica, tamanhos mínimos, uso em digital vs impresso"
+      - "Seção Do's & Don'ts: pelo menos 10 exemplos visuais de uso correto vs incorreto"
+      - "Seção Aplicações: mockup de cada material (digital e físico) com versão aprovada"
+      - "Regras de fundo: logo branco em fundos escuros, logo azul em fundos claros, etc."
+      - "Espaçamentos mínimos documentados em px e mm"
+      - "Formato: PDF interativo e/ou página web do brandbook"
+      - "Cobre todos os materiais das stories CORTEX-055 a CORTEX-071"
+    story_points: 13
+    labels: ["brand", "brand-guide", "documentacao", "guidelines"]
+    depends_on:
+      - "CORTEX-043"
+      - "CORTEX-046"
+      - "CORTEX-047"
+      - "CORTEX-055"
+      - "CORTEX-056"
+      - "CORTEX-057"
+
+# ═══════════════════════════════════════════════════════════════════
+# SUMMARY
+# ═══════════════════════════════════════════════════════════════════
+
+summary:
+  total_stories: 72
+  by_epic:
+    DS-PROD: 25
+    DS-QUALITY: 10
+    DS-MATURITY: 7
+    BRAND-APP: 30
+  by_priority:
+    alta: 34
+    media: 26
+    baixa: 12
+  by_type:
+    feature: 56
+    chore: 13
+    improvement: 3
+  total_story_points: 405
+  by_epic_points:
+    DS-PROD: 158
+    DS-QUALITY: 47
+    DS-MATURITY: 47
+    BRAND-APP: 153
+
+story_point_scale:
+  1: "trivial — menos de 2h"
+  2: "simples — meio dia"
+  3: "pequeno — 1 dia"
+  5: "médio — 2-3 dias"
+  8: "grande — 3-5 dias"
+  13: "muito grande — semana+"
+  21: "épico — requer breakdown"
+
+metadata:
+  created_by: "River (SM Agent) — Mr. Meeseeks mode"
+  created_at: "2026-03-22"
+  product: "CORTEX — CRM/Sistema Operacional para Dentistas"
+  ds_baseline:
+    components_existing: 35
+    tokens_dtcg: 52
+    storybook: configured
+    brandbook: complete
+  next_actions:
+    - "Priorizar stories com PO (Pax) para definir sprint 1"
+    - "Stories DS-PROD com depends_on vazio podem começar imediatamente"
+    - "CORTEX-025 (Registry Sync) desbloqueia CORTEX-026, CORTEX-032, CORTEX-041"
+    - "CORTEX-001 (Light Mode) é prerequisite para SaaS completo — prioridade máxima"

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Cortex Deck — 10 Team</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{width:1920px;height:1080px;overflow:hidden;background:#090E1A;padding:80px 160px;display:flex;gap:120px;align-items:center;position:relative}
+.bar{position:absolute;bottom:0;left:0;right:0;height:4px;background:#4D71FA}
+.left{flex:1}
+.label{font-family:'Inter',sans-serif;font-size:14px;color:#4D71FA;text-transform:uppercase;letter-spacing:2px;margin-bottom:16px}
+h2{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:44px;color:#F7F9FC;margin-bottom:24px}
+.bio{font-family:'Inter',sans-serif;font-size:18px;color:#94A3B8;line-height:1.7;max-width:600px}
+.right{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
+.member{text-align:center}
+.avatar{width:100px;height:100px;border-radius:50%;background:#1B2845;border:2px solid #1E2533;display:flex;align-items:center;justify-content:center;margin:0 auto 16px;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:28px;color:rgba(247,249,252,.3)}
+.member-name{font-family:'Inter',sans-serif;font-weight:500;font-size:16px;color:#F7F9FC}
+.member-role{font-family:'Inter',sans-serif;font-size:14px;color:#94A3B8;margin-top:4px}
+</style>
+</head>
+<body>
+<div class="left">
+  <div class="label">Quem faz</div>
+  <h2>Construido por quem entende de clinica</h2>
+  <div class="bio">Cortex nasceu da dor real de um grupo odontologico que cansou de juntar ferramentas que nao conversam. Time de produto, engenharia e operacoes focado 100% no mercado odontologico.</div>
+</div>
+<div class="right">
+  <div class="member"><div class="avatar">FA</div><div class="member-name">Fabio Avelar</div><div class="member-role">CEO & Fundador</div></div>
+  <div class="member"><div class="avatar">DS</div><div class="member-name">Diego Santos</div><div class="member-role">CTO</div></div>
+  <div class="member"><div class="avatar">ML</div><div class="member-name">Marina Lima</div><div class="member-role">Head de Produto</div></div>
+  <div class="member"><div class="avatar">RC</div><div class="member-name">Rafael Costa</div><div class="member-role">Head de Growth</div></div>
+</div>
+<div class="bar"></div>
+</body>
+</html>

@@ -1,0 +1,1915 @@
+# =============================================================================
+# CORTEX COMMUNICATION FRAMEWORK
+# =============================================================================
+# schema:  cortex.communication-framework
+# version: "1.0"
+# source:  brandbook.yaml (v1.0, 2026-03-20)
+# created: "2026-03-22"
+# author:  squad-creator-pro / agent: oalanicolas
+# status:  active
+#
+# PURPOSE
+# -------
+# Guia verbal completo e operacional para qualquer pessoa ou agente que
+# precise produzir comunicação da Cortex. Auto-suficiente — não exige
+# consulta ao brandbook para uso cotidiano.
+#
+# LEGEND
+# ------
+# [SOURCE: path]  → conceito extraído diretamente do brandbook.yaml
+# [INFERRED]      → inferência lógica a partir do posicionamento/arquétipos;
+#                   não está explícito no brandbook mas é coerente com ele
+#
+# STRUCTURE
+# ---------
+# 1. decision_filters   — SE/ENTÃO por canal e sub-contexto
+# 2. archetype_ruler    — % Governante vs % Sábio por canal
+# 3. message_skeletons  — estrutura de mensagem por canal (não copy pronta)
+# 4. swipe_file         — exemplos Assim sim / Assim não por canal
+# 5. expanded_glossary  — vocabulário completo com regras de uso
+# =============================================================================
+
+metadata:
+  schema: "cortex.communication-framework"
+  version: "1.0"
+  status: active
+  source: "brandbook.yaml — v1.0 — 2026-03-20"
+  created: "2026-03-22"
+  author_role: "Knowledge Architect (squad-creator-pro)"
+  depends_on: "brandbook.yaml"
+  channels_covered:
+    - site
+    - ads_meta
+    - ads_google
+    - instagram
+    - whatsapp
+
+# =============================================================================
+# BLOCO 1 — DECISION FILTERS
+# Filtros de decisão verbal: SE [contexto] → ENTÃO [como comunicar]
+# =============================================================================
+#
+# COMO USAR:
+# 1. Identifique o canal e sub-contexto do conteúdo que vai criar.
+# 2. Localize o filtro correspondente abaixo.
+# 3. Aplique todas as diretrizes listadas (tom, vocabulário, estrutura, comprimento).
+# 4. Consulte o message_skeleton correspondente para a estrutura exata.
+# =============================================================================
+
+decision_filters:
+
+  # ---------------------------------------------------------------------------
+  # CANAL: SITE
+  # [SOURCE: brandbook.yaml/voice/tone_by_context/site]
+  # "Autoridade + resultado em destaque — peso sem arrogância"
+  # ---------------------------------------------------------------------------
+  site:
+
+    hero:
+      context: >
+        Primeira impressão. Visitante acabou de chegar — ainda não sabe
+        se a Cortex é para ele. Precisa ser capturado em 3 segundos.
+      tone: "Governante. Declarativo. Sem pergunta retórica."
+      vocabulary:
+        use: ["sistema", "do lead ao lucro", "stack completa", "operar", "faturamento"]
+        avoid: ["solução", "ajudar", "melhorar", "transformar", "jornada"]
+      structure:
+        - "Declaração de posicionamento (máx 12 palavras)"
+        - "Sub-headline explica O QUE faz (não como)"
+        - "CTA único e direto"
+      length: "Headline: 6–12 palavras. Sub: 1–2 linhas. CTA: 2–4 palavras."
+      rule: >
+        SE é hero section → ENTÃO declarar antes de perguntar.
+        Nunca abrir com pergunta. Nunca abrir com adjetivo.
+        Abrir com substantivo ou verbo no imperativo/presente.
+
+    features_section:
+      context: >
+        Visitante qualificado quer entender o QUE a Cortex entrega.
+        Está comparando com concorrentes (fragmentados).
+      tone: "Sábio. Preciso. Orientado a prova."
+      vocabulary:
+        use: ["CRM proprietário", "stack integrada", "ponta a ponta", "resultado", "inteligência"]
+        avoid: ["inovador", "fácil", "simples", "tudo que você precisa"]
+      structure:
+        - "Nome do sub-produto (Cortex CRM, Cortex Ads, etc.)"
+        - "Função em 1 linha — o QUE faz"
+        - "Prova ou dado se disponível"
+        - "Relação com o sistema completo"
+      length: "Por feature: 1 título (3–5 palavras) + 2–3 linhas de descrição."
+      rule: >
+        SE é seção de features → ENTÃO mostrar como cada peça conecta ao sistema.
+        Nunca listar features isoladas como se fossem produtos separados.
+        Sempre reforçar que é stack integrada — não catálogo de serviços.
+
+    cta_section:
+      context: >
+        Momento de conversão. Visitante já entendeu o que é a Cortex.
+        Precisa de um empurrão final com baixo risco percebido.
+      tone: "Governante. Direto. Sem drama."
+      vocabulary:
+        use: ["conversar", "ver como funciona", "agendar", "operar", "resultado"]
+        avoid: ["clique aqui", "saiba mais", "descubra", "aproveite", "não perca"]
+      structure:
+        - "Statement de confirmação de valor (o que ele vai ter)"
+        - "CTA principal — verbo de ação + substantivo"
+        - "Redutor de risco opcional (1 linha)"
+      length: "Statement: 1 frase. CTA: 2–4 palavras. Redutor: max 1 linha."
+      rule: >
+        SE é CTA section → ENTÃO o texto do botão deve ser um VERBO DE AÇÃO
+        concreto, não genérico. "Agendar diagnóstico" > "Fale conosco".
+        O redutor de risco nunca menciona garantia ou dinheiro de volta.
+
+    about_section:
+      context: >
+        Visitante quer saber quem está por trás. Momento de credibilidade
+        e prova de autoridade. O diferencial do CEO dentista é aqui.
+      tone: "Sábio dominante. Autoridade por prova, não por autoproclamação."
+      vocabulary:
+        use: ["dentista de formação", "clínicas reais", "laboratório", "validação", "proprietário"]
+        avoid: ["apaixonados", "especialistas", "comprometidos", "time incrível", "missão"]
+      structure:
+        - "Origin story em 2–3 linhas — problema visto de dentro"
+        - "Prova de propriedade (CRM próprio, clínicas próprias)"
+        - "Dado ou marco se disponível"
+      length: "Máx 4 parágrafos de 2–3 linhas cada."
+      rule: >
+        SE é about section → ENTÃO o CEO aparece como dentista primeiro,
+        empreendedor segundo. A origem da empresa explica o posicionamento.
+        Nunca listar valores como bullet points sem contexto.
+
+    # [SOURCE: brandbook.yaml/positioning/proof]
+    proof_section:
+      context: >
+        Seção de depoimentos, cases, números ou credenciais.
+        O dentista-prospect está em modo de ceticismo — precisa de prova real.
+      tone: "Sábio. Data-first. Deixar os números falar."
+      vocabulary:
+        use: ["resultado comprovável", "clínicas reais", "laboratório", "dado", "faturamento"]
+        avoid: ["acreditamos", "estamos orgulhosos", "nossa missão", "parceiros"]
+      structure:
+        - "Número ou dado concreto em destaque"
+        - "Contexto do dado (o que gerou, em quanto tempo)"
+        - "Atribuição se for depoimento"
+      length: "Dado: destaque tipográfico. Contexto: 1–2 linhas."
+      rule: >
+        SE é proof section → ENTÃO número/dado ANTES de qualquer adjetivo.
+        Nunca usar porcentagem de satisfação. Usar métricas de negócio:
+        faturamento, leads convertidos, custo por procedimento.
+
+  # ---------------------------------------------------------------------------
+  # CANAL: ADS META (Facebook / Instagram Ads)
+  # [SOURCE: brandbook.yaml/voice/tone_by_context/advertising]
+  # "Prova antes de promessa — número antes de adjetivo"
+  # ---------------------------------------------------------------------------
+  ads_meta:
+
+    prospecting:
+      context: >
+        Dentista não conhece a Cortex. Está scrollando o feed.
+        Primeiro contato — 1,5 segundos para parar o scroll.
+      tone: "Governante. Provocativo. Confronta o status quo."
+      vocabulary:
+        use: ["fragmentação", "4 fornecedores", "lead não é resultado", "sistema", "faturamento"]
+        avoid: ["você sabia?", "dica de hoje", "aprenda", "descubra", "gratuito"]
+      structure:
+        - "Hook: confronta a dor ou o erro atual (1 linha)"
+        - "Agitação: consequência do problema (1–2 linhas)"
+        - "Prova/solução: o que a Cortex entrega (1–2 linhas)"
+        - "CTA: ação próxima clara"
+      length: "Hook: máx 8 palavras. Body: 3–5 linhas. CTA: 3–5 palavras."
+      rule: >
+        SE é ad de prospecting → ENTÃO o hook NÃO pode ser uma pergunta genérica.
+        Deve ser uma declaração que gera tensão ou confronta uma crença falsa.
+        Ex: "Lead não é resultado" > "Você sabe quanto custa um lead?"
+
+    retargeting:
+      context: >
+        Dentista já viu a Cortex antes. Precisa de um empurrão.
+        Está em consideração — comparando ou procrastinando.
+      tone: "Sábio. Remove objeções com dado. Urgência sem pressão artificial."
+      vocabulary:
+        use: ["resultado comprovável", "clínicas reais como prova", "stack completa", "operar"]
+        avoid: ["última chance", "oferta especial", "não perca", "agora ou nunca"]
+      structure:
+        - "Lembrete de posicionamento único (1 linha)"
+        - "Derruba objeção específica com dado ou prova"
+        - "CTA de próximo passo de baixo risco"
+      length: "Compacto: 2–3 linhas + CTA."
+      rule: >
+        SE é ad de retargeting → ENTÃO não repetir o mesmo hook do prospecting.
+        Ir direto ao ponto: "Você já sabe o que a Cortex faz. Falta agendar."
+        [INFERRED] Personalizar por objeção percebida se houver segmentação.
+
+    video_ads:
+      context: >
+        Formato de vídeo no feed ou stories. Os primeiros 2 segundos decidem tudo.
+      tone: "Governante no visual/abertura. Sábio na argumentação central."
+      vocabulary:
+        use: ["sistema", "do lead ao lucro", "ponta a ponta", "faturamento"]
+        avoid: ["música motivacional", "narração empolgada", "animação de startup"]
+      structure:
+        - "0–2s: Hook visual + headline em texto sobre a imagem"
+        - "2–10s: Agitação do problema (problema real, sem exagero)"
+        - "10–20s: Apresentação do sistema (o que é, como opera)"
+        - "20–30s: Prova + CTA"
+      length: "Ideal: 15–30 segundos. Máx para prospecting: 45s."
+      rule: >
+        SE é video ad → ENTÃO o texto em overlay nos primeiros 2 segundos
+        é a headline mais importante — deve ser legível sem áudio.
+        Nunca abrir com logo ou nome da empresa.
+
+  # ---------------------------------------------------------------------------
+  # CANAL: ADS GOOGLE (Search / Display)
+  # [SOURCE: brandbook.yaml/voice/tone_by_context/advertising]
+  # ---------------------------------------------------------------------------
+  ads_google:
+
+    search_branded:
+      context: >
+        Alguém buscando "Cortex" ou variações. Alta intenção.
+        Já conhece ou foi indicado. Confirmar posicionamento.
+      tone: "Sábio. Direto. Confirma o que o prospect já suspeitava."
+      vocabulary:
+        use: ["sistema operacional", "CRM proprietário", "stack completa", "resultado"]
+        avoid: ["bem-vindo", "conheça", "saiba mais"]
+      structure:
+        - "Headline 1: Nome + categoria (Cortex — Sistema de Crescimento Dental)"
+        - "Headline 2: Diferencial único (CRM Proprietário + Stack Completa)"
+        - "Headline 3: CTA ou prova (Clínicas Reais Como Laboratório)"
+        - "Description: tagline expandida + CTA"
+      length: "H1/H2/H3: máx 30 chars cada. Description: máx 90 chars."
+      rule: >
+        SE é busca branded → ENTÃO H1 confirma identidade.
+        H2 diferencia da concorrência. H3 prova ou CTA.
+
+    search_competitor:
+      context: >
+        Alguém buscando concorrente (ICOM, Captare, etc.).
+        Prospect qualificado que ativa por comparação.
+      tone: "Governante. Confiante sem atacar diretamente o concorrente."
+      vocabulary:
+        use: ["stack completa", "CRM próprio", "do lead ao lucro", "sistema integrado"]
+        avoid: ["melhor que", "diferente de", "ao contrário de", "alternativa para"]
+      structure:
+        - "Headline 1: Posicionamento como sistema (não como agência)"
+        - "Headline 2: O que o concorrente não tem (CRM proprietário)"
+        - "Headline 3: Prova de diferenciação"
+        - "Description: por que sistema > serviço fragmentado"
+      length: "Idem busca branded."
+      rule: >
+        SE é busca por concorrente → ENTÃO nunca citar o concorrente pelo nome
+        no ad copy. Comunicar O ZAG — o que a Cortex É, não contra quem está.
+        [SOURCE: brandbook.yaml/positioning/zag_analysis]
+
+    search_problem:
+      context: >
+        Dentista buscando resolver um problema: "como captar pacientes",
+        "CRM para clínica odontológica", "marketing para dentistas".
+        Não conhece a Cortex ainda. Alta intenção de compra.
+      tone: "Sábio dominante. Resolve o problema com sistema, não com mais uma dica."
+      vocabulary:
+        use: ["sistema completo", "do lead ao faturamento", "integrado", "CRM para clínicas"]
+        avoid: ["dicas", "aprenda", "curso", "método"]
+      structure:
+        - "Headline 1: Nomeia o problema com linguagem do prospect"
+        - "Headline 2: Posiciona solução como SISTEMA (não serviço)"
+        - "Headline 3: Prova ou diferenciador"
+        - "Description: conecta problema à solução de ponta a ponta"
+      length: "Idem busca branded."
+      rule: >
+        SE é busca por problema → ENTÃO H1 usa a linguagem exata da busca
+        para qualificar o click. H2 imediatamente eleva para SISTEMA.
+        Nunca prometer ensinar — sempre prometer operar.
+
+    display:
+      context: >
+        Banner em sites de conteúdo. Audiência fria ou morna.
+        Impressão visual rápida — awareness e retargeting.
+      tone: "Governante. Impacto visual. Mínimo de palavras."
+      vocabulary:
+        use: ["Do lead ao lucro.", "Cortex.", "Sistema. Não serviço."]
+        avoid: "Qualquer frase com mais de 8 palavras em banner"
+      structure:
+        - "Logo Cortex"
+        - "1 headline de até 6 palavras"
+        - "CTA de 2–3 palavras"
+      length: "Máx 6 palavras de headline. CTA: 2–3 palavras."
+      rule: >
+        SE é display → ENTÃO menos texto = mais impacto.
+        Usar as signature phrases do brandbook diretamente.
+        [SOURCE: brandbook.yaml/voice/signature_phrases]
+
+  # ---------------------------------------------------------------------------
+  # CANAL: INSTAGRAM
+  # [SOURCE: brandbook.yaml/voice/tone_by_context/social_media]
+  # "Direto + provocativo — dado antes de opinião"
+  # ---------------------------------------------------------------------------
+  instagram:
+
+    feed_educativo:
+      context: >
+        Post de conteúdo no feed. Dentista seguidor ou novo visitante.
+        Objetivo: autoridade, engajamento, salvar/compartilhar.
+      tone: "Sábio com punch. Educa mas provoca. Dato antes de tese."
+      vocabulary:
+        use: ["dado", "resultado", "sistema", "faturamento", "operar", "clínica que escala"]
+        avoid: ["dica do dia", "sabia que", "você precisa disso", "incrível", "transformação"]
+      structure:
+        - "Linha 1: Hook — dado surpreendente ou declaração que confronta"
+        - "Linhas 2–4: Desenvolvimento — o problema por trás do dado"
+        - "Linhas 5–8: Solução ou perspectiva da Cortex"
+        - "Última linha: CTA ou chamada para engajamento"
+        - "Hashtags: máx 5, técnicas, não genéricas"
+      length: "180–300 palavras. Quebras de linha a cada 1–2 linhas."
+      rule: >
+        SE é feed educativo → ENTÃO a primeira linha precisa ser legível
+        sem clicar em 'ver mais'. O gancho fica antes do fold.
+        Nunca terminar com "O que você acha? Comenta aqui!" —
+        terminar com pergunta específica ou declaração de encerramento.
+
+    feed_prova:
+      context: >
+        Post de resultado ou case. Prova social. Dentista em modo de avaliação.
+      tone: "Sábio. Os dados falam. A Cortex contextualiza, não glorifica."
+      vocabulary:
+        use: ["resultado comprovável", "faturamento", "leads convertidos", "clínica operando"]
+        avoid: ["orgulhosos", "sucesso", "transformamos", "incrível resultado"]
+      structure:
+        - "Linha 1: O número ou resultado em destaque"
+        - "Linhas 2–3: Contexto — o que era antes, o que mudou"
+        - "Linhas 4–6: O que o sistema fez (não quem — o sistema)"
+        - "CTA: 'Se a sua clínica está nesse estágio, faz sentido conversar.'"
+      length: "150–250 palavras."
+      rule: >
+        SE é post de prova/case → ENTÃO o número aparece no início,
+        não no fim como revelação dramática. A Cortex não celebra — ela comprova.
+        [SOURCE: brandbook.yaml/brand_pillars/resultado_comprovável]
+
+    feed_posicionamento:
+      context: >
+        Post de posicionamento/opinião. Dentista-prospect filtra quem é a Cortex.
+      tone: "Governante. Opinião clara. Não busca aprovação universal."
+      vocabulary:
+        use: ["fragmentação", "sistema", "lead não é resultado", "clínica que escala"]
+        avoid: ["acreditamos", "nossa visão é", "entendemos que", "na nossa opinião"]
+      structure:
+        - "Declaração de posição (sem 'nós achamos')"
+        - "Por que esse ponto de vista — argumento em 2–3 linhas"
+        - "Consequência prática para o dentista"
+        - "Fechamento com stance da Cortex"
+      length: "100–200 palavras. Direto."
+      rule: >
+        SE é post de posicionamento → ENTÃO a Cortex fala como quem sabe,
+        não como quem propõe debate. Nenhuma frase começa com
+        "Muitos pensam que..." ou "Tem gente que diz..."
+
+    stories:
+      context: >
+        Formato vertical, efêmero. Alta velocidade de consumo.
+        Tap-through rápido — máx 3 segundos de atenção por frame.
+      tone: "Governante. Pontual. Cada frame = 1 ideia só."
+      vocabulary:
+        use: ["sistema", "resultado", "operar", "lead", "faturamento"]
+        avoid: "Frases longas. Parágrafos. Mais de 1 ideia por frame."
+      structure:
+        - "Frame 1: Hook — 1 frase de 5–8 palavras"
+        - "Frame 2: Contexto — 1–2 frases"
+        - "Frame 3: Argumento central"
+        - "Frame 4: CTA ou link (se aplicável)"
+      length: "Por frame: máx 15 palavras de texto. Máx 4 frames por sequência."
+      rule: >
+        SE é stories → ENTÃO cada frame deve fazer sentido sozinho.
+        A sequência deve ter começo, meio e fim mesmo que o usuário
+        veja apenas 1 ou 2 frames.
+        [INFERRED] Stories de bastidores usam tom levemente mais humano —
+        mas nunca casual ou desorganizado.
+
+    reels_script:
+      context: >
+        Vídeo curto (15–60s). Potencial de alcance orgânico alto.
+        Estrutura de roteiro — não o texto do video, mas o esqueleto.
+      tone: "Governante no hook. Sábio no meio. Governante no CTA."
+      vocabulary:
+        use: ["sistema", "do lead ao lucro", "stack completa", "faturamento", "operar"]
+        avoid: "Jargões motivacionais. Frases de coach. Storytelling emocional sem dado."
+      structure:
+        - "0–3s: Hook verbal — declaração controversa ou dado chocante (sem intro)"
+        - "3–20s: Desenvolvimento — o problema que o dado revela"
+        - "20–40s: O que a Cortex faz de diferente (sistema vs serviço)"
+        - "40–55s: Prova ou resultado concreto"
+        - "55–60s: CTA direto + link na bio"
+      length: "Roteiro escrito: 80–120 palavras para 60s."
+      rule: >
+        SE é reels → ENTÃO ZERO intro corporativa ("Oi, eu sou da Cortex...").
+        Começar no meio da conversa. O espectador descobre quem é a Cortex
+        pelo conteúdo, não pela apresentação.
+
+    dm_resposta:
+      context: >
+        Resposta a DM de lead ou seguidor interessado.
+        Transição de interesse para conversa qualificada.
+      tone: "Acessível mas direto. Sábio. Sem pitch imediato."
+      vocabulary:
+        use: ["clínica", "estrutura", "resultado", "conversar", "sistema"]
+        avoid: ["olá", "oi tudo bem?", "que ótimo!", "com certeza!", "estarei à disposição"]
+      structure:
+        - "Reconhecimento da pergunta/interesse (1 linha, sem floreios)"
+        - "Qualificação discreta (1 pergunta relevante)"
+        - "Próximo passo concreto"
+      length: "3–5 linhas. Sem parágrafos longos."
+      rule: >
+        SE é DM → ENTÃO não enviar PDF, pitch deck ou link imediatamente.
+        Primeiro qualificar: a Cortex não atende todo mundo.
+        [SOURCE: brandbook.yaml/positioning/audience_filter]
+
+  # ---------------------------------------------------------------------------
+  # CANAL: WHATSAPP
+  # Vendas e relacionamento. Canal mais direto e de maior intenção.
+  # [INFERRED] Tom derivado do support: "Pragmático + ação imediata"
+  # ---------------------------------------------------------------------------
+  whatsapp:
+
+    primeiro_contato_inbound:
+      context: >
+        Lead chegou via formulário, ad ou indicação. Primeira mensagem da Cortex.
+        Alto interesse percebido — não desperdiçar com script genérico.
+      tone: "Direto. Acessível. Profissional sem ser frio. Sem script robótico."
+      vocabulary:
+        use: ["clínica", "entender", "conversar", "resultado", "sistema", "faz sentido"]
+        avoid: ["olá tudo bom", "seja bem-vindo", "obrigado pelo interesse", "como posso te ajudar?"]
+      structure:
+        - "Identificação direta (nome + Cortex — sem 'equipe' ou 'atendente')"
+        - "Reconhecimento do contexto de origem"
+        - "1 pergunta de qualificação aberta"
+        - "Proposta de próximo passo concreto"
+      length: "Máx 5 linhas. Sem bullets ou listas na primeira mensagem."
+      rule: >
+        SE é primeiro contato inbound → ENTÃO a primeira mensagem NÃO é pitch.
+        É qualificação. "Você veio pelo [contexto]. Antes de qualquer coisa,
+        me conta: como está sua clínica hoje?"
+        [SOURCE: brandbook.yaml/positioning/audience_filter]
+
+    primeiro_contato_outbound:
+      context: >
+        Prospecção ativa. Dentista não pediu contato. Alto risco de rejeição.
+        Deve ser altamente personalizado e relevante.
+      tone: "Sábio. Austero. Respeita o tempo do dentista."
+      vocabulary:
+        use: ["clínica", "resultado", "sistema", "conversa", "faz sentido?"]
+        avoid: ["oportunidade", "proposta exclusiva", "tenho algo especial", "parceria"]
+      structure:
+        - "Contexto de por que está entrando em contato (referência específica)"
+        - "Uma linha sobre o que a Cortex faz — sem adjetivos"
+        - "Pergunta que qualifica se faz sentido conversar"
+      length: "Máx 4 linhas. Sem imagem ou PDF na primeira mensagem."
+      rule: >
+        SE é outbound → ENTÃO a mensagem precisa de um motivo real para existir.
+        Nunca mensagem genérica copiada. Se não há motivo específico, não enviar.
+        [INFERRED]
+
+    follow_up:
+      context: >
+        Lead qualificado que não respondeu ou adiou decisão.
+        Reativar sem parecer desesperado ou robótico.
+      tone: "Governante. Confiante. A Cortex não implora — retoma com valor."
+      vocabulary:
+        use: ["retomar", "dado novo", "resultado", "faz sentido revisitar", "quando for o momento"]
+        avoid: ["só passando para ver se decidiu", "ainda está interessado?", "não se esqueça"]
+      structure:
+        - "Referência à conversa anterior (1 linha)"
+        - "Novo dado ou contexto que justifica o follow-up"
+        - "Pergunta de abertura para retomada"
+      length: "Máx 4 linhas."
+      rule: >
+        SE é follow-up → ENTÃO NUNCA enviar "oi, sumiu?" ou variações.
+        O follow-up traz algo novo — dado, insight ou mudança de contexto.
+        Máx 3 follow-ups espaçados (D+2, D+7, D+21).
+        [INFERRED]
+
+    proposta:
+      context: >
+        Apresentação de proposta comercial via WhatsApp.
+        Lead qualificado, pré-alinhado, aguardando proposta.
+      tone: "Sábio. Direto. A proposta confirma o que foi conversado."
+      vocabulary:
+        use: ["sistema", "stack completa", "resultado esperado", "próximo passo", "operar"]
+        avoid: ["incrível proposta", "condição especial", "exclusivo para você", "aproveite"]
+      structure:
+        - "Recapitulação em 1 linha do que foi alinhado"
+        - "Aviso de que a proposta foi enviada (PDF/link separado)"
+        - "Destaque dos 2 pontos mais relevantes para aquela clínica"
+        - "CTA para call de revisão ou decisão"
+      length: "Mensagem: máx 8 linhas. A proposta completa vai em PDF separado."
+      rule: >
+        SE é proposta → ENTÃO a mensagem de WhatsApp não substitui o documento.
+        Ela contextualiza e direciona a leitura. Não copiar proposta inteira no chat.
+
+# =============================================================================
+# BLOCO 2 — ARCHETYPE RULER
+# Régua de intensidade Governante vs Sábio por canal e sub-contexto
+# =============================================================================
+#
+# [SOURCE: brandbook.yaml/archetype_mix]
+# Governante (65%): Lidera, domina, cria ordem, fala com autoridade
+# Sábio (35%): Conhecimento comprovável, prova antes de promessa
+#
+# COMO USAR:
+# Quando dois redatores/agentes produzem versões diferentes de um copy,
+# use esta régua para decidir qual está mais alinhado com o contexto.
+# Governante mais alto = mais assertivo, declarativo, sem hesitação.
+# Sábio mais alto = mais argumentativo, dado-first, construção de caso.
+# =============================================================================
+
+archetype_ruler:
+
+  # NOTA: Os percentuais representam a INTENSIDADE de cada arquétipo no copy.
+  # 80/20 Governante = texto declarativo, imperativo, sem muita explicação.
+  # 60/40 Sábio = texto que constrói argumento, usa dados, explica o porquê.
+
+  site:
+    hero:
+      governante: 80
+      sabio: 20
+      rationale: >
+        Hero é declaração de posicionamento. O visitante não pediu argumento —
+        precisa de impacto e clareza imediata.
+      copy_signals:
+        - "Verbos no presente do indicativo ou imperativo"
+        - "Frases curtas, sem subordinadas"
+        - "Substantivos de poder: sistema, operação, controle"
+
+    features_section:
+      governante: 55
+      sabio: 45
+      rationale: >
+        Features precisam de explicação técnica suficiente para convencer,
+        mas ainda com autoridade — não vira manual de usuário.
+      copy_signals:
+        - "Cada feature tem função + prova"
+        - "Linguagem de sistema, não de serviço"
+        - "Conexão entre peças sempre explícita"
+
+    cta_section:
+      governante: 75
+      sabio: 25
+      rationale: >
+        Momento de conversão exige direção clara. Dúvida paralisa.
+        CTA é comando, não sugestão.
+      copy_signals:
+        - "Verbo de ação direto no botão"
+        - "Sem interrogação ou condicionais"
+        - "Redutor de risco é factual, não emocional"
+
+    about_section:
+      governante: 45
+      sabio: 55
+      rationale: >
+        About é o momento de credibilidade. O Sábio domina porque
+        autoridade aqui é construída por prova, não por proclamação.
+      copy_signals:
+        - "Origin story como argumento, não como narrativa emocional"
+        - "Dados de operação real em destaque"
+        - "CEO apresentado por credentials, não por visão"
+
+    proof_section:
+      governante: 35
+      sabio: 65
+      rationale: >
+        Prova fala por si mesma. Quanto menos a marca comenta os próprios
+        resultados, mais confiável parece.
+      copy_signals:
+        - "Número em destaque, comentário mínimo"
+        - "Atribuição precisa: qual clínica, qual período, qual métrica"
+        - "Sem superlativo na contextualização"
+
+  ads_meta:
+    prospecting:
+      governante: 75
+      sabio: 25
+      rationale: >
+        Scroll stop exige impacto imediato. O Governante confronta.
+        O Sábio entra no body para justificar o hook.
+      copy_signals:
+        - "Hook declarativo ou confrontacional"
+        - "Urgência implícita (não artificial)"
+        - "Prova no body, não no hook"
+
+    retargeting:
+      governante: 50
+      sabio: 50
+      rationale: >
+        Prospect já sabe quem é a Cortex. Precisa de argumento que
+        quebre a procrastinação — balanceado entre direção e dados.
+      copy_signals:
+        - "Referência ao que já foi visto"
+        - "Derrubar objeção com dado específico"
+        - "CTA de baixo risco"
+
+    video_ads:
+      governante: 70
+      sabio: 30
+      rationale: >
+        Vídeo tem ritmo. O Governante domina o pacing e a abertura.
+        O Sábio entra no meio para construir o caso.
+      copy_signals:
+        - "Hook sem apresentação"
+        - "Linguagem de quem opera, não de quem vende"
+        - "CTA final direto e único"
+
+  ads_google:
+    search_branded:
+      governante: 65
+      sabio: 35
+      rationale: >
+        Busca branded = prospect qualificado. Confirmar identidade
+        com autoridade sem precisar convencer demais.
+      copy_signals:
+        - "Headlines que confirmam, não que vendem"
+        - "Diferencial técnico explícito"
+
+    search_competitor:
+      governante: 60
+      sabio: 40
+      rationale: >
+        Prospect está comparando. O Sábio apresenta diferenciação
+        técnica. O Governante garante que não soe defensivo.
+      copy_signals:
+        - "Foco no que a Cortex TEM, não no que o concorrente NÃO tem"
+        - "Diferencial de propriedade (CRM próprio) em destaque"
+
+    search_problem:
+      governante: 55
+      sabio: 45
+      rationale: >
+        Prospect tem dor definida. Precisa de solução clara.
+        Equilíbrio: entende a dor (Sábio) + direciona para sistema (Governante).
+
+    display:
+      governante: 85
+      sabio: 15
+      rationale: >
+        Display é impacto visual em 2 segundos. Máximo Governante.
+        O Sábio entra apenas na descrição se houver espaço.
+
+  instagram:
+    feed_educativo:
+      governante: 45
+      sabio: 55
+      rationale: >
+        Conteúdo educativo constrói autoridade pelo argumento.
+        O Sábio educa. O Governante garante o punch inicial.
+      copy_signals:
+        - "Dado ou declaração controversa no hook"
+        - "Argumento desenvolvido com lógica, não com emoção"
+
+    feed_prova:
+      governante: 40
+      sabio: 60
+      rationale: >
+        Prova fala mais que qualquer declaração de autoridade.
+        O Sábio contextualiza o dado. O Governante finaliza com stance.
+
+    feed_posicionamento:
+      governante: 80
+      sabio: 20
+      rationale: >
+        Post de posicionamento é manifesto. A Cortex declara onde está.
+        Não pede permissão para ter opinião.
+
+    stories:
+      governante: 75
+      sabio: 25
+      rationale: >
+        Stories é velocidade. Governante domina pelo ritmo e impacto.
+        Sábio entra em frames específicos de dado/prova.
+
+    reels_script:
+      governante: 65
+      sabio: 35
+      rationale: >
+        Reels precisa de pacing forte (Governante) mas o conteúdo
+        precisa ter substância para salvar/compartilhar (Sábio).
+
+    dm_resposta:
+      governante: 40
+      sabio: 60
+      rationale: >
+        DM é conversa 1:1. O Sábio ouve e qualifica.
+        O Governante garante que não seja servil ou indefinido.
+
+  whatsapp:
+    primeiro_contato_inbound:
+      governante: 50
+      sabio: 50
+      rationale: >
+        Primeiro contato humano. Equilíbrio: confiante mas que ouve.
+        Não é pitch (Governante puro) nem entrevista (Sábio puro).
+
+    primeiro_contato_outbound:
+      governante: 35
+      sabio: 65
+      rationale: >
+        Outbound exige justificativa para existir. O Sábio apresenta
+        o raciocínio. O Governante garante que não seja pedido de desculpa.
+
+    follow_up:
+      governante: 65
+      sabio: 35
+      rationale: >
+        Follow-up precisa de confiança — a Cortex não implora.
+        O Governante retoma com direção. O Sábio traz o novo dado.
+
+    proposta:
+      governante: 55
+      sabio: 45
+      rationale: >
+        Proposta é o momento de clareza total. Governante na estrutura
+        e CTA. Sábio nos dados e na recapitulação do alinhamento.
+
+# =============================================================================
+# BLOCO 3 — MESSAGE SKELETONS
+# Esqueleto de estrutura de mensagem por canal
+# NÃO é copy pronta — é a ARQUITETURA do texto
+# Os [SLOTS] devem ser preenchidos com conteúdo real
+# =============================================================================
+#
+# CONVENÇÃO DE NOTAÇÃO:
+# [SLOT: descrição]   → campo obrigatório a preencher
+# {OPCIONAL: desc}    → campo que pode ser omitido se não há dado disponível
+# |REGRA|             → instrução de como preencher o slot acima
+# =============================================================================
+
+message_skeletons:
+
+  # ---------------------------------------------------------------------------
+  # SITE
+  # ---------------------------------------------------------------------------
+  site:
+
+    hero:
+      name: "Hero Section Skeleton"
+      skeleton: |
+        HEADLINE:
+        [SLOT: declaração de posicionamento — verbo ou substantivo de poder]
+        |REGRA| 6–12 palavras. Sem adjetivo como primeira palavra.
+        |REGRA| Deve conter pelo menos 1 palavra do always_use.
+
+        SUB-HEADLINE:
+        [SLOT: o que a Cortex entrega de concreto — 1–2 linhas]
+        |REGRA| Expande o headline sem repetir as mesmas palavras.
+        |REGRA| Mencionar "sistema" ou "stack" + contexto de resultado.
+
+        CTA PRINCIPAL:
+        [SLOT: verbo de ação] + [SLOT: substantivo concreto]
+        |REGRA| Exemplos aceitáveis: "Agendar diagnóstico" | "Ver como funciona" | "Falar com a Cortex"
+        |REGRA| Exemplos PROIBIDOS: "Saiba mais" | "Clique aqui" | "Comece agora grátis"
+
+        {OPCIONAL: ELEMENT DE PROVA ABAIXO DO CTA}
+        [SLOT: 1 dado ou credencial em até 10 palavras]
+        |REGRA| Ex: "CRM proprietário. Clínicas reais. Resultado comprovável."
+      example_filled: |
+        HEADLINE: "Do lead ao lucro. Um sistema. Zero fragmentação."
+        SUB-HEADLINE: "A Cortex opera o crescimento da sua clínica — do tráfego ao faturamento — com stack proprietária e CRM integrado."
+        CTA: "Agendar diagnóstico"
+        PROVA: "CRM proprietário. Clínicas reais como laboratório."
+
+    features_section:
+      name: "Features Section Skeleton (por feature)"
+      skeleton: |
+        NOME DO SUB-PRODUTO:
+        [SLOT: Cortex [Nome]] — ex: Cortex CRM, Cortex Ads, Cortex Analytics
+        |REGRA| Sempre usar o nome oficial do sub-produto.
+
+        FUNÇÃO PRIMÁRIA:
+        [SLOT: o que este módulo faz — 1 linha, verbo + objeto]
+        |REGRA| Ex: "Centraliza e qualifica todos os leads da clínica"
+        |REGRA| NUNCA: "Solução completa para gerenciamento de..."
+
+        {OPCIONAL: DADO OU PROVA}
+        [SLOT: métrica ou resultado associado ao módulo]
+        |REGRA| Se não há dado real, omitir. Nunca inventar.
+
+        CONEXÃO COM O SISTEMA:
+        [SLOT: como este módulo alimenta o próximo da stack]
+        |REGRA| Ex: "Conecta direto ao Cortex Analytics — sem exportar planilha."
+        |REGRA| Reforçar que é stack, não feature isolada.
+      example_filled: |
+        NOME: "Cortex CRM"
+        FUNÇÃO: "Rastreia cada lead desde o primeiro clique até o procedimento agendado."
+        DADO: "[preencher com dado real quando disponível]"
+        CONEXÃO: "Alimenta o Cortex Analytics em tempo real — o dentista vê o funil sem precisar abrir outra aba."
+
+    cta_section:
+      name: "CTA Section Skeleton"
+      skeleton: |
+        STATEMENT DE VALOR:
+        [SLOT: o que o prospect vai ter ao dar o próximo passo]
+        |REGRA| Não prometer o mundo — prometer o próximo passo concreto.
+        |REGRA| Ex: "Uma conversa de 30 minutos para entender se a Cortex faz sentido para a sua clínica."
+
+        CTA BOTÃO:
+        [SLOT: verbo] + {OPCIONAL: complemento}
+        |REGRA| Ver regras do hero/CTA.
+
+        {OPCIONAL: REDUTOR DE RISCO}
+        [SLOT: o que o prospect NÃO precisa fazer / NÃO vai acontecer]
+        |REGRA| Ex: "Sem compromisso. Sem pitch de 2 horas."
+        |REGRA| NUNCA mencionar garantia de dinheiro ou percentual de desconto.
+      example_filled: |
+        STATEMENT: "30 minutos para entender se o sistema da Cortex faz sentido para onde sua clínica está hoje."
+        CTA: "Agendar conversa"
+        REDUTOR: "Sem compromisso. Sem script pronto."
+
+    about_section:
+      name: "About Section Skeleton"
+      skeleton: |
+        PARÁGRAFO 1 — ORIGIN STORY:
+        [SLOT: o problema visto de dentro — quem viu + o que viu]
+        |REGRA| Mencionar dentista como origem. Problema da fragmentação.
+        |REGRA| [SOURCE: brandbook.yaml/core/origin_story]
+
+        PARÁGRAFO 2 — O ZAG:
+        [SLOT: o que a Cortex decidiu fazer diferente e por quê]
+        |REGRA| Conectar ao "sistema vs serviço fragmentado".
+        |REGRA| [SOURCE: brandbook.yaml/positioning/zag_analysis]
+
+        PARÁGRAFO 3 — PROVA DE PROPRIEDADE:
+        [SLOT: CRM proprietário + clínicas reais + CEO ativo]
+        |REGRA| [SOURCE: brandbook.yaml/positioning/proof]
+        |REGRA| Listar as 3 provas do brandbook de forma narrativa, não em bullet.
+
+        {OPCIONAL: PARÁGRAFO 4 — PARA QUEM É}
+        [SLOT: filtro de audiência em linguagem positiva]
+        |REGRA| Descrever para quem é, não para quem não é.
+        |REGRA| [SOURCE: brandbook.yaml/positioning/primary_audience]
+      example_filled: |
+        P1: "A Cortex nasceu de dentro do problema. O fundador, dentista de formação, viu de perto o que o mercado de marketing dental fazia: vendia peças. Lead aqui, CRM ali, analytics em outro lugar — e o dentista gerenciando 4 fornecedores que não conversavam entre si."
+        P2: "A decisão foi construir o sistema inteiro. Não revender tecnologia de terceiros — desenvolver CRM próprio. Não vender consultoria — operar o crescimento com stack integrada, do primeiro lead ao faturamento."
+        P3: "Hoje a Cortex tem CRM proprietário desenvolvido internamente, clínicas próprias como laboratório de validação em tempo real, e um CEO que opera odontologia e tecnologia simultaneamente."
+
+  # ---------------------------------------------------------------------------
+  # ADS META
+  # ---------------------------------------------------------------------------
+  ads_meta:
+
+    prospecting_feed:
+      name: "Meta Ad — Prospecting Feed Skeleton"
+      skeleton: |
+        HOOK (linha 1 — antes do 'ver mais'):
+        [SLOT: declaração que confronta crença falsa OU dado chocante]
+        |REGRA| Máx 8 palavras. Sem pergunta genérica. Sem adjetivo inicial.
+        |REGRA| Ex correto: "Lead não é resultado. Faturamento é."
+        |REGRA| Ex errado: "Você sabia que pode ter mais pacientes?"
+
+        AGITAÇÃO (linhas 2–4):
+        [SLOT: consequência do problema que o hook levantou]
+        |REGRA| Descrever o estado atual do mercado ou da clínica do prospect.
+        |REGRA| Sem dramatização — descrever com precisão.
+
+        SOLUÇÃO (linhas 5–7):
+        [SLOT: o que a Cortex oferece como alternativa — em linguagem de sistema]
+        |REGRA| Não listar features — descrever o sistema que resolve o problema.
+        |REGRA| Incluir pelo menos 1 prova (CRM próprio, clínicas reais, CEO dentista).
+
+        CTA (última linha):
+        [SLOT: ação próxima + link ou instrução]
+        |REGRA| Ex: "Se a sua clínica está nesse estágio, faz sentido conversar. Link na bio."
+        |REGRA| NUNCA: "Clique no link abaixo!" ou "Não perca essa oportunidade!"
+      example_filled: |
+        HOOK: "Seu concorrente ainda gerencia 4 fornecedores. Você não precisa."
+        AGITAÇÃO: "A maioria das clínicas paga por tráfego, CRM, automação e analytics separados — e no final nenhum desses sistemas conversa com o outro. O dentista vira gestor de tecnologia."
+        SOLUÇÃO: "A Cortex opera a stack completa: do primeiro clique ao faturamento. CRM proprietário, IA integrada, clínicas reais como laboratório de validação."
+        CTA: "Se a sua clínica está pronta para escalar, faz sentido conversar. Link na bio."
+
+    retargeting:
+      name: "Meta Ad — Retargeting Skeleton"
+      skeleton: |
+        RETOMADA (linha 1):
+        [SLOT: referência ao que o prospect já sabe sobre a Cortex]
+        |REGRA| Implícita, não literal. Ex: "Você já sabe o que é sistema integrado."
+        |REGRA| Não "você visitou nosso site" — ser sutil.
+
+        ARGUMENTO DE DESBLOQUEIO (linhas 2–3):
+        [SLOT: dado ou insight novo que justifica a retomada]
+        |REGRA| Pode ser resultado de case, novo módulo, ou dado de mercado.
+        |REGRA| Algo que não estava no primeiro ad.
+
+        CTA DE BAIXO RISCO (última linha):
+        [SLOT: próximo passo que parece pequeno]
+        |REGRA| Ex: "Uma conversa de 30 minutos. Sem compromisso."
+      example_filled: |
+        RETOMADA: "Stack completa não é promessa de agência. É estrutura operacional."
+        ARGUMENTO: "Clínicas operando com Cortex CRM reduzem o tempo de conversão de lead para agendamento. O sistema faz o follow-up — o dentista só precisa atender."
+        CTA: "30 minutos para ver se faz sentido para a sua clínica. Sem compromisso."
+
+  # ---------------------------------------------------------------------------
+  # ADS GOOGLE
+  # ---------------------------------------------------------------------------
+  ads_google:
+
+    rsa_skeleton:
+      name: "Google RSA Skeleton (Responsive Search Ad)"
+      skeleton: |
+        HEADLINE 1 (máx 30 chars):
+        [SLOT: nome + categoria OU problema + solução direta]
+        |REGRA| Incluir palavra-chave se possível. Sem abreviações.
+
+        HEADLINE 2 (máx 30 chars):
+        [SLOT: diferencial técnico principal]
+        |REGRA| CRM Proprietário / Stack Integrada / CEO Dentista — escolher 1.
+
+        HEADLINE 3 (máx 30 chars):
+        [SLOT: prova OU CTA]
+        |REGRA| Prova: "Clínicas Reais Como Lab." | CTA: "Agendar Diagnóstico"
+
+        DESCRIPTION 1 (máx 90 chars):
+        [SLOT: expansão do posicionamento — sistema vs serviço fragmentado]
+        |REGRA| Mencionar "ponta a ponta" ou "do lead ao faturamento".
+
+        DESCRIPTION 2 (máx 90 chars):
+        [SLOT: prova de diferenciação + CTA]
+        |REGRA| CRM próprio + clínicas reais + ação.
+      example_filled: |
+        H1: "Cortex — Sistema Dental" (22 chars)
+        H2: "CRM Próprio + Stack Completa" (28 chars)
+        H3: "Agendar Diagnóstico" (19 chars)
+        D1: "Do tráfego ao faturamento: um sistema integrado operado por dentista, para dentistas."
+        D2: "CRM proprietário + clínicas reais como laboratório. Resultado comprovável."
+
+  # ---------------------------------------------------------------------------
+  # INSTAGRAM
+  # ---------------------------------------------------------------------------
+  instagram:
+
+    caption_feed:
+      name: "Instagram Feed Caption Skeleton"
+      skeleton: |
+        LINHA 1 — HOOK (visível antes do 'mais'):
+        [SLOT: dado chocante OU declaração confrontacional OU stat]
+        |REGRA| Máx 10 palavras. Autossuficiente — faz sentido sozinha.
+        |REGRA| NUNCA começar com "Você" ou pergunta. Começar com substantivo ou número.
+
+        LINHA 2 (em branco para separação visual)
+
+        DESENVOLVIMENTO (4–6 linhas):
+        [SLOT: contexto + argumento + perspectiva da Cortex]
+        |REGRA| 1 ideia por linha. Quebras frequentes.
+        |REGRA| Pelo menos 1 dado real ou referência a prova.
+        |REGRA| A Cortex aparece como quem opera, não quem comenta.
+
+        LINHA EM BRANCO
+
+        FECHAMENTO (1–2 linhas):
+        [SLOT: stance final OU insight OU CTA específico]
+        |REGRA| NUNCA "O que você acha? Comenta aqui!"
+        |REGRA| Ex: "A clínica que escala parou de gerenciar fornecedores."
+        |REGRA| Ou CTA específico: "Se sua clínica está nesse estágio, link na bio."
+
+        HASHTAGS (máx 5):
+        [SLOT: hashtags técnicas do nicho]
+        |REGRA| Ex: #marketingodontologico #crm #clinicaodontologica
+        |REGRA| NUNCA: #incrivel #transformacao #sucesso #marketingdigital genérico
+      example_filled: |
+        "4 em cada 5 clínicas odontológicas que escalam pararam de gerenciar fornecedores separados."
+
+        [linha em branco]
+
+        "Não é coincidência.
+        Quando tráfego, CRM, automação e analytics operam em silos —
+        o dentista vira gestor de tecnologia.
+        E gestão de tecnologia não gera procedimento agendado.
+
+        A Cortex existe porque esse problema tem nome: fragmentação.
+        E fragmentação tem solução: sistema integrado, operando ponta a ponta."
+
+        [linha em branco]
+
+        "A clínica que escala tem sistema. Não fornecedores.
+        Se a sua está pronta para essa transição, link na bio."
+
+        #crm #marketingodontologico #clinicaodontologica #gestaodentaldigital #sistemadecrescimento
+
+    stories_sequence:
+      name: "Instagram Stories Sequence Skeleton"
+      skeleton: |
+        FRAME 1 — HOOK:
+        [SLOT: 1 frase de 5–8 palavras] + elemento visual de impacto
+        |REGRA| Funciona sem áudio. Legível em 2 segundos.
+
+        FRAME 2 — CONTEXTO:
+        [SLOT: 1–2 frases que desenvolvem o hook]
+        |REGRA| Sem repetir o frame 1. Avançar a narrativa.
+
+        FRAME 3 — ARGUMENTO / DADO:
+        [SLOT: o dado ou argumento central]
+        |REGRA| Se tiver número, colocá-lo em destaque tipográfico.
+
+        FRAME 4 — CTA OU FECHAMENTO:
+        [SLOT: próximo passo + swipe up / link / instrução]
+        |REGRA| Se não há CTA, fechar com declaração que marca a Cortex.
+      example_filled: |
+        F1: "Lead não é resultado."
+        F2: "Lead é custo. Resultado é procedimento agendado e pago."
+        F3: "A maioria das agências dental para no lead. A Cortex opera até o faturamento."
+        F4: "Quer ver como funciona? Link na bio."
+
+    reels_script:
+      name: "Instagram Reels Script Skeleton"
+      skeleton: |
+        [0–3s] ABERTURA SEM INTRO:
+        [SLOT: fala inicial — declaração controversa ou dado chocante]
+        |REGRA| ZERO "Oi, eu sou X da Cortex". Começar no meio da conversa.
+
+        [3–15s] DESENVOLVIMENTO DO PROBLEMA:
+        [SLOT: descrever o problema com precisão — sem dramatização]
+        |REGRA| Usar linguagem do dentista, não linguagem de marketeiro.
+
+        [15–35s] A PERSPECTIVA CORTEX:
+        [SLOT: o que a Cortex faz diferente e por quê funciona]
+        |REGRA| Mencionar pelo menos 1 elemento proprietário: CRM, clínicas, CEO dentista.
+
+        [35–50s] PROVA OU RESULTADO:
+        [SLOT: dado concreto, case ou demonstração]
+        |REGRA| Se não há dado real, usar posicionamento como prova.
+        |REGRA| "Clínicas próprias como laboratório" é prova válida.
+
+        [50–60s] CTA DIRETO:
+        [SLOT: instrução única e específica]
+        |REGRA| Ex: "Link na bio para agendar diagnóstico de 30 minutos."
+        |REGRA| Apenas 1 CTA. Nunca listar 3 opções de ação.
+      example_filled: |
+        "Se a sua clínica tem tráfego mas não tem faturamento proporcional — o problema não é o lead. É o que acontece depois dele." [0–3s]
+        "A maioria das clínicas odontológicas tem 4, 5 fornecedores diferentes: um para tráfego, um para CRM, um para automação. Nenhum conversa com o outro. E o dentista vira gerente de sistemas." [3–15s]
+        "A Cortex opera a stack inteira. CRM proprietário, desenvolvido internamente. Clínicas reais como laboratório de validação. E um CEO que é dentista de formação — então sabe o que acontece do lead ao tratamento." [15–35s]
+        "O resultado é um sistema que opera do primeiro clique até o procedimento pago — sem o dentista precisar gerenciar nenhum fornecedor." [35–50s]
+        "Se faz sentido para a sua clínica, link na bio." [50–60s]
+
+  # ---------------------------------------------------------------------------
+  # WHATSAPP
+  # ---------------------------------------------------------------------------
+  whatsapp:
+
+    primeiro_contato_inbound:
+      name: "WhatsApp — Primeiro Contato Inbound Skeleton"
+      skeleton: |
+        IDENTIFICAÇÃO:
+        [SLOT: nome do atendente] da Cortex.
+        |REGRA| NUNCA "equipe Cortex", "atendente", "suporte".
+        |REGRA| Usar primeiro nome real da pessoa.
+
+        CONTEXTO DE ORIGEM:
+        Vi que você [SLOT: origem — preencheu formulário / veio pelo Instagram / foi indicado por X]
+        |REGRA| Personalizar. Não usar texto genérico se a origem é conhecida.
+
+        QUALIFICAÇÃO:
+        [SLOT: 1 pergunta aberta e relevante sobre a clínica]
+        |REGRA| Ex: "Como está o volume de leads da sua clínica hoje?"
+        |REGRA| Ou: "Você já usa algum CRM ou está tudo no WhatsApp ainda?"
+        |REGRA| NUNCA: "Como posso te ajudar hoje?"
+
+        PRÓXIMO PASSO:
+        {OPCIONAL: proposta de call se aplicável}
+        |REGRA| Só propor call depois de ter a resposta da qualificação.
+      example_filled: |
+        "Pedro da Cortex.
+
+        Vi que você preencheu o formulário pelo site — obrigado pelo interesse.
+
+        Antes de qualquer coisa: como está a estrutura de captação da sua clínica hoje? Você tem tráfego rodando ou ainda não tem isso operando?"
+
+    follow_up:
+      name: "WhatsApp — Follow-up Skeleton"
+      skeleton: |
+        REFERÊNCIA BREVE:
+        [SLOT: 1 linha referenciando a última conversa]
+        |REGRA| Não copiar o histórico inteiro. Apenas o ponto relevante.
+
+        NOVO DADO OU CONTEXTO:
+        [SLOT: dado, insight ou novidade que justifica o follow-up]
+        |REGRA| NUNCA fazer follow-up sem ter algo novo a dizer.
+        |REGRA| Pode ser: resultado novo, mudança no produto, dado de mercado.
+
+        ABERTURA PARA RETOMADA:
+        [SLOT: pergunta ou convite para retomar a conversa]
+        |REGRA| Ex: "Faz sentido retomar essa conversa agora?"
+        |REGRA| NUNCA: "Só passando para ver se ainda tem interesse."
+      example_filled: |
+        "Pedro aqui da Cortex — ficamos de retomar depois que você olhasse a proposta.
+
+        Enquanto isso, finalizamos a integração do Cortex CRM com o módulo de analytics — o dentista agora vê em tempo real o custo por procedimento agendado, não só o custo por lead.
+
+        Faz sentido conversar mais 20 minutos esta semana?"
+
+    proposta:
+      name: "WhatsApp — Mensagem de Proposta Skeleton"
+      skeleton: |
+        RECAPITULAÇÃO:
+        Como alinhamos: [SLOT: 1 linha resumindo o que foi conversado]
+        |REGRA| Mostrar que a proposta é personalizada, não template.
+
+        ENVIO:
+        Enviei a proposta completa [SLOT: via PDF / link].
+        |REGRA| O documento vai separado. A mensagem direciona, não substitui.
+
+        DESTAQUE:
+        Os pontos mais relevantes para o [SLOT: contexto da clínica]:
+        — [SLOT: ponto 1 da proposta mais relevante para aquela clínica]
+        — [SLOT: ponto 2]
+        |REGRA| Máx 2 destaques. Não recapitular a proposta inteira.
+
+        PRÓXIMO PASSO:
+        [SLOT: call de revisão ou deadline de resposta]
+        |REGRA| Propor horário específico, não "quando puder".
+      example_filled: |
+        "Como conversamos: a prioridade da sua clínica agora é reduzir o custo por lead qualificado e melhorar a conversão para agendamento.
+
+        Enviei a proposta completa no PDF acima.
+
+        Os dois pontos mais relevantes para o seu estágio:
+        — Cortex Ads com otimização por procedimento (não por clique)
+        — Cortex CRM com automação de follow-up pré-agendamento
+
+        Podemos revisar juntos quinta às 10h ou sexta às 14h. Qual funciona?"
+
+# =============================================================================
+# BLOCO 4 — SWIPE FILE
+# Exemplos de Assim sim e Assim não por canal
+# Mostra o contraste entre a voz Cortex e a voz de concorrente genérico
+# =============================================================================
+#
+# [SOURCE: brandbook.yaml/voice/signature_phrases] — frases modelo
+# [SOURCE: brandbook.yaml/voice/forbidden_words] — base do "Assim não"
+# [SOURCE: brandbook.yaml/voice/never_use] — reforço do "Assim não"
+#
+# COMO USAR:
+# Antes de publicar qualquer copy, compare com os exemplos abaixo.
+# Se seu texto soa como os "Assim não" — reescrever.
+# =============================================================================
+
+swipe_file:
+
+  site:
+    assim_sim:
+      - id: "site_sim_1"
+        context: "Hero headline"
+        text: "Do lead ao lucro. Um sistema. Zero fragmentação."
+        why: >
+          Usa a tagline oficial. Declara posicionamento sem adjetivo.
+          Primeiro substantivo, não verbo, não pergunta.
+          [SOURCE: brandbook.yaml/identity/tagline]
+
+      - id: "site_sim_2"
+        context: "Sub-headline hero"
+        text: >
+          "A Cortex opera a stack completa da sua clínica — do tráfego
+          ao faturamento — com CRM proprietário e IA integrada."
+        why: >
+          Usa 'opera' (always_use), 'stack completa' (always_use),
+          'faturamento' (always_use), 'ponta a ponta' implícito.
+          Apresenta o produto sem adjetivo de valor.
+          [SOURCE: brandbook.yaml/voice/always_use]
+
+      - id: "site_sim_3"
+        context: "CTA button"
+        text: "Agendar diagnóstico"
+        why: >
+          Verbo de ação concreto + substantivo que qualifica a conversa.
+          'Diagnóstico' implica análise real, não pitch de vendas.
+          [INFERRED] Reduz ansiedade sem prometer nada vago.
+
+    assim_nao:
+      - id: "site_nao_1"
+        context: "Hero headline — como concorrente genérico falaria"
+        text: "Transforme sua clínica com a solução completa de marketing dental!"
+        why: >
+          'Transforme' = forbidden_word (transformação). 'Solução completa'
+          = forbidden_word. Exclamação = histrionico (never be).
+          Não diferencia da concorrência — qualquer agência poderia usar.
+          [SOURCE: brandbook.yaml/voice/forbidden_words + personality/never]
+
+      - id: "site_nao_2"
+        context: "Sub-headline hero — como agência genérica falaria"
+        text: "Somos apaixonados por resultados incríveis para dentistas. Venha fazer parte dessa jornada!"
+        why: >
+          'Jornada' = never_use. 'Apaixonados' = linguagem emocional sem prova.
+          'Incríveis' = forbidden_word. 'Venha fazer parte' = convite vago,
+          sem ação concreta. [SOURCE: brandbook.yaml/voice/never_use + forbidden_words]
+
+      - id: "site_nao_3"
+        context: "About section — como empresa motivacional falaria"
+        text: >
+          "Nossa missão é ajudar dentistas a alcançarem sua melhor versão
+          como empreendedores. Acreditamos no poder do marketing para
+          transformar vidas."
+        why: >
+          'Sua melhor versão' = forbidden_word. 'Transformar' = variação de
+          'transformação' = forbidden_word. 'Missão' = linguagem corporativa
+          vazia sem prova. 'Acreditamos' = posição sem evidência.
+          [SOURCE: brandbook.yaml/voice/forbidden_words]
+
+  ads_meta:
+    assim_sim:
+      - id: "ads_sim_1"
+        context: "Prospecting feed — hook"
+        text: "Seu concorrente ainda gerencia 4 fornecedores. Você não precisa."
+        why: >
+          Linha direta do brandbook. Confronta sem atacar.
+          Implica que existe uma alternativa melhor. Gera tensão.
+          [SOURCE: brandbook.yaml/voice/signature_phrases]
+
+      - id: "ads_sim_2"
+        context: "Prospecting feed — body"
+        text: >
+          "Lead não é resultado. Faturamento é.
+          A maioria das clínicas odontológicas tem tráfego rodando —
+          mas o dinheiro some entre o lead e o agendamento.
+          A Cortex opera a stack inteira: do clique ao procedimento pago.
+          CRM próprio. IA integrada. Clínicas reais como laboratório."
+        why: >
+          Hook da signature phrase. Body usa 'opera' + 'stack' + 'CRM próprio' +
+          'clínicas reais' = todos os elementos de prova do brandbook.
+          Nenhum adjetivo de valor. [SOURCE: brandbook.yaml/voice/signature_phrases + positioning/proof]
+
+      - id: "ads_sim_3"
+        context: "Retargeting"
+        text: >
+          "Tecnologia proprietária. Clínicas reais. Resultado comprovável.
+          Você já viu o que a Cortex é. Falta agendar a conversa.
+          30 minutos para entender se faz sentido para a sua clínica."
+        why: >
+          Usa signature phrase de prova. Reconhece que o prospect já sabe.
+          CTA de baixo risco (30 min, 'se faz sentido' = sem pressão).
+          [SOURCE: brandbook.yaml/voice/signature_phrases]
+
+    assim_nao:
+      - id: "ads_nao_1"
+        context: "Hook — como agência genérica de marketing dental faria"
+        text: "Você sabia que pode ter até 3x mais pacientes com as estratégias certas?"
+        why: >
+          Pergunta genérica não para o scroll. '3x mais pacientes'
+          sem prova = promessa vazia. 'Estratégias certas' = vago.
+          Qualquer agência do Brasil poderia usar esse copy.
+          [INFERRED] Viola: prova antes de promessa.
+
+      - id: "ads_nao_2"
+        context: "Body — como coach de marketing dental faria"
+        text: >
+          "Nossa metodologia revolucionária e disruptiva vai transformar
+          o seu consultório em uma máquina de geração de pacientes!
+          Somos game-changers do mercado odontológico. Não perca!"
+        why: >
+          'Revolucionária' = never_use. 'Disruptiva' = never_use.
+          'Game-changers' = never_use. 'Transformar' = forbidden_word.
+          'Não perca' = urgência artificial = histrionico.
+          [SOURCE: brandbook.yaml/voice/never_use + forbidden_words + personality/never]
+
+      - id: "ads_nao_3"
+        context: "CTA — call to action genérico"
+        text: "Clique aqui e descubra como podemos ajudar você a crescer! 🚀"
+        why: >
+          'Clique aqui' = CTA genérico proibido. 'Descubra' = vago.
+          'Podemos ajudar você' = servil, sem autoridade.
+          Emoji de foguete = casual, não premium.
+          [INFERRED] Viola: Governante não pede — direciona.
+
+  instagram:
+    assim_sim:
+      - id: "ig_sim_1"
+        context: "Feed — hook de post educativo"
+        text: "Clínica com tráfego e sem faturamento proporcional não tem problema de marketing. Tem problema de sistema."
+        why: >
+          Declaração confrontacional. Redefine o problema.
+          Posiciona 'sistema' (always_use) como a solução antes de apresentar a Cortex.
+          [SOURCE: brandbook.yaml/core/owned_word + positioning/enemy_core]
+
+      - id: "ig_sim_2"
+        context: "Feed — fechamento de post de posicionamento"
+        text: "O dentista opera paciente. A Cortex opera o crescimento."
+        why: >
+          Signature phrase oficial. Divide responsabilidades com clareza.
+          Não vende — posiciona. Memorável.
+          [SOURCE: brandbook.yaml/voice/signature_phrases]
+
+      - id: "ig_sim_3"
+        context: "Stories — frame 1"
+        text: "Lead não é resultado. Faturamento é."
+        why: >
+          Signature phrase em formato stories. 5 palavras. Legível em 2 segundos.
+          Confronta a crença dominante do mercado.
+          [SOURCE: brandbook.yaml/voice/signature_phrases]
+
+    assim_nao:
+      - id: "ig_nao_1"
+        context: "Feed — hook — como perfil motivacional de marketing faria"
+        text: "Você merece ter a clínica dos seus sonhos! ✨ Hoje vou te contar o segredo..."
+        why: >
+          'Você merece' = linguagem de coach, não de sistema.
+          'Dos seus sonhos' = apelo emocional sem dado.
+          'Segredo' = linguagem de curso online.
+          Emoji = casual para a identidade Cortex.
+          [SOURCE: brandbook.yaml/voice/personality/never — "Motivacional"]
+
+      - id: "ig_nao_2"
+        context: "Feed — post de resultado — como agência comemoraria"
+        text: >
+          "Que resultado INCRÍVEL! 🎉 Estamos muito orgulhosos de ter
+          ajudado a Dra. [Nome] a transformar sua clínica! Nossa equipe
+          fez um trabalho incrível e estamos felizes com essa parceria!"
+        why: >
+          'Incrível' aparece 2x = forbidden_word. 'Transformar' = forbidden_word.
+          'Orgulhosos' = emoção sem dado. 'Parceria' = linguagem de agência.
+          Nenhum número. Nenhum dado. Nenhuma prova.
+          [SOURCE: brandbook.yaml/voice/forbidden_words]
+
+      - id: "ig_nao_3"
+        context: "Stories — convite para engajamento genérico"
+        text: "Manda mensagem que a gente explica tudo pra você! 😊👇"
+        why: >
+          'A gente' = informal demais para a voz Cortex.
+          'Explica tudo pra você' = servil, sem filtro.
+          A Cortex não atende todo mundo — qualifica primeiro.
+          [SOURCE: brandbook.yaml/positioning/audience_filter]
+
+  whatsapp:
+    assim_sim:
+      - id: "wa_sim_1"
+        context: "Primeiro contato — abertura"
+        text: >
+          "Pedro da Cortex. Você veio pelo Instagram — obrigado pela
+          atenção. Como está a estrutura de captação da sua clínica hoje?
+          Tem tráfego rodando ou ainda não chegou nessa etapa?"
+        why: >
+          Identificação direta com nome. Referência à origem específica.
+          Pergunta de qualificação imediata. Sem 'como posso ajudar'.
+          [SOURCE: brandbook.yaml/voice/tone_by_context/support — "Pragmático + ação imediata"]
+
+      - id: "wa_sim_2"
+        context: "Follow-up — retomada com novo dado"
+        text: >
+          "Pedro da Cortex — ficamos de conversar depois que você
+          revisasse os números internos. Enquanto isso, ativamos
+          o módulo de custo por procedimento no CRM — muda bastante
+          a leitura do que está funcionando. Faz sentido retomar essa semana?"
+        why: >
+          Referência à conversa anterior. Novo dado que justifica o follow-up
+          (módulo ativado). Pergunta de abertura sem pressão.
+          'Faz sentido' = linguagem de qualificação, não de urgência.
+          [INFERRED]
+
+      - id: "wa_sim_3"
+        context: "Proposta — contextualização"
+        text: >
+          "Como alinhamos: o principal gargalo é a conversão do lead
+          para agendamento — você perde contato depois do primeiro toque.
+          Enviei a proposta no PDF. O ponto central para a sua clínica
+          agora é o Cortex CRM com automação de follow-up. Podemos
+          revisitar quinta às 10h?"
+        why: >
+          Recapitulação específica mostra escuta ativa.
+          Direcionamento do documento para o ponto mais relevante.
+          CTA com horário concreto, não 'quando puder'.
+          [INFERRED]
+
+    assim_nao:
+      - id: "wa_nao_1"
+        context: "Primeiro contato — abertura genérica"
+        text: >
+          "Olá, tudo bem? 😊 Sou da equipe da Cortex! Recebi seu contato
+          e estou aqui para te ajudar com tudo que precisar! Como posso
+          te auxiliar hoje?"
+        why: >
+          'Olá tudo bem' = abertura servil sem valor. 'Equipe da Cortex' =
+          impessoal. 'Estou aqui para te ajudar' = sem direcionamento.
+          'Como posso te auxiliar' = perguntar em vez de qualificar.
+          Emoji = casual para o contexto de negócio.
+          [SOURCE: brandbook.yaml/voice/personality/never — "Legalzona"]
+
+      - id: "wa_nao_2"
+        context: "Follow-up — mensagem de cobrança"
+        text: >
+          "Oi, só passando para ver se você teve tempo de pensar na
+          nossa proposta! Qualquer dúvida estou à disposição 😊"
+        why: >
+          'Só passando para ver' = submisso, sem valor.
+          'Se você teve tempo de pensar' = pressão velada com desculpa.
+          'Estou à disposição' = servil.
+          Nenhum dado novo. Nenhum motivo para responder.
+          [INFERRED] Viola: follow-up sem novo dado não existe na Cortex.
+
+      - id: "wa_nao_3"
+        context: "Proposta — urgência artificial"
+        text: >
+          "Atenção! Temos uma condição especial disponível só até
+          sexta-feira. Não perca essa oportunidade incrível de
+          transformar sua clínica com a Cortex!"
+        why: >
+          Urgência artificial = manipulação = não alinhado com 'Prova acima de promessa'.
+          'Incrível' = forbidden_word. 'Transformar' = forbidden_word.
+          A Cortex não usa FOMO — usa argumento e prova.
+          [SOURCE: brandbook.yaml/values + voice/forbidden_words]
+
+# =============================================================================
+# BLOCO 5 — EXPANDED GLOSSARY
+# Vocabulário completo com regras de uso por palavra
+# =============================================================================
+#
+# FONTES PRIMÁRIAS:
+# [SOURCE: brandbook.yaml/voice/always_use]
+# [SOURCE: brandbook.yaml/voice/never_use]
+# [SOURCE: brandbook.yaml/voice/forbidden_words]
+# + Palavras novas derivadas do posicionamento e arquétipos [INFERRED]
+#
+# ESTRUTURA DE CADA ENTRADA:
+# - status: use | avoid | forbidden
+# - type: always_use | never_use | forbidden | inferred_use | inferred_avoid
+# - when: quando usar ou evitar
+# - why: o raciocínio por trás da regra
+# - correct_usage: exemplo de uso correto em contexto
+# - wrong_usage: exemplo de uso incorreto
+# =============================================================================
+
+expanded_glossary:
+
+  # ---------------------------------------------------------------------------
+  # SEÇÃO A — PALAVRAS PARA SEMPRE USAR
+  # [SOURCE: brandbook.yaml/voice/always_use]
+  # ---------------------------------------------------------------------------
+
+  words_to_use:
+
+    resultado:
+      status: use
+      type: always_use
+      source: "brandbook.yaml/voice/always_use"
+      when: >
+        Sempre que a Cortex descrever o que entrega. Preferir 'resultado'
+        sobre 'benefício', 'vantagem', 'sucesso' ou 'impacto'.
+      why: >
+        Ancora a comunicação em algo concreto e mensurável.
+        Evita a armadilha do marketing emocional sem prova.
+        Resultado implica métrica — obriga a marca a ser específica.
+      correct_usage: >
+        "Resultado comprovável: faturamento gerado pela stack."
+        "O sistema opera para resultado — não para vaidade de lead."
+      wrong_usage: >
+        "Resultado incrível para sua clínica!" (adjetivo vazio sobre palavra correta)
+        "Resultado é nossa prioridade." (genérico, sem especificidade)
+
+    sistema:
+      status: use
+      type: always_use
+      source: "brandbook.yaml/voice/always_use + core/owned_word"
+      when: >
+        Sempre que descrever o que a Cortex É e como opera.
+        É a palavra que separa a Cortex de agências e fornecedores.
+      why: >
+        'Sistema' é a owned word da marca. É o zag.
+        Quando a concorrência diz 'serviço', a Cortex diz 'sistema'.
+        Palavras alternativas proibidas nesse contexto:
+        'serviço', 'solução', 'ferramenta', 'metodologia'.
+      correct_usage: >
+        "Um sistema que opera do lead ao lucro."
+        "A clínica que escala não compra serviço — contrata sistema."
+      wrong_usage: >
+        "Nossa solução sistematizada..." (diluição da owned word)
+        "Sistema revolucionário..." (never_use contaminando owned_word)
+
+    stack_completa:
+      status: use
+      type: always_use
+      source: "brandbook.yaml/voice/always_use"
+      when: >
+        Quando descrever o conjunto de produtos/serviços da Cortex.
+        Reforça integração vs fragmentação dos concorrentes.
+      why: >
+        'Stack' é vocabulário de tech-premium — Linear, Vercel, Stripe usam.
+        'Stack completa' vs 'serviço completo' (forbidden): um é integração técnica,
+        o outro é promessa vaga. Usar 'stack' eleva o posicionamento.
+      correct_usage: >
+        "Stack completa: do tráfego ao faturamento."
+        "A Cortex opera a stack inteira — sem precisar de terceiros."
+      wrong_usage: >
+        "Stack completa e incrível!" (forbidden_word + always_use)
+        "Temos uma stack revolucionária." (never_use + always_use)
+
+    escalar:
+      status: use
+      type: always_use
+      source: "brandbook.yaml/voice/always_use"
+      when: >
+        Para descrever o objetivo do cliente (crescer de forma estruturada)
+        e o que a Cortex habilita. Sempre como verbo, nunca como substantivo 'escala'
+        no sentido de 'estar em escala' (usar 'escalar' como ação).
+      why: >
+        'Escalar' implica crescimento estruturado e replicável — não só
+        crescimento. É o vocabulário do dentista empreendedor que
+        a Cortex atende. Diferencia do 'crescer' genérico.
+      correct_usage: >
+        "A clínica que escala parou de gerenciar fornecedores."
+        "Escalar faturamento sem virar gestor de tecnologia."
+      wrong_usage: >
+        "Vamos te ajudar a escalar para o próximo nível!" (clichê de coach)
+        "Nossa solução escala com você." (posiciona o produto, não o cliente)
+
+    ponta_a_ponta:
+      status: use
+      type: always_use
+      source: "brandbook.yaml/voice/always_use"
+      when: >
+        Para reforçar que a Cortex cobre todo o caminho — do lead ao lucro.
+        Usar quando houver risco de o prospect entender que a Cortex só
+        faz uma parte do trabalho.
+      why: >
+        Combate diretamente o enemy (fragmentação).
+        Um concorrente nunca pode usar 'ponta a ponta' com credibilidade
+        se vende apenas 1 serviço. É um diferenciador implícito.
+      correct_usage: >
+        "Operamos ponta a ponta — do tráfego ao faturamento."
+        "Stack ponta a ponta: sem buracos no funil."
+      wrong_usage: >
+        "Somos a solução ponta a ponta para dentistas!" (forbidden_word)
+        "Oferecemos serviços ponta a ponta." ('serviço' enfraquece o ponto)
+
+    operar:
+      status: use
+      type: always_use
+      source: "brandbook.yaml/voice/always_use + core/essence"
+      when: >
+        Para descrever o que a Cortex faz (opera o crescimento).
+        Preferir 'operar' sobre 'fazer', 'executar', 'entregar', 'oferecer'.
+      why: >
+        'Operar' é o verbo da essência da marca: "Inteligência que opera."
+        Remete a cirurgia, precisão, profissionalismo — compatível com o
+        universo do dentista. Também remete a sistemas operacionais —
+        posiciona a Cortex como infraestrutura, não como serviço opcional.
+      correct_usage: >
+        "A Cortex opera o crescimento da sua clínica."
+        "Quando o sistema opera, o dentista denteia."
+      wrong_usage: >
+        "Operamos com excelência incrível!" (forbidden_word)
+        "Nosso time opera 24h para você." (posiciona serviço, não sistema)
+
+    inteligencia:
+      status: use
+      type: always_use
+      source: "brandbook.yaml/voice/always_use + core/essence"
+      when: >
+        Para descrever a natureza da tecnologia da Cortex (IA, CRM, analytics).
+        Usar como substantivo ou adjetivo técnico, não como metáfora vaga.
+      why: >
+        'Inteligência que opera' é a essência da marca.
+        Remete ao nome Cortex (córtex cerebral — processamento, inteligência).
+        Diferencia de 'automação' (mecânico) ou 'tecnologia' (genérico).
+      correct_usage: >
+        "Inteligência proprietária que qualifica leads antes do humano tocar."
+        "A Cortex Signal (IA) opera com inteligência no funil de conversão."
+      wrong_usage: >
+        "Inteligência artificial incrível!" (forbidden_word)
+        "Usamos inteligência para transformar resultados." (forbidden_word)
+
+    faturamento:
+      status: use
+      type: always_use
+      source: "brandbook.yaml/voice/always_use"
+      when: >
+        Sempre como métrica-destino. O que o dentista quer no fim.
+        Preferir 'faturamento' sobre 'receita', 'caixa', 'dinheiro', 'lucro'
+        quando falar da métrica de negócio.
+      why: >
+        'Faturamento' é a métrica real de um negócio dental.
+        Posiciona a Cortex como parceira de negócio, não de marketing.
+        'Lead' sem 'faturamento' é a crítica da marca ao mercado —
+        o par lead/faturamento é central na comunicação.
+      correct_usage: >
+        "Do lead ao faturamento — sem fragmentação no meio."
+        "Lead não é resultado. Faturamento é."
+      wrong_usage: >
+        "Aumentar o faturamento da clínica é incrível!" (forbidden_word)
+        "Maximizamos seu faturamento." (genérico, sem mecanismo)
+
+  # ---------------------------------------------------------------------------
+  # SEÇÃO B — PALAVRAS PARA NUNCA USAR
+  # [SOURCE: brandbook.yaml/voice/never_use]
+  # ---------------------------------------------------------------------------
+
+  words_to_never_use:
+
+    revolucionario:
+      status: avoid
+      type: never_use
+      source: "brandbook.yaml/voice/never_use"
+      when_to_avoid: "Sempre. Zero exceções."
+      why: >
+        Autodeclaração de grandiosidade sem prova.
+        Qualquer empresa pode dizer que é revolucionária.
+        A Cortex prova por resultado — não se autoproclamação.
+        Viola diretamente: "Prova acima de promessa".
+      wrong_usage: "Sistema revolucionário para clínicas odontológicas."
+      alternative: >
+        Em vez de: "Tecnologia revolucionária"
+        Use: "CRM proprietário desenvolvido internamente" (prova concreta)
+
+    disruptivo:
+      status: avoid
+      type: never_use
+      source: "brandbook.yaml/voice/never_use"
+      when_to_avoid: "Sempre. Zero exceções."
+      why: >
+        Jargão de startup que perdeu todo o significado.
+        A Cortex não disrompe — ela opera. O verbo é 'operar', não 'disrumpir'.
+        Posiciona a marca como mais uma startup anunciando revolução.
+      wrong_usage: "Modelo disruptivo de crescimento dental."
+      alternative: >
+        Em vez de: "Abordagem disruptiva"
+        Use: "Sistema que opera o que a concorrência vende em partes"
+
+    game_changer:
+      status: avoid
+      type: never_use
+      source: "brandbook.yaml/voice/never_use"
+      when_to_avoid: "Sempre. Especialmente em ads e conteúdo."
+      why: >
+        Anglicismo de marketing de 2015. Sem conteúdo semântico real.
+        Viola a personalidade 'Séria' da marca.
+        Uma marca que usa 'game-changer' se posiciona no mesmo nível
+        de qualquer agência de marketing digital genérica.
+      wrong_usage: "A Cortex é um game-changer para dentistas."
+      alternative: >
+        Em vez de: "Game-changer no marketing dental"
+        Use: "O único com CRM proprietário e clínicas próprias como laboratório"
+
+    custo_beneficio:
+      status: avoid
+      type: never_use
+      source: "brandbook.yaml/voice/never_use"
+      when_to_avoid: "Sempre. Especialmente em proposta e ads."
+      why: >
+        Posiciona a Cortex como uma opção entre opções — comparável por preço.
+        A Cortex não compete por custo-benefício — compete por resultado.
+        Usar essa expressão enfraquece o posicionamento de sistema premium.
+      wrong_usage: "Melhor custo-benefício do mercado dental."
+      alternative: >
+        Em vez de: "Ótimo custo-benefício"
+        Use: "ROI calculável: [dado de faturamento gerado por valor investido]"
+
+    jornada:
+      status: avoid
+      type: never_use
+      source: "brandbook.yaml/voice/never_use"
+      when_to_avoid: "Sempre. Em qualquer canal."
+      why: >
+        'Jornada' é o vocabulário de consultoria de transformação pessoal
+        e de brands de lifestyle. A Cortex opera sistemas — não conduz jornadas.
+        Remete a 'Sua melhor versão' (forbidden) e ao arquétipo errado.
+      wrong_usage: "Sua jornada de crescimento começa aqui."
+      alternative: >
+        Em vez de: "Jornada de crescimento"
+        Use: "O sistema opera. O dentista cresce."
+
+  # ---------------------------------------------------------------------------
+  # SEÇÃO C — PALAVRAS PROIBIDAS (FORBIDDEN)
+  # [SOURCE: brandbook.yaml/voice/forbidden_words]
+  # ---------------------------------------------------------------------------
+
+  forbidden_words:
+
+    incrivel:
+      status: forbidden
+      type: forbidden
+      source: "brandbook.yaml/voice/forbidden_words"
+      when_to_avoid: "Sempre e em qualquer contexto — sozinha ou em combinação."
+      why: >
+        Adjetivo de valor sem prova. Usada por todo tipo de marca.
+        A Cortex substitui adjetivos por dados. Se algo é bom,
+        mostrar o dado que comprova — nunca o adjetivo que afirma.
+        'Incrível' = oposto de "Prova acima de promessa" (valor da marca).
+      wrong_usage: >
+        "Resultado incrível." | "Sistema incrível." | "Equipe incrível."
+        "Nosso CRM tem uma capacidade incrível de..."
+      alternative: >
+        Em vez de: "Resultados incríveis"
+        Use: "[X] leads convertidos em [Y] semanas — dado real"
+
+    sua_melhor_versao:
+      status: forbidden
+      type: forbidden
+      source: "brandbook.yaml/voice/forbidden_words"
+      when_to_avoid: "Sempre. Nunca usar nem variações ('sua melhor clínica', etc.)."
+      why: >
+        Linguagem de coach de desenvolvimento pessoal.
+        A Cortex não trabalha com aspiração emocional — trabalha com
+        operação de crescimento. 'Melhor versão' implica que o dentista
+        está incompleto sem a Cortex — o que é invasivo e não é o posicionamento.
+      wrong_usage: >
+        "Seja a melhor versão da sua clínica." |
+        "Ajudamos você a ser o melhor dentista empreendedor possível."
+      alternative: >
+        Em vez de: "Torne-se a melhor versão"
+        Use: "Escale faturamento sem virar gestor de tecnologia"
+
+    transformacao:
+      status: forbidden
+      type: forbidden
+      source: "brandbook.yaml/voice/forbidden_words"
+      when_to_avoid: "Sempre. Incluindo variações: 'transformar', 'transforme', 'transformando'."
+      why: >
+        Linguagem de consultoria emocional e de cursos online.
+        A Cortex não transforma — ela opera. A diferença é técnica e semântica:
+        'operar' pressupõe sistema e mecanismo; 'transformar' pressupõe
+        mudança mágica sem processo explícito.
+        Viola: "Sistema acima de serviço" (valor da marca).
+      wrong_usage: >
+        "Transforme sua clínica." | "Transformação digital para dentistas."
+        "Como transformamos a gestão da clínica do Dr. X."
+      alternative: >
+        Em vez de: "Transformar sua clínica"
+        Use: "Operar o crescimento da sua clínica — do lead ao faturamento"
+
+    solucao_completa:
+      status: forbidden
+      type: forbidden
+      source: "brandbook.yaml/voice/forbidden_words"
+      when_to_avoid: "Sempre. Incluindo 'solução' sozinha como posicionamento central."
+      why: >
+        Todo fornecedor de marketing dental usa 'solução completa'.
+        É a antipattern definitiva de diferenciação — dizer 'solução' é
+        dizer nada. A Cortex usa 'sistema' — owned word que tem conteúdo
+        técnico específico (CRM, stack, integração, ponta a ponta).
+      wrong_usage: >
+        "A solução completa para sua clínica." |
+        "Oferecemos soluções de marketing para dentistas."
+      alternative: >
+        Em vez de: "Solução completa"
+        Use: "Stack proprietária do lead ao faturamento" (concreto + diferenciado)
+
+  # ---------------------------------------------------------------------------
+  # SEÇÃO D — PALAVRAS DERIVADAS DO POSICIONAMENTO [INFERRED]
+  # Vocabulário não listado no brandbook mas coerente com posicionamento e arquétipos
+  # ---------------------------------------------------------------------------
+
+  inferred_vocabulary:
+
+    usar:
+      status: use
+      type: inferred_use
+      source: "[INFERRED] — derivado de archetype_mix/Governante + core/essence"
+
+    fragmentacao:
+      status: use
+      type: inferred_use
+      source: "[INFERRED] — derivado de positioning/enemy_core"
+      when: >
+        Para nomear o problema central do mercado que a Cortex resolve.
+        É o inimigo da marca em forma de palavra.
+      why: >
+        'Fragmentação' nomeia o enemy da Cortex com precisão técnica.
+        Melhor que 'desorganização' (vago) ou 'ineficiência' (genérico).
+        Quando a Cortex usa 'fragmentação', o dentista que tem 4 fornecedores
+        sente que a palavra foi feita para descrever sua realidade.
+      correct_usage: >
+        "A fragmentação é o maior custo oculto da clínica odontológica."
+        "A Cortex existe para eliminar a fragmentação — não para adicionar mais uma peça."
+      wrong_usage: >
+        "Com a Cortex você não precisa se preocupar com a fragmentação incrível do mercado."
+
+    laboratorio:
+      status: use
+      type: inferred_use
+      source: "[INFERRED] — derivado de positioning/proof + core/origin_story"
+      when: >
+        Para se referir às clínicas próprias que a Cortex usa para testar e validar.
+        É uma das provas mais fortes do brandbook.
+      why: >
+        'Laboratório' eleva o conceito de 'clínicas próprias' de
+        prova de mercado para metodologia científica.
+        Implica: testamos antes de vender. Sem laboratório = sem prova real.
+      correct_usage: >
+        "Clínicas próprias como laboratório de validação em tempo real."
+        "O que funciona no laboratório, funciona na sua clínica."
+      wrong_usage: >
+        "Nosso incrível laboratório de clínicas reais..." (forbidden_word)
+
+    proprietario:
+      status: use
+      type: inferred_use
+      source: "[INFERRED] — derivado de positioning/proof + brand_pillars"
+      when: >
+        Sempre que mencionar CRM, IA ou tecnologia da Cortex.
+        'Proprietário' significa: desenvolvido internamente, não revendido.
+      why: >
+        Diferencia a Cortex de concorrentes que revendem HubSpot, RD Station, etc.
+        'Proprietário' implica controle total da stack — sem dependência de terceiro.
+        É um proof point técnico que nenhum concorrente pode copiar facilmente.
+      correct_usage: >
+        "CRM proprietário desenvolvido internamente."
+        "IA proprietária — não é ChatGPT com wrapper."
+      wrong_usage: >
+        "Nossa solução proprietária completa." (forbidden_word + always_use incorreto)
+
+    diagnostico:
+      status: use
+      type: inferred_use
+      source: "[INFERRED] — derivado de core/category + audience/dentista"
+      when: >
+        Para nomear a primeira reunião ou análise de viabilidade.
+        Nunca 'reunião', 'call', 'apresentação', 'demo'.
+      why: >
+        'Diagnóstico' é o vocabulário do dentista — ele diagnostica antes de tratar.
+        Posiciona a Cortex como quem entende o universo do cliente.
+        Implica: existe um problema real a ser identificado, não um produto a ser empurrado.
+        Alinha com o posicionamento de filtro de audiência: diagnóstico implica que
+        nem todo mundo vai estar apto para a Cortex.
+      correct_usage: >
+        "Agendar diagnóstico" (CTA de reunião inicial)
+        "30 minutos de diagnóstico para entender a sua clínica."
+      wrong_usage: >
+        "Agende sua demo incrível!" (wrong word + forbidden_word)
+
+    clínica_que_escala:
+      status: use
+      type: inferred_use
+      source: "[INFERRED] — derivado de voice/signature_phrases + positioning/primary_audience"
+      when: >
+        Para se referir ao perfil ideal de cliente — dentista com clínica estruturada
+        que quer crescer. Funciona como um trigger de identificação.
+      why: >
+        'A clínica que escala' cria um grupo implícito que o prospect quer pertencer.
+        É o inverso de falar diretamente 'você' — é falar da categoria de clínica.
+        Permite o prospect se ver refletido sem o texto ser sobre ele diretamente.
+      correct_usage: >
+        "A clínica que escala parou de gerenciar fornecedores."
+        "Se você tem a clínica que escala — ou quer ter —, faz sentido conversar."
+      wrong_usage: >
+        "A incrível clínica que escala usa Cortex." (forbidden_word)
+
+    parceria:
+      status: avoid
+      type: inferred_avoid
+      source: "[INFERRED] — derivado de positioning/category + archetype/Governante"
+      when_to_avoid: >
+        Sempre que descrever a relação entre Cortex e o dentista-cliente.
+      why: >
+        'Parceria' sugere horizontalidade — dois lados iguais.
+        A Cortex é um sistema operacional: o dentista contrata, a Cortex opera.
+        'Parceiro' é o vocabulário de agência. A Cortex não é agência.
+        Viola o posicionamento de sistema vs serviço.
+      wrong_usage: >
+        "Somos seus parceiros de crescimento."
+        "Essa parceria vai transformar sua clínica." (parceria + forbidden_word)
+      alternative: >
+        Em vez de: "Parceria"
+        Use: "O dentista opera paciente. A Cortex opera o crescimento." (divisão de papéis)
+
+    ajudar:
+      status: avoid
+      type: inferred_avoid
+      source: "[INFERRED] — derivado de archetype/Governante + voice/personality"
+      when_to_avoid: >
+        Quando descrever o que a Cortex faz pelo cliente.
+        'Ajudar' posiciona a Cortex como assistente, não como sistema operacional.
+      why: >
+        Governante não 'ajuda' — opera, dirige, cria ordem.
+        'Ajudar' coloca a Cortex em posição subalterna.
+        Viola a essência: "Inteligência que opera." vs "Inteligência que ajuda."
+      wrong_usage: >
+        "Queremos ajudar dentistas a crescer."
+        "Como a Cortex pode ajudar sua clínica?"
+      alternative: >
+        Em vez de: "Ajudar"
+        Use: "Operar" | "Escalar" | "Entregar resultado"
+
+    melhor_do_mercado:
+      status: avoid
+      type: inferred_avoid
+      source: "[INFERRED] — derivado de brand_pillars/resultado_comprovavel"
+      when_to_avoid: "Sempre — autodeclaração de superioridade sem dado."
+      why: >
+        Autoproclamação é o oposto de prova.
+        A Cortex não precisa dizer que é a melhor — precisa mostrar o dado
+        que comprova por que é a escolha certa para clínicas que querem escalar.
+        'Melhor do mercado' é o tipo de frase que qualquer empresa usa.
+      wrong_usage: >
+        "O melhor CRM do mercado dental."
+        "A melhor agência para dentistas."
+      alternative: >
+        Em vez de: "Melhor do mercado"
+        Use: "CRM proprietário + clínicas reais como laboratório —
+              nenhum concorrente tem os dois."
+
+    apaixonados:
+      status: avoid
+      type: inferred_avoid
+      source: "[INFERRED] — derivado de voice/personality/never — 'Histriônica' + 'Motivacional'"
+      when_to_avoid: "Sempre — emoção corporativa sem dado."
+      why: >
+        'Apaixonados' é o atalho que empresas usam quando não têm prova real.
+        A Cortex tem clínicas próprias como laboratório e CEO dentista — isso
+        é prova de comprometimento. Paixão não precisa ser declarada.
+      wrong_usage: >
+        "Somos apaixonados por resultados."
+        "Nossa equipe apaixonada pelo sucesso das clínicas."
+      alternative: >
+        Em vez de: "Somos apaixonados por resultados"
+        Use: "CEO dentista. Clínicas próprias. Tecnologia proprietária."
+             (os fatos provam o comprometimento)

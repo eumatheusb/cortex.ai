@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 264 64" fill="none" role="img" aria-label="Cortex">
+  <defs>
+    <radialGradient id="rp-bg" cx="40%" cy="40%" r="65%">
+      <stop offset="0%" stop-color="#1B2845"/>
+      <stop offset="100%" stop-color="#090E1A"/>
+    </radialGradient>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@700&amp;display=swap');
+
+      /*
+        3 ripple rings expand from the signal dot (cx=55, cy=32)
+        Each ring: r 2.5→24, opacity 0.7→0, duration 2.6s
+        Staggered 0.7s apart → continuous radar effect
+      */
+      .rp-ring {
+        transform-box: fill-box;
+        transform-origin: center;
+        animation: rp-expand 2.6s ease-out infinite;
+      }
+      .rp-ring-2 { animation-delay: 0.75s;  }
+      .rp-ring-3 { animation-delay: 1.50s;  }
+
+      /* Dot stays at normal size, glows on each pulse */
+      .rp-dot {
+        transform-box: fill-box;
+        transform-origin: center;
+        animation: rp-dot-glow 2.6s ease-out infinite;
+      }
+
+      @keyframes rp-expand {
+        0%   { r: 2.5; opacity: 0.75; }
+        100% { r: 26;  opacity: 0;    }
+      }
+      @keyframes rp-dot-glow {
+        0%,100% { opacity:1; transform:scale(1);   }
+        8%      { opacity:1; transform:scale(1.8);  }
+        18%     { opacity:1; transform:scale(1);    }
+      }
+    </style>
+  </defs>
+
+  <!-- Background -->
+  <rect width="64" height="64" rx="14" fill="url(#rp-bg)"/>
+
+  <!-- C arc (static) -->
+  <path
+    d="M 42.6,42.6 A 15,15 0 1,1 42.6,21.4"
+    stroke="#4D71FA" stroke-width="5" stroke-linecap="round"
+  />
+
+  <!-- Ripple rings — centered on signal dot (55, 32) -->
+  <circle class="rp-ring"   cx="55" cy="32" r="2.5" stroke="#4D71FA" stroke-width="1.5" fill="none"/>
+  <circle class="rp-ring rp-ring-2" cx="55" cy="32" r="2.5" stroke="#4D71FA" stroke-width="1.5" fill="none"/>
+  <circle class="rp-ring rp-ring-3" cx="55" cy="32" r="2.5" stroke="#4D71FA" stroke-width="1.5" fill="none"/>
+
+  <!-- Signal dot (on top) -->
+  <circle class="rp-dot" cx="55" cy="32" r="2.5" fill="#4D71FA"/>
+
+  <!-- Wordmark -->
+  <text x="80" y="44"
+    font-family="'Space Grotesk','Arial Black',sans-serif"
+    font-weight="700" font-size="36" letter-spacing="0.8"
+    fill="#F7F9FC"
+  >Cortex</text>
+</svg>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Cortex Google Display — 300x250 Medium Rectangle</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700&family=Inter:wght@600&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{width:300px;height:250px;overflow:hidden;background:#090E1A;border:1px solid #1E2533;position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.dot-grid{position:absolute;inset:0;background-image:radial-gradient(circle,#1E2533 1px,transparent 1px);background-size:16px 16px;opacity:.1}
+.logo{position:absolute;top:24px;left:50%;transform:translateX(-50%)}
+.logo svg{height:14px;width:auto}
+.headline{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:20px;color:#F7F9FC;text-align:center;padding:0 24px;position:relative;z-index:1;margin-top:-8px}
+.metric{font-family:'JetBrains Mono',monospace;font-weight:500;font-size:14px;color:#4D71FA;margin-top:12px;position:relative;z-index:1}
+.cta{position:absolute;bottom:24px;left:50%;transform:translateX(-50%);font-family:'Inter',sans-serif;font-weight:600;font-size:13px;color:#F7F9FC;background:#4D71FA;padding:10px 20px;border-radius:6px;white-space:nowrap}
+</style>
+</head>
+<body>
+<div class="dot-grid"></div>
+<div class="logo">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 52" fill="none">
+    <text x="0" y="40" font-family="'Space Grotesk','Arial Black',sans-serif" font-weight="700" font-size="44" letter-spacing="1" fill="#F7F9FC">Cortex</text>
+    <circle cx="170" cy="12" r="4" fill="#4D71FA"/>
+  </svg>
+</div>
+<div class="headline">Stack completa do lead ao lucro</div>
+<div class="metric">+230% faturamento medio</div>
+<div class="cta">Conhecer o Cortex</div>
+</body>
+</html>

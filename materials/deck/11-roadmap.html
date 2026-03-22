@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Cortex Deck — 11 Roadmap</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{width:1920px;height:1080px;overflow:hidden;background:#090E1A;padding:80px 160px;position:relative}
+.bar{position:absolute;bottom:0;left:0;right:0;height:4px;background:#4D71FA}
+.label{font-family:'Inter',sans-serif;font-size:14px;color:#4D71FA;text-transform:uppercase;letter-spacing:2px;margin-bottom:16px}
+h2{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:44px;color:#F7F9FC;margin-bottom:64px}
+.timeline{display:flex;align-items:flex-start;gap:0;position:relative}
+.timeline::before{content:'';position:absolute;top:20px;left:20px;right:20px;height:2px;background:#1E2533}
+.phase{flex:1;position:relative;padding:0 16px}
+.phase-dot{width:12px;height:12px;border-radius:50%;background:#1E2533;margin-bottom:24px;position:relative;z-index:1}
+.phase.active .phase-dot{background:#4D71FA;box-shadow:0 0 12px rgba(77,113,250,.4)}
+.phase.done .phase-dot{background:#22C55E}
+.phase-quarter{font-family:'Inter',sans-serif;font-weight:500;font-size:13px;color:#94A3B8;margin-bottom:8px;text-transform:uppercase;letter-spacing:1px}
+.phase h3{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:20px;color:#F7F9FC;margin-bottom:12px}
+.phase ul{list-style:none;display:flex;flex-direction:column;gap:6px}
+.phase li{font-family:'Inter',sans-serif;font-size:14px;color:#94A3B8;padding-left:16px;position:relative}
+.phase li::before{content:'';position:absolute;left:0;top:8px;width:6px;height:2px;background:#4D71FA;border-radius:1px}
+</style>
+</head>
+<body>
+<div class="label">Proximos passos</div>
+<h2>Roadmap 2026</h2>
+<div class="timeline">
+  <div class="phase done">
+    <div class="phase-dot"></div>
+    <div class="phase-quarter">Q1 2026</div>
+    <h3>Fundacao</h3>
+    <ul>
+      <li>CRM core lancado</li>
+      <li>Pipeline visual</li>
+      <li>Integracao WhatsApp</li>
+      <li>Dashboard v1</li>
+    </ul>
+  </div>
+  <div class="phase active">
+    <div class="phase-dot"></div>
+    <div class="phase-quarter">Q2 2026</div>
+    <h3>Inteligencia</h3>
+    <ul>
+      <li>IA de qualificacao</li>
+      <li>Cortex Ads beta</li>
+      <li>Automacao Flow</li>
+      <li>API publica v1</li>
+    </ul>
+  </div>
+  <div class="phase">
+    <div class="phase-dot"></div>
+    <div class="phase-quarter">Q3 2026</div>
+    <h3>Escala</h3>
+    <ul>
+      <li>Multi-unidades</li>
+      <li>Analytics avancado</li>
+      <li>App mobile iOS/Android</li>
+      <li>Marketplace integracoes</li>
+    </ul>
+  </div>
+  <div class="phase">
+    <div class="phase-dot"></div>
+    <div class="phase-quarter">Q4 2026</div>
+    <h3>Dominio</h3>
+    <ul>
+      <li>Cortex AI Copilot</li>
+      <li>Predicao de churn</li>
+      <li>Revenue intelligence</li>
+      <li>White-label</li>
+    </ul>
+  </div>
+</div>
+<div class="bar"></div>
+</body>
+</html>

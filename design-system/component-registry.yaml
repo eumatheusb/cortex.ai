@@ -1,0 +1,426 @@
+schema_version: "1.1"
+generated: "2026-03-22"
+status: complete
+source: "outputs/design-system/cortex/components/"
+
+summary:
+  total_components: 59
+  atoms: 23
+  molecules: 17
+  organisms: 15
+  templates: 4
+  utils: 2
+  test_files: 1
+  storybook_stories: 36
+
+# ─────────────────────────────────────────────────────────────────────────────
+# ATOMS — Primitive, single-responsibility components
+# ─────────────────────────────────────────────────────────────────────────────
+atoms:
+  - name: Button
+    path: atoms/Button/Button.tsx
+    variants: [primary, secondary, ghost, outline, destructive, link]
+    sizes: [sm, md, lg, icon]
+    features: [loading, leftIcon, rightIcon, framer-whileTap]
+    exports: [Button, buttonVariants, ButtonProps]
+    stories: atoms/Button/Button.stories.tsx
+
+  - name: Input
+    path: atoms/Input/Input.tsx
+    variants: [default, error, success]
+    sizes: [sm, md, lg]
+    features: [leftIcon, rightIcon, hint, error-text, label]
+    exports: [Input, InputProps]
+
+  - name: Badge
+    path: atoms/Badge/Badge.tsx
+    variants: [default, primary, success, warning, error, info, ghost]
+    sizes: [sm, md, lg]
+    features: [dot, count]
+    exports: [Badge, badgeVariants, BadgeProps]
+
+  - name: Avatar
+    path: atoms/Avatar/Avatar.tsx
+    variants: [image, initials, fallback]
+    sizes: [xs, sm, md, lg, xl]
+    features: [status-dot, AvatarGroup, overflow-count, gradient-by-name]
+    exports: [Avatar, AvatarGroup, AvatarProps]
+
+  - name: Spinner
+    path: atoms/Spinner/Spinner.tsx
+    sizes: [xs, sm, md, lg, xl]
+    variants: [default, inverted, muted]
+    features: [SpinnerOverlay]
+    exports: [Spinner, SpinnerOverlay, SpinnerProps]
+
+  - name: Tag
+    path: atoms/Tag/Tag.tsx
+    variants: [default, primary, success, warning, error]
+    features: [removable, AnimatePresence-exit, TagList]
+    exports: [Tag, TagList, TagProps]
+
+  - name: Label
+    path: atoms/Label/Label.tsx
+    features: [required-asterisk, optional-text, hint]
+    exports: [Label, LabelProps]
+    dependencies: [Radix UI Label]
+
+  - name: Tooltip
+    path: atoms/Tooltip/Tooltip.tsx
+    sides: [top, right, bottom, left]
+    features: [portal, animated, delay]
+    exports: [Tooltip, TooltipProvider, TooltipRoot, TooltipTrigger, TooltipContent]
+    dependencies: [Radix UI Tooltip]
+
+  - name: Checkbox
+    path: atoms/Checkbox/Checkbox.tsx
+    features: [label, hint, error, indeterminate, disabled]
+    exports: [Checkbox, CheckboxProps]
+    dependencies: [Radix UI Checkbox]
+
+  - name: Switch
+    path: atoms/Switch/Switch.tsx
+    sizes: [sm, md, lg]
+    features: [label, disabled, defaultChecked]
+    exports: [Switch, SwitchProps]
+    dependencies: [Radix UI Switch]
+
+  - name: RadioGroup
+    path: atoms/RadioGroup/RadioGroup.tsx
+    features: [items, orientation-horizontal/vertical, hint, disabled]
+    exports: [RadioGroup, RadioGroupProps, RadioItemProps]
+    dependencies: [Radix UI RadioGroup]
+
+  - name: Textarea
+    path: atoms/Textarea/Textarea.tsx
+    features: [label, showCount, maxLength, error, auto-resize]
+    exports: [Textarea, TextareaProps]
+
+  - name: Skeleton
+    path: atoms/Skeleton/Skeleton.tsx
+    features: [SkeletonText, SkeletonAvatar, SkeletonCard, animated-pulse]
+    exports: [Skeleton, SkeletonText, SkeletonAvatar, SkeletonCard, SkeletonProps]
+
+  - name: Progress
+    path: atoms/Progress/Progress.tsx
+    variants: [default, success, warning, error]
+    sizes: [sm, md, lg, xl]
+    features: [showValue, label, CircularProgress, animated]
+    exports: [Progress, CircularProgress, ProgressProps, CircularProgressProps]
+
+  - name: Select
+    path: atoms/Select/Select.tsx
+    features: [groups, separator, label, disabled, portal]
+    exports: [Select, SelectGroup, SelectValue, SelectTrigger, SelectContent, SelectLabel, SelectItem, SelectSeparator]
+    dependencies: [Radix UI Select]
+
+  - name: Popover
+    path: atoms/Popover/Popover.tsx
+    features: [portal, animated, anchor, close]
+    exports: [Popover, PopoverTrigger, PopoverContent, PopoverClose, PopoverAnchor]
+    dependencies: [Radix UI Popover]
+
+  - name: Logo
+    path: atoms/Logo/Logo.tsx
+    variants: [horizontal, icon, wordmark]
+    modes: [static, loader, idle]
+    features: [theme-dark/light, size, animated-loader]
+    exports: [CortexLogo]
+
+  # ── New atoms (Phase 7) ──
+
+  - name: Slider
+    path: atoms/Slider/Slider.tsx
+    features: [range, step, min/max, label, showValue]
+    exports: [Slider, SliderProps]
+    dependencies: [Radix UI Slider]
+
+  - name: OTPInput
+    path: atoms/OTPInput/OTPInput.tsx
+    features: [length, autoFocus, numeric, alphanumeric]
+    exports: [OTPInput, OTPInputProps]
+
+  - name: TimePicker
+    path: atoms/TimePicker/TimePicker.tsx
+    features: [12h/24h, step, min/max, clearable]
+    exports: [TimePicker, TimePickerProps]
+
+  - name: DatePicker
+    path: atoms/DatePicker/DatePicker.tsx
+    features: [range, min/max, locale-pt-BR, clearable, portal]
+    exports: [DatePicker, DatePickerProps]
+    dependencies: [react-day-picker]
+
+  - name: Combobox
+    path: atoms/Combobox/Combobox.tsx
+    features: [search, async, creatable, multi-select, clearable]
+    exports: [Combobox, ComboboxProps, ComboboxOption]
+    dependencies: [cmdk]
+
+  - name: Accordion
+    path: atoms/Accordion/Accordion.tsx
+    features: [single/multiple, collapsible, animated, disabled]
+    exports: [Accordion, AccordionItem, AccordionTrigger, AccordionContent]
+    dependencies: [Radix UI Accordion]
+
+# ─────────────────────────────────────────────────────────────────────────────
+# MOLECULES — Composed from 2–4 atoms
+# ─────────────────────────────────────────────────────────────────────────────
+molecules:
+  - name: Card
+    path: molecules/Card/Card.tsx
+    variants: [default, elevated, bordered, ghost, interactive, signal]
+    padding: [sm, md, lg, xl]
+    features: [hover-lift-interactive, sub-components]
+    sub_components: [Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter]
+    exports: [Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter, CardProps]
+
+  - name: Alert
+    path: molecules/Alert/Alert.tsx
+    variants: [info, success, warning, error, default]
+    features: [dismissible, AnimatePresence-exit, auto-icon-mapping]
+    exports: [Alert, AlertProps]
+
+  - name: Stat
+    path: molecules/Stat/Stat.tsx
+    features: [animated-value, trend-up/down/neutral, StatGrid, loading-skeleton]
+    grid_cols: [2, 3, 4]
+    exports: [Stat, StatGrid, StatProps]
+
+  - name: FormField
+    path: molecules/FormField/FormField.tsx
+    features: [Label-Input-composition, FormSection-fieldset, error-state]
+    exports: [FormField, FormSection, FormFieldProps, FormSectionProps]
+
+  - name: Breadcrumb
+    path: molecules/Breadcrumb/Breadcrumb.tsx
+    features: [aria-current, showHome, custom-separator]
+    exports: [Breadcrumb, BreadcrumbItem, BreadcrumbProps]
+
+  - name: Pagination
+    path: molecules/Pagination/Pagination.tsx
+    features: [smart-page-range, ellipsis, full-ARIA, page-size-selector]
+    exports: [Pagination, PaginationProps]
+
+  - name: Tabs
+    path: molecules/Tabs/Tabs.tsx
+    features: [badge, animated-indicator, orientation, disabled]
+    exports: [Tabs, TabsList, TabsTrigger, TabsContent]
+    dependencies: [Radix UI Tabs]
+
+  - name: Toast
+    path: molecules/Toast/Toast.tsx
+    variants: [success, error, warning, info]
+    features: [ToastProvider, useToast-hook, action-button, auto-dismiss]
+    exports: [ToastProvider, useToast, ToastItem]
+
+  - name: DropdownMenu
+    path: molecules/DropdownMenu/DropdownMenu.tsx
+    features: [sub-components, checkbox-item, shortcut, groups, destructive-item]
+    exports: [DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuItem, DropdownMenuCheckboxItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuShortcut, DropdownMenuGroup]
+    dependencies: [Radix UI DropdownMenu]
+
+  # ── New molecules (Phase 7) ──
+
+  - name: FileUpload
+    path: molecules/FileUpload/FileUpload.tsx
+    features: [drag-and-drop, file-list, size-limit, accept-types, preview]
+    exports: [FileUpload, FileUploadProps, FileItem]
+
+  - name: KPICard
+    path: molecules/KPICard/KPICard.tsx
+    features: [KPIGrid, trend, sparkline, icon, animated-value]
+    exports: [KPICard, KPIGrid, KPICardProps]
+
+  - name: AvatarUpload
+    path: molecules/AvatarUpload/AvatarUpload.tsx
+    features: [preview, crop, file-type-validation, size-limit]
+    exports: [AvatarUpload, AvatarUploadProps]
+
+  - name: Drawer
+    path: molecules/Drawer/Drawer.tsx
+    sides: [left, right, top, bottom]
+    features: [overlay, sub-components, animated, portal]
+    sub_components: [Drawer, DrawerRoot, DrawerTrigger, DrawerContent, DrawerHeader, DrawerTitle, DrawerDescription, DrawerBody, DrawerFooter, DrawerClose, DrawerOverlay]
+    exports: [Drawer, DrawerRoot, DrawerTrigger, DrawerContent, DrawerHeader, DrawerTitle, DrawerDescription, DrawerBody, DrawerFooter, DrawerClose, DrawerOverlay]
+    dependencies: [Radix UI Dialog]
+
+  - name: Stepper
+    path: molecules/Stepper/Stepper.tsx
+    features: [horizontal/vertical, step-status, clickable, icons]
+    exports: [Stepper, StepperProps, StepItem, StepStatus]
+
+  - name: ConfirmDialog
+    path: molecules/ConfirmDialog/ConfirmDialog.tsx
+    features: [destructive-variant, loading, custom-actions, icon]
+    exports: [ConfirmDialog, ConfirmDialogProps]
+    dependencies: [Radix UI AlertDialog]
+
+  - name: NavigationMenu
+    path: molecules/NavigationMenu/NavigationMenu.tsx
+    features: [groups, links, icons, active-indicator, collapsible-groups]
+    exports: [NavigationMenu, NavigationMenuProps, NavMenuItem, NavMenuGroup, NavMenuLink]
+
+  - name: ResizablePanels
+    path: molecules/ResizablePanels/ResizablePanels.tsx
+    features: [horizontal/vertical, resize-handle, min/max-size, collapsible]
+    exports: [ResizablePanels, ResizeHandle, ResizablePanelsProps, PanelConfig]
+
+# ─────────────────────────────────────────────────────────────────────────────
+# ORGANISMS — Complex, stateful, full-feature blocks
+# ─────────────────────────────────────────────────────────────────────────────
+organisms:
+  - name: Modal
+    path: organisms/Modal/Modal.tsx
+    sizes: [sm, md, lg, xl, 2xl, full]
+    features: [Radix-Dialog, overlay-fade, content-scale, sub-components]
+    sub_components: [Modal, ModalTrigger, ModalContent, ModalHeader, ModalTitle, ModalDescription, ModalBody, ModalFooter, ModalClose]
+    exports: [Modal, ModalTrigger, ModalContent, ModalHeader, ModalTitle, ModalDescription, ModalBody, ModalFooter, ModalClose]
+    dependencies: [Radix UI Dialog]
+
+  - name: Sidebar
+    path: organisms/Sidebar/Sidebar.tsx
+    features:
+      - collapsible (240px to 72px)
+      - framer-animate-width
+      - context-active-state
+      - tooltips-when-collapsed
+      - subnav-AnimatePresence
+      - badge-support
+      - active-indicator-line
+    exports: [Sidebar, SidebarContext, SidebarProps, NavItem]
+
+  - name: PageHeader
+    path: organisms/PageHeader/PageHeader.tsx
+    features: [title, badge, description, breadcrumb, meta, actions]
+    exports: [PageHeader, PageHeaderProps]
+
+  - name: EmptyState
+    path: organisms/EmptyState/EmptyState.tsx
+    sizes: [sm, md, lg]
+    features: [icon, SVG-fallback, actions, framer-fade-up]
+    exports: [EmptyState, EmptyStateProps, EmptyStateAction]
+
+  - name: DataTable
+    path: organisms/DataTable/DataTable.tsx
+    features:
+      - TanStack Table v8
+      - sort (all columns)
+      - global filter (search)
+      - column filters
+      - row selection (checkbox)
+      - pagination (integrated)
+      - AnimatePresence stagger rows
+      - loading state (Spinner)
+      - empty state (EmptyState)
+      - selectedCount display
+    exports: [DataTable, DataTableProps]
+    dependencies: [tanstack/react-table]
+
+  # ── New organisms (Phase 7) ──
+
+  - name: BarChart
+    path: organisms/Charts/BarChart/BarChart.tsx
+    features: [responsive, animated, tooltip, legend, grid, stacked, horizontal/vertical]
+    exports: [BarChart, BarChartProps, BarChartSeries]
+    dependencies: [recharts]
+
+  - name: LineChart
+    path: organisms/Charts/LineChart/LineChart.tsx
+    features: [responsive, animated, tooltip, legend, grid, area-fill, curved/linear]
+    exports: [LineChart, LineChartProps, LineChartSeries]
+    dependencies: [recharts]
+
+  - name: PieChart
+    path: organisms/Charts/PieChart/PieChart.tsx
+    features: [responsive, animated, tooltip, legend, donut-variant, labels]
+    exports: [PieChart, PieChartProps, PieChartDataItem]
+    dependencies: [recharts]
+
+  - name: FunnelChart
+    path: organisms/Charts/FunnelChart/FunnelChart.tsx
+    features: [responsive, animated, tooltip, conversion-rates, step-labels]
+    exports: [FunnelChart, FunnelChartProps, FunnelStep]
+    dependencies: [recharts]
+
+  - name: Calendar
+    path: organisms/Calendar/Calendar.tsx
+    features: [month/week/day views, events, categories, drag-to-create, navigation]
+    exports: [Calendar, CalendarProps, CalendarEvent, CalendarView, EventCategory]
+    dependencies: [react-day-picker]
+
+  - name: Timeline
+    path: organisms/Timeline/Timeline.tsx
+    features: [vertical-layout, icons, types, timestamps, animated]
+    exports: [Timeline, TimelineProps, TimelineItem, TimelineItemType]
+
+  - name: KanbanBoard
+    path: organisms/KanbanBoard/KanbanBoard.tsx
+    features: [drag-and-drop, columns, cards, add-card, animated]
+    exports: [KanbanBoard, KanbanBoardProps, KanbanColumn, KanbanCard]
+    dependencies: ["@dnd-kit/core", "@dnd-kit/sortable"]
+
+  - name: CommandPalette
+    path: organisms/CommandPalette/CommandPalette.tsx
+    features: [search, keyboard-navigation, groups, shortcuts, recent, fuzzy-match]
+    exports: [CommandPalette, CommandPaletteProps, CommandItem]
+    dependencies: [cmdk]
+
+  - name: NotificationCenter
+    path: organisms/NotificationCenter/NotificationCenter.tsx
+    features: [categories, mark-read, mark-all-read, timestamps, animated-list]
+    exports: [NotificationCenter, NotificationCenterProps, NotificationItem, NotificationCategory]
+
+# ─────────────────────────────────────────────────────────────────────────────
+# TEMPLATES — Full page layouts
+# ─────────────────────────────────────────────────────────────────────────────
+templates:
+  - name: DashboardTemplate
+    path: templates/DashboardTemplate/DashboardTemplate.tsx
+    layout: Sidebar + TopBar + scrollable-main
+    features: [backdrop-blur header, framer-page-transition, contentClass override]
+    story: Full CRM dashboard (nav, 4 stats, leads table, meta card, funnel)
+    exports: [DashboardTemplate, DashboardTemplateProps]
+
+  - name: CRMListTemplate
+    path: templates/CRMListTemplate/CRMListTemplate.tsx
+    layout: PageHeader + Alert + DataTable
+    features: [Add/Export/Filter actions, filterActive badge, dismissible alert]
+    story: Leads CRM table (Avatar+name, Cidade, Origem, Valor mono, Status, Actions)
+    exports: [CRMListTemplate, CRMListTemplateProps]
+
+  - name: DetailTemplate
+    path: templates/DetailTemplate/DetailTemplate.tsx
+    layout: Profile header + staggered sections + optional sidebar panel
+    features: [Avatar, status badge, back button, breadcrumbs, fadeUp animations per section]
+    exports: [DetailTemplate, DetailSection, DetailTemplateProps]
+
+  - name: AuthTemplate
+    path: templates/AuthTemplate/AuthTemplate.tsx
+    variants: [centered, split]
+    features:
+      - centered: glow orb background, card with backdrop-blur
+      - split: decorative left panel (grid pattern + glow + stats), form right panel
+    stories: [CenteredLogin, SplitLogin, NewPassword]
+    exports: [AuthTemplate, AuthTemplateProps]
+
+# ─────────────────────────────────────────────────────────────────────────────
+# UTILS & TESTS
+# ─────────────────────────────────────────────────────────────────────────────
+utils:
+  - name: cn
+    path: components/utils.ts
+    description: "clsx + tailwind-merge utility function"
+
+  - name: barrel exports
+    paths:
+      - components/atoms/index.ts
+      - components/molecules/index.ts
+      - components/organisms/index.ts
+      - components/templates/index.ts
+      - components/index.ts  # master export
+
+tests:
+  - path: components/atoms/Button/Button.test.tsx
+    framework: jest
+    coverage: [render, variants, loading, disabled, click-handler]

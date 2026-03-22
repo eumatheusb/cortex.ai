@@ -1,0 +1,2035 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CORTEX // Product Mockups Gallery</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* ================================================================
+   CORTEX — PRODUCT MOCKUPS GALLERY
+   Premium brand showcase — 24 items — 2026 Collection
+   ================================================================ */
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --void:        #090E1A;
+  --ink:         #0C1220;
+  --dusk:        #1B2845;
+  --steel:       #1E2533;
+  --ash:         #4A5568;
+  --mist:        #94A3B8;
+  --white:       #F7F9FC;
+  --signal:      #4D71FA;
+  --signal-dark: #3558D4;
+  --signal-glow: rgba(77, 113, 250, 0.15);
+  --font-display: 'Space Grotesk', sans-serif;
+  --font-body:    'Inter', sans-serif;
+  --font-mono:    'JetBrains Mono', monospace;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--void);
+  color: var(--white);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  line-height: 1.5;
+}
+
+/* ── HEADER ────────────────────────────────────── */
+.gallery-header {
+  padding: 48px 48px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.gallery-header__count {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--signal);
+  letter-spacing: 0.08em;
+  background: var(--signal-glow);
+  padding: 6px 14px;
+  border-radius: 4px;
+  border: 1px solid rgba(77,113,250,0.2);
+}
+
+.gallery-header__title {
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--white);
+}
+
+.gallery-header__meta {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--mist);
+  letter-spacing: 0.06em;
+}
+
+.gallery-header__badge {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--ash);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  border: 1px solid var(--steel);
+  padding: 4px 12px;
+  border-radius: 3px;
+}
+
+/* ── FILTERS ───────────────────────────────────── */
+.filters-bar {
+  padding: 24px 48px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  border-bottom: 1px solid var(--steel);
+  margin-bottom: 32px;
+}
+
+.filter-btn {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 6px 14px;
+  border: 1px solid var(--steel);
+  border-radius: 4px;
+  background: transparent;
+  color: var(--mist);
+  cursor: pointer;
+  transition: all 0.25s ease;
+  white-space: nowrap;
+}
+
+.filter-btn:hover {
+  border-color: var(--signal);
+  color: var(--signal);
+  background: var(--signal-glow);
+}
+
+.filter-btn.active {
+  background: var(--signal);
+  border-color: var(--signal);
+  color: var(--void);
+  font-weight: 500;
+}
+
+/* ── GRID ──────────────────────────────────────── */
+.gallery-grid {
+  padding: 0 48px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+/* ── CARD ──────────────────────────────────────── */
+.mockup-card {
+  border-radius: 12px;
+  overflow: hidden;
+  background: var(--ink);
+  border: 1px solid var(--steel);
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  opacity: 1;
+  transform: scale(1);
+}
+
+.mockup-card.hidden {
+  display: none;
+}
+
+.mockup-card:hover {
+  border-color: var(--signal);
+  transform: translateY(-4px);
+  box-shadow:
+    0 20px 60px rgba(0,0,0,0.5),
+    0 0 40px var(--signal-glow);
+}
+
+.mockup-card__visual {
+  width: 100%;
+  min-height: 360px;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mockup-card__info {
+  padding: 16px 20px 20px;
+  border-top: 1px solid var(--steel);
+}
+
+.mockup-card__title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--white);
+  margin-bottom: 8px;
+}
+
+.mockup-card__tags {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.mockup-card__tag {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 3px 8px;
+  border-radius: 3px;
+  background: rgba(77,113,250,0.1);
+  color: var(--signal);
+  border: 1px solid rgba(77,113,250,0.15);
+}
+
+/* ── SIGNAL BG VARIANT ─────────────────────────── */
+.mockup-card--signal .mockup-card__visual {
+  background: linear-gradient(135deg, var(--signal) 0%, var(--signal-dark) 100%);
+}
+
+/* ── FOOTER ────────────────────────────────────── */
+.gallery-footer {
+  margin-top: 64px;
+  padding: 32px 48px;
+  border-top: 1px solid var(--steel);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.gallery-footer__text {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--ash);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.gallery-footer__text span {
+  color: var(--signal);
+}
+
+/* ── LOGO SECTION ──────────────────────────────── */
+.gallery-logo-section {
+  padding: 80px 48px 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.gallery-logo-section svg { max-width: 320px; }
+
+.gallery-logo-section__tagline {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--ash);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+/* ── RESPONSIVE ────────────────────────────────── */
+@media (max-width: 1200px) { .gallery-grid { grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 900px)  { .gallery-grid { grid-template-columns: repeat(2, 1fr); } .gallery-header, .filters-bar, .gallery-grid, .gallery-footer, .gallery-logo-section { padding-left: 24px; padding-right: 24px; } }
+@media (max-width: 600px)  { .gallery-grid { grid-template-columns: 1fr; } }
+
+/* ================================================================
+   MOCKUP CSS RENDERS — Photorealistic CSS art
+   ================================================================ */
+
+/* ── Shared inner styles ──────────────────────── */
+.mv { width: 100%; height: 100%; position: absolute; inset: 0; }
+.mv-center { display: flex; align-items: center; justify-content: center; flex-direction: column; }
+
+/* Logo inline for mockups */
+.cortex-logo-sm {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 0.05em;
+}
+.cortex-logo-sm .cor { color: var(--white); }
+.cortex-logo-sm .tex { color: var(--signal); }
+
+.cortex-logo-md {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 20px;
+  letter-spacing: 0.05em;
+}
+.cortex-logo-md .cor { color: var(--white); }
+.cortex-logo-md .tex { color: var(--signal); }
+
+.cortex-logo-lg {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 32px;
+  letter-spacing: 0.05em;
+}
+.cortex-logo-lg .cor { color: var(--white); }
+.cortex-logo-lg .tex { color: var(--signal); }
+
+/* Cortex icon C */
+.cortex-icon {
+  width: 48px; height: 48px;
+  border: 4px solid var(--signal);
+  border-right-color: transparent;
+  border-radius: 50%;
+  position: relative;
+  transform: rotate(-45deg);
+}
+.cortex-icon::after {
+  content: '';
+  position: absolute;
+  width: 8px; height: 8px;
+  background: var(--signal);
+  border-radius: 50%;
+  top: -2px; right: -6px;
+}
+.cortex-icon-sm {
+  width: 28px; height: 28px;
+  border-width: 3px;
+}
+.cortex-icon-sm::after { width: 5px; height: 5px; top: -1px; right: -4px; }
+
+/* ── 1. BAG URBAN ─────────────────────────────── */
+.render-bag {
+  background: radial-gradient(ellipse at 50% 30%, #1a1f2e 0%, var(--void) 100%);
+}
+.bag-body {
+  width: 160px; height: 200px;
+  background: linear-gradient(180deg, #151a28 0%, #0d1118 60%, #0a0e16 100%);
+  border-radius: 8px 8px 20px 20px;
+  position: relative;
+  box-shadow:
+    inset 0 0 40px rgba(0,0,0,0.4),
+    0 20px 50px rgba(0,0,0,0.7),
+    inset 2px 0 0 rgba(255,255,255,0.03),
+    inset -2px 0 0 rgba(255,255,255,0.03);
+}
+.bag-body::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; height: 40px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.06) 0%, transparent 100%);
+  border-radius: 8px 8px 0 0;
+}
+.bag-cord {
+  position: absolute; top: -30px;
+  width: 80px; height: 30px;
+  border: 2px solid var(--ash);
+  border-bottom: none;
+  border-radius: 40px 40px 0 0;
+}
+.bag-cord-left { left: 20px; }
+.bag-cord-right { right: 20px; }
+.bag-logo-area {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+.bag-texture {
+  position: absolute; inset: 0;
+  background: repeating-linear-gradient(
+    90deg,
+    transparent,
+    transparent 3px,
+    rgba(255,255,255,0.008) 3px,
+    rgba(255,255,255,0.008) 4px
+  );
+  border-radius: inherit;
+}
+
+/* ── 2. BOTTLE HERO ───────────────────────────── */
+.render-bottle {
+  background: radial-gradient(ellipse at 50% 60%, #151a28 0%, var(--void) 100%);
+}
+.bottle-body {
+  width: 70px; height: 220px;
+  background: linear-gradient(90deg, #0e1320 0%, #1a2035 30%, #252d42 50%, #1a2035 70%, #0e1320 100%);
+  border-radius: 10px 10px 14px 14px;
+  position: relative;
+  box-shadow:
+    0 30px 60px rgba(0,0,0,0.8),
+    inset 0 0 20px rgba(0,0,0,0.3),
+    4px 0 15px rgba(0,0,0,0.3),
+    -4px 0 15px rgba(0,0,0,0.3);
+}
+.bottle-cap {
+  position: absolute; top: -28px; left: 50%; transform: translateX(-50%);
+  width: 36px; height: 28px;
+  background: linear-gradient(90deg, #181e30 0%, #2a3350 50%, #181e30 100%);
+  border-radius: 6px 6px 2px 2px;
+  box-shadow: 0 -2px 8px rgba(0,0,0,0.4);
+}
+.bottle-cap::after {
+  content: '';
+  position: absolute; bottom: 0; left: -4px; right: -4px; height: 6px;
+  background: linear-gradient(90deg, #1a2035 0%, #2e3858 50%, #1a2035 100%);
+  border-radius: 2px;
+}
+.bottle-shine {
+  position: absolute; top: 20px; left: 12px;
+  width: 3px; height: 140px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.12) 0%, rgba(255,255,255,0.03) 60%, transparent 100%);
+  border-radius: 2px;
+}
+.bottle-logo-area {
+  position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+  opacity: 0.35;
+}
+.bottle-base {
+  position: absolute; bottom: 0; left: -2px; right: -2px; height: 8px;
+  background: linear-gradient(90deg, #0c1018 0%, #1e2538 50%, #0c1018 100%);
+  border-radius: 0 0 16px 16px;
+}
+
+/* ── 3. CAP DETAIL ────────────────────────────── */
+.render-cap {
+  background: radial-gradient(ellipse at 50% 70%, #141926 0%, var(--void) 100%);
+}
+.cap-body {
+  position: relative; width: 180px; height: 120px;
+}
+.cap-crown {
+  width: 140px; height: 90px; margin: 0 auto;
+  background: linear-gradient(180deg, #1a2030 0%, #141a28 50%, #10151f 100%);
+  border-radius: 70px 70px 0 0;
+  position: relative;
+  box-shadow:
+    0 10px 30px rgba(0,0,0,0.6),
+    inset 0 2px 0 rgba(255,255,255,0.04);
+}
+.cap-crown::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 5px,
+    rgba(255,255,255,0.012) 5px,
+    rgba(255,255,255,0.012) 6px
+  );
+  border-radius: inherit;
+}
+.cap-brim {
+  width: 180px; height: 20px;
+  background: linear-gradient(180deg, #1e2538 0%, #141a28 100%);
+  border-radius: 0 0 90px 90px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.7);
+}
+.cap-logo-area {
+  position: absolute; top: 35px; left: 50%; transform: translateX(-50%);
+  opacity: 0.2;
+}
+
+/* ── 4. CAP SIGNAL ────────────────────────────── */
+.render-cap-signal {
+  background: linear-gradient(135deg, var(--signal) 0%, var(--signal-dark) 100%);
+}
+.cap-signal .cap-crown {
+  background: linear-gradient(180deg, #1a2030 0%, #10151f 100%);
+}
+.cap-signal .cap-logo-area { opacity: 1; }
+
+/* ── 5. TSHIRT HERO ───────────────────────────── */
+.render-tshirt {
+  background: radial-gradient(ellipse at 50% 40%, #141926 0%, var(--void) 100%);
+}
+.tshirt-body {
+  position: relative; width: 200px; height: 240px;
+}
+.tshirt-shape {
+  width: 200px; height: 220px;
+  background: linear-gradient(180deg, #151a28 0%, #101520 40%, #0d1118 100%);
+  clip-path: polygon(
+    30% 0%, 70% 0%,
+    72% 5%, 100% 15%,
+    90% 18%, 85% 40%,
+    85% 100%, 15% 100%,
+    15% 40%, 10% 18%,
+    0% 15%, 28% 5%
+  );
+  position: relative;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.6);
+}
+.tshirt-shape::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse at 45% 30%, rgba(255,255,255,0.04) 0%, transparent 60%);
+  clip-path: inherit;
+}
+.tshirt-collar {
+  position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+  width: 60px; height: 18px;
+  border-radius: 0 0 30px 30px;
+  background: linear-gradient(180deg, #0a0e16 0%, #0f141e 100%);
+  box-shadow: inset 0 2px 4px rgba(0,0,0,0.5);
+}
+.tshirt-logo-area {
+  position: absolute; top: 60px; left: 32px;
+}
+
+/* ── 6. TSHIRT FLATLAY ────────────────────────── */
+.render-tshirt-flat {
+  background: linear-gradient(180deg, #0c1220 0%, #090e1a 100%);
+}
+.flatlay-tshirt {
+  position: relative; width: 220px; height: 200px;
+}
+.flatlay-tshirt-shape {
+  width: 200px; height: 180px;
+  background: linear-gradient(180deg, #141a28 0%, #0d1118 100%);
+  clip-path: polygon(
+    30% 0%, 70% 0%, 72% 5%, 100% 15%, 90% 18%, 85% 40%, 85% 100%, 15% 100%, 15% 40%, 10% 18%, 0% 15%, 28% 5%
+  );
+}
+.flatlay-glasses {
+  position: absolute; top: 20px; right: -30px;
+  width: 80px; height: 30px;
+}
+.flatlay-glasses-frame {
+  display: flex; gap: 4px; align-items: center;
+}
+.flatlay-glasses-lens {
+  width: 32px; height: 22px;
+  border: 2px solid var(--ash);
+  border-radius: 6px;
+  background: rgba(77,113,250,0.08);
+}
+.flatlay-glasses-bridge {
+  width: 8px; height: 2px;
+  background: var(--ash);
+  margin-top: -4px;
+}
+.flatlay-carabiner {
+  position: absolute; bottom: 20px; right: -20px;
+  width: 24px; height: 36px;
+  border: 3px solid var(--ash);
+  border-radius: 6px;
+}
+.flatlay-carabiner::after {
+  content: '';
+  position: absolute; top: 8px; left: 3px;
+  width: 12px; height: 2px;
+  background: var(--ash);
+}
+
+/* ── 7. BOMBER JACKET ─────────────────────────── */
+.render-bomber {
+  background: radial-gradient(ellipse at 50% 40%, #161c2c 0%, var(--void) 100%);
+}
+.bomber-body {
+  position: relative; width: 210px; height: 240px;
+}
+.bomber-shape {
+  width: 210px; height: 230px;
+  background: linear-gradient(180deg, #181e2e 0%, #121828 50%, #0e1320 100%);
+  clip-path: polygon(
+    25% 0%, 75% 0%,
+    78% 3%, 100% 12%,
+    95% 16%, 92% 45%, 95% 100%,
+    5% 100%, 8% 45%, 5% 16%,
+    0% 12%, 22% 3%
+  );
+  position: relative;
+}
+.bomber-shape::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse at 40% 25%, rgba(255,255,255,0.03) 0%, transparent 50%);
+  clip-path: inherit;
+}
+.bomber-collar {
+  position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+  width: 80px; height: 20px;
+  background: linear-gradient(180deg, #222a3e 0%, #1a2234 100%);
+  border-radius: 0 0 6px 6px;
+}
+.bomber-zip {
+  position: absolute; top: 22px; left: 50%; transform: translateX(-50%);
+  width: 2px; height: 170px;
+  background: linear-gradient(180deg, #2a3350 0%, #1e2538 50%, #2a3350 100%);
+}
+.bomber-zip::before {
+  content: '';
+  position: absolute; top: 0; left: -3px;
+  width: 8px; height: 12px;
+  background: #2a3350;
+  border-radius: 2px;
+}
+.bomber-cuff-l, .bomber-cuff-r {
+  position: absolute; bottom: 0;
+  width: 40px; height: 14px;
+  background: linear-gradient(90deg, #1a2234 0%, #222a3e 50%, #1a2234 100%);
+}
+.bomber-cuff-l { left: 10px; border-radius: 0 0 4px 4px; }
+.bomber-cuff-r { right: 10px; border-radius: 0 0 4px 4px; }
+.bomber-logo-area {
+  position: absolute; top: 55px; left: 35px;
+}
+
+/* ── 8. HOODIE DARK ───────────────────────────── */
+.render-hoodie {
+  background: radial-gradient(ellipse at 50% 35%, #151b2a 0%, var(--void) 100%);
+}
+.hoodie-body {
+  position: relative; width: 210px; height: 250px;
+}
+.hoodie-shape {
+  width: 210px; height: 240px;
+  background: linear-gradient(180deg, #161c2c 0%, #111828 50%, #0d1220 100%);
+  clip-path: polygon(
+    25% 8%, 38% 0%, 62% 0%, 75% 8%,
+    78% 10%, 100% 20%,
+    95% 24%, 90% 50%, 90% 100%,
+    10% 100%, 10% 50%, 5% 24%,
+    0% 20%, 22% 10%
+  );
+  position: relative;
+}
+.hoodie-hood {
+  position: absolute; top: -2px; left: 50%; transform: translateX(-50%);
+  width: 100px; height: 40px;
+  background: linear-gradient(180deg, #1e2538 0%, #161c2c 100%);
+  border-radius: 50px 50px 0 0;
+}
+.hoodie-cord-l, .hoodie-cord-r {
+  position: absolute; top: 50px; width: 2px; height: 40px;
+  background: var(--ash);
+  border-radius: 1px;
+}
+.hoodie-cord-l { left: 80px; }
+.hoodie-cord-r { right: 80px; }
+.hoodie-pocket {
+  position: absolute; bottom: 60px; left: 50%; transform: translateX(-50%);
+  width: 120px; height: 50px;
+  border-top: 1px solid rgba(255,255,255,0.04);
+  border-radius: 0 0 8px 8px;
+}
+.hoodie-logo-area {
+  position: absolute; top: 80px; left: 50%; transform: translateX(-50%);
+}
+
+/* ── 9. PHONE CASE ────────────────────────────── */
+.render-phone {
+  background: radial-gradient(ellipse at 50% 50%, #141926 0%, var(--void) 100%);
+}
+.phone-body {
+  width: 130px; height: 260px;
+  background: linear-gradient(135deg, #181e30 0%, #111828 40%, #0d1220 100%);
+  border-radius: 22px;
+  position: relative;
+  transform: perspective(600px) rotateY(-8deg) rotateX(2deg);
+  box-shadow:
+    0 30px 60px rgba(0,0,0,0.7),
+    12px 12px 30px rgba(0,0,0,0.5),
+    inset 0 0 0 2px rgba(255,255,255,0.04);
+}
+.phone-camera {
+  position: absolute; top: 12px; left: 12px;
+  width: 50px; height: 50px;
+  background: #0a0e16;
+  border-radius: 12px;
+  display: flex; flex-wrap: wrap; gap: 4px; padding: 6px;
+  align-items: center; justify-content: center;
+}
+.phone-lens {
+  width: 16px; height: 16px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #1a2035 0%, #0a0e16 60%);
+  border: 1px solid #2a3350;
+}
+.phone-logo-area {
+  position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+}
+
+/* ── 10. MUG LIFESTYLE ────────────────────────── */
+.render-mug {
+  background: radial-gradient(ellipse at 50% 80%, #161c2c 0%, var(--void) 100%);
+}
+.mug-scene {
+  position: relative; width: 180px; height: 180px;
+}
+.mug-body {
+  width: 100px; height: 110px;
+  background: linear-gradient(90deg, #0e1320 0%, #1a2035 30%, #222a3e 50%, #1a2035 70%, #0e1320 100%);
+  border-radius: 4px 4px 10px 10px;
+  position: relative;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.6);
+}
+.mug-handle {
+  position: absolute; top: 20px; right: -25px;
+  width: 25px; height: 50px;
+  border: 5px solid #1a2035;
+  border-left: none;
+  border-radius: 0 14px 14px 0;
+}
+.mug-rim {
+  position: absolute; top: -3px; left: -2px; right: -2px; height: 6px;
+  background: linear-gradient(90deg, #1a2035 0%, #2e3858 50%, #1a2035 100%);
+  border-radius: 3px 3px 0 0;
+}
+.mug-steam {
+  position: absolute; top: -40px; left: 50%; transform: translateX(-50%);
+  display: flex; gap: 8px;
+}
+.mug-steam-line {
+  width: 2px; height: 30px;
+  background: linear-gradient(180deg, transparent 0%, rgba(148,163,184,0.15) 50%, transparent 100%);
+  border-radius: 1px;
+  animation: steam 2s ease-in-out infinite;
+}
+.mug-steam-line:nth-child(2) { height: 24px; animation-delay: 0.4s; }
+.mug-steam-line:nth-child(3) { height: 20px; animation-delay: 0.8s; }
+@keyframes steam {
+  0%, 100% { transform: translateY(0) scaleX(1); opacity: 0.5; }
+  50% { transform: translateY(-6px) scaleX(1.2); opacity: 1; }
+}
+.mug-logo-area {
+  position: absolute; top: 35px; left: 50%; transform: translateX(-50%);
+}
+.mug-surface {
+  position: absolute; bottom: -15px; left: -40px;
+  width: 260px; height: 30px;
+  background: linear-gradient(180deg, #141926 0%, #0c1018 100%);
+  border-radius: 50%;
+}
+
+/* ── 11. CARDS LUXURY ─────────────────────────── */
+.render-cards {
+  background: radial-gradient(ellipse at 50% 50%, #141926 0%, var(--void) 100%);
+}
+.cards-stack {
+  position: relative; width: 220px; height: 160px;
+  transform: perspective(600px) rotateX(25deg) rotateZ(-5deg);
+}
+.card-item {
+  position: absolute;
+  width: 200px; height: 120px;
+  background: linear-gradient(135deg, #141a28 0%, #0e1320 100%);
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+  border: 1px solid rgba(255,255,255,0.04);
+}
+.card-item:nth-child(1) { top: 0; left: 0; }
+.card-item:nth-child(2) { top: 8px; left: 8px; }
+.card-item:nth-child(3) { top: 16px; left: 16px; }
+.card-logo-area {
+  position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+}
+.card-detail {
+  position: absolute; bottom: 16px; left: 16px;
+  font-family: var(--font-mono);
+  font-size: 8px;
+  color: var(--ash);
+  letter-spacing: 0.06em;
+}
+
+/* ── 12. NOTEBOOK PREMIUM ─────────────────────── */
+.render-notebook {
+  background: radial-gradient(ellipse at 50% 50%, #151b2a 0%, var(--void) 100%);
+}
+.notebook-body {
+  width: 150px; height: 210px;
+  background: linear-gradient(135deg, #161c2c 0%, #0f1520 60%, #0c1018 100%);
+  border-radius: 4px 10px 10px 4px;
+  position: relative;
+  box-shadow:
+    0 20px 50px rgba(0,0,0,0.6),
+    4px 4px 20px rgba(0,0,0,0.4),
+    inset 0 0 0 1px rgba(255,255,255,0.03);
+}
+.notebook-spine {
+  position: absolute; top: 0; left: 0;
+  width: 8px; height: 100%;
+  background: linear-gradient(90deg, #0a0e16 0%, #141a28 100%);
+  border-radius: 4px 0 0 4px;
+}
+.notebook-elastic {
+  position: absolute; top: 0; right: 20px;
+  width: 3px; height: 100%;
+  background: var(--signal);
+  border-radius: 1px;
+  box-shadow: 0 0 6px rgba(77,113,250,0.3);
+}
+.notebook-ribbon {
+  position: absolute; bottom: -20px; left: 40px;
+  width: 2px; height: 30px;
+  background: var(--signal);
+  border-radius: 0 0 1px 1px;
+}
+.notebook-ribbon::after {
+  content: '';
+  position: absolute; bottom: 0; left: -3px;
+  width: 8px; height: 6px;
+  background: var(--signal);
+  clip-path: polygon(0 0, 100% 0, 50% 100%);
+}
+.notebook-logo-area {
+  position: absolute; top: 40%; left: 55%; transform: translate(-50%, -50%);
+  opacity: 0.3;
+}
+
+/* ── 13. AIRPODS CASE ─────────────────────────── */
+.render-airpods {
+  background: radial-gradient(ellipse at 50% 50%, #151b2a 0%, var(--void) 100%);
+}
+.airpods-body {
+  width: 80px; height: 100px;
+  background: linear-gradient(135deg, #181e30 0%, #111828 60%, #0d1220 100%);
+  border-radius: 16px 16px 22px 22px;
+  position: relative;
+  box-shadow:
+    0 20px 40px rgba(0,0,0,0.6),
+    inset 0 1px 0 rgba(255,255,255,0.06);
+}
+.airpods-hinge {
+  position: absolute; top: 32px; left: 0; right: 0; height: 2px;
+  background: rgba(0,0,0,0.4);
+}
+.airpods-indicator {
+  position: absolute; top: 20px; left: 50%; transform: translateX(-50%);
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--signal);
+  box-shadow: 0 0 8px rgba(77,113,250,0.5);
+}
+.airpods-logo-area {
+  position: absolute; top: 58px; left: 50%; transform: translateX(-50%);
+}
+
+/* ── 14. PEN EXECUTIVE ────────────────────────── */
+.render-pen {
+  background: radial-gradient(ellipse at 50% 50%, #141926 0%, var(--void) 100%);
+}
+.pen-body-wrap {
+  transform: rotate(-30deg);
+}
+.pen-barrel {
+  width: 12px; height: 220px;
+  background: linear-gradient(90deg, #0e1320 0%, #1e2538 30%, #2a3350 50%, #1e2538 70%, #0e1320 100%);
+  border-radius: 6px 6px 2px 2px;
+  position: relative;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+}
+.pen-clip {
+  position: absolute; top: 10px; right: -6px;
+  width: 4px; height: 50px;
+  background: var(--signal);
+  border-radius: 2px;
+  box-shadow: 0 0 6px rgba(77,113,250,0.3);
+}
+.pen-tip {
+  position: absolute; bottom: -16px; left: 50%; transform: translateX(-50%);
+  width: 0; height: 0;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-top: 16px solid #1e2538;
+}
+.pen-shine {
+  position: absolute; top: 20px; left: 2px;
+  width: 1px; height: 160px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.12) 0%, transparent 100%);
+}
+.pen-logo-area {
+  position: absolute; top: 80px; left: 50%; transform: translate(-50%, 0) rotate(90deg);
+  white-space: nowrap;
+}
+
+/* ── 15. POWER BANK ───────────────────────────── */
+.render-powerbank {
+  background: radial-gradient(ellipse at 50% 50%, #141926 0%, var(--void) 100%);
+}
+.powerbank-body {
+  width: 130px; height: 70px;
+  background: linear-gradient(180deg, #181e30 0%, #111828 50%, #0d1220 100%);
+  border-radius: 12px;
+  position: relative;
+  box-shadow:
+    0 15px 40px rgba(0,0,0,0.6),
+    inset 0 1px 0 rgba(255,255,255,0.05);
+}
+.powerbank-leds {
+  position: absolute; bottom: 12px; left: 50%; transform: translateX(-50%);
+  display: flex; gap: 6px;
+}
+.powerbank-led {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--signal);
+  box-shadow: 0 0 6px rgba(77,113,250,0.5);
+}
+.powerbank-led:nth-child(4) {
+  background: var(--steel);
+  box-shadow: none;
+}
+.powerbank-port {
+  position: absolute; right: -2px; top: 50%; transform: translateY(-50%);
+  width: 6px; height: 10px;
+  background: #0a0e16;
+  border-radius: 0 3px 3px 0;
+}
+.powerbank-logo-area {
+  position: absolute; top: 14px; left: 50%; transform: translateX(-50%);
+}
+
+/* ── 16. USB DRIVE ────────────────────────────── */
+.render-usb {
+  background: radial-gradient(ellipse at 50% 50%, #151b2a 0%, var(--void) 100%);
+}
+.usb-body {
+  width: 50px; height: 80px;
+  background: linear-gradient(90deg, #181e30 0%, #252d42 50%, #181e30 100%);
+  border-radius: 6px;
+  position: relative;
+  box-shadow: 0 15px 30px rgba(0,0,0,0.6);
+}
+.usb-connector {
+  position: absolute; bottom: -18px; left: 50%; transform: translateX(-50%);
+  width: 20px; height: 18px;
+  background: linear-gradient(90deg, #2a3350 0%, #3a4568 50%, #2a3350 100%);
+  border-radius: 0 0 4px 4px;
+}
+.usb-connector::before {
+  content: '';
+  position: absolute; top: 4px; left: 50%; transform: translateX(-50%);
+  width: 12px; height: 6px;
+  background: #0a0e16;
+  border-radius: 2px;
+}
+.usb-ring {
+  position: absolute; top: 6px; left: 50%; transform: translateX(-50%);
+  width: 14px; height: 14px;
+  border: 2px solid var(--ash);
+  border-radius: 50%;
+}
+.usb-logo-area {
+  position: absolute; top: 32px; left: 50%; transform: translateX(-50%);
+}
+
+/* ── 17. STICKER PACK ─────────────────────────── */
+.render-stickers {
+  background: linear-gradient(180deg, #0c1220 0%, #090e1a 100%);
+}
+.sticker-container {
+  position: relative; width: 260px; height: 260px;
+}
+.sticker {
+  position: absolute;
+  background: var(--void);
+  border: 2px solid var(--steel);
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+}
+.sticker-1 { /* logo circle */
+  width: 70px; height: 70px; border-radius: 50%;
+  top: 10px; left: 10px; transform: rotate(-8deg);
+  border-color: var(--signal);
+}
+.sticker-2 { /* icon square */
+  width: 60px; height: 60px; border-radius: 10px;
+  top: 5px; right: 40px; transform: rotate(5deg);
+}
+.sticker-3 { /* tagline pill */
+  width: 140px; height: 36px; border-radius: 18px;
+  top: 90px; left: 60px; transform: rotate(-3deg);
+  font-family: var(--font-mono); font-size: 7px; color: var(--mist);
+  letter-spacing: 0.04em; text-transform: uppercase;
+}
+.sticker-4 { /* QR */
+  width: 55px; height: 55px; border-radius: 6px;
+  bottom: 60px; left: 20px; transform: rotate(4deg);
+}
+.sticker-qr-grid {
+  display: grid; grid-template-columns: repeat(5,1fr); gap: 2px;
+  width: 30px; height: 30px;
+}
+.sticker-qr-cell {
+  background: var(--signal);
+  border-radius: 1px;
+}
+.sticker-qr-cell:nth-child(even) { background: transparent; }
+.sticker-5 { /* pattern */
+  width: 65px; height: 65px; border-radius: 8px;
+  bottom: 40px; right: 30px; transform: rotate(-6deg);
+  overflow: hidden;
+}
+.sticker-pattern {
+  width: 100%; height: 100%;
+  background: repeating-linear-gradient(
+    45deg,
+    var(--signal) 0px,
+    var(--signal) 2px,
+    transparent 2px,
+    transparent 8px
+  );
+  opacity: 0.3;
+}
+.sticker-6 { /* seal */
+  width: 50px; height: 50px; border-radius: 50%;
+  bottom: 10px; left: 100px; transform: rotate(12deg);
+  border-color: var(--signal);
+  background: var(--signal);
+}
+.sticker-seal-text {
+  font-family: var(--font-mono);
+  font-size: 6px;
+  color: var(--void);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  text-align: center;
+  line-height: 1.3;
+}
+
+/* ── 18. DESK SETUP ───────────────────────────── */
+.render-desk {
+  background: linear-gradient(180deg, #0e1320 0%, #090e1a 100%);
+}
+.desk-scene {
+  position: relative; width: 280px; height: 200px;
+}
+.desk-mat {
+  position: absolute; bottom: 0; left: 0;
+  width: 280px; height: 160px;
+  background: linear-gradient(180deg, #111828 0%, #0d1118 100%);
+  border-radius: 8px;
+  border: 1px solid rgba(255,255,255,0.03);
+}
+.desk-mat-logo {
+  position: absolute; bottom: 10px; right: 12px;
+  opacity: 0.15;
+}
+.desk-mini-notebook {
+  position: absolute; top: 20px; left: 20px;
+  width: 60px; height: 80px;
+  background: linear-gradient(135deg, #161c2c 0%, #0f1520 100%);
+  border-radius: 2px 6px 6px 2px;
+  border: 1px solid rgba(255,255,255,0.03);
+}
+.desk-mini-pen {
+  position: absolute; top: 15px; left: 90px;
+  width: 4px; height: 70px;
+  background: linear-gradient(90deg, #1e2538 0%, #2a3350 50%, #1e2538 100%);
+  border-radius: 2px;
+  transform: rotate(5deg);
+}
+.desk-mini-mug {
+  position: absolute; top: 10px; right: 30px;
+  width: 40px; height: 45px;
+  background: linear-gradient(90deg, #141a28 0%, #1e2538 50%, #141a28 100%);
+  border-radius: 3px 3px 6px 6px;
+}
+.desk-mini-mug-handle {
+  position: absolute; top: 8px; right: -10px;
+  width: 10px; height: 22px;
+  border: 3px solid #1a2035;
+  border-left: none;
+  border-radius: 0 8px 8px 0;
+}
+
+/* ── 19. FLATLAY KIT ──────────────────────────── */
+.render-flatlay-kit {
+  background: linear-gradient(135deg, var(--signal) 0%, var(--signal-dark) 100%);
+}
+.kit-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+  width: 260px;
+  padding: 10px;
+}
+.kit-item {
+  background: rgba(9,14,26,0.85);
+  border-radius: 6px;
+  aspect-ratio: 1;
+  display: flex; align-items: center; justify-content: center;
+  padding: 6px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+.kit-item-label {
+  font-family: var(--font-mono);
+  font-size: 7px;
+  color: var(--mist);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  text-align: center;
+}
+
+/* ── 20. UNBOXING ─────────────────────────────── */
+.render-unboxing {
+  background: radial-gradient(ellipse at 50% 60%, #161c2c 0%, var(--void) 100%);
+}
+.box-scene {
+  position: relative; width: 220px; height: 220px;
+  perspective: 500px;
+}
+.box-base {
+  position: absolute; bottom: 20px; left: 10px;
+  width: 200px; height: 100px;
+  background: linear-gradient(180deg, #181e30 0%, #0f1520 100%);
+  border-radius: 4px;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.6);
+}
+.box-inner {
+  position: absolute; inset: 4px;
+  background: var(--signal);
+  border-radius: 2px;
+  opacity: 0.15;
+}
+.box-lid {
+  position: absolute; bottom: 110px; left: 5px;
+  width: 210px; height: 20px;
+  background: linear-gradient(180deg, #1e2538 0%, #161c2c 100%);
+  border-radius: 4px 4px 0 0;
+  transform: rotateX(-30deg);
+  transform-origin: bottom center;
+  box-shadow: 0 -4px 15px rgba(0,0,0,0.3);
+}
+.box-tissue-1, .box-tissue-2 {
+  position: absolute;
+  background: rgba(77,113,250,0.2);
+  border-radius: 2px;
+}
+.box-tissue-1 {
+  bottom: 90px; left: 30px;
+  width: 80px; height: 60px;
+  transform: rotate(-5deg);
+  clip-path: polygon(10% 0%, 90% 0%, 100% 30%, 85% 100%, 15% 100%, 0% 30%);
+}
+.box-tissue-2 {
+  bottom: 95px; right: 25px;
+  width: 70px; height: 55px;
+  transform: rotate(8deg);
+  clip-path: polygon(10% 0%, 90% 0%, 100% 30%, 85% 100%, 15% 100%, 0% 30%);
+}
+.box-logo-area {
+  position: absolute; bottom: 50px; left: 50%; transform: translateX(-50%);
+  z-index: 2;
+}
+
+/* ── 21. LANYARD BADGE ────────────────────────── */
+.render-lanyard {
+  background: radial-gradient(ellipse at 50% 30%, #141926 0%, var(--void) 100%);
+}
+.lanyard-scene {
+  position: relative; width: 120px; height: 280px;
+}
+.lanyard-strap {
+  position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+  width: 16px; height: 140px;
+  background: linear-gradient(90deg, #0d1118 0%, #161c2c 50%, #0d1118 100%);
+  border-radius: 2px;
+}
+.lanyard-strap-accent {
+  position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+  width: 2px; height: 140px;
+  background: var(--signal);
+  opacity: 0.4;
+}
+.lanyard-clip {
+  position: absolute; top: 130px; left: 50%; transform: translateX(-50%);
+  width: 20px; height: 16px;
+  background: #2a3350;
+  border-radius: 2px;
+}
+.lanyard-badge {
+  position: absolute; top: 148px; left: 50%; transform: translateX(-50%);
+  width: 100px; height: 130px;
+  background: linear-gradient(180deg, #161c2c 0%, #0f1520 100%);
+  border-radius: 8px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  border: 1px solid rgba(255,255,255,0.04);
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center; gap: 8px;
+  padding: 12px;
+}
+.lanyard-photo {
+  width: 40px; height: 40px;
+  background: var(--steel);
+  border-radius: 50%;
+}
+.lanyard-name {
+  font-family: var(--font-mono);
+  font-size: 7px;
+  color: var(--mist);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+.lanyard-role {
+  font-family: var(--font-mono);
+  font-size: 6px;
+  color: var(--ash);
+  letter-spacing: 0.04em;
+}
+
+/* ── 22. TOTE BAG ─────────────────────────────── */
+.render-tote {
+  background: radial-gradient(ellipse at 50% 40%, #141926 0%, var(--void) 100%);
+}
+.tote-body {
+  width: 180px; height: 200px;
+  position: relative;
+}
+.tote-shape {
+  width: 180px; height: 180px;
+  background: linear-gradient(180deg, #161c2c 0%, #111828 50%, #0d1118 100%);
+  clip-path: polygon(5% 0%, 95% 0%, 100% 100%, 0% 100%);
+  position: relative;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.6);
+}
+.tote-shape::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse at 50% 40%, rgba(255,255,255,0.03) 0%, transparent 60%);
+  clip-path: inherit;
+}
+.tote-handle-l, .tote-handle-r {
+  position: absolute; top: -30px;
+  width: 30px; height: 30px;
+  border: 4px solid #1a2035;
+  border-bottom: none;
+  border-radius: 15px 15px 0 0;
+}
+.tote-handle-l { left: 40px; }
+.tote-handle-r { right: 40px; }
+.tote-logo-area {
+  position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+}
+
+/* ── 23. UMBRELLA ─────────────────────────────── */
+.render-umbrella {
+  background: radial-gradient(ellipse at 50% 50%, #141926 0%, var(--void) 100%);
+}
+.umbrella-top {
+  width: 200px; height: 200px;
+  border-radius: 50%;
+  background: conic-gradient(
+    #161c2c 0deg, #1a2035 45deg,
+    #141a28 45deg, #181e30 90deg,
+    #161c2c 90deg, #1a2035 135deg,
+    #141a28 135deg, #181e30 180deg,
+    #161c2c 180deg, #1a2035 225deg,
+    #141a28 225deg, #181e30 270deg,
+    #161c2c 270deg, #1a2035 315deg,
+    #141a28 315deg, #181e30 360deg
+  );
+  position: relative;
+  box-shadow:
+    0 10px 30px rgba(0,0,0,0.5),
+    inset 0 0 40px rgba(0,0,0,0.3);
+}
+.umbrella-tip {
+  position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+  width: 12px; height: 12px;
+  background: var(--signal);
+  border-radius: 50%;
+  box-shadow: 0 0 12px rgba(77,113,250,0.5);
+}
+.umbrella-spoke {
+  position: absolute; top: 50%; left: 50%;
+  width: 1px; height: 100px;
+  background: rgba(255,255,255,0.04);
+  transform-origin: top center;
+}
+.umbrella-logo-area {
+  position: absolute; top: 30%; left: 50%; transform: translate(-50%, -50%);
+}
+
+/* ── 24. KEYCHAIN ─────────────────────────────── */
+.render-keychain {
+  background: radial-gradient(ellipse at 50% 50%, #151b2a 0%, var(--void) 100%);
+}
+.keychain-body {
+  position: relative; width: 60px; height: 120px;
+}
+.keychain-ring {
+  position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+  width: 30px; height: 30px;
+  border: 3px solid #2a3350;
+  border-radius: 50%;
+}
+.keychain-connector {
+  position: absolute; top: 26px; left: 50%; transform: translateX(-50%);
+  width: 8px; height: 14px;
+  background: #2a3350;
+  border-radius: 2px;
+}
+.keychain-pendant {
+  position: absolute; top: 42px; left: 50%; transform: translateX(-50%);
+  width: 44px; height: 56px;
+  background: linear-gradient(135deg, #1e2538 0%, #141a28 100%);
+  border-radius: 8px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+  display: flex; align-items: center; justify-content: center;
+  border: 1px solid rgba(255,255,255,0.04);
+}
+</style>
+</head>
+<body>
+
+<!-- ════════════════════════════════════════════════
+     HEADER
+     ════════════════════════════════════════════════ -->
+<header class="gallery-header">
+  <span class="gallery-header__count">24</span>
+  <span class="gallery-header__title">Product Mockups</span>
+  <span class="gallery-header__meta">24 ITEMS // 2026</span>
+  <span class="gallery-header__badge">Colecao</span>
+</header>
+
+<!-- ════════════════════════════════════════════════
+     FILTERS
+     ════════════════════════════════════════════════ -->
+<nav class="filters-bar" id="filtersBar">
+  <button class="filter-btn active" data-filter="ALL">ALL (24)</button>
+  <button class="filter-btn" data-filter="BAG">BAG</button>
+  <button class="filter-btn" data-filter="BOTTLE">BOTTLE</button>
+  <button class="filter-btn" data-filter="CAP">CAP</button>
+  <button class="filter-btn" data-filter="CARDS">CARDS</button>
+  <button class="filter-btn" data-filter="DESK">DESK</button>
+  <button class="filter-btn" data-filter="DETAIL">DETAIL</button>
+  <button class="filter-btn" data-filter="EXPERIENCE">EXPERIENCE</button>
+  <button class="filter-btn" data-filter="FLATLAY">FLATLAY</button>
+  <button class="filter-btn" data-filter="HERO">HERO</button>
+  <button class="filter-btn" data-filter="KIT">KIT</button>
+  <button class="filter-btn" data-filter="LIFESTYLE">LIFESTYLE</button>
+  <button class="filter-btn" data-filter="MUG">MUG</button>
+  <button class="filter-btn" data-filter="PHONE">PHONE</button>
+  <button class="filter-btn" data-filter="PREMIUM">PREMIUM</button>
+  <button class="filter-btn" data-filter="TECH">TECH</button>
+  <button class="filter-btn" data-filter="TSHIRT">TSHIRT</button>
+  <button class="filter-btn" data-filter="UNBOXING">UNBOXING</button>
+</nav>
+
+<!-- ════════════════════════════════════════════════
+     GRID
+     ════════════════════════════════════════════════ -->
+<main class="gallery-grid" id="galleryGrid">
+
+  <!-- 1 ─ BAG URBAN ────────────────────────────── -->
+  <article class="mockup-card" data-tags="BAG,LIFESTYLE,PREMIUM">
+    <div class="mockup-card__visual render-bag">
+      <div class="mv mv-center">
+        <div class="bag-body">
+          <div class="bag-cord bag-cord-left"></div>
+          <div class="bag-cord bag-cord-right"></div>
+          <div class="bag-texture"></div>
+          <div class="bag-logo-area">
+            <div class="cortex-icon cortex-icon-sm" style="margin:0 auto 8px;"></div>
+            <span class="cortex-logo-md"><span class="cor">Cor</span><span class="tex">tex</span></span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="mockup-card__info">
+      <div class="mockup-card__title">Bag Urban</div>
+      <div class="mockup-card__tags">
+        <span class="mockup-card__tag">BAG</span>
+        <span class="mockup-card__tag">LIFESTYLE</span>
+        <span class="mockup-card__tag">PREMIUM</span>
+      </div>
+    </div>
+  </article>
+
+  <!-- 2 ─ BOTTLE HERO ──────────────────────────── -->
+  <article class="mockup-card" data-tags="BOTTLE,HERO,PREMIUM">
+    <div class="mockup-card__visual render-bottle">
+      <div class="mv mv-center">
+        <div class="bottle-body">
+          <div class="bottle-cap"></div>
+          <div class="bottle-shine"></div>
+          <div class="bottle-logo-area">
+            <span class="cortex-logo-sm"><span class="cor">Cor</span><span class="tex">tex</span></span>
+          </div>
+          <div class="bottle-base"></div>
+        </div>
+      </div>
+    </div>
+    <div class="mockup-card__info">
+      <div class="mockup-card__title">Bottle Hero</div>
+      <div class="mockup-card__tags">
+        <span class="mockup-card__tag">BOTTLE</span>
+        <span class="mockup-card__tag">HERO</span>
+        <span class="mockup-card__tag">PREMIUM</span>
+      </div>
+    </div>
+  </article>
+
+  <!-- 3 ─ CAP DETAIL ───────────────────────────── -->
+  <article class="mockup-card" data-tags="CAP,DETAIL,PREMIUM">
+    <div class="mockup-card__visual render-cap">
+      <div class="mv mv-center">
+        <div class="cap-body">
+          <div class="cap-crown">
+            <div class="cap-logo-area">
+              <span class="cortex-logo-sm"><span class="cor" style="color:#1a2030">Cor</span><span class="tex" style="color:#1e2538">tex</span></span>
+            </div>
+          </div>
+          <div class="cap-brim"></div>
+        </div>
+      </div>
+    </div>
+    <div class="mockup-card__info">
+      <div class="mockup-card__title">Cap Detail</div>
+      <div class="mockup-card__tags">
+        <span class="mockup-card__tag">CAP</span>
+        <span class="mockup-card__tag">DETAIL</span>
+        <span class="mockup-card__tag">PREMIUM</span>
+      </div>
+    </div>
+  </article>
+
+  <!-- 4 ─ CAP SIGNAL ───────────────────────────── -->
+  <article class="mockup-card mockup-card--signal" data-tags="CAP,HERO,PREMIUM">
+    <div class="mockup-card__visual render-cap-signal">
+      <div class="mv mv-center">
+        <div class="cap-body cap-signal">
+          <div class="cap-crown">
+            <div class="cap-logo-area">
+              <span class="cortex-logo-sm"><span class="cor">Cor</span><span class="tex">tex</span></span>
+            </div>
+          </div>
+          <div class="cap-brim"></div>
+        </div>
+      </div>
+    </div>
+    <div class="mockup-card__info">
+      <div class="mockup-card__title">Cap Signal</div>
+      <div class="mockup-card__tags">
+        <span class="mockup-card__tag">CAP</span>
+        <span class="mockup-card__tag">HERO</span>
+        <span class="mockup-card__tag">PREMIUM</span>
+      </div>
+    </div>
+  </article>
+
+  <!-- 5 ─ TSHIRT HERO ──────────────────────────── -->
+  <article class="mockup-card" data-tags="TSHIRT,HERO,PREMIUM">
+    <div class="mockup-card__visual render-tshirt">
+      <div class="mv mv-center">
+        <div class="tshirt-body">
+          <div class="tshirt-shape">
+            <div class="tshirt-collar"></div>
+            <div class="tshirt-logo-area">
+              <span class="cortex-logo-sm"><span class="cor">Cor</span><span class="tex">tex</span></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="mockup-card__info">
+      <div class="mockup-card__title">Tshirt Hero</div>
+      <div class="mockup-card__tags">
+        <span class="mockup-card__tag">TSHIRT</span>
+        <span class="mockup-card__tag">HERO</span>
+        <span class="mockup-card__tag">PREMIUM</span>
+      </div>
+    </div>
+  </article>
+
+  <!-- 6 ─ TSHIRT FLATLAY ───────────────────────── -->
+  <article class="mockup-card" data-tags="TSHIRT,FLATLAY,LIFESTYLE">
+    <div class="mockup-card__visual render-tshirt-flat">
+      <div class="mv mv-center">
+        <div class="flatlay-tshirt">
+          <div class="flatlay-tshirt-shape"></div>
+          <div class="flatlay-glasses">
+            <div class="flatlay-glasses-frame">
+              <div class="flatlay-glasses-lens"></div>
+              <div class="flatlay-glasses-bridge"></div>
+              <div class="flatlay-glasses-lens"></div>
+            </div>
+          </div>
+          <div class="flatlay-carabiner"></div>
+        </div>
+      </div>
+    </div>
+    <div class="mockup-card__info">
+      <div class="mockup-card__title">Tshirt Flatlay</div>
+      <div class="mockup-card__tags">
+        <span class="mockup-card__tag">TSHIRT</span>
+        <span class="mockup-card__tag">FLATLAY</span>
+        <span class="mockup-card__tag">LIFESTYLE</span>
+      </div>
+    </div>
+  </article>
+
+  <!-- 7 ─ BOMBER JACKET ────────────────────────── -->
+  <article class="mockup-card" data-tags="TSHIRT,HERO,PREMIUM">
+    <div class="mockup-card__visual render-bomber">
+      <div class="mv mv-center">
+        <div class="bomber-body">
+          <div class="bomber-shape">
+            <div class="bomber-collar"></div>
+            <div class="bomber-zip"></div>
+            <div class="bomber-cuff-l"></div>
+            <div class="bomber-cuff-r"></div>
+            <div class="bomber-logo-area">
+              <span class="cortex-logo-sm"><span class="cor">Cor</span><span class="tex">tex</span></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="mockup-card__info">
+      <div class="mockup-card__title">Bomber Jacket</div>
+      <div class="mockup-card__tags">
+        <span class="mockup-card__tag">TSHIRT</span>
+        <span class="mockup-card__tag">HERO</span>
+        <span class="mockup-card__tag">PREMIUM</span>
+      </div>
+    </div>
+  </article>
+
+  <!-- 8 ─ HOODIE DARK ──────────────────────────── -->
+  <article class="mockup-card" data-tags="TSHIRT,LIFESTYLE,PREMIUM">
+    <div class="mockup-card__visual render-hoodie">
+      <div class="mv mv-center">
+        <div class="hoodie-body">
+          <div class="hoodie-shape">
+            <div class="hoodie-hood"></div>
+            <div class="hoodie-cord-l"></div>
+            <div class="hoodie-cord-r"></div>
+            <div class="hoodie-pocket"></div>
+            <div class="hoodie-logo-area">
+              <span class="cortex-logo-md"><span class="cor">Cor</span><span class="tex">tex</span></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="mockup-card__info">
+      <div class="mockup-card__title">Hoodie Dark</div>
+      <div class="mockup-card__tags">
+        <span class="mockup-card__tag">TSHIRT</span>
+        <span class="mockup-card__tag">LIFESTYLE</span>
+        <span class="mockup-card__tag">PREMIUM</span>
+      </div>
+    </div>
+  </article>
+
+  <!-- 9 ─ PHONE CASE ───────────────────────────── -->
+  <article class="mockup-card" data-tags="PHONE,TECH,PREMIUM">
+    <div class="mockup-card__visual render-phone">
+      <div class="mv mv-center">
+        <div class="phone-body">
+          <div class="phone-camera">
+            <div class="phone-lens"></div>
+            <div class="phone-lens"></div>
+            <div class="phone-lens"></div>
+          </div>
+          <div class="phone-logo-area">
+            <div class="cortex-icon cortex-icon-sm" style="margin:0 auto 8px;"></div>
+            <span class="cortex-logo-sm"><span class="cor">Cor</span><span class="tex">tex</span></span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="mockup-card__info">
+      <div class="mockup-card__title">Phone Case</div>
+      <div class="mockup-card__tags">
+        <span class="mockup-card__tag">PHONE</span>
+        <span class="mockup-card__tag">TECH</span>
+        <span class="mockup-card__tag">PREMIUM</span>
+      </div>
+    </div>
+  </article>
+
+  <!-- 10 ─ MUG LIFESTYLE ───────────────────────── -->
+  <article class="mockup-card" data-tags="MUG,LIFESTYLE,PREMIUM">
+    <div class="mockup-card__visual render-mug">
+      <div class="mv mv-center" style="padding-top:40px;">
+        <div class="mug-scene">
+          <div class="mug-body">
+            <div class="mug-rim"></div>
+            <div class="mug-handle"></div>
+            <div class="mug-logo-area">
+              <span class="cortex-logo-sm"><span class="cor" style="color:var(--signal)">Cor</span><span class="tex">tex</span></span>
+            </div>
+            <div class="mug-steam">
+              <div class="mug-steam-line"></div>
+              <div class="mug-steam-line"></div>
+              <div class="mug-steam-line"></div>
+            </div>
+          </div>
+          <div class="mug-surface"></div>
+        </div>
+      </div>
+    </div>
+    <div class="mockup-card__info">
+      <div class="mockup-card__title">Mug Lifestyle</div>
+      <div class="mockup-card__tags">
+        <span class="mockup-card__tag">MUG</span>
+        <span class="mockup-card__tag">LIFESTYLE</span>
+        <span class="mockup-card__tag">PREMIUM</span>
+      </div>
+    </div>
+  </article>
+
+  <!-- 11 ─ CARDS LUXURY ────────────────────────── -->
+  <article class="mockup-card" data-tags="CARDS,PREMIUM,DETAIL">
+    <div class="mockup-card__visual render-cards">
+      <div class="mv mv-center">
+        <div class="cards-stack">
+          <div class="card-item"></div>
+          <div class="card-item"></div>
+          <div class="card-item">
+            <div class="card-logo-area">
+              <div class="cortex-icon cortex-icon-sm" style="margin:0 auto 6px;"></div>
+              <span class="cortex-logo-sm"><span class="cor">Cor</span><span class="tex">tex</span></span>
+            </div>
+            <div class="card-detail">cortex.ai</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="mockup-card__info">
+      <div class="mockup-card__title">Cards Luxury</div>
+      <div class="mockup-card__tags">
+        <span class="mockup-card__tag">CARDS</span>
+        <span class="mockup-card__tag">PREMIUM</span>
+        <span class="mockup-card__tag">DETAIL</span>
+      </div>
+    </div>
+  </article>
+
+  <!-- 12 ─ NOTEBOOK PREMIUM ────────────────────── -->
+  <article class="mockup-card" data-tags="PREMIUM,DETAIL,LIFESTYLE">
+    <div class="mockup-card__visual render-notebook">
+      <div class="mv mv-center">
+        <div class="notebook-body">
+          <div class="notebook-spine"></div>
+          <div class="notebook-elastic"></div>
+          <div class="notebook-ribbon"></div>
+          <div class="notebook-logo-area">
+            <div class="cortex-icon cortex-icon-sm" style="margin:0 auto 6px;"></div>
+            <span class="cortex-logo-sm"><span class="cor">Cor</span><span class="tex">tex</span></span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="mockup-card__info">
+      <div class="mockup-card__title">Notebook Premium</div>
+      <div class="mockup-card__tags">
+        <span class="mockup-card__tag">PREMIUM</span>
+        <span class="mockup-card__tag">DETAIL</span>
+        <span class="mockup-card__tag">LIFESTYLE</span>
+      </div>
+    </div>
+  </article>
+
+  <!-- 13 ─ AIRPODS CASE ────────────────────────── -->
+  <article class="mockup-card" data-tags="TECH,DETAIL,PREMIUM">
+    <div class="mockup-card__visual render-airpods">
+      <div class="mv mv-center">
+        <div class="airpods-body">
+          <div class="airpods-hinge"></div>
+          <div class="airpods-indicator"></div>
+          <div class="airpods-logo-area">
+            <span class="cortex-logo-sm" style="font-size:10px;"><span class="cor">Cor</span><span class="tex">tex</span></span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="mockup-card__info">
+      <div class="mockup-card__title">Airpods Case</div>
+      <div class="mockup-card__tags">
+        <span class="mockup-card__tag">TECH</span>
+        <span class="mockup-card__tag">DETAIL</span>
+        <span class="mockup-card__tag">PREMIUM</span>
+      </div>
+    </div>
+  </article>
+
+  <!-- 14 ─ PEN EXECUTIVE ───────────────────────── -->
+  <article class="mockup-card" data-tags="PREMIUM,DETAIL,EXPERIENCE">
+    <div class="mockup-card__visual render-pen">
+      <div class="mv mv-center">
+        <div class="pen-body-wrap">
+          <div class="pen-barrel">
+            <div class="pen-clip"></div>
+            <div class="pen-tip"></div>
+            <div class="pen-shine"></div>
+            <div class="pen-logo-area">
+              <span class="cortex-logo-sm" style="font-size:8px;"><span class="cor">Cor</span><span class="tex">tex</span></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="mockup-card__info">
+      <div class="mockup-card__title">Pen Executive</div>
+      <div class="mockup-card__tags">
+        <span class="mockup-card__tag">PREMIUM</span>
+        <span class="mockup-card__tag">DETAIL</span>
+        <span class="mockup-card__tag">EXPERIENCE</span>
+      </div>
+    </div>
+  </article>
+
+  <!-- 15 ─ POWER BANK ──────────────────────────── -->
+  <article class="mockup-card" data-tags="TECH,PREMIUM,EXPERIENCE">
+    <div class="mockup-card__visual render-powerbank">
+      <div class="mv mv-center">
+        <div class="powerbank-body">
+          <div class="powerbank-logo-area">
+            <span class="cortex-logo-sm"><span class="cor">Cor</span><span class="tex">tex</span></span>
+          </div>
+          <div class="powerbank-leds">
+            <div class="powerbank-led"></div>
+            <div class="powerbank-led"></div>
+            <div class="powerbank-led"></div>
+            <div class="powerbank-led"></div>
+          </div>
+          <div class="powerbank-port"></div>
+        </div>
+      </div>
+    </div>
+    <div class="mockup-card__info">
+      <div class="mockup-card__title">Power Bank</div>
+      <div class="mockup-card__tags">
+        <span class="mockup-card__tag">TECH</span>
+        <span class="mockup-card__tag">PREMIUM</span>
+        <span class="mockup-card__tag">EXPERIENCE</span>
+      </div>
+    </div>
+  </article>
+
+  <!-- 16 ─ USB DRIVE ───────────────────────────── -->
+  <article class="mockup-card" data-tags="TECH,DETAIL,PREMIUM">
+    <div class="mockup-card__visual render-usb">
+      <div class="mv mv-center">
+        <div class="usb-body">
+          <div class="usb-ring"></div>
+          <div class="usb-connector"></div>
+          <div class="usb-logo-area">
+            <span class="cortex-logo-sm" style="font-size:9px;"><span class="cor">Cor</span><span class="tex">tex</span></span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="mockup-card__info">
+      <div class="mockup-card__title">USB Drive</div>
+      <div class="mockup-card__tags">
+        <span class="mockup-card__tag">TECH</span>
+        <span class="mockup-card__tag">DETAIL</span>
+        <span class="mockup-card__tag">PREMIUM</span>
+      </div>
+    </div>
+  </article>
+
+  <!-- 17 ─ STICKER PACK ────────────────────────── -->
+  <article class="mockup-card" data-tags="DETAIL,EXPERIENCE,FLATLAY">
+    <div class="mockup-card__visual render-stickers">
+      <div class="mv mv-center">
+        <div class="sticker-container">
+          <div class="sticker sticker-1">
+            <div class="cortex-icon cortex-icon-sm"></div>
+          </div>
+          <div class="sticker sticker-2">
+            <span class="cortex-logo-sm" style="font-size:10px;"><span class="cor">Cor</span><span class="tex">tex</span></span>
+          </div>
+          <div class="sticker sticker-3">Do lead ao lucro. Zero fragmentacao.</div>
+          <div class="sticker sticker-4">
+            <div class="sticker-qr-grid">
+              <div class="sticker-qr-cell"></div><div class="sticker-qr-cell"></div><div class="sticker-qr-cell"></div><div class="sticker-qr-cell"></div><div class="sticker-qr-cell"></div>
+              <div class="sticker-qr-cell"></div><div class="sticker-qr-cell"></div><div class="sticker-qr-cell"></div><div class="sticker-qr-cell"></div><div class="sticker-qr-cell"></div>
+              <div class="sticker-qr-cell"></div><div class="sticker-qr-cell"></div><div class="sticker-qr-cell"></div><div class="sticker-qr-cell"></div><div class="sticker-qr-cell"></div>
+              <div class="sticker-qr-cell"></div><div class="sticker-qr-cell"></div><div class="sticker-qr-cell"></div><div class="sticker-qr-cell"></div><div class="sticker-qr-cell"></div>
+              <div class="sticker-qr-cell"></div><div class="sticker-qr-cell"></div><div class="sticker-qr-cell"></div><div class="sticker-qr-cell"></div><div class="sticker-qr-cell"></div>
+            </div>
+          </div>
+          <div class="sticker sticker-5"><div class="sticker-pattern"></div></div>
+          <div class="sticker sticker-6">
+            <div class="sticker-seal-text">CORTEX<br>2026</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="mockup-card__info">
+      <div class="mockup-card__title">Sticker Pack</div>
+      <div class="mockup-card__tags">
+        <span class="mockup-card__tag">DETAIL</span>
+        <span class="mockup-card__tag">EXPERIENCE</span>
+        <span class="mockup-card__tag">FLATLAY</span>
+      </div>
+    </div>
+  </article>
+
+  <!-- 18 ─ DESK SETUP ──────────────────────────── -->
+  <article class="mockup-card" data-tags="DESK,LIFESTYLE,EXPERIENCE">
+    <div class="mockup-card__visual render-desk">
+      <div class="mv mv-center">
+        <div class="desk-scene">
+          <div class="desk-mat">
+            <div class="desk-mat-logo">
+              <span class="cortex-logo-sm"><span class="cor">Cor</span><span class="tex">tex</span></span>
+            </div>
+            <div class="desk-mini-notebook"></div>
+            <div class="desk-mini-pen"></div>
+            <div class="desk-mini-mug">
+              <div class="desk-mini-mug-handle"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="mockup-card__info">
+      <div class="mockup-card__title">Desk Setup</div>
+      <div class="mockup-card__tags">
+        <span class="mockup-card__tag">DESK</span>
+        <span class="mockup-card__tag">LIFESTYLE</span>
+        <span class="mockup-card__tag">EXPERIENCE</span>
+      </div>
+    </div>
+  </article>
+
+  <!-- 19 ─ FLATLAY KIT ─────────────────────────── -->
+  <article class="mockup-card mockup-card--signal" data-tags="KIT,FLATLAY,HERO">
+    <div class="mockup-card__visual render-flatlay-kit">
+      <div class="mv mv-center">
+        <div class="kit-grid">
+          <div class="kit-item"><div class="kit-item-label">Tshirt</div></div>
+          <div class="kit-item"><div class="kit-item-label">Bottle</div></div>
+          <div class="kit-item"><div class="kit-item-label">Cap</div></div>
+          <div class="kit-item"><div class="kit-item-label">Mug</div></div>
+          <div class="kit-item"><div class="kit-item-label">Notebook</div></div>
+          <div class="kit-item"><div class="kit-item-label">Cards</div></div>
+          <div class="kit-item"><div class="kit-item-label">Stickers</div></div>
+          <div class="kit-item"><div class="kit-item-label">Pen</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="mockup-card__info">
+      <div class="mockup-card__title">Flatlay Kit</div>
+      <div class="mockup-card__tags">
+        <span class="mockup-card__tag">KIT</span>
+        <span class="mockup-card__tag">FLATLAY</span>
+        <span class="mockup-card__tag">HERO</span>
+      </div>
+    </div>
+  </article>
+
+  <!-- 20 ─ UNBOXING ────────────────────────────── -->
+  <article class="mockup-card" data-tags="UNBOXING,EXPERIENCE,PREMIUM">
+    <div class="mockup-card__visual render-unboxing">
+      <div class="mv mv-center">
+        <div class="box-scene">
+          <div class="box-lid"></div>
+          <div class="box-tissue-1"></div>
+          <div class="box-tissue-2"></div>
+          <div class="box-base">
+            <div class="box-inner"></div>
+          </div>
+          <div class="box-logo-area">
+            <span class="cortex-logo-md"><span class="cor">Cor</span><span class="tex">tex</span></span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="mockup-card__info">
+      <div class="mockup-card__title">Unboxing</div>
+      <div class="mockup-card__tags">
+        <span class="mockup-card__tag">UNBOXING</span>
+        <span class="mockup-card__tag">EXPERIENCE</span>
+        <span class="mockup-card__tag">PREMIUM</span>
+      </div>
+    </div>
+  </article>
+
+  <!-- 21 ─ LANYARD BADGE ───────────────────────── -->
+  <article class="mockup-card" data-tags="DETAIL,EXPERIENCE,PREMIUM">
+    <div class="mockup-card__visual render-lanyard">
+      <div class="mv mv-center">
+        <div class="lanyard-scene">
+          <div class="lanyard-strap">
+            <div class="lanyard-strap-accent"></div>
+          </div>
+          <div class="lanyard-clip"></div>
+          <div class="lanyard-badge">
+            <div class="lanyard-photo"></div>
+            <div class="cortex-icon cortex-icon-sm" style="width:20px;height:20px;border-width:2px;"></div>
+            <div class="lanyard-name">Team Member</div>
+            <div class="lanyard-role">Cortex // 2026</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="mockup-card__info">
+      <div class="mockup-card__title">Lanyard Badge</div>
+      <div class="mockup-card__tags">
+        <span class="mockup-card__tag">DETAIL</span>
+        <span class="mockup-card__tag">EXPERIENCE</span>
+        <span class="mockup-card__tag">PREMIUM</span>
+      </div>
+    </div>
+  </article>
+
+  <!-- 22 ─ TOTE BAG ────────────────────────────── -->
+  <article class="mockup-card" data-tags="BAG,HERO,LIFESTYLE">
+    <div class="mockup-card__visual render-tote">
+      <div class="mv mv-center">
+        <div class="tote-body">
+          <div class="tote-handle-l"></div>
+          <div class="tote-handle-r"></div>
+          <div class="tote-shape">
+            <div class="tote-logo-area">
+              <div class="cortex-icon" style="margin:0 auto 8px;"></div>
+              <span class="cortex-logo-lg"><span class="cor">Cor</span><span class="tex">tex</span></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="mockup-card__info">
+      <div class="mockup-card__title">Tote Bag</div>
+      <div class="mockup-card__tags">
+        <span class="mockup-card__tag">BAG</span>
+        <span class="mockup-card__tag">HERO</span>
+        <span class="mockup-card__tag">LIFESTYLE</span>
+      </div>
+    </div>
+  </article>
+
+  <!-- 23 ─ UMBRELLA ────────────────────────────── -->
+  <article class="mockup-card" data-tags="LIFESTYLE,PREMIUM,DETAIL">
+    <div class="mockup-card__visual render-umbrella">
+      <div class="mv mv-center">
+        <div class="umbrella-top">
+          <div class="umbrella-tip"></div>
+          <div class="umbrella-spoke" style="transform:rotate(0deg);"></div>
+          <div class="umbrella-spoke" style="transform:rotate(45deg);"></div>
+          <div class="umbrella-spoke" style="transform:rotate(90deg);"></div>
+          <div class="umbrella-spoke" style="transform:rotate(135deg);"></div>
+          <div class="umbrella-spoke" style="transform:rotate(180deg);"></div>
+          <div class="umbrella-spoke" style="transform:rotate(225deg);"></div>
+          <div class="umbrella-spoke" style="transform:rotate(270deg);"></div>
+          <div class="umbrella-spoke" style="transform:rotate(315deg);"></div>
+          <div class="umbrella-logo-area">
+            <span class="cortex-logo-sm"><span class="cor">Cor</span><span class="tex">tex</span></span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="mockup-card__info">
+      <div class="mockup-card__title">Umbrella</div>
+      <div class="mockup-card__tags">
+        <span class="mockup-card__tag">LIFESTYLE</span>
+        <span class="mockup-card__tag">PREMIUM</span>
+        <span class="mockup-card__tag">DETAIL</span>
+      </div>
+    </div>
+  </article>
+
+  <!-- 24 ─ KEYCHAIN ────────────────────────────── -->
+  <article class="mockup-card" data-tags="DETAIL,PREMIUM,TECH">
+    <div class="mockup-card__visual render-keychain">
+      <div class="mv mv-center">
+        <div class="keychain-body">
+          <div class="keychain-ring"></div>
+          <div class="keychain-connector"></div>
+          <div class="keychain-pendant">
+            <div class="cortex-icon cortex-icon-sm" style="width:24px;height:24px;border-width:2px;"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="mockup-card__info">
+      <div class="mockup-card__title">Keychain</div>
+      <div class="mockup-card__tags">
+        <span class="mockup-card__tag">DETAIL</span>
+        <span class="mockup-card__tag">PREMIUM</span>
+        <span class="mockup-card__tag">TECH</span>
+      </div>
+    </div>
+  </article>
+
+</main>
+
+<!-- ════════════════════════════════════════════════
+     FOOTER
+     ════════════════════════════════════════════════ -->
+<footer class="gallery-footer">
+  <span class="gallery-footer__text"><span>CORTEX</span> // BRAND SHOWCASE</span>
+  <span class="gallery-footer__text">MOCKUPS — <span>24 ITEMS</span></span>
+  <span class="gallery-footer__text">2026 COLLECTION</span>
+</footer>
+
+<!-- ════════════════════════════════════════════════
+     LOGO SECTION
+     ════════════════════════════════════════════════ -->
+<section class="gallery-logo-section">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 264 64" fill="none" role="img" aria-label="Cortex">
+    <defs>
+      <radialGradient id="icon-bg" cx="40%" cy="40%" r="65%">
+        <stop offset="0%" stop-color="#1B2845"/>
+        <stop offset="100%" stop-color="#090E1A"/>
+      </radialGradient>
+    </defs>
+    <rect width="64" height="64" rx="14" fill="url(#icon-bg)"/>
+    <path d="M 42.6,42.6 A 15,15 0 1,1 42.6,21.4" stroke="#4D71FA" stroke-width="5" stroke-linecap="round"/>
+    <circle cx="55" cy="32" r="2.5" fill="#4D71FA"/>
+    <text x="80" y="44" font-family="'Space Grotesk', 'Arial Black', sans-serif" font-weight="700" font-size="36" letter-spacing="0.8" fill="#F7F9FC">Cortex</text>
+  </svg>
+  <span class="gallery-logo-section__tagline">Inteligencia que opera.</span>
+</section>
+
+<!-- ════════════════════════════════════════════════
+     JAVASCRIPT — FILTER LOGIC
+     ════════════════════════════════════════════════ -->
+<script>
+(function() {
+  const filtersBar = document.getElementById('filtersBar');
+  const cards = document.querySelectorAll('.mockup-card');
+
+  filtersBar.addEventListener('click', function(e) {
+    const btn = e.target.closest('.filter-btn');
+    if (!btn) return;
+
+    // Update active state
+    filtersBar.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+
+    const filter = btn.dataset.filter;
+
+    cards.forEach(card => {
+      if (filter === 'ALL') {
+        card.classList.remove('hidden');
+      } else {
+        const tags = card.dataset.tags.split(',');
+        if (tags.includes(filter)) {
+          card.classList.remove('hidden');
+        } else {
+          card.classList.add('hidden');
+        }
+      }
+    });
+  });
+})();
+</script>
+
+</body>
+</html>

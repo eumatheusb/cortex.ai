@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Cortex YouTube Thumbnail — 1280x720</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@700&family=JetBrains+Mono:wght@700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{width:1280px;height:720px;overflow:hidden;background:#090E1A;position:relative}
+.gradient{position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(77,113,250,.08),transparent 70%)}
+.logo{position:absolute;top:40px;left:40px}
+.logo svg{width:40px;height:40px}
+.headline{position:absolute;left:60px;top:50%;transform:translateY(-50%);width:60%;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:56px;color:#F7F9FC;line-height:1.15;text-shadow:3px 3px 0 #090E1A,-3px -3px 0 #090E1A,3px -3px 0 #090E1A,-3px 3px 0 #090E1A}
+.badge{position:absolute;top:60px;right:100px;background:#4D71FA;border-radius:8px;padding:8px 16px;font-family:'JetBrains Mono',monospace;font-weight:700;font-size:28px;color:#F7F9FC}
+.presenter{position:absolute;right:40px;bottom:0;width:300px;height:432px;background:var(--dusk,#1B2845);border-radius:16px 16px 0 0;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.presenter-placeholder{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:72px;color:rgba(247,249,252,.15);text-align:center}
+.brand-bar{position:absolute;bottom:0;left:0;right:0;height:4px;background:#4D71FA}
+</style>
+</head>
+<body>
+<div class="gradient"></div>
+<div class="logo">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+    <defs><radialGradient id="bgt" cx="40%" cy="40%" r="65%"><stop offset="0%" stop-color="#1B2845"/><stop offset="100%" stop-color="#090E1A"/></radialGradient></defs>
+    <rect width="64" height="64" rx="14" fill="url(#bgt)"/>
+    <path d="M 42.6,42.6 A 15,15 0 1,1 42.6,21.4" stroke="#4D71FA" stroke-width="5" stroke-linecap="round"/>
+    <circle cx="55" cy="32" r="2.5" fill="#4D71FA"/>
+  </svg>
+</div>
+<div class="headline">Como gerar 230% mais faturamento na sua clinica</div>
+<div class="badge">+230%</div>
+<div class="presenter">
+  <div class="presenter-placeholder">FA</div>
+</div>
+<div class="brand-bar"></div>
+</body>
+</html>

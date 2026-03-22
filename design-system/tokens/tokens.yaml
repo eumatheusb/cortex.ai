@@ -1,0 +1,202 @@
+# Cortex Design System — Tokens
+# Source: workspace/businesses/grupo_fabio_avelar/cortex/brand/brandbook.yaml
+# Format: W3C DTCG v1.0 compatible
+# Generated: 2026-03-20
+
+metadata:
+  brand: Cortex
+  version: "1.0.0"
+  mode: dark-first
+  total_tokens: 52
+
+color:
+  # ── Base / Backgrounds ──────────────────────────────────────────────────
+  void:
+    $value: "#090E1A"
+    $type: color
+    $description: "Primary background — dark mode canvas. Near-black with blue undertone."
+    usage: [background-primary, hero, header]
+
+  ink:
+    $value: "#0C1220"
+    $type: color
+    $description: "Secondary background — slightly lifted from void."
+    usage: [background-secondary, page-body]
+
+  dusk:
+    $value: "#1B2845"
+    $type: color
+    $description: "Surface — cards, panels, sidebars."
+    usage: [card, panel, sidebar, modal]
+
+  steel:
+    $value: "#1E2533"
+    $type: color
+    $description: "Border, dividers, structural lines."
+    usage: [border, divider, separator]
+
+  ash:
+    $value: "#4A5568"
+    $type: color
+    $description: "Disabled states, placeholders, secondary text."
+    usage: [text-disabled, placeholder, icon-muted]
+
+  mist:
+    $value: "#94A3B8"
+    $type: color
+    $description: "Labels, captions, metadata, tertiary text."
+    usage: [text-tertiary, label, caption, meta]
+
+  white:
+    $value: "#F7F9FC"
+    $type: color
+    $description: "Primary text on dark / light mode backgrounds."
+    usage: [text-primary, background-light]
+
+  # ── Brand Accent ──────────────────────────────────────────────────────
+  signal:
+    $value: "#4D71FA"
+    $type: color
+    $description: "Primary brand accent — intelligence signal. CTAs, links, highlights."
+    usage: [cta-primary, link, highlight, focus-ring]
+
+  signal-dark:
+    $value: "#3558D4"
+    $type: color
+    $description: "Hover/active state for signal."
+    usage: [cta-primary-hover, link-hover]
+
+  signal-light:
+    $value: "#7B96FB"
+    $type: color
+    $description: "Light variant of signal — subtle highlights."
+    usage: [badge-accent, tag-accent, subtle-highlight]
+
+  signal-ghost:
+    $value: "rgba(77, 113, 250, 0.12)"
+    $type: color
+    $description: "Ghost background for signal — used in hover states, selected rows."
+    usage: [row-selected, item-hover, ghost-button-bg]
+
+  # ── Semantic ─────────────────────────────────────────────────────────
+  success:
+    $value: "#22C55E"
+    $type: color
+    $description: "Positive outcome, goals met, approved."
+    usage: [status-success, badge-success, metric-positive]
+
+  warning:
+    $value: "#F59E0B"
+    $type: color
+    $description: "Alerts, attention, pending actions."
+    usage: [status-warning, badge-warning, alert]
+
+  error:
+    $value: "#F43F5E"
+    $type: color
+    $description: "Errors, failures — Rose, not pure red."
+    usage: [status-error, badge-error, form-error]
+
+  info:
+    $value: "#4D71FA"
+    $type: color
+    $description: "Neutral info — reuses brand signal."
+    usage: [status-info, badge-info, tooltip]
+
+typography:
+  # ── Font Families ──────────────────────────────────────────────────────
+  font-display:
+    $value: "'Space Grotesk', sans-serif"
+    $type: fontFamily
+    $description: "Display font — headings, hero text, CTAs. Geometric, premium character."
+
+  font-body:
+    $value: "'Inter', sans-serif"
+    $type: fontFamily
+    $description: "Body font — paragraphs, UI text, forms. Maximum legibility."
+
+  font-mono:
+    $value: "'JetBrains Mono', monospace"
+    $type: fontFamily
+    $description: "Mono font — metrics, tables, CRM data, code."
+
+  # ── Font Sizes ────────────────────────────────────────────────────────
+  size-xs:    { $value: "12px", $type: dimension }
+  size-sm:    { $value: "14px", $type: dimension }
+  size-base:  { $value: "16px", $type: dimension }
+  size-md:    { $value: "18px", $type: dimension }
+  size-lg:    { $value: "20px", $type: dimension }
+  size-xl:    { $value: "24px", $type: dimension }
+  size-2xl:   { $value: "30px", $type: dimension }
+  size-3xl:   { $value: "36px", $type: dimension }
+  size-4xl:   { $value: "48px", $type: dimension }
+  size-5xl:   { $value: "60px", $type: dimension }
+  size-6xl:   { $value: "72px", $type: dimension }
+
+  # ── Font Weights ──────────────────────────────────────────────────────
+  weight-regular:   { $value: 400, $type: fontWeight }
+  weight-medium:    { $value: 500, $type: fontWeight }
+  weight-semibold:  { $value: 600, $type: fontWeight }
+  weight-bold:      { $value: 700, $type: fontWeight }
+
+  # ── Line Heights ──────────────────────────────────────────────────────
+  leading-tight:    { $value: "1.15", $type: number, $description: "Display/headlines" }
+  leading-snug:     { $value: "1.4",  $type: number, $description: "Short body text" }
+  leading-normal:   { $value: "1.6",  $type: number, $description: "Body / paragraphs" }
+
+spacing:
+  # 4px base grid
+  0:   { $value: "0px",   $type: dimension }
+  1:   { $value: "4px",   $type: dimension }
+  2:   { $value: "8px",   $type: dimension }
+  3:   { $value: "12px",  $type: dimension }
+  4:   { $value: "16px",  $type: dimension }
+  5:   { $value: "20px",  $type: dimension }
+  6:   { $value: "24px",  $type: dimension }
+  8:   { $value: "32px",  $type: dimension }
+  10:  { $value: "40px",  $type: dimension }
+  12:  { $value: "48px",  $type: dimension }
+  16:  { $value: "64px",  $type: dimension }
+  20:  { $value: "80px",  $type: dimension }
+  24:  { $value: "96px",  $type: dimension }
+  32:  { $value: "128px", $type: dimension }
+
+border-radius:
+  none:   { $value: "0px",     $type: dimension }
+  sm:     { $value: "4px",     $type: dimension }
+  md:     { $value: "8px",     $type: dimension }
+  lg:     { $value: "12px",    $type: dimension }
+  xl:     { $value: "16px",    $type: dimension }
+  2xl:    { $value: "24px",    $type: dimension }
+  full:   { $value: "9999px",  $type: dimension }
+
+shadow:
+  sm:
+    $value: "0 1px 3px rgba(0,0,0,0.4)"
+    $type: shadow
+    $description: "Subtle elevation — cards on dark bg"
+  md:
+    $value: "0 4px 16px rgba(0,0,0,0.5)"
+    $type: shadow
+    $description: "Medium elevation — modals, dropdowns"
+  lg:
+    $value: "0 8px 32px rgba(0,0,0,0.6)"
+    $type: shadow
+    $description: "High elevation — toasts, overlays"
+  glow:
+    $value: "0 0 24px rgba(77, 113, 250, 0.3)"
+    $type: shadow
+    $description: "Brand glow — signal color aura for focus/active states"
+  glow-sm:
+    $value: "0 0 12px rgba(77, 113, 250, 0.2)"
+    $type: shadow
+    $description: "Subtle brand glow — hover states"
+
+animation:
+  duration-fast:    { $value: "100ms", $type: duration }
+  duration-base:    { $value: "200ms", $type: duration }
+  duration-slow:    { $value: "350ms", $type: duration }
+  duration-xslow:   { $value: "500ms", $type: duration }
+  easing-default:   { $value: "cubic-bezier(0.4, 0, 0.2, 1)", $type: cubicBezier }
+  easing-spring:    { $value: "cubic-bezier(0.175, 0.885, 0.32, 1.275)", $type: cubicBezier }
+  easing-out:       { $value: "cubic-bezier(0, 0, 0.2, 1)", $type: cubicBezier }

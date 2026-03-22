@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Cortex Story — System Visual 1080x1920</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@500&family=Space+Grotesk:wght@700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{width:1080px;height:1920px;overflow:hidden;background:#090E1A;display:flex;flex-direction:column;align-items:center;position:relative}
+.title{margin-top:320px;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:36px;color:#F7F9FC;text-align:center}
+.flow{display:flex;flex-direction:column;align-items:center;gap:0;margin-top:80px;position:relative}
+.flow-line{position:absolute;top:24px;bottom:24px;left:50%;width:2px;background:#4D71FA;transform:translateX(-50%);z-index:0}
+.node{position:relative;z-index:1;display:flex;align-items:center;gap:16px;margin-bottom:48px}
+.node-circle{width:48px;height:48px;border-radius:50%;background:#1B2845;border:1px solid #1E2533;display:flex;align-items:center;justify-content:center}
+.node-circle svg{width:20px;height:20px;stroke:#F7F9FC;stroke-width:1.5;fill:none}
+.node.highlight .node-circle{border-color:#4D71FA;box-shadow:0 0 16px rgba(77,113,250,.25)}
+.node-label{font-family:'Inter',sans-serif;font-weight:500;font-size:16px;color:#F7F9FC}
+.logo{position:absolute;bottom:300px;left:50%;transform:translateX(-50%)}
+.logo svg{height:16px}
+</style>
+</head>
+<body>
+<div class="title">Do lead ao lucro</div>
+<div class="flow">
+  <div class="flow-line"></div>
+  <div class="node">
+    <div class="node-circle">
+      <svg viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><line x1="20" y1="8" x2="20" y2="14"/><line x1="23" y1="11" x2="17" y2="11"/></svg>
+    </div>
+    <div class="node-label">Lead</div>
+  </div>
+  <div class="node">
+    <div class="node-circle">
+      <svg viewBox="0 0 24 24"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/></svg>
+    </div>
+    <div class="node-label">Qualificacao</div>
+  </div>
+  <div class="node">
+    <div class="node-circle">
+      <svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+    </div>
+    <div class="node-label">Conversao</div>
+  </div>
+  <div class="node highlight">
+    <div class="node-circle">
+      <svg viewBox="0 0 24 24"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+    </div>
+    <div class="node-label">Lucro</div>
+  </div>
+</div>
+<div class="logo">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 52" fill="none">
+    <text x="0" y="40" font-family="'Space Grotesk','Arial Black',sans-serif" font-weight="700" font-size="44" letter-spacing="1" fill="#F7F9FC">Cortex</text>
+    <circle cx="170" cy="12" r="4" fill="#4D71FA"/>
+  </svg>
+</div>
+</body>
+</html>

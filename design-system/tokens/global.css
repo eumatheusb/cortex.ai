@@ -1,0 +1,197 @@
+/**
+ * Cortex Design System — CSS Variables
+ * Source: tokens.yaml (W3C DTCG v1.0)
+ * Mode: Dark-first
+ * Generated: 2026-03-20
+ */
+
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
+
+/* ── Reset ──────────────────────────────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* ── Root Tokens ─────────────────────────────────────────────────────────── */
+:root {
+  /* Color — Base */
+  --color-void:         #090E1A;
+  --color-ink:          #0C1220;
+  --color-dusk:         #1B2845;
+  --color-steel:        #1E2533;
+  --color-ash:          #4A5568;
+  --color-mist:         #94A3B8;
+  --color-white:        #F7F9FC;
+
+  /* Color — Brand */
+  --color-signal:       #4D71FA;
+  --color-signal-dark:  #3558D4;
+  --color-signal-light: #7B96FB;
+  --color-signal-ghost: rgba(77, 113, 250, 0.12);
+
+  /* Color — Semantic */
+  --color-success:      #22C55E;
+  --color-warning:      #F59E0B;
+  --color-error:        #F43F5E;
+  --color-info:         #4D71FA;
+
+  /* Typography — Families */
+  --font-display: 'Space Grotesk', sans-serif;
+  --font-body:    'Inter', sans-serif;
+  --font-mono:    'JetBrains Mono', monospace;
+
+  /* Typography — Sizes */
+  --text-xs:    12px;
+  --text-sm:    14px;
+  --text-base:  16px;
+  --text-md:    18px;
+  --text-lg:    20px;
+  --text-xl:    24px;
+  --text-2xl:   30px;
+  --text-3xl:   36px;
+  --text-4xl:   48px;
+  --text-5xl:   60px;
+  --text-6xl:   72px;
+
+  /* Typography — Weights */
+  --font-regular:   400;
+  --font-medium:    500;
+  --font-semibold:  600;
+  --font-bold:      700;
+
+  /* Typography — Line Heights */
+  --leading-tight:  1.15;
+  --leading-snug:   1.4;
+  --leading-normal: 1.6;
+
+  /* Spacing — 4px grid */
+  --space-0:  0px;
+  --space-1:  4px;
+  --space-2:  8px;
+  --space-3:  12px;
+  --space-4:  16px;
+  --space-5:  20px;
+  --space-6:  24px;
+  --space-8:  32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --space-20: 80px;
+  --space-24: 96px;
+  --space-32: 128px;
+
+  /* Border Radius */
+  --radius-none: 0px;
+  --radius-sm:   4px;
+  --radius-md:   8px;
+  --radius-lg:   12px;
+  --radius-xl:   16px;
+  --radius-2xl:  24px;
+  --radius-full: 9999px;
+
+  /* Shadow */
+  --shadow-sm:    0 1px 3px rgba(0,0,0,0.4);
+  --shadow-md:    0 4px 16px rgba(0,0,0,0.5);
+  --shadow-lg:    0 8px 32px rgba(0,0,0,0.6);
+  --shadow-glow:  0 0 24px rgba(77, 113, 250, 0.3);
+  --shadow-glow-sm: 0 0 12px rgba(77, 113, 250, 0.2);
+
+  /* Animation */
+  --duration-fast:   100ms;
+  --duration-base:   200ms;
+  --duration-slow:   350ms;
+  --duration-xslow:  500ms;
+  --easing-default:  cubic-bezier(0.4, 0, 0.2, 1);
+  --easing-spring:   cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  --easing-out:      cubic-bezier(0, 0, 0.2, 1);
+}
+
+/* ── Base Styles (Dark Mode First) ───────────────────────────────────────── */
+html {
+  font-size: var(--text-base);
+  font-family: var(--font-body);
+  background-color: var(--color-void);
+  color: var(--color-white);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  min-height: 100vh;
+  line-height: var(--leading-normal);
+}
+
+/* ── Typography Base ──────────────────────────────────────────────────────── */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  font-weight: var(--font-bold);
+  line-height: var(--leading-tight);
+  color: var(--color-white);
+}
+
+h1 { font-size: var(--text-4xl); }
+h2 { font-size: var(--text-3xl); }
+h3 { font-size: var(--text-2xl); }
+h4 { font-size: var(--text-xl);  }
+h5 { font-size: var(--text-lg);  }
+h6 { font-size: var(--text-md);  }
+
+p {
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  line-height: var(--leading-normal);
+  color: var(--color-white);
+}
+
+code, pre, kbd, samp {
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+}
+
+a {
+  color: var(--color-signal);
+  text-decoration: none;
+  transition: color var(--duration-base) var(--easing-default);
+}
+
+a:hover {
+  color: var(--color-signal-light);
+}
+
+/* ── Focus Ring ───────────────────────────────────────────────────────────── */
+:focus-visible {
+  outline: 2px solid var(--color-signal);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-glow-sm);
+}
+
+/* ── Light Mode Override ─────────────────────────────────────────────────── */
+[data-theme="cortex-light"],
+.light {
+  --color-void:    #F7F9FC;
+  --color-ink:     #EEF2F7;
+  --color-dusk:    #E2E8F0;
+  --color-steel:   #CBD5E1;
+  --color-ash:     #94A3B8;
+  --color-mist:    #64748B;
+  --color-white:   #0C1220;
+
+  /* Shadows — softer for light backgrounds */
+  --shadow-sm:    0 1px 3px rgba(0,0,0,0.08);
+  --shadow-md:    0 4px 16px rgba(0,0,0,0.10);
+  --shadow-lg:    0 8px 32px rgba(0,0,0,0.12);
+  --shadow-glow:  0 0 24px rgba(77, 113, 250, 0.15);
+  --shadow-glow-sm: 0 0 12px rgba(77, 113, 250, 0.10);
+}
+
+/* Light mode focus ring offset override */
+[data-theme="cortex-light"] :focus-visible,
+.light :focus-visible {
+  outline: 2px solid var(--color-signal);
+  outline-offset: 2px;
+  box-shadow: var(--shadow-glow-sm);
+}

@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 264 64" fill="none" role="img" aria-label="Cortex">
+  <defs>
+    <radialGradient id="rg-bg" cx="40%" cy="40%" r="65%">
+      <stop offset="0%" stop-color="#1B2845"/>
+      <stop offset="100%" stop-color="#090E1A"/>
+    </radialGradient>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@700&amp;display=swap');
+
+      /* 1 — icon background fades in */
+      .rv-bg {
+        animation: rv-fade 0.35s ease both;
+      }
+
+      /* 2 — arc draws itself via stroke-dashoffset */
+      /* arc length: r=15, 270° → 15 × (3π/2) ≈ 70.69 */
+      .rv-arc {
+        stroke-dasharray: 71;
+        stroke-dashoffset: 71;
+        animation: rv-draw 0.9s cubic-bezier(0.4, 0, 0.2, 1) 0.15s both;
+      }
+
+      /* 3 — dot pops in with spring overshoot, then idles */
+      .rv-dot {
+        transform-box: fill-box;
+        transform-origin: center;
+        animation:
+          rv-pop   0.45s cubic-bezier(0.34, 1.56, 0.64, 1) 0.9s  both,
+          rv-pulse 3.2s  ease-in-out                        2.8s  infinite;
+      }
+
+      /* 4 — wordmark slides in from left */
+      .rv-text {
+        transform-box: fill-box;
+        animation: rv-slide 0.55s cubic-bezier(0.4, 0, 0.2, 1) 0.6s both;
+      }
+
+      @keyframes rv-fade  { from { opacity: 0; }  to { opacity: 1; } }
+      @keyframes rv-draw  { to   { stroke-dashoffset: 0; } }
+      @keyframes rv-pop   {
+        from { transform: scale(0); opacity: 0; }
+        to   { transform: scale(1); opacity: 1; }
+      }
+      @keyframes rv-pulse {
+        0%, 100% { opacity: 1;   transform: scale(1);   }
+        50%      { opacity: 0.4; transform: scale(0.55); }
+      }
+      @keyframes rv-slide {
+        from { opacity: 0; transform: translateX(-14px); }
+        to   { opacity: 1; transform: translateX(0);     }
+      }
+    </style>
+  </defs>
+
+  <!-- Icon mark -->
+  <rect class="rv-bg" width="64" height="64" rx="14" fill="url(#rg-bg)"/>
+  <path
+    class="rv-arc"
+    d="M 42.6,42.6 A 15,15 0 1,1 42.6,21.4"
+    stroke="#4D71FA"
+    stroke-width="5"
+    stroke-linecap="round"
+  />
+  <circle class="rv-dot" cx="55" cy="32" r="2.5" fill="#4D71FA"/>
+
+  <!-- Wordmark -->
+  <g class="rv-text">
+    <text
+      x="80" y="44"
+      font-family="'Space Grotesk', 'Arial Black', sans-serif"
+      font-weight="700"
+      font-size="36"
+      letter-spacing="0.8"
+      fill="#F7F9FC"
+    >Cortex</text>
+  </g>
+</svg>

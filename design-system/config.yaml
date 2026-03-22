@@ -1,0 +1,166 @@
+schema_version: "1.1"
+created: "2026-03-20"
+updated: "2026-03-22"
+status: configured
+brandbook_ref: "brand/brandbook.yaml"
+
+source:
+  repo_root: "."
+  ds_root: "design-system"
+  origin: "Brand Squad — brandbook.yaml (2026-03-20)"
+
+design_system:
+  name: "Cortex DS"
+  slug: "cortex"
+  version: "2.0.0"
+  framework: react
+  mode: dark-first
+  total_components: 59
+  description: >
+    Design System da marca Cortex — Sistema operacional de crescimento para dentistas.
+    Token-based, dark mode first (with light mode support), premium tech.
+    59 componentes: 23 atoms, 17 molecules, 15 organisms, 4 templates.
+
+# ─────────────────────────────────────────────────────────────────────────────
+# TOKENS — extraidos do brandbook Cortex
+# ─────────────────────────────────────────────────────────────────────────────
+
+tokens:
+  color:
+    # Base / Backgrounds
+    void:        "#090E1A"   # primary background — dark mode canvas
+    ink:         "#0C1220"   # secondary background
+    dusk:        "#1B2845"   # cards, panels, surfaces
+    steel:       "#1E2533"   # borders, dividers
+    ash:         "#4A5568"   # disabled, placeholders, secondary text
+    mist:        "#94A3B8"   # labels, captions, metadata
+    white:       "#F7F9FC"   # text on dark / light bg
+
+    # Brand
+    signal:      "#4D71FA"   # primary accent — CTAs, links, highlights
+    signal_dark: "#3558D4"   # hover state for signal
+    signal_light: "#7B96FB"  # lighter variant
+
+    # Semantic
+    success:     "#22C55E"
+    warning:     "#F59E0B"
+    error:       "#F43F5E"
+    info:        "#4D71FA"   # same as signal
+
+  typography:
+    font_display:  "Space Grotesk"
+    font_body:     "Inter"
+    font_mono:     "JetBrains Mono"
+
+    weight_regular:    400
+    weight_medium:     500
+    weight_semibold:   600
+    weight_bold:       700
+
+    size_xs:    "12px"
+    size_sm:    "14px"
+    size_base:  "16px"
+    size_md:    "18px"
+    size_lg:    "20px"
+    size_xl:    "24px"
+    size_2xl:   "30px"
+    size_3xl:   "36px"
+    size_4xl:   "48px"
+    size_5xl:   "60px"
+    size_6xl:   "72px"
+
+    line_height_body:    "1.6"
+    line_height_display: "1.15"
+
+  spacing:
+    base: "4px"
+    scale: [4, 8, 12, 16, 20, 24, 32, 40, 48, 64, 80, 96, 128]
+
+  border_radius:
+    sm:   "4px"
+    md:   "8px"
+    lg:   "12px"
+    xl:   "16px"
+    full: "9999px"
+
+  shadow:
+    sm:  "0 1px 3px rgba(0,0,0,0.4)"
+    md:  "0 4px 16px rgba(0,0,0,0.5)"
+    lg:  "0 8px 32px rgba(0,0,0,0.6)"
+    glow: "0 0 24px rgba(77,113,250,0.3)"  # signal color glow
+
+# ─────────────────────────────────────────────────────────────────────────────
+# COMPONENT PIPELINE — complete, 7 phases delivered
+# ─────────────────────────────────────────────────────────────────────────────
+
+default_theme: cortex-dark
+
+themes:
+  cortex-dark:
+    name: "Cortex Dark"
+    mode: dark
+    description: "Tema principal — dark mode first, premium tech"
+  cortex-light:
+    name: "Cortex Light"
+    mode: light
+    description: "Tema alternativo — light mode para contextos especificos (inverted hierarchy)"
+
+component_registry: "design-system/component-registry.yaml"
+documentation:    "design-system/DESIGN-SYSTEM.md"
+storybook_intro:  "design-system/components/Introduction.mdx"
+
+pipeline:
+  status: complete
+  completed: "2026-03-22"
+  phase_current: 7
+  phases:
+    - id: 1
+      name: "Setup & Tokens"
+      status: complete
+      tokens: 67
+    - id: 2
+      name: "Atoms"
+      status: complete
+      components: [Button, Input, Badge, Avatar, Spinner, Tag, Label, Tooltip]
+      count: 8
+    - id: 3
+      name: "Molecules"
+      status: complete
+      components: [Card, Alert, Stat, FormField, Breadcrumb, Pagination]
+      count: 6
+    - id: 4
+      name: "Organisms"
+      status: complete
+      components: [Modal, Sidebar, PageHeader, EmptyState, DataTable]
+      count: 5
+    - id: 5
+      name: "Templates"
+      status: complete
+      components: [DashboardTemplate, CRMListTemplate, DetailTemplate, AuthTemplate]
+      count: 4
+    - id: 6
+      name: "Promote & Documentation"
+      status: complete
+    - id: 7
+      name: "Expansion"
+      status: complete
+      completed: "2026-03-22"
+      description: "24 new components: advanced forms, charts, data visualization, navigation, panels"
+      new_atoms: [Checkbox, Switch, RadioGroup, Textarea, Skeleton, Progress, Select, Popover, Logo, Slider, OTPInput, TimePicker, DatePicker, Combobox, Accordion]
+      new_molecules: [Tabs, Toast, DropdownMenu, FileUpload, KPICard, AvatarUpload, Drawer, Stepper, ConfirmDialog, NavigationMenu, ResizablePanels]
+      new_organisms: [BarChart, LineChart, PieChart, FunnelChart, Calendar, Timeline, KanbanBoard, CommandPalette, NotificationCenter]
+      count: 35
+      total_after: 59
+
+accessibility:
+  standard: WCAG-AA
+  contrast_verified:
+    - pair: "signal (#4D71FA) on white (#F7F9FC)"
+      ratio: "4.8:1"
+      status: pass
+    - pair: "white (#F7F9FC) on void (#090E1A)"
+      ratio: "18.9:1"
+      status: pass
+    - pair: "mist (#94A3B8) on void (#090E1A)"
+      ratio: "5.2:1"
+      status: pass

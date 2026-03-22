@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Cortex Certificado Template — A4 Landscape</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{width:1123px;height:794px;overflow:hidden;background:#090E1A;position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center}
+/* Subtle border */
+.border{position:absolute;inset:24px;border:1px solid #1E2533;border-radius:12px;pointer-events:none}
+.border-inner{position:absolute;inset:28px;border:1px solid rgba(77,113,250,.1);border-radius:10px;pointer-events:none}
+/* Signal accent lines */
+.accent-top{position:absolute;top:24px;left:50%;transform:translateX(-50%);width:200px;height:2px;background:linear-gradient(90deg,transparent,#4D71FA,transparent)}
+.accent-bottom{position:absolute;bottom:24px;left:50%;transform:translateX(-50%);width:200px;height:2px;background:linear-gradient(90deg,transparent,#4D71FA,transparent)}
+
+.logo{margin-bottom:16px}
+.logo svg{height:32px;width:auto}
+.cert-title{font-family:'Space Grotesk',sans-serif;font-weight:400;font-size:14px;color:#94A3B8;text-transform:uppercase;letter-spacing:4px;margin-bottom:32px}
+.participant{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:40px;color:#F7F9FC;border-bottom:2px solid #4D71FA;padding-bottom:8px;min-width:500px;text-align:center}
+.description{font-family:'Inter',sans-serif;font-size:16px;color:#94A3B8;margin-top:20px;text-align:center;max-width:600px;line-height:1.6}
+.details{display:flex;gap:80px;margin-top:48px;align-items:flex-end}
+.detail{text-align:center}
+.detail-label{font-family:'Inter',sans-serif;font-size:12px;color:#94A3B8;margin-bottom:8px;text-transform:uppercase;letter-spacing:1px}
+.detail-value{font-family:'Inter',sans-serif;font-weight:500;font-size:14px;color:#F7F9FC}
+.signature-line{width:180px;height:1px;background:#1E2533;margin-bottom:8px;margin-left:auto;margin-right:auto}
+.qr-placeholder{width:64px;height:64px;background:#1B2845;border:1px solid #1E2533;border-radius:8px;display:flex;align-items:center;justify-content:center;position:absolute;bottom:48px;right:48px}
+.qr-placeholder span{font-family:'Inter',sans-serif;font-size:9px;color:#4A5568;text-align:center}
+</style>
+</head>
+<body>
+<div class="border"></div>
+<div class="border-inner"></div>
+<div class="accent-top"></div>
+<div class="accent-bottom"></div>
+
+<div class="logo">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 264 64" fill="none">
+    <defs><radialGradient id="cert" cx="40%" cy="40%" r="65%"><stop offset="0%" stop-color="#1B2845"/><stop offset="100%" stop-color="#090E1A"/></radialGradient></defs>
+    <rect width="64" height="64" rx="14" fill="url(#cert)"/>
+    <path d="M 42.6,42.6 A 15,15 0 1,1 42.6,21.4" stroke="#4D71FA" stroke-width="5" stroke-linecap="round"/>
+    <circle cx="55" cy="32" r="2.5" fill="#4D71FA"/>
+    <text x="80" y="44" font-family="'Space Grotesk','Arial Black',sans-serif" font-weight="700" font-size="36" letter-spacing="0.8" fill="#F7F9FC">Cortex</text>
+  </svg>
+</div>
+<div class="cert-title">Certificado de conclusao</div>
+<div class="participant">Nome do Participante</div>
+<div class="description">Concluiu com exito o programa de capacitacao Cortex CRM, demonstrando dominio na operacao do sistema e gestao de pipeline odontologico.</div>
+
+<div class="details">
+  <div class="detail">
+    <div class="detail-label">Data</div>
+    <div class="detail-value">22 de marco de 2026</div>
+  </div>
+  <div class="detail">
+    <div class="signature-line"></div>
+    <div class="detail-label">Fabio Avelar</div>
+    <div class="detail-value">CEO, Cortex</div>
+  </div>
+  <div class="detail">
+    <div class="detail-label">Carga horaria</div>
+    <div class="detail-value">16 horas</div>
+  </div>
+</div>
+
+<div class="qr-placeholder"><span>QR<br>Code</span></div>
+</body>
+</html>

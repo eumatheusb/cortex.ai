@@ -1,0 +1,23 @@
+{
+  "name": "Cortex",
+  "short_name": "Cortex",
+  "description": "Do lead ao lucro. Um sistema. Zero fragmentacao.",
+  "start_url": "/",
+  "display": "standalone",
+  "theme_color": "#090E1A",
+  "background_color": "#090E1A",
+  "icons": [
+    {
+      "src": "android-chrome-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "android-chrome-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable any"
+    }
+  ]
+}

@@ -1,0 +1,150 @@
+/* ── Google Fonts ───────────────────────────────────────────────────────── */
+/* Must come before @import "tailwindcss" — CSS @import order rule */
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
+
+@import "tailwindcss";
+
+/* ── Tailwind v4 Theme — Cortex Tokens ──────────────────────────────────── */
+@theme {
+  /* Colors — Base */
+  --color-void:   #090E1A;
+  --color-ink:    #0C1220;
+  --color-dusk:   #1B2845;
+  --color-steel:  #1E2533;
+  --color-ash:    #4A5568;
+  --color-mist:   #94A3B8;
+  --color-white:  #F7F9FC;
+
+  /* Colors — Brand */
+  --color-signal:       #4D71FA;
+  --color-signal-dark:  #3558D4;
+  --color-signal-light: #7B96FB;
+  --color-signal-ghost: rgba(77, 113, 250, 0.12);
+
+  /* Colors — Semantic */
+  --color-success: #22C55E;
+  --color-warning: #F59E0B;
+  --color-error:   #F43F5E;
+  --color-info:    #4D71FA;
+
+  /* Typography */
+  --font-display: 'Space Grotesk', sans-serif;
+  --font-body:    'Inter', sans-serif;
+  --font-mono:    'JetBrains Mono', monospace;
+
+  /* Border radius */
+  --radius-sm:   4px;
+  --radius-md:   8px;
+  --radius-lg:   12px;
+  --radius-xl:   16px;
+  --radius-full: 9999px;
+
+  /* Animations */
+  --animate-fade-in:   fade-in 0.2s ease-out;
+  --animate-scale-in:  scale-in 0.2s ease-out;
+  --animate-glow-pulse: glow-pulse 2s ease-in-out infinite;
+
+  /* Shadows */
+  --shadow-glow:    0 0 24px rgba(77, 113, 250, 0.4);
+  --shadow-glow-sm: 0 0 12px rgba(77, 113, 250, 0.35);
+  --shadow-card:    0 4px 24px rgba(0, 0, 0, 0.4);
+  --shadow-modal:   0 8px 48px rgba(0, 0, 0, 0.6);
+  --shadow-sm:      0 1px 3px rgba(0, 0, 0, 0.3);
+
+  /* Z-index — hierarquia de camadas */
+  --z-index-base:     0;
+  --z-index-raised:   10;
+  --z-index-dropdown: 100;
+  --z-index-sticky:   200;
+  --z-index-overlay:  300;
+  --z-index-modal:    400;
+  --z-index-toast:    500;
+  --z-index-tooltip:  600;
+
+  /* Transition durations */
+  --duration-fast:   150ms;
+  --duration-base:   200ms;
+  --duration-slow:   300ms;
+  --duration-slower: 500ms;
+
+  /* Transition easings */
+  --ease-default: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-in:      cubic-bezier(0.4, 0, 1, 1);
+  --ease-out:     cubic-bezier(0, 0, 0.2, 1);
+  --ease-spring:  cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* ── Keyframes ───────────────────────────────────────────────────────────── */
+@keyframes fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes scale-in {
+  from { opacity: 0; transform: scale(0.95); }
+  to   { opacity: 1; transform: scale(1); }
+}
+@keyframes glow-pulse {
+  0%, 100% { box-shadow: 0 0 16px rgba(77, 113, 250, 0.3); }
+  50%       { box-shadow: 0 0 32px rgba(77, 113, 250, 0.6); }
+}
+
+/* ── Base ─────────────────────────────────────────────────────────────────── */
+@layer base {
+  *, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background-color: #090E1A;
+    color: #F7F9FC;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  :focus-visible {
+    outline: none;
+  }
+
+  input[type='number']::-webkit-inner-spin-button,
+  input[type='number']::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  input[type='search']::-webkit-search-cancel-button {
+    -webkit-appearance: none;
+  }
+}
+
+::selection {
+  background-color: rgba(77, 113, 250, 0.3);
+  color: #F7F9FC;
+}
+
+/* Scrollbar — premium dark-mode styling */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #1E2533;
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #4A5568;
+}
+
+/* Light mode override */
+[data-theme="cortex-light"] {
+  background-color: #F7F9FC;
+  color: #090E1A;
+}

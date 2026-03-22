@@ -1,0 +1,444 @@
+# =============================================================================
+# CORTEX — PRODUCT BACKLOG: USER STORIES
+# =============================================================================
+# schema:  cortex.backlog.stories
+# version: "1.0"
+# created: "2026-03-22"
+# owner:   Grupo Fábio Avelar
+# brand:   Cortex ("Sistema operacional de crescimento para dentistas")
+# status:  ready_for_grooming
+#
+# CONTEXT
+# -------
+# Cortex é uma marca nascendo agora. Já existem:
+#   - Brandbook completo (brandbook.yaml v1.0)
+#   - Communication Framework (communication-framework.yaml v1.0)
+#   - Design System completo (67 tokens, 23 componentes React)
+#
+# Estas 5 stories cobrem os itens pendentes para lançamento da marca.
+# =============================================================================
+
+stories:
+
+  # ---------------------------------------------------------------------------
+  # CORTEX-001 — TAGLINE
+  # ---------------------------------------------------------------------------
+  - id: CORTEX-001
+    title: "Definir e publicar tagline final da Cortex"
+
+    user_story:
+      as: "owner da marca Cortex (Fábio Avelar)"
+      i_want: "ter uma tagline aprovada que substitua 'Do lead ao lucro' por uma formulação com numeral que torne o diferencial tangível imediatamente"
+      so_that: "todos os ativos da marca (brandbook, communication framework, site, ads, Instagram) falem com a mesma voz desde o dia 1, sem ambiguidade sobre qual versão usar"
+
+    context: >
+      A tagline atual no brandbook.yaml é "Do lead ao lucro. Um sistema. Zero fragmentação."
+      O owner quer substituir "Do lead ao lucro" por uma expressão com numeral que materialize
+      o problema dos 4 fornecedores fragmentados. Melhor candidata até agora:
+      "4 [fornecedores/contratos/ferramentas] viram 1. Um sistema. Zero fragmentação."
+      O segundo e terceiro segmento ("Um sistema. Zero fragmentação.") estão aprovados — apenas
+      o primeiro segmento precisa de decisão final.
+
+    acceptance_criteria:
+      - "[ ] Owner aprova formalmente uma das 3 variantes de numeral (fornecedores / contratos / ferramentas) em sessão de decisão documentada"
+      - "[ ] A tagline aprovada está registrada em `brandbook.yaml` no campo `identity.tagline` (substitui valor atual)"
+      - "[ ] A tagline aprovada está registrada em `communication-framework.yaml` em todos os pontos de referência (decision_filters.site.hero.vocabulary, swipe_file, e qualquer outro field que referencie a tagline atual)"
+      - "[ ] Uma entrada de changelog é adicionada ao topo de ambos os arquivos com data, versão e motivo da mudança"
+      - "[ ] O Design System tem a tagline atualizada em qualquer token ou constante textual que a referencie"
+      - "[ ] Nenhum ativo de marca (arquivo de qualquer squad) contém a tagline antiga como string aprovada — somente como referência histórica em comentários"
+
+    priority: Must
+    moscow_rationale: >
+      A tagline é o enunciado mais replicado da marca — aparece no hero do site (CORTEX-003),
+      no bio do Instagram (CORTEX-004) e nos primeiros ads (CORTEX-004). Sem decisão final,
+      todos os outros itens produzem ativos inconsistentes que terão de ser refeitos.
+
+    dependencies:
+      - "Nenhuma dependência de outras stories — esta é a mais upstream de todas"
+      - "CORTEX-003 (site) está bloqueada até esta story ser concluída"
+      - "CORTEX-004 (copies) está bloqueada até esta story ser concluída"
+
+    definition_of_done:
+      - "Decisão registrada por escrito (YAML ou doc) com data e assinatura do owner"
+      - "brandbook.yaml e communication-framework.yaml atualizados e commitados no branch main"
+      - "Nenhuma ocorrência da tagline antiga (string exata) em arquivos de produção fora de contexto histórico"
+      - "Story movida para status: done no backlog"
+
+    effort_estimate: P
+    effort_rationale: >
+      O trabalho técnico de atualização de arquivos é pequeno (< 1h).
+      O esforço real é a decisão do owner — que pode acontecer em uma sessão de 30 min.
+
+    notes:
+      - "Variante recomendada: '4 fornecedores viram 1.' — mais visceral, referencia diretamente o enemy_core do brandbook ('dependência de 4 fornecedores')"
+      - "Alternativa: '4 contratos viram 1.' — mais contrato/financeiro, ativa dor de custo"
+      - "Alternativa: '4 ferramentas viram 1.' — mais tech, menos emocional"
+
+
+  # ---------------------------------------------------------------------------
+  # CORTEX-002 — LOGO / IDENTIDADE VISUAL
+  # ---------------------------------------------------------------------------
+  - id: CORTEX-002
+    title: "Executar identidade visual (logo) da Cortex com designer"
+
+    user_story:
+      as: "responsável pelo lançamento da marca Cortex"
+      i_want: "ter o logo executado por um designer, em todos os formatos e variações especificados no brandbook, pronto para uso em qualquer aplicação digital"
+      so_that: "o site, Instagram, WhatsApp Business, materiais de venda e qualquer ativo de comunicação possam usar a marca visual correta desde o lançamento"
+
+    context: >
+      O brandbook.yaml contém um logo_brief detalhado em `visual_identity.logo_brief`.
+      Style: wordmark ou combination mark, tipografia Space Grotesk Bold, monograma 'Cx' opcional.
+      Referências de energia: Linear.app, Vercel, Stripe.
+      Proibido: dente, boca, sorriso, cruz médica, cérebro literal, gradient arco-íris, visual startup barata.
+      Cores já definidas: primary #090E1A (Cortex Void), accent #4D71FA (Cortex Signal), white #F7F9FC.
+      A story consiste em briefar um designer externo, aprovar as propostas e receber os deliverables.
+
+    acceptance_criteria:
+      - "[ ] Designer recebe briefing completo extraído de `visual_identity.logo_brief` no brandbook.yaml"
+      - "[ ] Pelo menos 2 propostas de logo são apresentadas pelo designer antes da aprovação final"
+      - "[ ] Logo aprovado entregue como SVG master com todos os paths outlined (editável)"
+      - "[ ] PNG em 12 variações entregues: 4 variações (horizontal, vertical, ícone Cx, reversed) x 3 fundos (#090E1A, #F7F9FC, #4D71FA)"
+      - "[ ] Favicon entregue em .ico (multi-resolução: 16x16, 32x32, 48x48) e .svg"
+      - "[ ] Guia de uso correto e incorreto entregue (mínimo 1 página PDF ou PNG)"
+      - "[ ] Todos os arquivos entregues organizados na pasta `workspace/businesses/grupo_fabio_avelar/cortex/brand/logo/`"
+      - "[ ] Logo funciona em tamanho mínimo de 16px (ícone) e 80px (wordmark) sem perda de legibilidade"
+      - "[ ] Ratio de contraste do logo sobre todos os 3 fundos atende WCAG AA (mínimo 4.5:1 para texto)"
+
+    priority: Must
+    moscow_rationale: >
+      Sem logo, nenhum canal digital pode ser lançado com identidade visual real.
+      Instagram, WhatsApp Business, site e ads todos dependem da marca visual executada.
+      CORTEX-003 (site) e CORTEX-005 (canais) estão bloqueados sem o logo.
+
+    dependencies:
+      - "CORTEX-001 (tagline) deve estar em progresso ou concluída para o designer ter o contexto verbal completo antes de criar"
+      - "Brandbook.yaml disponível como briefing técnico (já existe)"
+      - "Definição de designer externo (pessoa ou agência) — fora do escopo desta story mas é pré-requisito operacional"
+
+    definition_of_done:
+      - "Todos os arquivos listados nos acceptance criteria entregues e verificados pelo owner"
+      - "Arquivos organizados no repositório em `cortex/brand/logo/` com nomenclatura padronizada"
+      - "Logo aprovado registrado no brandbook.yaml no campo `visual_identity.logo_brief` com status: executed"
+      - "Story movida para status: done no backlog"
+
+    effort_estimate: G
+    effort_rationale: >
+      Depende de designer externo com ciclos de revisão (2–3 rounds típicos).
+      Timeline realista: 5–10 dias úteis incluindo briefing, proposta, revisões e entrega final.
+      Esforço interno de coordenação: médio (briefing + review de cada rodada).
+
+    notes:
+      - "Arquivos devem ser entregues também em formato compatível com Figma (importar SVG) para uso no Design System"
+      - "O monograma 'Cx' como favicon/ícone de app deve ser testado em fundo escuro (#090E1A) pois é o dark mode first da marca"
+
+
+  # ---------------------------------------------------------------------------
+  # CORTEX-003 — SITE / LANDING PAGE
+  # ---------------------------------------------------------------------------
+  - id: CORTEX-003
+    title: "Construir landing page de lançamento da Cortex (Next.js 14+)"
+
+    user_story:
+      as: "potencial cliente dentista que recebe um link de ad ou indicação sobre a Cortex"
+      i_want: "acessar uma landing page que explique claramente o que é a Cortex, qual problema resolve, como funciona e como entrar em contato"
+      so_that: "eu possa tomar uma decisão informada de agendar uma conversa — sem precisar pesquisar a marca em outros lugares"
+
+    context: >
+      A marca não tem presença web. A landing page é o primeiro ativo digital da Cortex.
+      Já existe Design System completo com 67 tokens e 23 componentes React (Next.js 14+ App Router,
+      Tailwind v4, dark mode first). O Communication Framework tem skeletons de seções:
+      hero, features, CTA, about, proof. A tagline e copies finais dependem de CORTEX-001 e CORTEX-004.
+      O logo depende de CORTEX-002. A stack está definida: Next.js 14+ App Router, dark mode first.
+
+    acceptance_criteria:
+      - "[ ] Página deployada em domínio definitivo ou staging com SSL (https)"
+      - "[ ] Seção hero: headline + sub-headline + CTA primário — seguindo skeleton do communication-framework.yaml (decision_filters.site.hero)"
+      - "[ ] Seção features: apresenta os 4 sub-produtos (Cortex CRM, Cortex Ads, Cortex Analytics, Cortex Flow) como sistema integrado — não como catálogo isolado"
+      - "[ ] Seção proof: pelo menos 1 elemento de prova social (dado numérico, depoimento ou referência a clínicas próprias) conforme positioning.proof do brandbook"
+      - "[ ] Seção about: apresenta o diferencial 'CEO dentista com clínicas próprias' (pele no jogo) conforme brand_pillars do brandbook"
+      - "[ ] Seção CTA final: botão de conversão com verbo de ação concreto (ex: 'Agendar diagnóstico') — nunca 'Saiba mais' ou 'Clique aqui'"
+      - "[ ] Logo da Cortex exibido no header (depende de CORTEX-002 estar concluída)"
+      - "[ ] Tagline final exibida (depende de CORTEX-001 estar concluída)"
+      - "[ ] Paleta de cores implementada conforme brandbook: background #090E1A, accent #4D71FA, texto #F7F9FC"
+      - "[ ] Tipografia implementada: Space Grotesk para headlines, Inter para body"
+      - "[ ] Componentes do Design System existente utilizados — nenhum componente criado do zero sem necessidade"
+      - "[ ] Mobile-first responsivo: funciona em viewport 375px, 768px, 1440px"
+      - "[ ] Core Web Vitals: LCP < 2.5s, CLS < 0.1, FID < 100ms em mobile (medido via PageSpeed Insights)"
+      - "[ ] Meta tags OG preenchidas: og:title, og:description, og:image com logo da marca"
+      - "[ ] Formulário ou link de WhatsApp/calendário funcional para o CTA de conversão"
+
+    priority: Must
+    moscow_rationale: >
+      Sem site, os canais de tráfego (ads Meta/Google) não têm destino. É a peça central
+      que habilita todas as atividades de aquisição. Sem web presence, a marca não existe
+      digitalmente para o dentista que pesquisa ou clica em um ad.
+
+    dependencies:
+      - "CORTEX-001 (tagline) — idealmente concluída antes do deploy final; pode usar placeholder durante desenvolvimento"
+      - "CORTEX-002 (logo) — idealmente concluída antes do deploy final; pode usar placeholder durante desenvolvimento"
+      - "CORTEX-004 (copies) — deve estar em progresso simultâneo; developer usa skeletons do communication-framework.yaml como placeholder"
+      - "Design System existente disponível (já existe — nenhuma dependência de criação)"
+      - "Definição de domínio (CORTEX-005) — necessária para deploy em URL definitiva"
+
+    definition_of_done:
+      - "Página acessível publicamente via URL com SSL"
+      - "Todas as seções implementadas e revisadas pelo owner"
+      - "Copies finais (de CORTEX-004) integradas — sem nenhum placeholder visível em produção"
+      - "Logo final (de CORTEX-002) integrado — sem placeholder visual em produção"
+      - "Core Web Vitals aprovados conforme critérios dos acceptance criteria"
+      - "Owner aprova visualmente a página antes do go-live"
+      - "Story movida para status: done no backlog"
+
+    effort_estimate: G
+    effort_rationale: >
+      Desenvolvimento de landing page com 5–6 seções usando Design System já pronto.
+      Timeline realista: 5–8 dias úteis (setup + seções + responsive + performance + integração de copies e logo).
+      Reduzido vs. zero porque Design System já existe — componentes prontos.
+
+    notes:
+      - "Stack definitiva: Next.js 14+ App Router, Tailwind v4, TypeScript — dark mode first"
+      - "O Design System usa tokens semânticos — usar tokens, nunca hardcode de cor/spacing"
+      - "SEO básico: página indexável, title tag com 'Cortex — Sistema operacional de crescimento para dentistas'"
+      - "Analytics: instalar Google Analytics 4 ou Plausible para medir tráfego desde o dia 1"
+
+
+  # ---------------------------------------------------------------------------
+  # CORTEX-004 — COPIES REAIS
+  # ---------------------------------------------------------------------------
+  - id: CORTEX-004
+    title: "Produzir os primeiros copies reais da Cortex para todos os canais prioritários"
+
+    user_story:
+      as: "copywriter ou agente de copy responsável pela Cortex"
+      i_want: "ter todos os textos finais produzidos para bio do Instagram, site (hero, features, about, CTA) e primeiro ad de prospecting — seguindo rigorosamente as diretrizes de voice do brandbook"
+      so_that: "nenhum canal seja lançado com copy de placeholder, garantindo que a primeira impressão da marca seja consistente com o posicionamento de 'sistema operacional de crescimento' e não de mais uma agência de marketing"
+
+    context: >
+      O communication-framework.yaml tem skeletons (estrutura e regras) para todos os canais
+      mas nenhum copy final. O brandbook.yaml tem voice guidelines completos: personality (is/never),
+      tone_by_context, always_use, never_use, forbidden_words e signature_phrases.
+      Esta story produz os textos reais que serão inseridos no site (CORTEX-003),
+      nos canais (CORTEX-005) e nos primeiros ads.
+
+    acceptance_criteria:
+
+      instagram_bio:
+        - "[ ] Bio produzida em até 150 caracteres (limite do Instagram)"
+        - "[ ] Bio contém: categoria ('Sistema operacional para dentistas' ou derivação), diferencial de prova (CRM proprietário / clínicas próprias / CEO dentista), e CTA com link (site ou WhatsApp)"
+        - "[ ] Bio não contém nenhuma forbidden_word do brandbook (incrível, transformação, solução completa, sua melhor versão)"
+        - "[ ] Bio aprovada pelo owner antes de publicação"
+
+      site_hero:
+        - "[ ] Headline entre 6–12 palavras, abre com substantivo ou verbo no imperativo/presente — nunca com pergunta ou adjetivo"
+        - "[ ] Sub-headline de 1–2 linhas explica O QUE a Cortex faz (não como)"
+        - "[ ] CTA text: verbo de ação + substantivo, máximo 4 palavras (ex: 'Agendar diagnóstico')"
+        - "[ ] Nenhuma palavra de never_use ou forbidden_words presente"
+        - "[ ] Tagline final integrada (depende de CORTEX-001)"
+
+      site_features:
+        - "[ ] Texto para cada um dos 4 sub-produtos: Cortex CRM, Cortex Ads, Cortex Analytics, Cortex Flow"
+        - "[ ] Cada feature: 1 título (3–5 palavras) + 2–3 linhas de descrição"
+        - "[ ] Cada descrição reforça como a feature conecta ao sistema completo — nunca como produto isolado"
+        - "[ ] Pelo menos 1 dado numérico ou prova em alguma das features (ex: '% de clínicas que X', 'CRM próprio — não de terceiros')"
+
+      site_about:
+        - "[ ] Seção about cobre os 4 brand_pillars do brandbook: resultado comprovável, sistema não serviço, tecnologia proprietária, pele no jogo"
+        - "[ ] Menciona explicitamente 'CEO dentista com clínicas próprias' como prova de credibilidade"
+        - "[ ] Tom: Governante 65% + Sábio 35% conforme archetype_mix do brandbook"
+
+      site_cta_section:
+        - "[ ] Statement de confirmação de valor (1 frase: o que o dentista vai ter)"
+        - "[ ] CTA principal: verbo de ação concreto, não genérico"
+        - "[ ] Redutor de risco opcional (máx 1 linha) — ex: 'Sem contrato. Sem risco.'"
+
+      primeiro_ad_prospecting:
+        - "[ ] Ad produzido seguindo regra do communication-framework: 'número antes de adjetivo', 'prova antes de promessa'"
+        - "[ ] Formato: copy para Meta Ads (Facebook/Instagram) — primary text + headline + description"
+        - "[ ] Primary text: máx 125 caracteres para não ser truncado no feed"
+        - "[ ] Headline: máx 40 caracteres"
+        - "[ ] O ad menciona o enemy_core (fragmentação / múltiplos fornecedores) ou o resultado (faturamento) — não apenas awareness"
+        - "[ ] Pelo menos 2 variantes do ad produzidas para teste A/B"
+
+    priority: Must
+    moscow_rationale: >
+      Copy é o conteúdo que preenche todos os outros ativos (site, Instagram, WhatsApp, ads).
+      Sem copies finais, CORTEX-003 (site) não pode ir a produção e CORTEX-005 (canais) não
+      pode ser configurado com identidade textual real. É a ponte entre o positioning do
+      brandbook e os ativos publicáveis.
+
+    dependencies:
+      - "CORTEX-001 (tagline) deve estar concluída — tagline final é usada diretamente no hero do site e na bio do Instagram"
+      - "Brandbook.yaml disponível (já existe — voice guidelines completos)"
+      - "Communication-framework.yaml disponível (já existe — skeletons completos)"
+      - "CORTEX-003 (site) deve estar em desenvolvimento simultâneo para integração imediata dos copies"
+
+    definition_of_done:
+      - "Todos os copies listados nos acceptance criteria produzidos, documentados e aprovados pelo owner"
+      - "Copies salvos em arquivo estruturado em `cortex/brand/copies/` ou equivalente no repositório"
+      - "Nenhuma forbidden_word ou never_use word presente em nenhum copy aprovado"
+      - "Copies do site integrados no código do site (CORTEX-003)"
+      - "Bio do Instagram pronta para publicação (CORTEX-005)"
+      - "Ad copies prontos para subida na conta Meta Ads"
+      - "Story movida para status: done no backlog"
+
+    effort_estimate: M
+    effort_rationale: >
+      Volume médio de textos mas todos exigem precisão — cada palavra precisa estar
+      em conformidade com voice guidelines rigorosos. Estimativa: 2–3 dias de trabalho
+      focado de copywriter ou agente de copy com os arquivos de referência em mãos.
+
+    notes:
+      - "Usar communication-framework.yaml como checklist operacional a cada copy — especialmente a seção swipe_file (assim sim / assim não)"
+      - "Signature phrases do brandbook podem ser usadas literalmente em copies de ad e site: 'O dentista opera paciente. A Cortex opera o crescimento.'"
+      - "Para o ad A/B: uma variante ativa o problema (fragmentação/custo) e outra ativa o resultado (faturamento/escala)"
+
+
+  # ---------------------------------------------------------------------------
+  # CORTEX-005 — CONFIGURAÇÃO DE CANAIS
+  # ---------------------------------------------------------------------------
+  - id: CORTEX-005
+    title: "Configurar presença digital mínima da Cortex: domínio, Instagram Business e WhatsApp Business"
+
+    user_story:
+      as: "potencial cliente dentista que queira pesquisar, seguir ou entrar em contato com a Cortex"
+      i_want: "encontrar a Cortex com identidade visual e verbal consistente no Instagram, poder enviar mensagem via WhatsApp Business e acessar o site via domínio definitivo"
+      so_that: "eu tenha confiança de que a marca existe, é séria e tem canais de comunicação funcionais — condizentes com o posicionamento de 'sistema profissional'"
+
+    context: >
+      Nenhum canal digital da Cortex está operando. Instagram não existe, WhatsApp Business
+      não está configurado, domínio não está definido nem apontado. Esta story entrega a
+      infraestrutura mínima de canais para que a marca exista digitalmente e possa receber
+      tráfego e leads.
+
+    acceptance_criteria:
+
+      dominio:
+        - "[ ] Domínio definido e registrado (sugestão: cortex.app, cortexdentista.com.br, cortexgrowth.com.br ou equivalente disponível)"
+        - "[ ] DNS apontado para o servidor do site (CORTEX-003)"
+        - "[ ] SSL/HTTPS ativo no domínio definitivo"
+        - "[ ] Redirecionamento www → sem-www (ou vice-versa) configurado"
+        - "[ ] Domínio registrado com renovação automática ativada"
+
+      instagram_business:
+        - "[ ] Conta Instagram criada com username que represente a marca (sugestão: @cortex.dentistas, @cortexgrowth ou equivalente disponível)"
+        - "[ ] Perfil configurado como Business Account (não Creator)"
+        - "[ ] Nome da conta: 'Cortex' ou 'Cortex | Sistema para Dentistas'"
+        - "[ ] Bio do Instagram: copy aprovado de CORTEX-004 publicado"
+        - "[ ] Foto de perfil: logo aprovado de CORTEX-002 (versão ícone Cx ou circular)"
+        - "[ ] Link na bio: URL do site (domínio definitivo de CORTEX-003) ou link de agendamento"
+        - "[ ] Categoria configurada: 'Software' ou 'Serviço B2B' ou equivalente mais próximo"
+        - "[ ] Conta conectada ao Facebook Business Manager (para rodar ads Meta futuramente)"
+
+      whatsapp_business:
+        - "[ ] WhatsApp Business configurado com número dedicado (não o pessoal do owner)"
+        - "[ ] Nome comercial: 'Cortex'"
+        - "[ ] Descrição do perfil: copy consistente com voz da marca (derivado de CORTEX-004)"
+        - "[ ] Horário de atendimento configurado"
+        - "[ ] Mensagem de saudação automática configurada — seguindo tom do communication-framework (canal WhatsApp)"
+        - "[ ] Mensagem de ausência configurada"
+        - "[ ] Link do WhatsApp (wa.me/...) testado e funcional"
+        - "[ ] Conta WhatsApp Business vinculada ao Facebook Business Manager (para escalar para WhatsApp Business API futuramente)"
+
+      integracao_canais:
+        - "[ ] Link do WhatsApp adicionado ao site como CTA alternativo (CORTEX-003)"
+        - "[ ] Link do Instagram adicionado ao footer ou header do site"
+        - "[ ] Pixel Meta instalado no site (preparação para ads futuros)"
+
+    priority: Must
+    moscow_rationale: >
+      Os canais são o ponto de contato entre a marca e o dentista. Sem canais funcionando,
+      ads não têm destino (sem site via domínio) e leads não têm como contatar a Cortex
+      (sem WhatsApp/Instagram). Esta story habilita o fluxo completo de aquisição.
+
+    dependencies:
+      - "CORTEX-002 (logo) — foto de perfil do Instagram e WhatsApp dependem do logo executado"
+      - "CORTEX-003 (site) — domínio precisa ter site funcional para onde apontar"
+      - "CORTEX-004 (copies) — bio do Instagram e descrição do WhatsApp dependem dos copies aprovados"
+      - "CORTEX-001 (tagline) — indireta: copies dependem da tagline"
+
+    definition_of_done:
+      - "Domínio registrado, DNS apontando para site, HTTPS ativo"
+      - "Perfil Instagram Business público, com logo, bio e link corretos — conta linkada ao Business Manager"
+      - "WhatsApp Business configurado com número dedicado, saudação e ausência automáticas funcionando"
+      - "Todos os 3 canais testados por membro externo (não do time) que simula ser um dentista interessado"
+      - "Pixel Meta instalado e disparando eventos no site (verificado via Meta Pixel Helper)"
+      - "Story movida para status: done no backlog"
+
+    effort_estimate: M
+    effort_rationale: >
+      Configurações técnicas e administrativas sem desenvolvimento de código novo.
+      O maior esforço é operacional: registro de domínio, criação de contas, validação
+      no Business Manager. Timeline realista: 2–3 dias úteis considerando aprovações e DNSpropagation.
+
+    notes:
+      - "Para o domínio: verificar disponibilidade de .app, .com.br e .com em paralelo antes de decidir"
+      - "WhatsApp Business API (não o app comum) deve ser considerada se o volume de leads justificar — mas para lançamento o app é suficiente"
+      - "Instagram username deve ser verificado antes de qualquer publicação para garantir disponibilidade"
+      - "Esta story pode ser iniciada em paralelo com CORTEX-002/004 para não bloquear o timeline de lançamento — usando placeholders de imagem/texto temporários que serão substituídos"
+
+
+# =============================================================================
+# DEPENDENCY GRAPH
+# =============================================================================
+#
+#   CORTEX-001 (Tagline)
+#       │
+#       ├──→ CORTEX-003 (Site)    ← também depende de CORTEX-002, CORTEX-004
+#       ├──→ CORTEX-004 (Copies)  ← também depende de brandbook/comm-framework
+#       └──→ CORTEX-005 (Canais)  ← indiretamente via copies
+#
+#   CORTEX-002 (Logo)
+#       │
+#       ├──→ CORTEX-003 (Site)
+#       └──→ CORTEX-005 (Canais)
+#
+#   CORTEX-004 (Copies)
+#       │
+#       ├──→ CORTEX-003 (Site)
+#       └──→ CORTEX-005 (Canais)
+#
+# Ordem de execução recomendada para minimizar bloqueios:
+#   Sprint 1: CORTEX-001 (P — decisão rápida) + CORTEX-002 (G — longa, iniciar agora)
+#   Sprint 2: CORTEX-004 (M — copy) em paralelo com CORTEX-003 (G — dev)
+#   Sprint 3: CORTEX-005 (M — canais) + integração final site + go-live
+#
+# =============================================================================
+
+# =============================================================================
+# PRIORITY SUMMARY (MoSCoW)
+# =============================================================================
+priority_summary:
+  must:
+    - CORTEX-001  # Tagline — upstream de tudo
+    - CORTEX-002  # Logo — upstream de canais e site
+    - CORTEX-003  # Site — ativo central de aquisição
+    - CORTEX-004  # Copies — conteúdo de todos os canais
+    - CORTEX-005  # Canais — infraestrutura digital mínima
+  should: []
+  could: []
+  wont: []
+  note: >
+    Todos os 5 itens são Must para o lançamento mínimo viável da marca.
+    A diferenciação de prioridade é capturada na ordem de dependência e
+    no esforço estimado — não no grau de obrigatoriedade.
+
+# =============================================================================
+# EFFORT SUMMARY
+# =============================================================================
+effort_summary:
+  - id: CORTEX-001
+    estimate: P
+    unit: "< 1 dia de trabalho técnico + 1 sessão de decisão com owner"
+  - id: CORTEX-002
+    estimate: G
+    unit: "5–10 dias úteis (depende de designer externo + ciclos de revisão)"
+  - id: CORTEX-003
+    estimate: G
+    unit: "5–8 dias úteis (dev + responsivo + performance + integração)"
+  - id: CORTEX-004
+    estimate: M
+    unit: "2–3 dias (copywriter ou agente com brandbook em mãos)"
+  - id: CORTEX-005
+    estimate: M
+    unit: "2–3 dias (operacional: registro, configuração, validação)"

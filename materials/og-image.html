@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Cortex OG Image — 1200x630</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@500&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{width:1200px;height:630px;overflow:hidden;background:#090E1A;position:relative;font-family:'Space Grotesk',sans-serif}
+/* Dot grid pattern */
+.dot-grid{position:absolute;inset:0;background-image:radial-gradient(circle,#1E2533 1px,transparent 1px);background-size:32px 32px;opacity:.15}
+/* Logo top-left */
+.logo{position:absolute;top:60px;left:60px;height:28px}
+.logo svg{height:28px;width:auto}
+/* Content centered */
+.center{position:absolute;top:50%;left:50%;transform:translate(-50%,-55%);text-align:center;width:100%}
+.headline{font-weight:700;font-size:52px;color:#F7F9FC;line-height:1.15;max-width:900px;margin:0 auto}
+.accent-line{width:120px;height:2px;background:#4D71FA;margin:20px auto 0}
+.tagline{font-family:'Inter',sans-serif;font-weight:500;font-size:18px;color:#4D71FA;margin-top:24px}
+/* Safe zone indicator (invisible in production) */
+</style>
+</head>
+<body>
+<div class="dot-grid"></div>
+<div class="logo">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 264 64" fill="none">
+    <defs><radialGradient id="ib" cx="40%" cy="40%" r="65%"><stop offset="0%" stop-color="#1B2845"/><stop offset="100%" stop-color="#090E1A"/></radialGradient></defs>
+    <rect width="64" height="64" rx="14" fill="url(#ib)"/>
+    <path d="M 42.6,42.6 A 15,15 0 1,1 42.6,21.4" stroke="#4D71FA" stroke-width="5" stroke-linecap="round"/>
+    <circle cx="55" cy="32" r="2.5" fill="#4D71FA"/>
+    <text x="80" y="44" font-family="'Space Grotesk','Arial Black',sans-serif" font-weight="700" font-size="36" letter-spacing="0.8" fill="#F7F9FC">Cortex</text>
+  </svg>
+</div>
+<div class="center">
+  <div class="headline">Do lead ao lucro. Um sistema.</div>
+  <div class="accent-line"></div>
+  <div class="tagline">cortex.com.br</div>
+</div>
+<!--
+SCREENSHOT INSTRUCTIONS:
+1. Open this file in Chrome at 100% zoom
+2. Set window to exactly 1200x630px (use DevTools device emulation or browser resize)
+3. Take screenshot using DevTools: Cmd+Shift+P > "Capture screenshot"
+4. Or use: chrome --headless --screenshot --window-size=1200,630 og-image.html
+5. Export as PNG, optimize to <300KB
+6. Safe zone: content stays 80px from all edges for WhatsApp crop compatibility
+-->
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Cortex Deck — 07 Comparison</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{width:1920px;height:1080px;overflow:hidden;background:#090E1A;padding:80px 160px;position:relative}
+.bar{position:absolute;bottom:0;left:0;right:0;height:4px;background:#4D71FA}
+.label{font-family:'Inter',sans-serif;font-size:14px;color:#4D71FA;text-transform:uppercase;letter-spacing:2px;margin-bottom:16px}
+h2{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:44px;color:#F7F9FC;margin-bottom:48px}
+table{width:100%;border-collapse:collapse}
+th,td{text-align:left;padding:20px 24px;font-family:'Inter',sans-serif;border-bottom:1px solid #1E2533}
+th{font-weight:500;font-size:14px;color:#94A3B8;text-transform:uppercase;letter-spacing:1px}
+td{font-size:16px;color:#94A3B8}
+td:first-child{font-weight:500;color:#F7F9FC;font-size:17px}
+td:last-child{color:#F7F9FC;font-weight:500}
+.check{display:inline-block;width:20px;height:20px}
+.x{color:#F43F5E;font-weight:600;font-size:18px}
+.partial{color:#F59E0B;font-weight:600;font-size:18px}
+.yes{color:#22C55E;font-weight:600;font-size:18px}
+.highlight{background:rgba(77,113,250,.06)}
+th.highlight{color:#4D71FA;font-weight:600}
+</style>
+</head>
+<body>
+<div class="label">Comparativo</div>
+<h2>Cortex vs. mercado fragmentado</h2>
+<table>
+  <thead>
+    <tr><th>Funcionalidade</th><th>CRM generico</th><th>Agencia + ferramentas</th><th class="highlight">Cortex</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>CRM especializado odonto</td><td class="partial">Parcial</td><td class="x">Nao</td><td class="highlight yes">Sim</td></tr>
+    <tr><td>Trafego integrado ao CRM</td><td class="x">Nao</td><td class="partial">Parcial</td><td class="highlight yes">Sim</td></tr>
+    <tr><td>Lead rastreado ate faturamento</td><td class="x">Nao</td><td class="x">Nao</td><td class="highlight yes">Sim</td></tr>
+    <tr><td>Dashboard unico de ROI</td><td class="x">Nao</td><td class="partial">Parcial</td><td class="highlight yes">Sim</td></tr>
+    <tr><td>Automacao WhatsApp nativa</td><td class="partial">Parcial</td><td class="x">Nao</td><td class="highlight yes">Sim</td></tr>
+    <tr><td>Onboarding em 48h</td><td class="x">Semanas</td><td class="x">Semanas</td><td class="highlight yes">48h</td></tr>
+    <tr><td>Suporte especializado odonto</td><td class="x">Nao</td><td class="partial">Generico</td><td class="highlight yes">Sim</td></tr>
+  </tbody>
+</table>
+<div class="bar"></div>
+</body>
+</html>
